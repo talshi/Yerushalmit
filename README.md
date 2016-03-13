@@ -18,6 +18,8 @@ This project is developed as part of the requirements for a [software engineerin
 
 ### [Team Page](../../wiki/team)
 
+### [Inception](https://github.com/talshi/jerorg.wiki.git)
+
 ### Project Documents
 - [Project Idea](docs/idea.pdf) ([Presentation](docs/idea-slides.pdf))
 - [Project Inception](../../wiki/inception)
