@@ -18,7 +18,7 @@ This project is developed as part of the requirements for a [software engineerin
 
 ### [Team Page](../../wiki/team)
 
-### Project Documents
+### [Project Documents](../../wiki)
 - [Project Idea](docs/idea.pdf) ([Presentation](docs/idea-slides.pdf))
 - [Project Inception](../../wiki/inception)
 - [Software Requirements Specification](../../wiki/srs)
