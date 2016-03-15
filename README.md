@@ -19,7 +19,7 @@ This project is developed as part of the requirements for a [software engineerin
 ## [Team Page](../../wiki/team)
 
 ## [Project Documents](../../wiki)
-- [Project Idea](docs/idea.pdf) ([Presentation](docs/idea-slides.pdf))
+- [Project Idea](https://github.com/talshi/jerorg/raw/master/Project%20Idea.pdf) ([Presentation](https://github.com/talshi/jerorg/raw/master/Project%20Idea%20-%20slide.pptx))
 - [Project Inception](../../wiki/inception)
 - [Software Requirements Specification](../../wiki/srs)
 - [Software Design Specification](../../wiki/sds)
