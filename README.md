@@ -1,4 +1,4 @@
-# Jerusalem Organization
+# Yerushalmit
 
 ![image](http://yerushalmim.info/wp-content/themes/yerushalmim/images/logo.png)
 
