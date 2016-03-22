@@ -21,8 +21,8 @@ This project is developed as part of the requirements for a [software engineerin
 ## [Project Documents](../../wiki)
 - [Project Idea](https://github.com/talshi/jerorg/raw/master/Project%20Idea.pdf) ([Presentation](https://github.com/talshi/jerorg/raw/master/Project%20Idea%20-%20slide.pptx))
 - [Project Inception](../../wiki/inception)
-- [Software Requirements Specification](../../wiki/srs)
-- [Software Design Specification](../../wiki/sds)
+- [Software Requirements Specification](https://github.com/talshi/Yerushalmit/wiki/Software-Requirements-Specification-(SRS))
+- [Software Design Specification](https://github.com/talshi/Yerushalmit/wiki/Software-Design-Specification-(SDS))
 
 ## Iteration Pages
 - [Iteration 0 - ZFR](../../wiki/iter0-zfr)
