@@ -23,6 +23,7 @@ This project is developed as part of the requirements for a [software engineerin
 - [Project Inception](../../wiki/inception)
 - [Software Requirements Specification](https://github.com/talshi/Yerushalmit/wiki/Software-Requirements-Specification-(SRS))
 - [Software Design Specification](https://github.com/talshi/Yerushalmit/wiki/Software-Design-Specification-(SDS))
+- [WP-Mapify-Plugin Repository](https://github.com/talshi/WP-Mapify-Plugin)
 
 ## Iteration Pages
 - [Iteration 0 - ZFR](../../wiki/iter0-zfr)
