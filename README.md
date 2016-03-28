@@ -1,6 +1,6 @@
 # Yerushalmit
 
-![image](http://yerushalmim.info/wp-content/themes/yerushalmim/images/logo.png)
+![image](https://raw.githubusercontent.com/talshi/Yerushalmit/master/Doc/12803164_729605713843456_1721821289031355495_n.png)
 
 ######The Yerushalmit Movement is a non profit civic organization aiming to build Jerusalem as a vibrant, pluralistic and inclusive city, which will reflect the great human richness of all its people, help them live together with all their differences, provide a high quality of life for its citizens, and attract new and dynamic residents. In so doing, we will restore Jerusalem to its central place as the capital of all of Israel, and of world Jewry.
 
@@ -23,6 +23,7 @@ This project is developed as part of the requirements for a [software engineerin
 - [Project Inception](../../wiki/inception)
 - [Software Requirements Specification](https://github.com/talshi/Yerushalmit/wiki/Software-Requirements-Specification-(SRS))
 - [Software Design Specification](https://github.com/talshi/Yerushalmit/wiki/Software-Design-Specification-(SDS))
+- [WP-Mapify-Plugin Repository](https://github.com/talshi/WP-Mapify-Plugin)
 
 ## Iteration Pages
 - [Iteration 0 - ZFR](../../wiki/iter0-zfr)
