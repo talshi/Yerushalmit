@@ -29,5 +29,5 @@ This project is developed as part of the requirements for a [software engineerin
 - [Iteration 0 - ZFR](https://github.com/talshi/Yerushalmit/wiki/ZFR)
 - [Iteration 1 - MVP](https://github.com/talshi/Yerushalmit/wiki/Minimum-Viable-Product-(MVP))
 - [Iteration 2 - Database and Mapify Plugin](https://github.com/talshi/Yerushalmit/wiki/Database-and-Mapify-Plugin)
-- [Iteration 3 - Feature Y]()
+- [Iteration 3 - Content, UI and Mapify](https://github.com/talshi/Yerushalmit/wiki/Content,-UI-and-Mapify)
 - [Iteration 4 - Feature Z]()
