@@ -26,7 +26,7 @@ This project is developed as part of the requirements for a [software engineerin
 - [WP-Mapify-Plugin Repository](https://github.com/talshi/WP-Mapify-Plugin)
 
 ## Iteration Pages
-- [Iteration 0 - ZFR](../../wiki/iter0-zfr)
+- [Iteration 0 - ZFR](https://github.com/talshi/Yerushalmit/wiki/ZFR)
 - [Iteration 1 - MVP](https://github.com/talshi/Yerushalmit/wiki/Minimum-Viable-Product-(MVP))
 - [Iteration 2 - Database and Mapify Plugin](https://github.com/talshi/Yerushalmit/wiki/Database-and-Mapify-Plugin)
 - [Iteration 3 - Feature Y]()
