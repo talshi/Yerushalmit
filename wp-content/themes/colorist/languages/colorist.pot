@@ -1,0 +1,621 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Colorist\n"
+"POT-Creation-Date: 2015-05-04 12:18+0530\n"
+"PO-Revision-Date: 2015-05-04 12:18+0530\n"
+"Last-Translator: N. Venkat Raj <venkatraj.n@gmail.com>\n"
+"Language-Team: Webulous\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../content-page.php:18 ../content-single.php:34 ../content.php:46
+msgid "Pages:"
+msgstr ""
+
+#: ../content-page.php:25 ../includes/template-tags.php:92
+#: ../includes/template-tags.php:275 ../includes/template-tags.php:294
+msgid "Edit"
+msgstr ""
+
+#: ../functions.php:53 ../header.php:44
+msgid "Primary Menu"
+msgstr ""
+
+#: ../functions.php:83 ../includes/sidebars.php:9
+msgid "Sidebar"
+msgstr ""
+
+#: ../functions.php:93
+msgid "Top Left"
+msgstr ""
+
+#: ../functions.php:103
+msgid "Top Right"
+msgstr ""
+
+#: ../functions.php:113 ../includes/sidebars.php:29
+#, php-format
+msgid "Footer %1$s"
+msgstr ""
+
+#: ../functions.php:123
+msgid "Footer Nav"
+msgstr ""
+
+#: ../header.php:22
+msgid "Skip to content"
+msgstr ""
+
+#: ../content.php:39
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../404.php:15
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: ../404.php:19
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: ../404.php:27
+msgid "Most Used Categories"
+msgstr ""
+
+#: ../404.php:44
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: ../comments.php:35 ../comments.php:53
+msgid "Comment navigation"
+msgstr ""
+
+#: ../comments.php:36 ../comments.php:54
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../comments.php:37 ../comments.php:55
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../comments.php:65
+msgid "Comments are closed."
+msgstr ""
+
+#: ../search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: ../content-none.php:13
+msgid "Nothing Found"
+msgstr ""
+
+#: ../content-none.php:19
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: ../content-none.php:23
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: ../content-none.php:28
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: ../includes/hooks-filters.php:4
+#, php-format
+msgid "<p>Powered by <a href=\"%1$s\">%2$s</a>"
+msgstr ""
+
+#: ../includes/hooks-filters.php:5
+msgid "http://wordpress.org/"
+msgstr ""
+
+#: ../includes/hooks-filters.php:7
+#, php-format
+msgid "Theme: %1$s by %2$s"
+msgstr ""
+
+#: ../includes/options-config.php:9
+msgid "Page Builder"
+msgstr ""
+
+#: ../includes/options-config.php:10
+msgid ""
+"colorist Pro supports Page Builder. All our shortcodes can be used as "
+"widgets too. You can drag and drop our widgets with page builder visual "
+"editor."
+msgstr ""
+
+#: ../includes/options-config.php:11
+msgid "Page Layout"
+msgstr ""
+
+#: ../includes/options-config.php:12
+msgid ""
+"colorist Pro offers many different page layouts so you can quickly and "
+"easily create your pages with various layout without any hassle!"
+msgstr ""
+
+#: ../includes/options-config.php:13
+msgid "Unlimited Sidebar"
+msgstr ""
+
+#: ../includes/options-config.php:14
+msgid ""
+"Unlimited sidebars allows you to create multiple sidebars. Check out our "
+"demo site to see how different pages displays different sidebars!"
+msgstr ""
+
+#: ../includes/options-config.php:15
+msgid "Shortcode Builder"
+msgstr ""
+
+#: ../includes/options-config.php:16
+msgid ""
+"With our shortcode builder and lots of shortcodes, you can easily create "
+"nested shortcodes and build custom pages!"
+msgstr ""
+
+#: ../includes/options-config.php:17
+msgid "Multi Portfolio"
+msgstr ""
+
+#: ../includes/options-config.php:18
+msgid ""
+"7 portfolio layouts with Isotope filtering, 3 blog layouts and multiple "
+"other alternate layouts for interior pages!"
+msgstr ""
+
+#: ../includes/options-config.php:19
+msgid "Typography"
+msgstr ""
+
+#: ../includes/options-config.php:20
+msgid ""
+"colorist Pro loves typography, you can choose from over 500+ Google Fonts "
+"and Standard Fonts to customize your site!"
+msgstr ""
+
+#: ../includes/options-config.php:21
+msgid "Awesome Sliders"
+msgstr ""
+
+#: ../includes/options-config.php:22
+msgid ""
+"colorist Pro includes two types of slider. You can use both Flex and Elastic "
+"sliders anywhere in your site."
+msgstr ""
+
+#: ../includes/options-config.php:23
+msgid "Woo Commerce"
+msgstr ""
+
+#: ../includes/options-config.php:24
+msgid ""
+"colorist Pro has full design/code integration for WooCommerce, your shop "
+"will look as good as the rest of your site!"
+msgstr ""
+
+#: ../includes/options-config.php:25
+msgid "Custom Widget"
+msgstr ""
+
+#: ../includes/options-config.php:26
+msgid ""
+"We offer many custom widgets that are stylized and ready for use. Simply "
+"drag &amp; drop into place to activate!"
+msgstr ""
+
+#: ../includes/options-config.php:27
+msgid "Advanced Admin"
+msgstr ""
+
+#: ../includes/options-config.php:28
+msgid ""
+"Advanced Redux Framework for theme options panel, you can customize any part "
+"of your site quickly and easily!"
+msgstr ""
+
+#: ../includes/options-config.php:29
+msgid "Font Awesome"
+msgstr ""
+
+#: ../includes/options-config.php:30
+msgid ""
+"Font Awesome icons are fully integrated into the theme. Use them anywhere in "
+"your site in 6 different sizes!"
+msgstr ""
+
+#: ../includes/options-config.php:31
+msgid "Responsive Layout"
+msgstr ""
+
+#: ../includes/options-config.php:32
+msgid ""
+"colorist Pro is fully responsive and can adapt to any screen size. Resize "
+"your browser window to view it!"
+msgstr ""
+
+#: ../includes/options-config.php:33
+msgid "Testimonials"
+msgstr ""
+
+#: ../includes/options-config.php:34
+msgid ""
+"With our testimonial post type, shortcode and widget, Displaying "
+"testimonials is a breeze."
+msgstr ""
+
+#: ../includes/options-config.php:35
+msgid "Social Media"
+msgstr ""
+
+#: ../includes/options-config.php:36
+msgid ""
+"Want your users to stay in touch? No problem, colorist Pro has Social Media "
+"icons all throughout the theme!"
+msgstr ""
+
+#: ../includes/options-config.php:37
+msgid "Google Map"
+msgstr ""
+
+#: ../includes/options-config.php:38
+msgid ""
+"colorist Pro includes Goole Map as shortcode and widget. So, you can use it "
+"anywhere in your site!"
+msgstr ""
+
+#: ../includes/options-config.php:146
+msgid "Upgrade"
+msgstr ""
+
+#: ../includes/options-config.php:147
+msgid ""
+"Drag and Drop Page Builder support and more options available in Pro "
+"version. <a href=\"http://www.webulousthemes.com/?add-to-cart=33\">Upgrade "
+"Now</a>"
+msgstr ""
+
+#: ../includes/options-config.php:152
+msgid "Select Color Scheme"
+msgstr ""
+
+#: ../includes/options-config.php:154
+msgid "Red"
+msgstr ""
+
+#: ../includes/options-config.php:155
+msgid "Green"
+msgstr ""
+
+#: ../includes/options-config.php:156
+msgid "Blue"
+msgstr ""
+
+#: ../includes/options-config.php:168
+msgid "Colorist Options"
+msgstr ""
+
+#: ../includes/options-config.php:169
+msgid "Colorist Theme Options"
+msgstr ""
+
+#: ../includes/options-config.php:172
+msgid "General"
+msgstr ""
+
+#: ../includes/options-config.php:173
+msgid "General settings that affects overall site"
+msgstr ""
+
+#: ../includes/options-config.php:177
+msgid "Enable Breadcrumb"
+msgstr ""
+
+#: ../includes/options-config.php:183
+msgid "Select Breadcrumb Character"
+msgstr ""
+
+#: ../includes/options-config.php:195
+msgid "Header"
+msgstr ""
+
+#: ../includes/options-config.php:196
+msgid "Header options"
+msgstr ""
+
+#: ../includes/options-config.php:200
+msgid "Logo as Title"
+msgstr ""
+
+#: ../includes/options-config.php:206
+msgid "Upload Logo"
+msgstr ""
+
+#: ../includes/options-config.php:211
+msgid "Show site Tagline"
+msgstr ""
+
+#: ../includes/options-config.php:218
+msgid "Footer"
+msgstr ""
+
+#: ../includes/options-config.php:219
+msgid "Footer related options"
+msgstr ""
+
+#: ../includes/options-config.php:223
+msgid "Footer Widget Area"
+msgstr ""
+
+#: ../includes/options-config.php:230
+msgid "Home"
+msgstr ""
+
+#: ../includes/options-config.php:231
+msgid "Home Page options"
+msgstr ""
+
+#: ../includes/options-config.php:235
+msgid "Slider Posts Category"
+msgstr ""
+
+#: ../includes/options-config.php:240
+msgid "No. of Sliders"
+msgstr ""
+
+#: ../includes/options-config.php:245
+msgid "Service Section #1"
+msgstr ""
+
+#: ../includes/options-config.php:250
+msgid "Service Section #2"
+msgstr ""
+
+#: ../includes/options-config.php:255
+msgid "Service Section #3"
+msgstr ""
+
+#: ../includes/options-config.php:260
+msgid "No. of Recent Posts"
+msgstr ""
+
+#: ../includes/options-config.php:266
+msgid "Blog"
+msgstr ""
+
+#: ../includes/options-config.php:267
+msgid "Blog related options"
+msgstr ""
+
+#: ../includes/options-config.php:271
+msgid "Enable Featured Image"
+msgstr ""
+
+#: ../includes/options-config.php:277
+msgid "Enable Single Post Featured Image"
+msgstr ""
+
+#: ../includes/sidebars.php:19
+msgid "Top Cart"
+msgstr ""
+
+#: ../includes/template-tags.php:21
+msgid "Posts navigation"
+msgstr ""
+
+#: ../includes/template-tags.php:25
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: ../includes/template-tags.php:29
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../includes/template-tags.php:52
+msgid "Post navigation"
+msgstr ""
+
+#: ../includes/template-tags.php:55
+msgctxt "Previous post link"
+msgid "<span class=\"meta-nav\">&larr;</span>&nbsp;%title"
+msgstr ""
+
+#: ../includes/template-tags.php:56
+msgctxt "Next post link"
+msgid "%title&nbsp;<span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../includes/template-tags.php:82
+#, php-format
+msgctxt "post date"
+msgid "%s"
+msgstr ""
+
+#: ../includes/template-tags.php:87
+#, php-format
+msgctxt "post author"
+msgid "%s"
+msgstr ""
+
+#: ../includes/template-tags.php:105 ../includes/template-tags.php:111
+msgid ", "
+msgstr ""
+
+#: ../includes/template-tags.php:107 ../includes/template-tags.php:113
+#, php-format
+msgid "%1$s "
+msgstr ""
+
+#: ../includes/template-tags.php:119
+msgid "Leave a comment"
+msgstr ""
+
+#: ../includes/template-tags.php:119
+msgid "1 Comment"
+msgstr ""
+
+#: ../includes/template-tags.php:119
+msgid "% Comments"
+msgstr ""
+
+#: ../includes/template-tags.php:139
+#, php-format
+msgid "Category: %s"
+msgstr ""
+
+#: ../includes/template-tags.php:141
+#, php-format
+msgid "Tag: %s"
+msgstr ""
+
+#: ../includes/template-tags.php:143
+#, php-format
+msgid "Author: %s"
+msgstr ""
+
+#: ../includes/template-tags.php:145
+#, php-format
+msgid "Year: %s"
+msgstr ""
+
+#: ../includes/template-tags.php:145
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: ../includes/template-tags.php:147
+#, php-format
+msgid "Month: %s"
+msgstr ""
+
+#: ../includes/template-tags.php:147
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr ""
+
+#: ../includes/template-tags.php:149
+#, php-format
+msgid "Day: %s"
+msgstr ""
+
+#: ../includes/template-tags.php:149
+msgctxt "daily archives date format"
+msgid "F j, Y"
+msgstr ""
+
+#: ../includes/template-tags.php:151
+msgctxt "post format archive title"
+msgid "Asides"
+msgstr ""
+
+#: ../includes/template-tags.php:153
+msgctxt "post format archive title"
+msgid "Galleries"
+msgstr ""
+
+#: ../includes/template-tags.php:155
+msgctxt "post format archive title"
+msgid "Images"
+msgstr ""
+
+#: ../includes/template-tags.php:157
+msgctxt "post format archive title"
+msgid "Videos"
+msgstr ""
+
+#: ../includes/template-tags.php:159
+msgctxt "post format archive title"
+msgid "Quotes"
+msgstr ""
+
+#: ../includes/template-tags.php:161
+msgctxt "post format archive title"
+msgid "Links"
+msgstr ""
+
+#: ../includes/template-tags.php:163
+msgctxt "post format archive title"
+msgid "Statuses"
+msgstr ""
+
+#: ../includes/template-tags.php:165
+msgctxt "post format archive title"
+msgid "Audio"
+msgstr ""
+
+#: ../includes/template-tags.php:167
+msgctxt "post format archive title"
+msgid "Chats"
+msgstr ""
+
+#: ../includes/template-tags.php:169
+#, php-format
+msgid "Archives: %s"
+msgstr ""
+
+#: ../includes/template-tags.php:173
+#, php-format
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: ../includes/template-tags.php:175
+msgid "Archives"
+msgstr ""
+
+#: ../includes/template-tags.php:275
+msgid "Pingback:"
+msgstr ""
+
+#: ../includes/template-tags.php:285
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: ../includes/template-tags.php:291
+#, php-format
+msgctxt "1: date, 2: time"
+msgid "- %1$s at %2$s"
+msgstr ""
+
+#: ../includes/template-tags.php:308
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../includes/template-tags.php:344
+msgid "Recent Posts"
+msgstr ""
+
+#: ../includes/template-tags.php:516
+msgid "Page"
+msgstr ""
+
+#: ../includes/enqueue.php:39
+msgctxt "Font: on or off"
+msgid "on"
+msgstr ""
+
+#: ../includes/extras.php:64
+#, php-format
+msgid "Page %s"
+msgstr ""

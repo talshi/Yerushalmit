@@ -1,0 +1,13 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+.mapify-cp-container {
+   
+}
+
+.mapify-cp-label {
+    font-size: 36px;
+    padding: 20px 5px;
+}
