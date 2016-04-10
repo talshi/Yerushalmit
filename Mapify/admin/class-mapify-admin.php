@@ -127,12 +127,14 @@ class Mapify_Admin {
         return array_merge(  $settings_link, $links );
     }
 
+    /*
     public function display_plugin_setup_page() {
-        include_once( 'partials/mapify-admin-display.php' );
+        include_once( 'partials/mapify_admin_display.php' );
     }
+    */
 
     public function display_admin_page() {
-        include_once('mapify_admin_display.php');
+        include_once( 'partials/mapify-admin-display.php');
         //display_plugin_setup_page();
     }
 
