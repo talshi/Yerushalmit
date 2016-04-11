@@ -95,7 +95,12 @@ class Mapify {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies() {
+	private function load_dependencies() {  
+
+        echo plugin_dir_path( dirname( __FILE__ ),1) . 'admin/partials/mapify-admin-display.php';
+
+        require_once plugin_dir_path( dirname( __FILE__ ),1) . 'admin/partials/mapify-admin-display.php';
+
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
@@ -120,7 +125,10 @@ class Mapify {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-mapify-public.php';
 
+
 		$this->loader = new Mapify_Loader();
+
+
 
 	}
 

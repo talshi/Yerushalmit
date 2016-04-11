@@ -12,13 +12,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Mapify Control Panel</a>
+          <a class="navbar-brand" href="#/">Mapify Control Panel</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Manage Map</a></li>
-            <li><a href="#about">Manage Activities</a></li>
-            <li><a href="#contact">Manage Categories</a></li>
+            <li class="active"><a href="#/manageMap">Manage Map</a></li>
+            <li><a href="#/manageActities">Manage Activities</a></li>
+            <li><a href="#/manageCategories">Manage Categories</a></li>
           </ul>
         </div>
       </div>

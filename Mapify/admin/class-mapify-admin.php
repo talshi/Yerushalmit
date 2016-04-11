@@ -99,10 +99,9 @@ class Mapify_Admin {
 		 */
 
         wp_enqueue_script( 'angular.min', plugin_dir_url( __FILE__ ) . 'js/angular.min.js', array( 'jquery' ), $this->version, false );
+        wp_enqueue_script( 'angular-route.min', plugin_dir_url( __FILE__ ) . 'js/angular-route.min.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mapify-admin.js', array( 'jquery' ), $this->version, false );
         wp_enqueue_script( 'bootstrap.min', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, false );
-        wp_enqueue_script( 'angular-route.min', plugin_dir_url( __FILE__ ) . 'js/angular-route.min.js', array( 'jquery' ), $this->version, false );
-        
 
 	}
 
@@ -135,7 +134,7 @@ class Mapify_Admin {
 
     public function display_admin_page() {
         include_once( 'partials/mapify-admin-display.php');
-        //display_plugin_setup_page();
+        
     }
 
     
