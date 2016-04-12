@@ -19,7 +19,7 @@ This project is developed as part of the requirements for a [software engineerin
 
 ## [User Manual](https://github.com/talshi/Yerushalmit/wiki/user-manual)
 
-## [Team Page](../../wiki/team)
+## [Team Page](https://github.com/talshi/Yerushalmit/wiki/team)
 
 ## [Project Documents](../../wiki)
 - [Project Idea](https://github.com/talshi/jerorg/raw/master/Project%20Idea.pdf) ([Presentation](https://github.com/talshi/jerorg/raw/master/Project%20Idea%20-%20slide.pptx))
