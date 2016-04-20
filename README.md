@@ -6,6 +6,9 @@
 
 ######This project is done as a final project for [software engineering course at JCE](https://github.com/jce-il/se-class) (Jerusalem Collage of Engineering).
 
+##[Yerushalmit](http://yerushalmit.azurewebsites.net)
+
+
 ## Join the chat at: [![Join the chat at https://gitter.im/talshi/jerorg](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/talshi/jerorg)
 
 
@@ -14,9 +17,9 @@
 ## Disclaimer
 This project is developed as part of the requirements for a [software engineering course](https://github.com/jce-il/se-class/wiki) at the software engineering department - [Azrieli College of Engineering](http://www.jce.ac.il/), Jerusalem, Israel.
 
-## [User Manual](../../wiki/user-manual)
+## [User Manual](https://github.com/talshi/Yerushalmit/wiki/user-manual)
 
-## [Team Page](../../wiki/team)
+## [Team Page](https://github.com/talshi/Yerushalmit/wiki/team)
 
 ## [Project Documents](../../wiki)
 - [Project Idea](https://github.com/talshi/jerorg/raw/master/Project%20Idea.pdf) ([Presentation](https://github.com/talshi/jerorg/raw/master/Project%20Idea%20-%20slide.pptx))
