@@ -1,6 +1,7 @@
 (function ($) {
 
     var wp_mapify_app = angular.module('wp_mapify_app', ['ngRoute']);
+<<<<<<< HEAD
 
     wp_mapify_app.controller('mapCtrl', function ($scope) {
         console.log("mapCtrl");
@@ -55,3 +56,10 @@
 
 })(jQuery);
 
+=======
+    
+
+
+
+})(jQuery);
+>>>>>>> b3d856d19d8ac1b6451f0d1d947cb58fd6421971

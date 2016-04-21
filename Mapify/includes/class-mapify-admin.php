@@ -96,7 +96,11 @@ class Mapify_Admin {
 		 * class.
 		 */
 
+<<<<<<< HEAD
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mapify-admin.js', array( 'jquery' ), $this->version, false );
+=======
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-admin.js', array( 'jquery' ), $this->version, false );
+>>>>>>> b3d856d19d8ac1b6451f0d1d947cb58fd6421971
 
 	}
 
