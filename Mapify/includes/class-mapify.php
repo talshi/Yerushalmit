@@ -120,6 +120,7 @@ class Mapify {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-mapify-public.php';
 
+
 		$this->loader = new Mapify_Loader();
 
 	}

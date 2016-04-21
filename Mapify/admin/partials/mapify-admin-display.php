@@ -12,7 +12,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Mapify Control Panel</a>
+          <a class="navbar-brand" href="#/">Mapify Control Panel</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -23,9 +23,8 @@
         </div>
       </div>
     </nav>
-    <div>
-        <input type="text" ng-model="map">
-        {{ map }}
+    <div ng-view>
+    
     </div>
 </div>
 
