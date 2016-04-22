@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Yerushalmit
 
 ![image](https://raw.githubusercontent.com/talshi/Yerushalmit/master/Doc/12803164_729605713843456_1721821289031355495_n.png)
@@ -35,7 +34,7 @@ This project is developed as part of the requirements for a [software engineerin
 - [Iteration 2 - Database and Mapify Plugin](https://github.com/talshi/Yerushalmit/wiki/Database-and-Mapify-Plugin)
 - [Iteration 3 - Content, UI and Mapify](https://github.com/talshi/Yerushalmit/wiki/Content,-UI-and-Mapify)
 - [Iteration 4 - Wordpress template, Plugin installation and tests](https://github.com/talshi/Yerushalmit/wiki/Wordpress-template,-Plugin-installation-and-tests)
-=======
+
 # Yerushalmit
 
 ![image](https://raw.githubusercontent.com/talshi/Yerushalmit/master/Doc/12803164_729605713843456_1721821289031355495_n.png)
@@ -72,4 +71,4 @@ This project is developed as part of the requirements for a [software engineerin
 - [Iteration 2 - Database and Mapify Plugin](https://github.com/talshi/Yerushalmit/wiki/Database-and-Mapify-Plugin)
 - [Iteration 3 - Content, UI and Mapify](https://github.com/talshi/Yerushalmit/wiki/Content,-UI-and-Mapify)
 - [Iteration 4 - Wordpress template, Plugin installation and tests](https://github.com/talshi/Yerushalmit/wiki/Wordpress-template,-Plugin-installation-and-tests)
->>>>>>> b3d856d19d8ac1b6451f0d1d947cb58fd6421971
+
