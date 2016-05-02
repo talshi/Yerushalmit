@@ -19,6 +19,7 @@ This project is developed as part of the requirements for a [software engineerin
 
 ## Technology
 - PHP
+- Javascript
 - Wordpress
 - MongoDB
 - Angular
