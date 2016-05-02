@@ -4,7 +4,10 @@
  */
 
 
-.mapify-cp-label {
-    font-size: 36px;
-    padding: 20px 5px;
+.partial-view {
+    background-color: #fff;
+}
+
+.img_preview {
+    max-width: 1000px;
 }

@@ -77,6 +77,7 @@ class Mapify_Admin {
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/mapify-admin.css', array(), $this->version, 'all' ); // *-> mapify style module
         wp_enqueue_style( 'bootstrap', plugin_dir_url( __FILE__ ) . 'css/bootstrap.css', array(), $this->version, 'all' ); // *-> bootstrap style module
         wp_enqueue_style( 'bootstrap-theme', plugin_dir_url( __FILE__ ) . 'css/bootstrap-theme.css', array(), $this->version, 'all' ); // *-> bootstrap style module
+        wp_enqueue_style('thickbox');
 	}
 
 	/**
@@ -99,9 +100,11 @@ class Mapify_Admin {
 		 */
 
         wp_enqueue_script( 'angular.min', plugin_dir_url( __FILE__ ) . 'js/angular.min.js', array( 'jquery' ), $this->version, false ); 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mapify-admin.js', array( 'jquery' ), $this->version, false );
         wp_enqueue_script( 'bootstrap.min', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, false );
         wp_enqueue_script( 'angular-route.min', plugin_dir_url( __FILE__ ) . 'js/angular-route.min.js', array( 'jquery' ), $this->version, false );
+        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mapify-admin.js', array( 'jquery' ), $this->version, false );
+        wp_enqueue_script('media-upload');
+        wp_enqueue_script('thickbox');
         
 
 	}
@@ -137,6 +140,11 @@ class Mapify_Admin {
         include_once( 'partials/mapify-admin-display.php');
         //display_plugin_setup_page();
     }
-
+    
     
 }
+
+function load_wp_media_files() {
+        wp_enqueue_media();
+}
+add_action( 'admin_enqueue_scripts', 'load_wp_media_files' );
