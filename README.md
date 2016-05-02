@@ -35,8 +35,8 @@ This project is developed as part of the requirements for a [software engineerin
 - [WP-Mapify-Plugin Repository](https://github.com/talshi/WP-Mapify-Plugin)
 
 ## Iteration Pages
-- [Iteration 0 - Zero-Feature-Release-(ZFR)](https://github.com/talshi/Yerushalmit/wiki/Zero-Feature-Release-(ZFR))
-- [Iteration 1 - Minimum Viable Product-(MVP)](https://github.com/talshi/Yerushalmit/wiki/Minimum-Viable-Product-(MVP))
-- [Iteration 2 - Database and Mapify Plugin](https://github.com/talshi/Yerushalmit/wiki/Database-and-Mapify-Plugin)
-- [Iteration 3 - Content, UI and Mapify](https://github.com/talshi/Yerushalmit/wiki/Content,-UI-and-Mapify)
-- [Iteration 4 - Wordpress template, Plugin installation and tests](https://github.com/talshi/Yerushalmit/wiki/Wordpress-template,-Plugin-installation-and-tests)
+- [Iteration 0 - Zero-Feature-Release-(ZFR)](https://github.com/talshi/Yerushalmit/wiki/Itr0_Zero-Feature-Release-(ZFR))
+- [Iteration 1 - Minimum Viable Product-(MVP)](https://github.com/talshi/Yerushalmit/wiki/Itr1_Minimum-Viable-Product-(MVP))
+- [Iteration 2 - Database and Mapify Plugin](https://github.com/talshi/Yerushalmit/wiki/Itr2_Database-and-Mapify-Plugin)
+- [Iteration 3 - Content, UI and Mapify](https://github.com/talshi/Yerushalmit/wiki/Itr3_Content,-UI-and-Mapify)
+- [Iteration 4 - Wordpress template, Plugin installation and tests](https://github.com/talshi/Yerushalmit/wiki/Itr4_Wordpress-template,-Plugin-installation-and-tests)
