@@ -28,6 +28,8 @@ This project is developed as part of the requirements for a [software engineerin
 
 ## [User Manual](https://github.com/talshi/Yerushalmit/wiki/user-manual)
 
+## [Developers Manual](http://)
+
 ## [Team Page](https://github.com/talshi/Yerushalmit/wiki/team)
 
 ## [Project Documents](../../wiki)
