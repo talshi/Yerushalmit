@@ -2,9 +2,9 @@
    
 ?>
 
-<div ng-app="wp_mapify_app">
+<div ng-app="wp_mapify_app" class="wrap">
     <nav class="navbar navbar-default">
-      <div class="container">
+      <div>
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -16,15 +16,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#/map">Manage Map</a></li>
+            <li><a href="#/map">Manage Map</a></li>
             <li><a href="#/activities">Manage Activities</a></li>
             <li><a href="#/categories">Manage Categories</a></li>
           </ul>
         </div>
       </div>
     </nav>
-    <div ng-view>
-    
-    </div>
+    <ng-view class="partial-view"></ng-view>
 </div>
 

@@ -9,21 +9,26 @@
 ##[Yerushalmit](http://yerushalmit.azurewebsites.net)
 
 
-## Join the chat at: [![Join the chat at https://gitter.im/talshi/jerorg](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/talshi/jerorg)
+## Join the chat at: [![Join the chat athttps://gitter.im/talshi/jerorg]  (https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/talshi/jerorg)
 
 
 ## [Issue Board](https://github.com/talshi/jerorg/issues)
+
+[![HuBoard](https://img.shields.io/badge/link-HuBoard-8674D1.svg?style=flat)](https://huboard.com/talshi/Yerushalmit)
 
 ## Disclaimer
 This project is developed as part of the requirements for a [software engineering course](https://github.com/jce-il/se-class/wiki) at the software engineering department - [Azrieli College of Engineering](http://www.jce.ac.il/), Jerusalem, Israel.
 
 ## Technology
 - PHP
+- Javascript
 - Wordpress
 - MongoDB
 - Angular
 
 ## [User Manual](https://github.com/talshi/Yerushalmit/wiki/user-manual)
+
+## [Developers Manual](http://)
 
 ## [Team Page](https://github.com/talshi/Yerushalmit/wiki/team)
 
@@ -35,8 +40,8 @@ This project is developed as part of the requirements for a [software engineerin
 - [WP-Mapify-Plugin Repository](https://github.com/talshi/WP-Mapify-Plugin)
 
 ## Iteration Pages
-- [Iteration 0 - Zero-Feature-Release-(ZFR)](https://github.com/talshi/Yerushalmit/wiki/Zero-Feature-Release-(ZFR))
-- [Iteration 1 - Minimum Viable Product-(MVP)](https://github.com/talshi/Yerushalmit/wiki/Minimum-Viable-Product-(MVP))
-- [Iteration 2 - Database and Mapify Plugin](https://github.com/talshi/Yerushalmit/wiki/Database-and-Mapify-Plugin)
-- [Iteration 3 - Content, UI and Mapify](https://github.com/talshi/Yerushalmit/wiki/Content,-UI-and-Mapify)
-- [Iteration 4 - Wordpress template, Plugin installation and tests](https://github.com/talshi/Yerushalmit/wiki/Wordpress-template,-Plugin-installation-and-tests)
+- [Iteration 0 - Zero-Feature-Release-(ZFR)](https://github.com/talshi/Yerushalmit/wiki/Itr0_Zero-Feature-Release-(ZFR))
+- [Iteration 1 - Minimum Viable Product-(MVP)](https://github.com/talshi/Yerushalmit/wiki/Itr1_Minimum-Viable-Product-(MVP))
+- [Iteration 2 - Database and Mapify Plugin](https://github.com/talshi/Yerushalmit/wiki/Itr2_Database-and-Mapify-Plugin)
+- [Iteration 3 - Content, UI and Mapify](https://github.com/talshi/Yerushalmit/wiki/Itr3_Content,-UI-and-Mapify)
+- [Iteration 4 - Wordpress template, Plugin installation and tests](https://github.com/talshi/Yerushalmit/wiki/Itr4_Wordpress-template,-Plugin-installation-and-tests)
