@@ -3,8 +3,29 @@
  * included in this file.
  */
 
+#manage_map_caption {
+    padding: 15px;
+    font-size: 24px;
+}
 
-.mapify-cp-label {
-    font-size: 36px;
-    padding: 20px 5px;
+#upload_image_container {
+    padding: 15px;
+    margin-left: 5px;
+}
+
+#upload_image {
+    border-radius: 5px;
+}
+
+#upload_note {
+    margin-left: 110px;
+    font-size: 12px;
+}
+
+.partial-view {
+    background-color: #fff;
+}
+
+.img_preview {
+    max-width: 1000px;
 }
