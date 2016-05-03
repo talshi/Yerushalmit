@@ -110,7 +110,7 @@ class Mapify_Admin {
      *        Administration Menus: http://codex.wordpress.org/Administration_Menus
      *
      */
-        add_options_page( 'WP Cleanup and Base Options Functions Setup', 'WP Cleanup', 'manage_options', $this->mapify, array($this, 'display_mapify_page'));
+        add_options_page( 'WP Mapify', 'WP Mapify', 'manage_options', $this->mapify, array($this, 'display_mapify_page'));
     }
 
     public function add_action_links( $links ) {
