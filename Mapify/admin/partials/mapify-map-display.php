@@ -2,19 +2,16 @@
 
 ?>
 
-<div>
-    <tr valign="top">
-    <th scope="row">Upload Image</th>
-    <td><label for="upload_image">
-        <input id="upload_image" type="text" size="36" name="upload_image" value="" />
-        <input id="upload_image_button" type="button" value="Upload Image" />
-    <br />Enter an URL or upload an image for the banner.
-    </label></td>
-    </tr>
+<div id="manage_map_caption">Manage Map</div>
+<div id="upload_image_container">
+    <label id="upload_map_label" for="upload_image">Upload Image</label>
+    <input id="upload_image" type="text" size="36" name="upload_image" value="" />
+    <input id="upload_image_button" type="button" value="Upload Image" />
+    <br /><div id="upload_note">Enter an URL or upload an image for the banner.</div>
 </div>
 <div>
-<div><label id="preview_label" class="page-header"></label></div>
-<div><img id="img_preview" class="img_preview" alt="Preview"></img></div>
+    <div><label id="preview_label" class="page-header"></label></div>
+    <div><img id="img_preview" class="img_preview"></img></div>
 </div>
 
 <script type="text/javascript">

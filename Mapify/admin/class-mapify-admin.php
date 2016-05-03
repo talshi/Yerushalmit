@@ -138,7 +138,6 @@ class Mapify_Admin {
 
     public function display_admin_page() {
         include_once( 'partials/mapify-admin-display.php');
-        //display_plugin_setup_page();
     }
     
     
@@ -147,4 +146,5 @@ class Mapify_Admin {
 function load_wp_media_files() {
         wp_enqueue_media();
 }
+
 add_action( 'admin_enqueue_scripts', 'load_wp_media_files' );
