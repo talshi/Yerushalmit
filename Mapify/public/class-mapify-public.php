@@ -73,7 +73,7 @@ class Mapify_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/plugin-name-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/mapify-public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -96,11 +96,23 @@ class Mapify_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mapify-public.js', array( 'jquery' ), $this->version, false );
 
 	}
+    
+   /* public function display_public_page() {
+        include_once( 'partials/mapify-public-display.php');
+    }*/
+    
+
 
 }
 
+function display($atts) 
+{
+   include_once( 'partials/mapify-public-display.php');
+}
 
+add_shortcode('custom-mapify', 'display');
 
+?>
