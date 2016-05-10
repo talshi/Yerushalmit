@@ -61,3 +61,58 @@ label {
   margin: 8px 0;
   padding-bottom: 8px;
 }
+
+#image-activities {
+    width: 50%;
+    vertical-align: middle;
+}
+
+#image-activities:hover {
+    cursor: crosshair;
+}
+
+.note {
+    font-size: 12px;
+}
+
+// mapify-activities-display style
+#mapify-caption:before {
+    content: '\f319';
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    font: normal 29px/1 'dashicons';
+    vertical-align: middle;
+    margin-right: 0.3em;
+}
+
+.activities-table > table {
+	width: 100%;
+}
+
+.activities-table table {
+	border: 2px solid black;
+	
+}
+
+.activities-table tr:nth-child(even) {background: #cce6ff}
+.activities-table tr:nth-child(odd) {background: #FFF}
+
+.activities-table th, .activities-table td {
+	border: 1px solid black;
+}
+
+th {
+	text-align: center;
+}
+
+.space div {
+	padding-bottom: 10px;
+}
+
+.space-bottom {
+	padding-bottom: 10px;
+}
+
+.space-right {
+	padding-
+}
