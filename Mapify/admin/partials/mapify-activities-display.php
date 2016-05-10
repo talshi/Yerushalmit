@@ -32,6 +32,7 @@
 				<td>{{ activity.description }}</td>
 			</tr>
 		</table>
+		<input type="button" value="Remove Selected" />
 	</div>
 
 
@@ -69,11 +70,15 @@
 
 <script>
 
+var index = 0;
+
 // Find cooridinates and normalize it according to image
 jQuery("#image-activities").click(function (e) {
     var pageCoords = getCoords(this);
-    var x = e.clientX - pageCoords.left;
-    var y = e.clientY - pageCoords.top;
+//     var x = e.clientX - pageCoords.left;
+//     var y = e.clientY - pageCoords.top;
+	x = ((e.clientX - pageCoords.left) * 100) / jQuery("#image-activities").width();
+	y = ((e.clientY - pageCoords.top) * 100) / jQuery("#image-activities").height();
     jQuery("#location").html("X: " + x + " Y: " + y);
 });
 
@@ -107,6 +112,30 @@ jQuery("#zoom-out").click(function(e) {
 		newwidth = currentwidth*0.9;
 		jQuery("#image-activities").width(newwidth);
 	}
+});
+
+jQuery("#save-button").click(function(e) {
+	// TODO validation of forms
+	var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'></img>";
+	jQuery("#image-activities").after(m);
+	jQuery("#img-marker" + index).css({
+		"top": x ,
+		"left": y
+	});
+
+    var pageCoords = getCoords(this);
+	x = ((e.clientX - pageCoords.left) * 100) / jQuery("#image-activities").width();
+	y = ((e.clientY - pageCoords.top) * 100) / jQuery("#image-activities").height();
+
+	 jQuery("#location").html("X: " + x + " Y: " + y);
+	 
+	 console.log(e.clientX);
+	 console.log(e.clientY);
+	 console.log(jQuery("#image-activities").width());
+	 console.log(jQuery("#image-activities").height());
+
+	 index++;
+	
 });
 
 </script>

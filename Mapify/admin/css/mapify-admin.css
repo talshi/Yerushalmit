@@ -116,3 +116,10 @@ th {
 .space-right {
 	padding-
 }
+
+.marker {
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	left: 0;
+}
