@@ -105,10 +105,13 @@ class Mapify_Admin {
         wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mapify-admin.js', array( 'jquery' ), $this->version, false );
         wp_enqueue_script('media-upload');
         wp_enqueue_script('thickbox');
+        wp_enqueue_media();
         
 
 	}
 
+
+	
     public function add_plugin_admin_menu() {
 
     /*
@@ -119,7 +122,7 @@ class Mapify_Admin {
      *        Administration Menus: http://codex.wordpress.org/Administration_Menus
      *
      */
-        add_options_page( 'Mapify', 'Mapify', 'manage_options', $this->mapify, array($this, 'display_admin_page'));
+    	add_menu_page( 'Mapify', 'Mapify', 'manage_options', $this->plugin_name, array($this, 'display_admin_page'), 'dashicons-location-alt');
     }
 
     public function add_action_links( $links ) {
@@ -138,13 +141,6 @@ class Mapify_Admin {
 
     public function display_admin_page() {
         include_once( 'partials/mapify-admin-display.php');
+        include_once( 'browser_detector.php' ); //??
     }
-    
-    
 }
-
-function load_wp_media_files() {
-        wp_enqueue_media();
-}
-
-add_action( 'admin_enqueue_scripts', 'load_wp_media_files' );
