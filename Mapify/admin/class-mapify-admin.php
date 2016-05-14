@@ -139,6 +139,8 @@ class Mapify_Admin {
 
     public function display_admin_page() {
         include_once( 'partials/mapify-admin-display.php');
-        include_once( 'MapDB.php' ); 
+        include_once( 'mapTable.php' );
+		include_once( 'categoriesTable.php' );
+		include_once( 'activitiesTable.php' );
     }
 }
