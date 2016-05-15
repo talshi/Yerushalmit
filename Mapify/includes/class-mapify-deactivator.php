@@ -29,8 +29,9 @@ class Mapify_Deactivator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function deactivate() {
-
+	public static function deactivate() 
+	{
+		Tables::delete_all();
 	}
 
 }

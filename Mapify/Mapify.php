@@ -49,7 +49,8 @@ if ( ! defined( 'WPINC' ) ) {
  * The code that runs during plugin activation.
  * This action is documented in includes/class-plugin-name-activator.php
  */
-function activate_mapify() {
+function activate_mapify() 
+{
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-mapify-activator.php';
 	Mapify_Activator::activate();
 }

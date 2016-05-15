@@ -33,11 +33,21 @@ class Mapify_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() 
-	{
+	{	
 		
-		//include_once( dirname(__DIR__) . '\admin\mapTable.php‬' );
-// 		include_once( ABSPATH . 'wp-content/plugins/Mapify/admin/categoriesTable.php' );
-// 		include_once( ABSPATH . 'wp-content/plugins/Mapify/admin/activityTable.php' );
+		require_once dirname(__DIR__) . '\admin\create_DB_tables.php';
+		
+		//register_activation_hook ( __FILE__, 'set_map');
+		//register_activation_hook ( __FILE__, 'create_activities_table' );
+		//register_activation_hook ( __FILE__, 'create_categories_table' );
+		
+		Tables::set_map();
+		Tables::create_activities_table();
+		Tables::create_categories_table();
+		Tables::map_install_data();
+		Tables::categories_install_data();
+		Tables::activities_install_data();
+		
 	}
 	
 
