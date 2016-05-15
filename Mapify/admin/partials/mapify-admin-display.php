@@ -5,7 +5,7 @@
 	<nav class="navbar navbar-default">
 		<div>
 			<div class="navbar-header navbar-brand">
-				Mapify Control Panel
+				<span class="mapify-caption">Mapify Control Panel</span>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">

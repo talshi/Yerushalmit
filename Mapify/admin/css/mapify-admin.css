@@ -3,11 +3,6 @@
  * included in this file.
  */
 
-#manage_map_caption {
-    padding: 15px;
-    font-size: 24px;
-}
-
 #upload_image_container {
     padding: 15px;
     margin-left: 5px;
@@ -75,8 +70,8 @@ label {
     font-size: 12px;
 }
 
-// mapify-activities-display style
-#mapify-caption:before {
+/*mapify-activities-display style*/
+.mapify-caption:before {
     content: '\f319';
     display: inline-block;
     -webkit-font-smoothing: antialiased;

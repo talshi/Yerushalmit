@@ -8,7 +8,8 @@ if (isset ( $_POST ["submit"] )) // TODO not working
 }
 ?>
 <div>
-	<div id="manage_map_caption">Manage Map</div>
+	<h1>Manage Map</h1>
+	<div class="note">Enter an URL or upload an image for the banner.</div>
 	<div id="upload_image_container">
 		<form action="" method="post" id="mapify-map">
 			<label id="upload_map_label" for="upload_image">Upload Image</label>
@@ -18,7 +19,6 @@ if (isset ( $_POST ["submit"] )) // TODO not working
 				type="submit" value="Save Image" />
 			<!-- <input type="hidden" id="map_hidden" name="map-hidden" value="Y" /> -->
 			<br />
-			<div id="upload_note">Enter an URL or upload an image for the banner.</div>
 		</form>
 	</div>
 	<div>
