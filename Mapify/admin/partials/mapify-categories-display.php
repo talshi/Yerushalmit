@@ -3,6 +3,7 @@
 ?>
 
 <h1>Manage Categories</h1>
+<div class="note">Organize your categories.</div><br>
 <div>
     <button>Add</button>
     <button>Remove</button>
