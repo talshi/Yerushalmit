@@ -48,7 +48,8 @@ class Mapify_Admin {
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct( $plugin_name, $version )
+	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
@@ -60,7 +61,8 @@ class Mapify_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles() 
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -85,7 +87,8 @@ class Mapify_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts() 
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -110,7 +113,8 @@ class Mapify_Admin {
 
 	}
 
-    public function add_plugin_admin_menu() {
+    public function add_plugin_admin_menu()
+    {
 
     /*
      * Add a settings page for this plugin to the Settings menu.
@@ -123,7 +127,8 @@ class Mapify_Admin {
     	add_menu_page( 'Mapify', 'Mapify', 'manage_options', $this->plugin_name, array($this, 'display_admin_page'), 'dashicons-location-alt');
     }
 
-    public function add_action_links( $links ) {
+    public function add_action_links( $links )
+    {
         /*
         *  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
         */
@@ -137,9 +142,8 @@ class Mapify_Admin {
     }
     */
 
-    public function display_admin_page() {
+    public function display_admin_page() 
+    {
         include_once( 'partials/mapify-admin-display.php');
-        include_once( 'mapTable.php' );
-		include_once( 'categoriesTable.php' );
     }
 }

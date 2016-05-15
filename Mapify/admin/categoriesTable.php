@@ -13,12 +13,15 @@ function create_categories_table()
 	if ($wpdb->get_var ( 'SHOW TABLES LIKE ' . $table_name ) != $table_name)
 	{
 		$sql = "CREATE TABLE $table_name (
-		url varchar(55) DEFAULT '' NOT NULL
-		)";
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
+			logoUrl varchar(55) DEFAULT '' NOT NULL,
+			name varchar(55) DEFAULT '' NOT NULL,
+			description varchar(55) DEFAULT '' NOT NULL,
+			PRIMARY KEY (id) )";
 
 		//make dbDelta() available
 
-		require_once (ABSPATH . 'wp-admin/include/upgrade.php');
+		require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
 
 		/*The dbDelta function examines the current table structure,
 		 compares it to the desired table structure,
@@ -30,11 +33,11 @@ function create_categories_table()
 		 *  so we can use that information later if we need to update the table*/
 
 		add_option( 'categories_db_version', $categories_db_version );
-
 	}
-	register_activation_hook ( __FILE__, 'create_categories_table' );
-	create_categories_table();
 }
+
+register_activation_hook ( __FILE__, 'create_categories_table' );
+create_categories_table();
 
 
 
