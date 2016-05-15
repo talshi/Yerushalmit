@@ -20,11 +20,14 @@
 This project is developed as part of the requirements for a [software engineering course](https://github.com/jce-il/se-class/wiki) at the software engineering department - [Azrieli College of Engineering](http://www.jce.ac.il/), Jerusalem, Israel.
 
 ## Technology
-- PHP
+- HTML
+- CSS
 - Javascript
+- JQuery
+- PHP
 - Wordpress
 - MongoDB
-- Angular
+- AngularJs
 
 ## [User Manual](https://github.com/talshi/Yerushalmit/wiki/user-manual)
 
@@ -33,6 +36,7 @@ This project is developed as part of the requirements for a [software engineerin
 ## [Team Page](https://github.com/talshi/Yerushalmit/wiki/team)
 
 ## [Project Documents](../../wiki)
+- [Organization Facebook page](https://www.facebook.com/hatnuahayerushalmit/)
 - [Project Idea](https://github.com/talshi/jerorg/raw/master/Project%20Idea.pdf) ([Presentation](https://github.com/talshi/jerorg/raw/master/Project%20Idea%20-%20slide.pptx))
 - [Project Inception](../../wiki/inception)
 - [Software Requirements Specification](https://github.com/talshi/Yerushalmit/wiki/Software-Requirements-Specification-(SRS))
