@@ -1,5 +1,4 @@
 <?php
-
 global $map_db_version;
 $map_db_version = '1.0';
 
@@ -11,7 +10,7 @@ function set_map() {
 	
 	if ($wpdb->get_var ( 'SHOW TABLES LIKE ' . $table_name ) != $table_name) {
 		
-		$sql = "CREATE TABLE $table_name (
+		$sql = "CREATE TABLE" . $table_name . "(
 			url varchar(55) DEFAULT '' NOT NULL
 		)";
 		
@@ -24,3 +23,5 @@ function set_map() {
 		
 	}
 }
+register_activation_hook ( __FILE__, 'set_map' );
+set_map ();

@@ -22,9 +22,6 @@
                 templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-categories-display.php',
                 controller: 'categoriesCtrl',
                 controllerAs: 'categories'
-            })
-            .otherwise({
-                redirectTo: '/wp-content/plugins/Mapify/admin/partials/mapify-admin-display.php'
             });
     });
     
@@ -42,8 +39,20 @@
         };
     });
     
-    wp_mapify_app.controller('mapCtrl', function ($scope) {
-        
+    wp_mapify_app.controller('mapCtrl', function ($scope, $http) {
+        $scope.on_submit = function() {
+        	var img_url = jQuery("#upload_image").val();
+        	$http({
+        		method: 'POST',
+        		url: 'core.php',
+        		data: {
+        			img: img_url
+        		},
+        		headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        	}).success(function() {
+        		console.log("data sent successfully!");
+        	});
+        };
     });
 
     wp_mapify_app.controller('activitiesCtrl', function ($scope) {
@@ -56,11 +65,7 @@
     });
 
     wp_mapify_app.controller('categoriesCtrl', function ($scope) {
-    	$scope.categories_list = [
-                                  { name: '1', description: 'category1', tag: 'bla'},
-                                  { name: '2', description: 'category2', tag: 'blabla'},
-                                  { name: '3', description: 'category3', tag: 'blablabla'}
-                                  ];
+        
     });
     
 
