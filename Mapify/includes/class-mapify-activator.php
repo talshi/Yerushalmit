@@ -32,8 +32,7 @@ class Mapify_Activator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function activate() 
-	{	
+	public static function activate() {	
 		
 		require_once dirname(__DIR__) . '\admin\create_DB_tables.php';
 		
@@ -49,6 +48,4 @@ class Mapify_Activator {
 		Tables::activities_install_data();
 		
 	}
-	
-
 }
