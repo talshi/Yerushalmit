@@ -23,7 +23,8 @@ jQuery("#save_image_button").click(function() {
 
 <div id="php"></div>
 <div>
-	<div id="manage_map_caption">Manage Map</div>
+	<h1>Manage Map</h1>
+	<div class="note">Enter an URL or upload an image for the banner.</div>
 	<div id="upload_image_container">
 		<form ng-submit="on_submit()" action="" method="post" id="mapify-map">
 			<label id="upload_map_label" for="upload_image">Upload Image</label>
@@ -31,7 +32,6 @@ jQuery("#save_image_button").click(function() {
 			<input id="upload_image_button" type="button" value="Upload Image" value="<?php echo $img_url; ?>" />
 			<input id="save_image_button" name="submit" type="button" value="Save Image" />
 			<br />
-			<div id="upload_note">Enter an URL or upload an image for the banner.</div>
 		</form>
 	</div>
 	<div>
