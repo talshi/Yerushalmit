@@ -11,6 +11,11 @@
 #upload_image_container {
     padding: 25px 10px;
     margin-left: 5px;
+    
+}
+
+#upload_image_container > input {
+	margin-top: 10px;
 }
 
 #upload_image {
@@ -27,7 +32,7 @@
 }
 
 .img_preview {
-    max-width: 1000px;
+    width: 100%;
 }
 
 a.selected {
