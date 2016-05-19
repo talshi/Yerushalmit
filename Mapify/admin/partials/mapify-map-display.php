@@ -1,13 +1,12 @@
-<?php
-
-?>
 
 <div id="manage_map_caption">Manage Map</div>
+<div id="upload_note">Enter an URL or upload an image for the banner.</div>
 <div id="upload_image_container">
     <label id="upload_map_label" for="upload_image">Upload Image</label>
     <input id="upload_image" type="text" size="36" name="upload_image" value="" />
     <input id="upload_image_button" type="button" value="Upload Image" />
-    <br /><div id="upload_note">Enter an URL or upload an image for the banner.</div>
+    <input id="save_button" type="button" value="Save Image" />
+    <br />
 </div>
 <div>
     <div><label id="preview_label" class="page-header"></label></div>

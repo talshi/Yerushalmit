@@ -1,5 +1,4 @@
-<?php
-?>
+
 <div ng-app="wp_mapify_app" class="space">
 	<h1>Manage Activities</h1>
 
