@@ -85,8 +85,6 @@ function run_mapify() {
 
 	$plugin = new Mapify();
 	$plugin->run();
-	activate_mapify();
 
 }
 run_mapify();
-
