@@ -1,34 +1,17 @@
 <?php
-if (isset ( $_POST ["submit"] )) // TODO not working
-{
-	// update_option('mapify_map_url' , $_POST['upload_image']);
-	?>
-<div id="message" class="updated">Image Updated Successfully!</div>
-<?php
-}
+
 ?>
+
+<div id="manage_map_caption">Manage Map</div>
+<div id="upload_image_container">
+    <label id="upload_map_label" for="upload_image">Upload Image</label>
+    <input id="upload_image" type="text" size="36" name="upload_image" value="" />
+    <input id="upload_image_button" type="button" value="Upload Image" />
+    <br /><div id="upload_note">Enter an URL or upload an image for the banner.</div>
+</div>
 <div>
-	<div id="manage_map_caption">Manage Map</div>
-	<div id="upload_image_container">
-		<form action="" method="post" id="mapify-map">
-			<label id="upload_map_label" for="upload_image">Upload Image</label>
-			<input id="upload_image" type="text" size="36" name="upload_image"
-				value="<?php  ?>" /> <input id="upload_image_button" type="button"
-				value="Upload Image" /> <input id="save_image_button" name="submit"
-				type="submit" value="Save Image" />
-			<!-- <input type="hidden" id="map_hidden" name="map-hidden" value="Y" /> -->
-			<br />
-			<div id="upload_note">Enter an URL or upload an image for the banner.</div>
-		</form>
-	</div>
-	<div>
-		<div>
-			<label id="preview_label" class="page-header"></label>
-		</div>
-		<div>
-			<img id="img_preview" class="img_preview"></img>
-		</div>
-	</div>
+    <div><label id="preview_label" class="page-header"></label></div>
+    <div><img id="img_preview" class="img_preview"></img></div>
 </div>
 
 <script type="text/javascript">
@@ -44,6 +27,7 @@ if (isset ( $_POST ["submit"] )) // TODO not working
                 var uploaded_image = image.state().get('selection').first();
                 // We convert uploaded_image to a JSON object to make accessing it easier
                 // Output to the console uploaded_image
+                //console.log(uploaded_image);
                 var image_url = uploaded_image.toJSON().url;
                 // Let's assign the url value to the input field
                 $('#upload_image').val(image_url)

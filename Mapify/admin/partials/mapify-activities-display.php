@@ -5,15 +5,15 @@
 
 	<div class="note">Click on the image to add an activity.</div>
 
-	<div>
+<!--	<div>
 		<input id="zoom-in" class="btn btn-default" type="button" value="+" />
 		<input id="zoom-out" class="btn btn-default" type="button" value="-" />
 	</div>
-
-	<div>
+-->
+	<div id="map">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"
-			src="http://localhost/wordpress/wp-content/uploads/2016/05/jerusalem-map.png"></img>
+			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.jpg"></img>
 		<div id="popup"></div>
 	</div>
 
@@ -69,73 +69,60 @@
 </div>
 
 <script>
+    var index = 0;
+    var x;
+    var y;
+    // Find cooridinates and normalize it according to image
+    jQuery("#image-activities").click(function (e) {
+        var pageCoords = getCoords(this);
+        x = ((e.clientX - pageCoords.left) * 100) / jQuery("#image-activities").width();
+        y = ((e.clientY - pageCoords.top) * 100) / jQuery("#image-activities").height();
+        jQuery("#location").html("X: " + x + " Y: " + y);
+    });
+    function getCoords(elem) {
+        var r = elem.getBoundingClientRect();
+        return { top: r.top, left: r.left };
+    }
+    // Set size of image
+    var newwidth;
+    jQuery(document).ready(function () {
+        jQuery("#image-activities").width(newwidth);
+    });
+    // Zoom-In Button
+    jQuery("#zoom-in").click(function (e) {
+        var currentwidth = jQuery("#image-activities").width();
+        var imgoffset = jQuery("#image-activities").offset().left;
+        if (currentwidth < (screen.width - imgoffset) * 0.9) {
+            newwidth = currentwidth * 1.1;
+            jQuery("#image-activities").width(newwidth);
+        }
+    });
+    //Zoom-Out Button
+    jQuery("#zoom-out").click(function (e) {
+        var currentwidth = jQuery("#image-activities").width();
+        var imgoffset = jQuery("#image-activities").offset().left;
+        if (currentwidth > screen.width * 0.4) {
+            newwidth = currentwidth * 0.9;
+            jQuery("#image-activities").width(newwidth);
+        }
+    });
+    jQuery("#save-button").click(function (e) {
+        // TODO validation of forms
+        var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'></img>";
+        jQuery("#image-activities").after(m);
+        var div = document.getElementById("image-activities");
+        var rect = div.getBoundingClientRect();
 
-var index = 0;
+        x_left = rect.left;
+        y_top = rect.top;
+        w_ = rect.right - rect.left;
+        h_ = rect.bottom - rect.top;
 
-// Find cooridinates and normalize it according to image
-jQuery("#image-activities").click(function (e) {
-    var pageCoords = getCoords(this);
-//     var x = e.clientX - pageCoords.left;
-//     var y = e.clientY - pageCoords.top;
-	x = ((e.clientX - pageCoords.left) * 100) / jQuery("#image-activities").width();
-	y = ((e.clientY - pageCoords.top) * 100) / jQuery("#image-activities").height();
-    jQuery("#location").html("X: " + x + " Y: " + y);
-});
+        jQuery("#img-marker" + index).css({
+            "top": (y/100)*h_-(25),
+            "left": (x/100)*w_-(12.5) 
+        });
+        index++;
 
-function getCoords(elem) {
-	var r = elem.getBoundingClientRect();
-	return { top: r.top, left: r.left };
-}
-
-// Set size of image
-var newwidth;
-
-jQuery(document).ready(function() {
-	jQuery("#image-activities").width(newwidth);
-});
-
-// Zoom-In Button
-jQuery("#zoom-in").click(function(e) {
-	var currentwidth = jQuery("#image-activities").width();
-	var imgoffset = jQuery("#image-activities").offset().left;
-	if(currentwidth < (screen.width - imgoffset) * 0.9) {
-		newwidth = currentwidth*1.1;
-		jQuery("#image-activities").width(newwidth);
-	}
-});
-
-//Zoom-Out Button
-jQuery("#zoom-out").click(function(e) {
-	var currentwidth = jQuery("#image-activities").width();
-	var imgoffset = jQuery("#image-activities").offset().left;
-	if(currentwidth > screen.width * 0.4) {
-		newwidth = currentwidth*0.9;
-		jQuery("#image-activities").width(newwidth);
-	}
-});
-
-jQuery("#save-button").click(function(e) {
-	// TODO validation of forms
-	var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'></img>";
-	jQuery("#image-activities").after(m);
-	jQuery("#img-marker" + index).css({
-		"top": x ,
-		"left": y
-	});
-
-    var pageCoords = getCoords(this);
-	x = ((e.clientX - pageCoords.left) * 100) / jQuery("#image-activities").width();
-	y = ((e.clientY - pageCoords.top) * 100) / jQuery("#image-activities").height();
-
-	 jQuery("#location").html("X: " + x + " Y: " + y);
-	 
-	 console.log(e.clientX);
-	 console.log(e.clientY);
-	 console.log(jQuery("#image-activities").width());
-	 console.log(jQuery("#image-activities").height());
-
-	 index++;
-	
-});
-
+    });
 </script>
