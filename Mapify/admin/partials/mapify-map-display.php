@@ -1,24 +1,37 @@
-<?php
-if (isset ( $_POST ["submit"] )) // TODO not working
-{
-	// update_option('mapify_map_url' , $_POST['upload_image']);
-	?>
-<div id="message" class="updated">Image Updated Successfully!</div>
-<?php
-}
+<?php 
+
+
+
 ?>
+
+
+
+<script>
+jQuery("#save_image_button").click(function() {
+	img_url = jQuery("#upload_image").val();
+	console.log(img_url);
+	jQuery("#php").html("<?php $img_url = '"+img_url+"' ; 
+		print_r($img_url);
+		
+// 		global $wpdb;
+// 		$wpdb->insert('wp_map', $img_url);
+		
+	?>");
+	
+});
+</script>
+
+<div id="php"></div>
 <div>
-	<div id="manage_map_caption">Manage Map</div>
+	<h1>Manage Map</h1>
+	<div class="note">Enter an URL or upload an image for the banner.</div>
 	<div id="upload_image_container">
-		<form action="" method="post" id="mapify-map">
+		<form ng-submit="on_submit()" action="" method="post" id="mapify-map">
 			<label id="upload_map_label" for="upload_image">Upload Image</label>
-			<input id="upload_image" type="text" size="36" name="upload_image"
-				value="<?php  ?>" /> <input id="upload_image_button" type="button"
-				value="Upload Image" /> <input id="save_image_button" name="submit"
-				type="submit" value="Save Image" />
-			<!-- <input type="hidden" id="map_hidden" name="map-hidden" value="Y" /> -->
+			<input id="upload_image" type="text" size="36" name="upload_image" />
+			<input id="upload_image_button" type="button" value="Upload Image" value="<?php echo $img_url; ?>" />
+			<input id="save_image_button" name="submit" type="button" value="Save Image" />
 			<br />
-			<div id="upload_note">Enter an URL or upload an image for the banner.</div>
 		</form>
 	</div>
 	<div>
