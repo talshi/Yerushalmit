@@ -56,7 +56,11 @@
     });
 
     wp_mapify_app.controller('categoriesCtrl', function ($scope) {
-        
+    	$scope.categories_list = [
+                                  { name: '1', description: 'category1', tag: 'bla'},
+                                  { name: '2', description: 'category2', tag: 'blabla'},
+                                  { name: '3', description: 'category3', tag: 'blablabla'}
+                                  ];
     });
     
 

@@ -49,10 +49,8 @@ class Mapify_Admin {
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
-
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	/**
@@ -75,9 +73,9 @@ class Mapify_Admin {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/mapify-admin.css', array(), $this->version, 'all' ); // *-> mapify style module
-        wp_enqueue_style( 'bootstrap', plugin_dir_url( __FILE__ ) . 'css/bootstrap.css', array(), $this->version, 'all' ); // *-> bootstrap style module
-        wp_enqueue_style( 'bootstrap-theme', plugin_dir_url( __FILE__ ) . 'css/bootstrap-theme.css', array(), $this->version, 'all' ); // *-> bootstrap style module
-        wp_enqueue_style('thickbox');
+        	wp_enqueue_style( 'bootstrap', plugin_dir_url( __FILE__ ) . 'css/bootstrap.css', array(), $this->version, 'all' ); // *-> bootstrap style module
+		wp_enqueue_style( 'bootstrap-theme', plugin_dir_url( __FILE__ ) . 'css/bootstrap-theme.css', array(), $this->version, 'all' ); // *-> bootstrap style module
+        	wp_enqueue_style('thickbox');
 	}
 
 	/**
@@ -85,7 +83,7 @@ class Mapify_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts()  {
 
 		/**
 		 * This function is provided for demonstration purposes only.
