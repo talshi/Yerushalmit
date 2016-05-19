@@ -24,7 +24,7 @@
                 controllerAs: 'categories'
             })
             .otherwise({
-                redirectTo: '/wp-content/plugins/Mapify/admin/partials/mapify-admin-display.php'
+                redirectTo: '/map'
             });
     });
     
