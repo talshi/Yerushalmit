@@ -63,7 +63,9 @@ label {
 }
 
 #image-activities {
-    width: 50%;
+    width: 100%;
+    margin: auto;
+    
     vertical-align: middle;
 }
 
@@ -75,7 +77,6 @@ label {
     font-size: 12px;
 }
 
-// mapify-activities-display style
 #mapify-caption:before {
     content: '\f319';
     display: inline-block;
@@ -113,16 +114,20 @@ th {
 	padding-bottom: 10px;
 }
 
-.space-right {
-	padding-
-}
-
 .marker {
 	width: 25px;
 	height: 25px;
 	position: absolute;
 	left: 0;
 }
+
+.marker:hover {
+    width:  35px;
+    height:  35px;
+    left:  0;
+    position: absolute;
+}
+
 #map{
     position: relative;
 }
