@@ -1,76 +1,72 @@
 
-<div ng-app="wp_mapify_app" class="space">
-	<h1>Manage Activities</h1>
+<div ng-app="wp_mapify_app">
+	<div id="manage_caption">Manage Activities</div>
 	<div class="note">Click on the image to add an activity.</div>
-	<div>
+
+<!--	<div>
 		<input id="zoom-in" class="btn btn-default" type="button" value="+" />
 		<input id="zoom-out" class="btn btn-default" type="button" value="-" />
 	</div>
-
-	<div>
+-->
+	<div id="map">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"
 			src="http://localhost/wordpress/wp-content/uploads/2016/05/jerusalem-map.png"></img>
-		<div id="popup"></div>
+        <span id="popup"></span>
 	</div>
 
 
 	<div class="activities-table" ng-controller="activitiesCtrl">
 		<table>
 			<tr>
-				<th>#</th>
 				<th>Activity Name</th>
 				<th>Date</th>
 				<th>Description</th>
+				<th>Remove</th>
 			</tr>
 			<tr ng-repeat="activity in activities_list">
-				<td><input type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date }}</td>
 				<td>{{ activity.description }}</td>
+				<td><input type="checkbox" /></td>
 			</tr>
 		</table>
+		<input id="remove-button" type="button" value="Remove Selected" />
 	</div>
 
-
+<!-- Popup window for new activity -->
 	<div id="myModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
-			<form class="modal-content">
+			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Add Activity</h4>
 				</div>
 				<div class="modal-body">
 					<div>
-						<label>Index: </label> <span id="marker-index"></span>
-					</div>
-					<div>
 						<label>Location: </label> <span id="location"></span>
 					</div>
 					<div>
-						<label for="name_input">Activity Name: </label> <input id="name_input" type="text" required>
+						<label>Activity Name: </label> <input type="text">
 					</div>
 					<div>
-						<label for="date_input">Activity Date: </label> <input id="date_input" type="text" required>
+						<label>Activity Date: </label> <input type="text">
 					</div>
 					<div>
-						<label for="category_input">Activity Category: </label> <input id="category_input" type="text" required>
-					</div>
-					<div>
-						<label for="desc_input">Activity Description: </label> <input id="desc_input" type="text">
+						<label>Activity Category: </label> <input type="text">
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-<!-- 					<button id="save-button" type="button" class="btn btn-default">Save</button> -->
-					<input id="save-button" type="submit" class="btn btn-default" value="Save" />
+					<button id="save-button" type="button" class="btn btn-default">Save</button>
 				</div>
-			</form>
+			</div>
 
 		</div>
 	</div>
 
+<!-- Popup window for edit activity -->
     <div id="myImg" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->

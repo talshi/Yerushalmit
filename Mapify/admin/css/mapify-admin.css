@@ -3,7 +3,7 @@
  * included in this file.
  */
 
-#manage_map_caption {
+#manage_caption {
     font-size: 24px;
 }
 
@@ -19,16 +19,16 @@
     border-radius: 5px;
 }
 
-#upload_note {
-    font-size: 12px;
-}
-
 .partial-view {
     background-color: #fff;
 }
 
 .img_preview {
     width: 100%;
+}
+
+.note {
+	font-size: 12px;
 }
 
 a.selected {
@@ -63,19 +63,18 @@ label {
   padding-bottom: 8px;
 }
 
+#map{
+    position: relative;
+    padding: 10px 0px;
+}
+
 #image-activities {
     width: 100%;
     margin: auto;
-    
-    vertical-align: middle;
 }
 
 #image-activities:hover {
     cursor: crosshair;
-}
-
-#upload-note {
-    font-size: 12px;
 }
 
 #mapify-caption:before {
@@ -93,7 +92,7 @@ label {
 
 .activities-table table {
 	border: 2px solid black;
-	
+	margin: 5px 0px;
 }
 
 .activities-table tr:nth-child(even) {background: #cce6ff}
@@ -107,8 +106,8 @@ th {
 	text-align: center;
 }
 
-.space div {
-	padding-bottom: 10px;
+#remove-button {
+	float: right;
 }
 
 .space-bottom {
@@ -127,8 +126,4 @@ th {
     height:  35px;
     left:  0;
     position: absolute;
-}
-
-#map{
-    position: relative;
 }
