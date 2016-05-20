@@ -1,10 +1,3 @@
-<?php 
-
-
-
-?>
-
-
 
 <script>
 jQuery("#save_image_button").click(function() {

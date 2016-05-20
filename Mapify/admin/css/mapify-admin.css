@@ -2,10 +2,20 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+ 
+#manage_map_caption {
+    padding: 0px 15px;
+    font-size: 24px;
+}
 
 #upload_image_container {
-    padding: 15px;
+    padding: 25px 10px;
     margin-left: 5px;
+    
+}
+
+#upload_image_container > input {
+	margin-top: 10px;
 }
 
 #upload_image {
@@ -13,7 +23,7 @@
 }
 
 #upload_note {
-    margin-left: 110px;
+    padding: 0px 15px;
     font-size: 12px;
 }
 
@@ -22,7 +32,7 @@
 }
 
 .img_preview {
-    max-width: 1000px;
+    width: 100%;
 }
 
 a.selected {
@@ -58,7 +68,9 @@ label {
 }
 
 #image-activities {
-    width: 50%;
+    width: 100%;
+    margin: auto;
+    
     vertical-align: middle;
 }
 
@@ -71,7 +83,7 @@ label {
 }
 
 /*mapify-activities-display style*/
-.mapify-caption:before {
+#mapify-caption:before {
     content: '\f319';
     display: inline-block;
     -webkit-font-smoothing: antialiased;
@@ -108,16 +120,20 @@ th {
 	padding-bottom: 10px;
 }
 
-.space-right {
-	padding-
-}
-
 .marker {
 	width: 25px;
 	height: 25px;
 	position: absolute;
 	left: 0;
 }
+
+.marker:hover {
+    width:  35px;
+    height:  35px;
+    left:  0;
+    position: absolute;
+}
+
 #map{
     position: relative;
 }
