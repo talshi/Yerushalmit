@@ -2,16 +2,13 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
- 
+
 #manage_map_caption {
-    padding: 0px 15px;
     font-size: 24px;
 }
 
 #upload_image_container {
     padding: 25px 10px;
-    margin-left: 5px;
-    
 }
 
 #upload_image_container > input {
@@ -23,7 +20,6 @@
 }
 
 #upload_note {
-    padding: 0px 15px;
     font-size: 12px;
 }
 
@@ -78,11 +74,10 @@ label {
     cursor: crosshair;
 }
 
-.note {
+#upload-note {
     font-size: 12px;
 }
 
-/*mapify-activities-display style*/
 #mapify-caption:before {
     content: '\f319';
     display: inline-block;
