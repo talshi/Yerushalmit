@@ -20,6 +20,7 @@
  * @subpackage Plugin_Name/includes
  * @author     Your Name <email@example.com>
  */
+
 class Mapify_Deactivator {
 
 	/**
@@ -30,7 +31,6 @@ class Mapify_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-
+		Tables::delete_all();
 	}
-
 }

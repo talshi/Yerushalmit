@@ -110,4 +110,5 @@ class Mapify_Public {
 
 include_once( 'partials/mapify-public-display.php');
 
+
 ?>

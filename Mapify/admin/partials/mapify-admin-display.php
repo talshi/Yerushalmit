@@ -1,6 +1,3 @@
-<?php
-   
-?>
 
 <div ng-app="wp_mapify_app" class="wrap">
     <nav class="navbar navbar-default">
@@ -12,13 +9,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#/">Mapify Control Panel</a>
+          <span id="mapify-caption" class="navbar-brand">Mapify Control Panel</span>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse" ng-controller="adminCtrl">
           <ul class="nav navbar-nav">
-            <li><a href="#/map">Manage Map</a></li>
-            <li><a href="#/activities">Manage Activities</a></li>
-            <li><a href="#/categories">Manage Categories</a></li>
+            <li ng-class="{ active: isActive('/map')}"><a href="#/map">Manage Map</a></li>
+            <li ng-class="{ active: isActive('/activities')}"><a href="#/activities">Manage Activities</a></li>
+            <li ng-class="{ active: isActive('/categories')}"><a href="#/categories">Manage Categories</a></li>
           </ul>
         </div>
       </div>

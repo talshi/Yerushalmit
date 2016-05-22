@@ -15,7 +15,6 @@
 
 function display($atts) 
 {
-   //include_once( 'partials/mapify-public-display.php');
     $content = '';
     $content .= '<div id="map">';      //the map div - show the plugin
     
@@ -35,6 +34,8 @@ function display($atts)
 
     return $content;
 }
+
+
 
 add_shortcode('custom-mapify', 'display');
  
