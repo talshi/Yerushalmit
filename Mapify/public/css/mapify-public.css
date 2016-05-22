@@ -2,3 +2,17 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+.tag:hover {
+        cursor: pointer;
+}
+
+#map {
+    position: relative;
+    width: 100%;
+}
+
+#image1 {
+    position: relative;
+    width: 100%;
+}

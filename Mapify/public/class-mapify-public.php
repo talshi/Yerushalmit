@@ -108,11 +108,6 @@ class Mapify_Public {
 
 }
 
-function display($atts) 
-{
-   include_once( 'partials/mapify-public-display.php');
-}
-
-add_shortcode('custom-mapify', 'display');
+include_once( 'partials/mapify-public-display.php');
 
 ?>
