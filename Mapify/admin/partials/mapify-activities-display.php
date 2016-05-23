@@ -11,7 +11,7 @@
 	<div id="map">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"
-			src="http://localhost/wordpress/wp-content/uploads/2016/05/jerusalem-map.png"></img>
+			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.png"></img>
         <span id="popup"></span>
 	</div>
 

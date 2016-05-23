@@ -23,6 +23,11 @@
                 controller: 'categoriesCtrl',
                 controllerAs: 'categories'
             })
+            .when('/preview', {
+                templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-preview-display.php',
+                controller: 'previewCtrl',
+                controllerAs: 'preview'
+            })
             .otherwise({
                 redirectTo: '/map'
             });

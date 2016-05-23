@@ -2,26 +2,25 @@
 
 ?>
 
-<h1>Manage Categories</h1>
+<div id="manage_caption">Manage Categories</div>
 <div class="note">Organize your categories.</div><br>
-<div>
-    <button>Add</button>
-    <button>Remove</button>
-    <table border="2" width="500px">
-        <tr>
-            <td><input type="checkbox">1</td>
-            <td>2</td>
-            <td>3</td>    
-        </tr>
-        <tr>
-            <td><input type="checkbox">1</td>
-            <td>2</td>
-            <td>3</td>    
-        </tr>
-        <tr>
-            <td><input type="checkbox">1</td>
-            <td>2</td>
-            <td>3</td>    
-        </tr>
-    </table>
-</div>
+<div class="activities-table" ng-controller="activitiesCtrl">
+		<table>
+			<tr>
+				<th>#</th>
+				<th>Category Name</th>
+				<th>Category Description</th>
+				<th>Tag</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="category in categories_list">
+				<td><input type="checkbox" /></td>
+				<td>{{ category.name }}</td>
+				<td>{{ category.description }}</td>
+				<td>{{ category.tag }}</td>
+				<td><input type="button" value="Delete"></td>
+			</tr>
+		</table>
+		<input type="button" value="Delete Selected">
+		
+	</div>
