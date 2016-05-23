@@ -10,6 +10,9 @@
 #map {
     position: relative;
     width: 100%;
+    background-image: url('http://static.guim.co.uk/sys-images/Guardian/Pix/maps_and_graphs/2010/5/20/1274374118960/Graphic-map---museum-of-m-001.jpg');
+    height: 230px;
+    width: 460px;
 }
 
 #image1 {
