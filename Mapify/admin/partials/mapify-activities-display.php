@@ -139,7 +139,7 @@
     });
     jQuery("#save-button").click(function (e) {
         // TODO validation of forms
-        var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
+        var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/marker.png' data-toggle='modal' data-target='#myImg'></img>";
         jQuery("#image-activities").after(m);
         var div = document.getElementById("image-activities");
         var rect = div.getBoundingClientRect();

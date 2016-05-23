@@ -119,6 +119,7 @@ th {
 	height: 25px;
 	position: absolute;
 	left: 0;
+	transition: 0.5s;
 }
 
 .marker:hover {
@@ -126,4 +127,25 @@ th {
     height:  35px;
     left:  0;
     position: absolute;
+}
+
+.view-animate.ng-enter, .view-animate.ng-leave {
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+  width:100%;
+  position:absolute;
+  top:88px;
+  left:0;
+  right:0;
+  bottom:0;
+    
+}
+
+.view-animate.ng-enter {
+  left:100%;
+}
+.view-animate.ng-enter.ng-enter-active {
+  left:0;
+}
+.view-animate.ng-leave.ng-leave-active {
+  left:-100%;
 }
