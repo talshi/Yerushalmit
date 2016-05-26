@@ -20,9 +20,9 @@ public static function get_category_list_by_id()
 	
 }	
 
-delete_category()
+delete_category($category)
 {
-
+	$wpdb->delete( 'table', array( 'name' => $category ));
 }
 
 get_category_list()
