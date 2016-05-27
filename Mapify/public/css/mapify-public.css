@@ -10,9 +10,11 @@
 #map {
     position: relative;
     width: 100%;
-    background-image: url('http://static.guim.co.uk/sys-images/Guardian/Pix/maps_and_graphs/2010/5/20/1274374118960/Graphic-map---museum-of-m-001.jpg');
-    height: 230px;
-    width: 460px;
+    background-image: url('https://www.jerusalem.muni.il/Municipality/Directorquarters/PublishingImages/map.jpg');
+    background-repeat: no-repeat;
+    background-size: 600px 856px;
+    height: 856px;
+    width: 600px;
 }
 
 #image1 {

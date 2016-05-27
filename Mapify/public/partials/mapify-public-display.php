@@ -39,7 +39,7 @@ function display($atts)
         {
             if(activity == 'activity1')
                 return 'http://www.jiis.org.il/.upload/publications/images/2007_07_minhalim-map-small.jpg';
-            else
+            else if(activity == 'activity2')
                 return 'http://jiis.org/.upload/heb/data_statistics/maps/flat_size/2010_02_flatsize-map.jpg';
 
         }
@@ -57,7 +57,7 @@ function display($atts)
 $content .= '</div>';
     return $content;
 }
-
+http://cdn.shopify.com/s/files/1/0245/5665/products/BubbleTextCoaster_05_1024x1024.jpg?v=1439796076
 
 
 add_shortcode('custom-mapify', 'display');
@@ -84,6 +84,22 @@ function changeForMap2()
 {
     
 }
+
+
+
+
+document.getElementById("image-activities");
+        var rect = div.getBoundingClientRect();
+
+        x_left = rect.left;
+        y_top = rect.top;
+        w_ = rect.right - rect.left;
+        h_ = rect.bottom - rect.top;
+
+        jQuery("#img-marker" + index).css({
+            "top": (y/100)*h_-(25),
+            "left": (x/100)*w_-(12.5) 
+        });
 */
 ?>
 
