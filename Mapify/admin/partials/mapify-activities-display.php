@@ -1,4 +1,4 @@
-
+`
 <div ng-app="wp_mapify_app" class="space">
 	<h1>Manage Activities</h1>
 
@@ -145,10 +145,40 @@
         y_top = rect.top;
         w_ = rect.right - rect.left;
         h_ = rect.bottom - rect.top;
+		alert(w_);
+		var x_finish;
+		var y_finish;
+
+		console.log("this is x:" + x + "this is y "+ y);
+		if( (y/100)*h_ < 25 )  // keep the marker in map from top!!
+			y_finish = ((100)*(25))/(h_);			
+		else
+			y_finish = (y / 100) * h_ - (25);		
+
+
+		
+		if( (x*w_)/100 < 12.5 )  // keep the marker in map from left!!
+		{
+			x_finish = ((100)*(12.5))/(w_);
+		}			
+		else
+	        x_finish = (x / 100) * w_ - (12.5);
+
+// 		if ((w_ - (x*w_)/100 < 12.5) // keep the marker in map from right!! 
+// 			x_finish = ((100)*(w_-12.5))/(w_);			
+// 		else
+// 	        x_finish = ((x / 100) * w_) - (12.5);
+			
+		
+// 		valid = checkPoint(x,y,w_,h_,y_finish,x_finish)
+// 		if(!valid){
+// 			alert("Try again - the point is Illegal");
+// 			return;
+// 		}
 
         jQuery("#img-marker" + index).css({
-            "top": (y / 100) * h_ - (25),
-            "left": (x / 100) * w_ - (12.5)
+            "top": y_finish,
+            "left": x_finish
         });
         index++;
     });
@@ -181,3 +211,13 @@
     });
 </script>
 
+<script>
+// x - click
+// y - click
+// w_ - size width
+// h_ - size height
+function checkPoint(x,y,w_,h_,y_finish,x_finish){
+	alert(w_);	
+	return true;
+}
+</script>

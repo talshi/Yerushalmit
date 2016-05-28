@@ -89,10 +89,12 @@
     
 })(jQuery);
 
+
 function sort(kind){
 	if(kind == 0)
 	{
 		alert("activity-name - sort");
+		var list = getActivitiyList();
 	}
 	if(kind == 1)
 	{
