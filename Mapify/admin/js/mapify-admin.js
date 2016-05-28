@@ -48,9 +48,9 @@
 
     wp_mapify_app.controller('activitiesCtrl', function ($scope) {
     	$scope.activities_list = [
-                               { name: 'Berale', date: '20/12/2005', description: 'blablabla'},
-                               { name: 'Berale2', date: '21/12/2005', description: 'blablabla2'},
-                               { name: 'Berale3', date: '22/12/2005', description: 'blablabla3'}
+                               { name: 'Berale', date: '20/12/2005', description: 'blablabla', edit : ' '},
+                               { name: 'Berale2', date: '21/12/2005', description: 'blablabla2' , edit : ' '},
+                               { name: 'Berale3', date: '22/12/2005', description: 'blablabla3' , edit : ' '}
                                ];
     	
     });
@@ -62,7 +62,6 @@
                                   { name: '3', description: 'category3', tag: 'blablabla'}
                                   ];
     });
-    
 
     /*
      * END CONTROLLERS
@@ -89,3 +88,15 @@
      */
     
 })(jQuery);
+
+function sort(kind){
+	if(kind == 0)
+	{
+		alert("activity-name - sort");
+	}
+	if(kind == 1)
+	{
+		alert("id - sort");
+	}
+		
+}
