@@ -16,6 +16,10 @@
 function display($atts) 
 {
     $content = '';
+    
+    
+    
+    
     $content .= '<div id="map">';      //the map div - show the plugin
     
   //  $content .= '<img id="image1" style="width: 100%; position: relative;" src="' . getImgURL() . '"/>';
@@ -23,38 +27,45 @@ function display($atts)
     
     
     
-    $content .= '<img id="activity1" class="tag" style="position: absolute; height: 50px; width: 50px; top: 20px; left: 200px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" />';
+    $content .= '<img id="activity1" class="tag" style="position: absolute; height: 50px; width: 50px; top: 500px; left: 200px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" />';
     
-    $content .= '<img id="activity2" class="tag" style="position: absolute; height: 50px; width: 50px; top: 50px; left: 300px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" />';
+    $content .= '<img id="activity2" class="tag" style="position: absolute; height: 50px; width: 50px; top: 100px; left: 400px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" />';
     
 //<img id="tag2" class="tag" style="position: absolute; height: 50px; width: 50px; top: 0px; left: 0px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" alt="" onmouseover = function(){#map.css(background-image: url("https://www.jerusalem.muni.il/Municipality/Directorquarters/PublishingImages/map.jpg"););} />';
 
     //$content .= '<div id="a"/>';
     
-    
-    
-    
-    $content .= "\n<script>
-            function getImageByActivity(activity)
-        {
-            if(activity == 'activity1')
-                return 'http://www.jiis.org.il/.upload/publications/images/2007_07_minhalim-map-small.jpg';
-            else if(activity == 'activity2')
-                return 'http://jiis.org/.upload/heb/data_statistics/maps/flat_size/2010_02_flatsize-map.jpg';
+    //add bubble for text
+    $content .= '<img id="bubble" class="bubble" style="position: absolute; top: 0px; left: 0px;" src="http://i.stack.imgur.com/nH24x.png" />';
 
-        }
-        jQuery('.tag').hover(
-        function(){
-           
-        var activityId = jQuery(this).attr('id');
-        var urlByActivityId = getImageByActivity(activityId);
-        //console.log(urlByActivityId);
-        jQuery('#map').css('background-image','url(' + urlByActivityId + ')');
-        });
-    </script>";
+    
+
     
     
 $content .= '</div>';
+    
+    
+    
+    
+    
+$content .= "\n<script>
+                function getImageByActivity(activity)
+                {
+                    if(activity == 'activity1')
+                        return 'http://www.jiis.org.il/.upload/publications/images/2007_07_minhalim-map-small.jpg';
+                    else if(activity == 'activity2')
+                        return 'http://jiis.org/.upload/heb/data_statistics/maps/flat_size/2010_02_flatsize-map.jpg';
+
+                }
+                jQuery('.tag').hover(
+                function(){
+           
+                    var activityId = jQuery(this).attr('id');
+                    var urlByActivityId = getImageByActivity(activityId);
+                    jQuery('#map').css('background-image','url(' + urlByActivityId + ')');
+                });
+                </script>";
+    
     return $content;
 }
 http://cdn.shopify.com/s/files/1/0245/5665/products/BubbleTextCoaster_05_1024x1024.jpg?v=1439796076
@@ -102,5 +113,3 @@ document.getElementById("image-activities");
         });
 */
 ?>
-
-
