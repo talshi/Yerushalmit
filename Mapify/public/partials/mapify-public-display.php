@@ -36,8 +36,10 @@ function display($atts)
     //$content .= '<div id="a"/>';
     
     //add bubble for text
-    $content .= '<img id="bubble" class="bubble" style="position: absolute; top: 0px; left: 0px;" src="http://i.stack.imgur.com/nH24x.png" />';
-
+    $content .= '<div id = "bubble">';
+    $content .= '<img id="bubbleImg" class="bubble" style="position: absolute; top: 0px; left: 0px;" src="http://i.stack.imgur.com/nH24x.png" />';
+    $content .= '<p id="bubbleText" style= "position: absolute;"></p>';
+    $content .= '</div>';
     
 
     
@@ -63,6 +65,14 @@ $content .= "\n<script>
                     var activityId = jQuery(this).attr('id');
                     var urlByActivityId = getImageByActivity(activityId);
                     jQuery('#map').css('background-image','url(' + urlByActivityId + ')');
+                    
+                    var textForBubble = '';
+                    if(activityId == 'activity1')
+                        textForBubble += ' טקסט מתחלף פעילות 1  טקסט מתחלף פעילות 1  טקסט מתחלף פעילות 1  טקסט מתחלף פעילות 1 טקסט מתחלף פעילות 1 ';
+                    else if(activityId == 'activity2')
+                        textForBubble += ' טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 ';
+                                            
+                    jQuery('#bubbleText').text(textForBubble);
                 });
                 </script>";
     
