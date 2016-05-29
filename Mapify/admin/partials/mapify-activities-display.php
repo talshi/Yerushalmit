@@ -37,8 +37,8 @@
 				<td><input type="button" id="" value="Edit"></td>
 			</tr>
 		</table>
-		<input type="button" value="Remove Selected" /> <input type="button"
-			value="Delete All" />
+		<input type="button" value="Remove Selected" />
+		 <input type="button" value="Delete All" />
 	</div>
 
 
