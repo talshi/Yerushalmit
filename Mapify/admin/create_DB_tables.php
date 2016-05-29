@@ -159,16 +159,26 @@ class Tables
 	{
 		global $wpdb;	//required global declaration of WP variable
 		$table_name = $wpdb->prefix.activities;
-		$sql = "DROP TABLE ". $table_name;
-		$wpdb->query($sql);
+		
+		if ($wpdb->get_var ( 'SHOW TABLES LIKE ' . $table_name ) != $table_name)
+		{
+			$sql = "DROP TABLE ". $table_name;
+			$wpdb->query($sql);
+		}
 		
 		$table_name = $wpdb->prefix.categories;
-		$sql = "DROP TABLE ". $table_name;
-		$wpdb->query($sql);
+		if ($wpdb->get_var ( 'SHOW TABLES LIKE ' . $table_name ) != $table_name)
+		{
+			$sql = "DROP TABLE ". $table_name;
+			$wpdb->query($sql);
+		}
 		
 		$table_name = $wpdb->prefix.map;
-		$sql = "DROP TABLE ". $table_name;
-		$wpdb->query($sql);
+		if ($wpdb->get_var ( 'SHOW TABLES LIKE ' . $table_name ) != $table_name)
+		{
+			$sql = "DROP TABLE ". $table_name;
+			$wpdb->query($sql);
+		}
 	}
 
 
