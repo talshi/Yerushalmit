@@ -18,13 +18,24 @@ public static function get_category_list_by_id($id)
 		Output expected: A specific line with all the details, according id.
 */	
 
-delete_category($category)
+public static function delete_category_by_id($id)
 {
-	$wpdb->delete( 'table', array( 'name' => $category ));
+	global $wpdb;
+	$table = $wpdb->prefix . "categories";
+		
+	$wpdb->query(("DELETE FROM `wp_categories` WHERE `wp_categories`.`id` = '$id'"));
 }
+
+/*to check delete_category_by_id function: write in activetor class:
+
+		Tables::delete_category(10);
+	
+		Output expected: A specific line - according id will delete, in phpmyAdmin.
+*/
 
 get_category_list()
 {
+
 }
 // Integration with php code instead of return value in functions
 /*<script type="text/javascript">
