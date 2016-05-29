@@ -49,9 +49,13 @@
     wp_mapify_app.controller('activitiesCtrl', function ($scope) {
     	$scope.sortBy = 'name';
     	$scope.activities_list = [
-                               { name: 'Berale', date: '18/12/2005', description: 'blablabla', edit : ' '},
-                               { name: 'Berale2', date: '21/12/2005', description: 'blablabla2' , edit : ' '},
-                               { name: 'Berale3', date: '13/12/2005', description: 'blablabla3' , edit : ' '}
+                               { name: 'A', date: '1/12/2008', description: 'blablabla'},
+                               { name: 'B', date: '21/12/2009', description: 'blablabla2'},
+                               { name: 'C', date: '12/12/2010', description: 'blablabla3'},
+                               { name: 'D', date: '13/12/2010', description: 'blablabla3'},
+                               { name: 'E', date: '12/11/2010', description: 'blablabla3'},
+                               { name: 'F', date: '13/12/2010', description: 'blablabla3'},                              
+                               { name: 'G', date: '12/12/1996', description: 'blablabla3'}
                                ];
     	
     });
