@@ -175,3 +175,13 @@ th {
 	background-color:inactiveborder;
 	
 }
+#IdInsertTableCategory ,th , td{
+		margin:10px;
+	padding: 10px;
+	margin-left: 15px;
+}
+#IDareaText{
+	rows="4"; 
+	cols="40";
+	background-color: white;
+}
