@@ -7,7 +7,7 @@
 <input name="search" type="text" ng-model="query" />
 <!-- search bar -->
 
-<div class="activities-table" ng-controller="activitiesCtrl">
+<div class="activities-table" ng-controller="categoriesCtrl">
 
 	<table>
 		<tr>
@@ -25,9 +25,9 @@
 		</tr>
 	</table>
 	<div>
-		<input type="button" value="Add new Category" id="IDnewCategory"data-toggle='modal' data-target="#myModal" /> 
-		<input type="button"value="remove selected" id="IDdeleteSelectedCategory" /> 
-		<input	type="button" value="Delete All" id="IDdeleteAllCategory" />
+		<input type="button" value="Add new Category" data-toggle='modal' data-target="#myModal" /> 
+		<input type="button" value="remove selected" id="IDdeleteSelectedCategory" />
+		 <input	type="button" value="Delete All" id="IDdeleteAllCategory" />
 	</div>
 
 	<div id="myModal" class="modal fade" role="dialog">
@@ -37,52 +37,50 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Add New Catergory</h4>
-									<form class="modal-body" role="form" ng-submit="addCategory()">
-					
-				<div id = "IDinputDataCategory" >
-				
-					<table id = "IdInsertTableCategory">
-						<tr>
-							<td><label>Category Name </label></td>
-							<td><input type="text" ng-model="CategoryName"></td>
-						</tr>
-						<tr>
-							<td><label>Description </label></td>
-							<br><br>
-							<td><textarea type="text" ng-model="CategoryyDescription"  id="IDareaText"> </textarea></td>
-						</tr>
-					</table>
-				
-				</div>
-					
-					<div id="upload_image_admin">
-						<div id="upload_note"> Enter an URL or upload an category image </div>
-						<div id="upload_image_container">
+					<form class="modal-body" role="form" ng-submit="addCategory()">
 
-							<label id="upload_map_label" for="upload_image">Upload Image</label>
-							<input id="upload_image" type="text" size="36"
-								name="upload_image" value="" /> <input id="upload_image_button"
-								type="button" value="Upload Image" /> <input id="save_button"
-								type="button" value="Save Image" /> <br />
-							</td>
+						<table id="IdInsertTableCategory">
+							<tr>
+								<td><label>Category Name </label></td>
+								<td><input type="text" ng-model="CategoryName"></td>
+							</tr>
+							<tr>
+								<td><label>Description </label></td>
+								<br>
+								<br>
+								<td><textarea type="text" ng-model="CategoryDescription"
+										id="IDareaText"> </textarea></td>
+							</tr>
+						</table>
+
+						<div id="upload_image_admin">
+							<div id="upload_note">Enter an URL or upload an category image</div>
+							<div id="upload_image_container">
+
+								<label id="upload_map_label" for="upload_image">Upload Image</label>
+								<input id="upload_image" type="text" size="36"
+									name="upload_image" value="" /> <input id="upload_image_button"
+									type="button" value="Upload Image" /> <input id="save_button"
+									type="button" value="Save Image" /> <br />
+								</td>
+							</div>
 						</div>
-					</div>
 
 
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<!-- add item to DB.... -->
-						<button id="save-button" class="btn btn-default" type="submit"
-							action="">Save</button>
-					</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+							<!-- add item to DB.... -->
+							<button id="save-button" class="btn btn-default" type="submit">Save</button>
+						</div>
 
-				</form>
-					
+					</form>
+
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 </div>
 
 

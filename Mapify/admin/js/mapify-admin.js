@@ -82,7 +82,6 @@
        		
     		$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, category: $scope.activityCategory ,description: $scope.activityDescription });
     		
-    		alert($scope.activityName);
     		$scope.$apply();
     		return true;
     	}
@@ -97,16 +96,27 @@
                                   { name: 'A', description: 'category1'},
                                   { name: 'B', description: 'category2'},
                                   { name: 'C', description: 'category3'},
-                                  { name: 'E', description: 'category3'},
-                                  { name: 'D', description: 'category3'},
-                                  { name: 'F', description: 'category3'},
-                                  { name: 'G', description: 'category3'},
-                                  { name: 'H', description: 'category3'}
+                                  { name: 'E', description: 'category4'},
+                                  { name: 'D', description: 'category5'},
+                                  { name: 'F', description: 'category6'},
+                                  { name: 'G', description: 'category7'},
+                                  { name: 'H', description: 'category8'}
                                   ];
     	
     	$scope.addCategory = function(){
-    		alert("SSSSSSSSSSSSSS");
-    			
+    		
+    		alert($scope.CategoryName);
+    		
+    		if($scope.CategoryName == undefined)
+    		{
+    			alert("Insert Category Name");
+    			return false;
+    		}
+    		
+    		$scope.categories_list.push({ id: '0', name: $scope.CategoryName,description: $scope.CategoryDescription });
+    		
+    		$scope.$apply();
+    		return true;    			
     	};
     });
     

@@ -54,14 +54,15 @@
 					
 							<label>Location: </label>
 							<span id="location"></span>
+							
 					<table id = "IdInsertTable">
 						<tr>
-							<td><label>Activity Name </label></td>
+							<td><label>Activity Name </label> </td>
 							<td><input type="text" ng-model="activityName"></td>
 						</tr>
 						<tr>
-							<td><label>Activity Date </label></td>
-							<td><input type="text" ng-model="activityDate"></td>
+							<td><label>Activity Date </label> </td>
+							<td><input type="text" ng-model="activityDate" ></td>
 						</tr>
 						<tr>
 							<td><label>Activity Category </label></td>
