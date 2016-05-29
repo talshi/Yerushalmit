@@ -22,7 +22,7 @@
 				<th>Description</th>
 				<th>Edit</th>
 			</tr>
-			<tr ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort " >
+			<tr ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort " id="table">
 				<td><input id="" type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date }}</td>
@@ -157,25 +157,25 @@
 		var y_finish;
 
 		console.log("this is x:" + x + "this is y "+ y);
+
 		if( (y/100)*h_ < 25 )  // keep the marker in map from top!!
 			y_finish = ((100)*(25))/(h_);			
 		else
 			y_finish = (y / 100) * h_ - (25);		
 
-
 		
 		if( (x*w_)/100 < 12.5 )  // keep the marker in map from left!!
 		{
-			x_finish = ((100)*(12.5))/(w_);
-		}			
-		else
-	        x_finish = (x / 100) * w_ - (12.5);
-
-  		if ((w_ - (x*w_)/100 < 12.5)) // keep the marker in map from right!!
-			x_finish = ((100)*(w_- 12.5))/(w_);			
-  		
+				x_finish = ((100)*(12.5))/(w_);
+		}
+		else if ((w_ - (x*w_)/100 < 12.5)) // keep the marker in map from right!!
+  		{
+			x_finish = w_- 25;	
+  		}
   		else
-  	        x_finish = ((x / 100) * w_) - (12.5);
+  		{
+	        x_finish = (x / 100) * w_;			
+  		}
 			
 		
 // 		valid = checkPoint(x,y,w_,h_,y_finish,x_finish)
@@ -229,3 +229,4 @@ function checkPoint(x,y,w_,h_,y_finish,x_finish){
 	return true;
 }
 </script>
+

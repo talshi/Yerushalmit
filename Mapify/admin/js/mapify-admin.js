@@ -1,5 +1,8 @@
+
+
 (function ($) {
 
+	
     var wp_mapify_app = angular.module('wp_mapify_app', ['ngRoute']);
 
     /*
@@ -45,9 +48,11 @@
     wp_mapify_app.controller('mapCtrl', function ($scope) {
         
     });
-
+    
     wp_mapify_app.controller('activitiesCtrl', function ($scope) {
     	$scope.sortBy = 'name';
+    	$.get( "../mapTable.php" );
+    	
     	$scope.activities_list = [
                                { id: '1', name: 'A', date: '1/12/2008', description: 'blablabla'},
                                { id: '2', name: 'B', date: '21/12/2009', description: 'blablabla2'},
@@ -57,10 +62,11 @@
                                { id: '6', name: 'F', date: '13/12/2010', description: 'blablabla3'},                              
                                { id: '7', name: 'G', date: '12/12/1996', description: 'blablabla3'}
                                ];
-    	
+     	
     	$scope.addActivity = function() {
     		
     		$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, description: $scope.activityCategory});
+    		alert($scope.activityName);
     		$scope.$apply();
     	}
     	
@@ -73,30 +79,6 @@
                                   { name: '3', description: 'category3', tag: 'blablabla'}
                                   ];
     });
-
-    /*
-     * END CONTROLLERS
-     */
-    
-    /*
-     * MAPIFY-ACTIVITIES-DISPLAY SCRIPTS
-     */
-    
-    // This code will recognize a click on the image and load the exact coordinates
-
-
-    /*
-     * END MAPIFY-ACTIVITIES-DISPLAY SCRIPTS
-     */
-
-    /*
-     * TEST ZONE
-     */
-    
-    
-    /*
-     * END TEST ZONE
-     */
     
 })(jQuery);
 

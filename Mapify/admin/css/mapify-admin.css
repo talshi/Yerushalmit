@@ -152,3 +152,8 @@ th {
    cursor: pointer;
 }
 
+#table > td{
+	padding-bottom: 1em;
+	margin:5px;
+	padding: 5px;
+}
