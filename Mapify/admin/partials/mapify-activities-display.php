@@ -28,8 +28,7 @@
 				<th>Edit</th>
 			</tr>
 			<tr
-				ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort "
-				id="table">
+				ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort " id="table">
 				<td><input id="" type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date }}</td>
@@ -52,7 +51,6 @@
 					<h4 class="modal-title">Add Activity</h4>
 				</div>
 				<form class="modal-body" role="form" ng-submit="addActivity()">
-				
 					
 							<label>Location: </label>
 							<span id="location"></span>
@@ -71,11 +69,13 @@
 						</tr>
 						<tr>
 							<td><label>Description </label></td>
-							<td><input type="button" ng-model="activityDescription" value="open editor" id ="editonButton"></td>
+							<br><br>
+							<td><textarea type="text" ng-model="activityDescription"  rows="4" cols="40"> </textarea></td>
+							
 						</tr>
 					</table>
+					
 					<div id="upload_image_admin">
-
 						<div id="upload_note"> Enter an URL or upload an image</div>
 						<div id="upload_image_container">
 
@@ -109,7 +109,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Add Activity</h4>
+				<h4 class="modal-title">Activity Details</h4>
 			</div>
 			<div class="modal-body">
 				<div>
@@ -232,16 +232,5 @@ function getFinishPoint(x,y){
             });
         });
     });
-</script>
-
-<script>
-// x - click
-// y - click
-// w_ - size width
-// h_ - size height
-function checkPoint(x,y,w_,h_,y_finish,x_finish){
-	alert(w_);	
-	return true;
-}
 </script>
 

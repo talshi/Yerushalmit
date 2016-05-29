@@ -91,29 +91,15 @@
 
     wp_mapify_app.controller('categoriesCtrl', function ($scope) {
     	$scope.categories_list = [
-                                  { name: '1', description: 'category1', tag: 'bla'},
-                                  { name: '2', description: 'category2', tag: 'blabla'},
-                                  { name: '9', description: 'category3', tag: 'blablabla'},
-                                  { name: '4', description: 'category3', tag: 'blablabla'},
-                                  { name: '5', description: 'category3', tag: 'blablabla'},
-                                  { name: '20', description: 'category3', tag: 'blablabla'},
-                                  { name: '7', description: 'category3', tag: 'blablabla'},
-                                  { name: '8', description: 'category3', tag: 'blablabla'}
+                                  { name: '1', description: 'category1'},
+                                  { name: '2', description: 'category2'},
+                                  { name: '9', description: 'category3'},
+                                  { name: '4', description: 'category3'},
+                                  { name: '5', description: 'category3'},
+                                  { name: '20', description: 'category3'},
+                                  { name: '7', description: 'category3'},
+                                  { name: '8', description: 'category3'}
                                   ];
     });
     
 })(jQuery);
-
-
-function sort(kind){
-	if(kind == 0)
-	{
-		alert("activity-name - sort");
-		var list = getActivitiyList();
-	}
-	if(kind == 1)
-	{
-		alert("id - sort");
-	}
-		
-}

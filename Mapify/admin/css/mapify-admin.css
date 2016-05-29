@@ -147,14 +147,15 @@ th {
   background-color: yellow; 
    cursor: pointer;
 }
-#IDactivity-name{
-	
-}
+
 #IDactivity-name:hover{
   background-color: yellow; 
    cursor: pointer;
 }
-
+#IDcategoty-name:hover{
+  background-color: yellow; 
+   cursor: pointer;	
+}
 #table > td{
 	padding-bottom: 1em;
 	margin:5px;
