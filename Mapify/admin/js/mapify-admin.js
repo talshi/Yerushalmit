@@ -67,23 +67,24 @@
     		if($scope.activityName == undefined)
     		{
     			alert("Insert Activity Name");
-    			return;
+    			return false;
     		}
     		if($scope.activityDate == undefined)
     		{
     			alert("Insert Activity Date");
-    			return;    			
+    			return false;    			
     		}
     		if($scope.activityCategory == undefined)
     		{
     			alert("Insert Activity Category");
-    			return;    			
+    			return false;    			
     		}
        		
     		$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, category: $scope.activityCategory ,description: $scope.activityDescription });
     		
     		alert($scope.activityName);
     		$scope.$apply();
+    		return true;
     	}
     	
     });
@@ -92,7 +93,12 @@
     	$scope.categories_list = [
                                   { name: '1', description: 'category1', tag: 'bla'},
                                   { name: '2', description: 'category2', tag: 'blabla'},
-                                  { name: '3', description: 'category3', tag: 'blablabla'}
+                                  { name: '9', description: 'category3', tag: 'blablabla'},
+                                  { name: '4', description: 'category3', tag: 'blablabla'},
+                                  { name: '5', description: 'category3', tag: 'blablabla'},
+                                  { name: '20', description: 'category3', tag: 'blablabla'},
+                                  { name: '7', description: 'category3', tag: 'blablabla'},
+                                  { name: '8', description: 'category3', tag: 'blablabla'}
                                   ];
     });
     

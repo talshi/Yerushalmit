@@ -24,7 +24,10 @@
 
 #upload_note {
     padding: 0px 15px;
-    font-size: 12px;
+    font-size: 20px;
+    background-color: yellow;
+    
+    
 }
 
 .partial-view {
@@ -156,4 +159,12 @@ th {
 	padding-bottom: 1em;
 	margin:5px;
 	padding: 5px;
+}
+#IdInsertTable , th, td {
+	 border: 1px solid black;
+	padding-bottom: 1em;
+	margin:10px;
+	padding: 10px;
+	margin-left: 15px;
+
 }
