@@ -46,7 +46,8 @@ public static function delete_category_by_id($id)
 
 get_category_list()
 {
-
+	$results = $GLOBALS['wpdb']->get_results( "SELECT * FROM `wp_categories ", OBJECT );
+	return json_encode($results,JSON_PRETTY_PRINT);
 }
 
 // Integration with php code instead of return value in functions
