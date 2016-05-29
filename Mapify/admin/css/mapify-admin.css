@@ -161,10 +161,16 @@ th {
 	padding: 5px;
 }
 #IdInsertTable , th, td {
-	 border: 1px solid black;
+	border: 1px solid black;
 	padding-bottom: 1em;
 	margin:10px;
 	padding: 10px;
 	margin-left: 15px;
+    vertical-align: bottom;
 
+}
+#editonButton{
+	width: 100%;
+	background-color:inactiveborder;
+	
 }

@@ -52,11 +52,11 @@
 					<h4 class="modal-title">Add Activity</h4>
 				</div>
 				<form class="modal-body" role="form" ng-submit="addActivity()">
+				
+					
+							<label>Location: </label>
+							<span id="location"></span>
 					<table id = "IdInsertTable">
-						<tr>
-							<td><label>Location: </label></td>
-							<td><span id="location"></span></td>
-						</tr>
 						<tr>
 							<td><label>Activity Name </label></td>
 							<td><input type="text" ng-model="activityName"></td>
@@ -71,7 +71,7 @@
 						</tr>
 						<tr>
 							<td><label>Description </label></td>
-							<td><input type="text" ng-model="activityDescription"></td>
+							<td><input type="button" ng-model="activityDescription" value="open editor" id ="editonButton"></td>
 						</tr>
 					</table>
 					<div id="upload_image_admin">
