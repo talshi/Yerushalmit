@@ -44,7 +44,7 @@ public static function delete_category_by_id($id)
 	Output expected: A specific line - according id will delete, in phpmyAdmin.
 */
 
-get_category_list()
+public static function get_category_list()
 {
 	$results = $GLOBALS['wpdb']->get_results( "SELECT * FROM `wp_categories ", OBJECT );
 	return json_encode($results,JSON_PRETTY_PRINT);
