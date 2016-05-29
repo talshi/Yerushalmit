@@ -18,7 +18,7 @@
 			<tr>
 				<th>#</th>
 				<th id="IDactivity-name" ng-model="name" ng-click="sortBy='name'; reverseSort=!reverseSort">Activity Name</th>
-				<th id="IDDate" ng-model="date" ng-click="" >Date</th>
+				<th id="IDDate" ng-model="date" ng-click="sortBy='date'; reverseSort=!reverseSort">Date</th>
 				<th>Description</th>
 				<th>Edit</th>
 			</tr>
