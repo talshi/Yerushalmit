@@ -1,5 +1,5 @@
 `
-<div ng-app="wp_mapify_app" class="space">
+<div class="space" ng-app="wp_mapify_app" ng-controller="activitiesCtrl">
 	<h1>Manage Activities</h1>
 
 	<div class="note">Click on the image to add an activity.</div>
@@ -13,7 +13,7 @@
 
 	<label for="search">Search: </label>
 	<input name="search" type="text" ng-model="query" /> <!-- search bar -->
-	<div class="activities-table" ng-controller="activitiesCtrl">
+	<div class="activities-table">
 		<table>
 			<tr>
 				<th>#</th>
@@ -23,16 +23,15 @@
 				<th>Edit</th>
 			</tr>
 			<tr ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort " >
-				<td><input type="checkbox" /></td>
+				<td><input id="" type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date }}</td>
 				<td>{{ activity.description }}</td>
-				<td>{{ activity.edit }}</td>
+				<td> <input type="button" id = "" value="Edit"></td>
 			</tr>
 		</table>
 		<input type="button" value="Remove Selected" /> <input type="button"
 			value="Delete All" />
-
 	</div>
 
 
@@ -44,7 +43,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Add Activity</h4>
 				</div>
-				<div class="modal-body">
+				<form class="modal-body" role="form" ng-submit="addActivity('10', 'tal', '15/4/1990','taltaltal')">
 					<div>
 						<label>Location: </label> <span id="location"></span>
 					</div>
@@ -68,11 +67,12 @@
 						</div>
 
 					</div>
-				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button id="save-button" type="button" class="btn btn-default">Save</button>
+					<button id="save-button" type="submit" class="btn btn-default">Save</button>
 				</div>
+				</form>
+				
 			</div>
 
 		</div>
@@ -139,6 +139,12 @@
         // TODO validation of forms
         var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
         jQuery("#image-activities").after(m);
+
+		// add activity to table
+		
+		// --
+
+
         var div = document.getElementById("image-activities");
         var rect = div.getBoundingClientRect();
 
@@ -146,7 +152,6 @@
         y_top = rect.top;
         w_ = rect.right - rect.left;
         h_ = rect.bottom - rect.top;
-		alert(w_);
 		var x_finish;
 		var y_finish;
 
