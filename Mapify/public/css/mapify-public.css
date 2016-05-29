@@ -27,11 +27,19 @@
     margin: 5px;
 }
 
-#bubble
-{
+#bubbleText {
+    font-size: 16px;
+}
+
+#bubble {
     margin: 5px;
     background-image: url('http://i.stack.imgur.com/nH24x.png');
     background-repeat: no-repeat;
     height: 205px;
     width: 307px;
+}
+
+#linkReadMore {
+    cursor: pointer;
+    border-bottom: none;
 }

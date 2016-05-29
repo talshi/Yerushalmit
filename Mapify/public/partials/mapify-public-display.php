@@ -78,9 +78,12 @@ $content .= "\n<script>
                         title = 'כותרת פעילות 1';
                     else if(activityId == 'activity2')
                         title = 'כותרת פעילות 2';
+                        
+                    var link = '<br/><br/><a id=\"linkReadMore\">קרא עוד></a>';
                     
                     jQuery('#textTitle').text(title);
                     jQuery('#bubbleText').text(textForBubble);
+                    jQuery('#bubbleText').append(link);
                 });
                 </script>";
     
