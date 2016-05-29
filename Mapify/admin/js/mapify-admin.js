@@ -87,6 +87,8 @@
     		return true;
     	}
     	
+    	
+    	
     });
 
     wp_mapify_app.controller('categoriesCtrl', function ($scope) {
@@ -101,6 +103,11 @@
                                   { name: 'G', description: 'category3'},
                                   { name: 'H', description: 'category3'}
                                   ];
+    	
+    	$scope.addCategory = function(){
+    		alert("SSSSSSSSSSSSSS");
+    			
+    	};
     });
     
 })(jQuery);
