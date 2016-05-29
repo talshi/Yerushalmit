@@ -43,18 +43,18 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Add Activity</h4>
 				</div>
-				<form class="modal-body" role="form" ng-submit="addActivity('10', 'tal', '15/4/1990','taltaltal')">
+				<form class="modal-body" role="form" ng-submit="addActivity()">
 					<div>
 						<label>Location: </label> <span id="location"></span>
 					</div>
 					<div>
-						<label>Activity Name: </label> <input type="text">
+						<label>Activity Name: </label> <input type="text" ng-model="activityName">
 					</div>
 					<div>
-						<label>Activity Date: </label> <input type="text">
+						<label>Activity Date: </label> <input type="text" ng-model="activityDate">
 					</div>
 					<div>
-						<label>Activity Category: </label> <input type="text">
+						<label>Activity Category: </label> <input type="text" ng-model="activityCategory">
 					</div>
 					<div id="upload_image_admin">
 						<div id="upload_note">Enter an URL or upload an image</div>
@@ -69,7 +69,8 @@
 					</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button id="save-button" type="submit" class="btn btn-default">Save</button>
+					<!-- add item to DB.... -->
+					<button id="save-button" class="btn btn-default" type="submit" action="">Save</button>
 				</div>
 				</form>
 				

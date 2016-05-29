@@ -58,9 +58,9 @@
                                { id: '7', name: 'G', date: '12/12/1996', description: 'blablabla3'}
                                ];
     	
-    	$scope.addActivity = function(id, name, date, desc) {
-    		$scope.activities_list.push({ id: id, name: name, date: date, description: desc});
-    		alert("Item added!");
+    	$scope.addActivity = function() {
+    		
+    		$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, description: $scope.activityCategory});
     		$scope.$apply();
     	}
     	
