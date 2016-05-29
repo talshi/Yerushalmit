@@ -90,15 +90,16 @@
     });
 
     wp_mapify_app.controller('categoriesCtrl', function ($scope) {
+    	$scope.sortBy = 'name';
     	$scope.categories_list = [
-                                  { name: '1', description: 'category1'},
-                                  { name: '2', description: 'category2'},
-                                  { name: '9', description: 'category3'},
-                                  { name: '4', description: 'category3'},
-                                  { name: '5', description: 'category3'},
-                                  { name: '20', description: 'category3'},
-                                  { name: '7', description: 'category3'},
-                                  { name: '8', description: 'category3'}
+                                  { name: 'A', description: 'category1'},
+                                  { name: 'B', description: 'category2'},
+                                  { name: 'C', description: 'category3'},
+                                  { name: 'E', description: 'category3'},
+                                  { name: 'D', description: 'category3'},
+                                  { name: 'F', description: 'category3'},
+                                  { name: 'G', description: 'category3'},
+                                  { name: 'H', description: 'category3'}
                                   ];
     });
     

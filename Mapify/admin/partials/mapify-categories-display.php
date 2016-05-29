@@ -4,16 +4,17 @@
 
 	<label for="search">Search: </label> <input name="search" type="text" ng-model="query" />
 	<!-- search bar -->
+	
 <div class="activities-table" ng-controller="activitiesCtrl">
 
 		<table>
 			<tr>
 				<th>#</th>
-				<th id ="IDcategoty-name" ng-model="name" ng-click="sortBy='name'; reverseSort=!reverseSort">Category Name</th>
+				<th id ="IDcategory-name" ng-model="name" ng-click="sortBy='name'; reverseSort=!reverseSort">Category Name</th>
 				<th>Description</th>
 			</tr>
 						
-			<tr ng-repeat="category in categories_list | filter:query | orderBy:reversSort id="table">
+			<tr ng-repeat="category in categories_list | filter: query | orderBy:sortBy:reverseSort"  id="table" >
 				<td><input type="checkbox" /></td>
 				<td>{{ category.name }}</td>
 				<td>{{ category.description }}</td>
