@@ -144,52 +144,53 @@
 		// add activity to table
 		
 		// --
-
-
-        var div = document.getElementById("image-activities");
-        var rect = div.getBoundingClientRect();
-
-        x_left = rect.left;
-        y_top = rect.top;
-        w_ = rect.right - rect.left;
-        h_ = rect.bottom - rect.top;
-		var x_finish;
-		var y_finish;
-
-		console.log("this is x:" + x + "this is y "+ y);
-
-		if( (y/100)*h_ < 25 )  // keep the marker in map from top!!
-			y_finish = ((100)*(25))/(h_);			
-		else
-			y_finish = (y / 100) * h_ - (25);		
-
+		var point = getFinishPoint(x,y); // return the fix X & Y after validation
 		
-		if( (x*w_)/100 < 12.5 )  // keep the marker in map from left!!
-		{
-				x_finish = ((100)*(12.5))/(w_);
-		}
-		else if ((w_ - (x*w_)/100 < 12.5)) // keep the marker in map from right!!
-  		{
-			x_finish = w_- 25;	
-  		}
-  		else
-  		{
-	        x_finish = (x / 100) * w_;			
-  		}
-			
-		
-// 		valid = checkPoint(x,y,w_,h_,y_finish,x_finish)
-// 		if(!valid){
-// 			alert("Try again - the point is Illegal");
-// 			return;
-// 		}
-
         jQuery("#img-marker" + index).css({
-            "top": y_finish,
-            "left": x_finish
+            "top": point.y,
+            "left": point.x
         });
         index++;
     });
+
+</script>
+
+<<script type="text/javascript">
+function getFinishPoint(x,y){
+
+    var div = document.getElementById("image-activities");
+    var rect = div.getBoundingClientRect();
+	
+	   var x_left = rect.left;
+	   var y_top = rect.top;
+	   var w_ = rect.right - rect.left;
+	   var h_ = rect.bottom - rect.top;
+		var x_finish;
+		var y_finish;
+
+	console.log("this is x:" + x + "this is y "+ y);
+
+	if( (y/100)*h_ < 25 )  // keep the marker in map from top!!
+		y_finish = ((100)*(25))/(h_);			
+	else
+		y_finish = (y / 100) * h_ - (25);		
+
+	
+	if( (x*w_)/100 < 12.5 )  // keep the marker in map from left!!
+	{
+			x_finish = ((100)*(12.5))/(w_);
+	}
+	else if ((w_ - (x*w_)/100 < 12.5)) // keep the marker in map from right!!
+		{
+			x_finish = w_- 25;	
+		}
+		else
+		{
+	        x_finish = (x / 100) * w_;			
+		}
+	return {x:x_finish , y:y_finish};
+}
+	
 
 </script>
 
