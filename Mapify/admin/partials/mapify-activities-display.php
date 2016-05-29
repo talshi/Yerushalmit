@@ -19,6 +19,7 @@
 				<th>#</th>
 				<th id="IDactivity-name" ng-model="name" ng-click="sortBy='name'; reverseSort=!reverseSort">Activity Name</th>
 				<th id="IDDate" ng-model="date" ng-click="sortBy='date'; reverseSort=!reverseSort">Date</th>
+				<th id="IDDate" ng-model="date" ng-click="sortBy='category'; reverseSort=!reverseSort">Category</th>				
 				<th>Description</th>
 				<th>Edit</th>
 			</tr>
@@ -26,6 +27,7 @@
 				<td><input id="" type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date }}</td>
+				<td>{{ activity.category }}</td>
 				<td>{{ activity.description }}</td>
 				<td> <input type="button" id = "" value="Edit"></td>
 			</tr>
@@ -55,6 +57,9 @@
 					</div>
 					<div>
 						<label>Activity Category: </label> <input type="text" ng-model="activityCategory">
+					</div>
+					<div>
+						<label>Description: </label> <input type="text" ng-model="activityDescription">
 					</div>
 					<div id="upload_image_admin">
 						<div id="upload_note">Enter an URL or upload an image</div>
@@ -157,7 +162,6 @@
 
 <<script type="text/javascript">
 function getFinishPoint(x,y){
-
     var div = document.getElementById("image-activities");
     var rect = div.getBoundingClientRect();
 	
@@ -167,27 +171,17 @@ function getFinishPoint(x,y){
 	   var h_ = rect.bottom - rect.top;
 		var x_finish;
 		var y_finish;
-
-	console.log("this is x:" + x + "this is y "+ y);
-
 	if( (y/100)*h_ < 25 )  // keep the marker in map from top!!
 		y_finish = ((100)*(25))/(h_);			
 	else
 		y_finish = (y / 100) * h_ - (25);		
-
 	
 	if( (x*w_)/100 < 12.5 )  // keep the marker in map from left!!
-	{
 			x_finish = ((100)*(12.5))/(w_);
-	}
 	else if ((w_ - (x*w_)/100 < 12.5)) // keep the marker in map from right!!
-		{
 			x_finish = w_- 25;	
-		}
 		else
-		{
 	        x_finish = (x / 100) * w_;			
-		}
 	return {x:x_finish , y:y_finish};
 }
 	
