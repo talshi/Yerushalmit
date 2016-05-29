@@ -127,12 +127,28 @@ th {
 }
 
 .marker:hover {
-    width:  35px;
-    height:  35px;
+    width:  25px;
+    height:  25px;
     left:  0;
     position: absolute;
+    cursor : pointer
 }
 
 #map{
     position: relative;
 }
+#IDDate {
+	
+}
+#IDDate:hover{
+  background-color: yellow; 
+   cursor: pointer;
+}
+#IDactivity-name{
+	
+}
+#IDactivity-name:hover{
+  background-color: yellow; 
+   cursor: pointer;
+}
+

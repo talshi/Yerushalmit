@@ -1,38 +1,38 @@
-
+`
 <div ng-app="wp_mapify_app" class="space">
 	<h1>Manage Activities</h1>
 
 	<div class="note">Click on the image to add an activity.</div>
 
-<!--	<div>
-		<input id="zoom-in" class="btn btn-default" type="button" value="+" />
-		<input id="zoom-out" class="btn btn-default" type="button" value="-" />
-	</div>
--->
 	<div id="map">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"
 			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.jpg"></img>
-        <span id="popup"></span>
+		<span id="popup"></span>
 	</div>
 
-
+	<label for="search">Search: </label>
+	<input name="search" type="text" ng-model="query" /> <!-- search bar -->
 	<div class="activities-table" ng-controller="activitiesCtrl">
 		<table>
 			<tr>
 				<th>#</th>
-				<th>Activity Name</th>
-				<th>Date</th>
+				<th id="IDactivity-name" ng-model="name" ng-click="sortBy='name'; reverseSort=!reverseSort">Activity Name</th>
+				<th id="IDDate" ng-model="date" ng-click="" >Date</th>
 				<th>Description</th>
+				<th>Edit</th>
 			</tr>
-			<tr ng-repeat="activity in activities_list">
+			<tr ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort " >
 				<td><input type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date }}</td>
 				<td>{{ activity.description }}</td>
+				<td>{{ activity.edit }}</td>
 			</tr>
 		</table>
-		<input type="button" value="Remove Selected" />
+		<input type="button" value="Remove Selected" /> <input type="button"
+			value="Delete All" />
+
 	</div>
 
 
@@ -58,15 +58,15 @@
 						<label>Activity Category: </label> <input type="text">
 					</div>
 					<div id="upload_image_admin">
-					<div id="upload_note">Enter an URL or upload an image </div>
+						<div id="upload_note">Enter an URL or upload an image</div>
 						<div id="upload_image_container">
-						    <label id="upload_map_label" for="upload_image">Upload Image</label>
-						    <input id="upload_image" type="text" size="36" name="upload_image" value="" />
-						    <input id="upload_image_button" type="button" value="Upload Image" />
-						    <input id="save_button" type="button" value="Save Image" />
-						    <br />
+							<label id="upload_map_label" for="upload_image">Upload Image</label>
+							<input id="upload_image" type="text" size="36"
+								name="upload_image" value="" /> <input id="upload_image_button"
+								type="button" value="Upload Image" /> <input id="save_button"
+								type="button" value="Save Image" /> <br />
 						</div>
-						
+
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -78,7 +78,7 @@
 		</div>
 	</div>
 
-    <div id="myImg" class="modal fade" role="dialog">
+	<div id="myImg" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
 			<div class="modal-content">
@@ -117,8 +117,12 @@
     // Find cooridinates and normalize it according to image
     jQuery("#image-activities").click(function (e) {
         var pageCoords = getCoords(this);
-        x = ((e.clientX - pageCoords.left) * 100) / jQuery("#image-activities").width();
-        y = ((e.clientY - pageCoords.top) * 100) / jQuery("#image-activities").height();
+        var clickX = e.clientX;
+        var clickY = e.clientY;
+
+
+	    x = ((clickX - pageCoords.left) * 100) / jQuery("#image-activities").width();
+        y = ((clickY - pageCoords.top) * 100) / jQuery("#image-activities").height();
         jQuery("#location").html("X: " + x + " Y: " + y);
     });
     function getCoords(elem) {
@@ -130,24 +134,7 @@
     jQuery(document).ready(function () {
         jQuery("#image-activities").width(newwidth);
     });
-    // Zoom-In Button
-    jQuery("#zoom-in").click(function (e) {
-        var currentwidth = jQuery("#image-activities").width();
-        var imgoffset = jQuery("#image-activities").offset().left;
-        if (currentwidth < (screen.width - imgoffset) * 0.9) {
-            newwidth = currentwidth * 1.1;
-            jQuery("#image-activities").width(newwidth);
-        }
-    });
-    //Zoom-Out Button
-    jQuery("#zoom-out").click(function (e) {
-        var currentwidth = jQuery("#image-activities").width();
-        var imgoffset = jQuery("#image-activities").offset().left;
-        if (currentwidth > screen.width * 0.4) {
-            newwidth = currentwidth * 0.9;
-            jQuery("#image-activities").width(newwidth);
-        }
-    });
+
     jQuery("#save-button").click(function (e) {
         // TODO validation of forms
         var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
@@ -159,10 +146,41 @@
         y_top = rect.top;
         w_ = rect.right - rect.left;
         h_ = rect.bottom - rect.top;
+		alert(w_);
+		var x_finish;
+		var y_finish;
+
+		console.log("this is x:" + x + "this is y "+ y);
+		if( (y/100)*h_ < 25 )  // keep the marker in map from top!!
+			y_finish = ((100)*(25))/(h_);			
+		else
+			y_finish = (y / 100) * h_ - (25);		
+
+
+		
+		if( (x*w_)/100 < 12.5 )  // keep the marker in map from left!!
+		{
+			x_finish = ((100)*(12.5))/(w_);
+		}			
+		else
+	        x_finish = (x / 100) * w_ - (12.5);
+
+  		if ((w_ - (x*w_)/100 < 12.5)) // keep the marker in map from right!!
+			x_finish = ((100)*(w_- 12.5))/(w_);			
+  		
+  		else
+  	        x_finish = ((x / 100) * w_) - (12.5);
+			
+		
+// 		valid = checkPoint(x,y,w_,h_,y_finish,x_finish)
+// 		if(!valid){
+// 			alert("Try again - the point is Illegal");
+// 			return;
+// 		}
 
         jQuery("#img-marker" + index).css({
-            "top": (y / 100) * h_ - (25),
-            "left": (x / 100) * w_ - (12.5)
+            "top": y_finish,
+            "left": x_finish
         });
         index++;
     });
@@ -195,3 +213,13 @@
     });
 </script>
 
+<script>
+// x - click
+// y - click
+// w_ - size width
+// h_ - size height
+function checkPoint(x,y,w_,h_,y_finish,x_finish){
+	alert(w_);	
+	return true;
+}
+</script>
