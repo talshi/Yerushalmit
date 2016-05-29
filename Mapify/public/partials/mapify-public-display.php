@@ -31,14 +31,12 @@ function display($atts)
     
     $content .= '<img id="activity2" class="tag" style="position: absolute; height: 50px; width: 50px; top: 100px; left: 400px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" />';
     
-//<img id="tag2" class="tag" style="position: absolute; height: 50px; width: 50px; top: 0px; left: 0px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" alt="" onmouseover = function(){#map.css(background-image: url("https://www.jerusalem.muni.il/Municipality/Directorquarters/PublishingImages/map.jpg"););} />';
-
-    //$content .= '<div id="a"/>';
     
     //add bubble for text
-    $content .= '<div id = "bubble">';
-    $content .= '<img id="bubbleImg" class="bubble" style="position: absolute; top: 0px; left: 0px;" src="http://i.stack.imgur.com/nH24x.png" />';
-    $content .= '<p id="bubbleText" style= "position: absolute;"></p>';
+    $content .= '<div id = "bubble" style="float: left;">';
+    //$content .= '<img id="bubbleImg" class="bubble" src="http://i.stack.imgur.com/nH24x.png" />';
+    $content .= '<h6 id="textTitle"></h6>';
+    $content .= '<p id="bubbleText"></p>';
     $content .= '</div>';
     
 
@@ -51,6 +49,9 @@ $content .= '</div>';
     
     
 $content .= "\n<script>
+                //console.log(jQuery('#bubbleImg').height());
+                //jQuery('#bubble').css({'height': jQuery('#bubbleImg').height(), 'width': jQuery('#bubbleImg').width() });
+                jQuery('#bubbleText').css({ 'width': jQuery('#bubble').width() });
                 function getImageByActivity(activity)
                 {
                     if(activity == 'activity1')
@@ -72,6 +73,13 @@ $content .= "\n<script>
                     else if(activityId == 'activity2')
                         textForBubble += ' טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 ';
                                             
+                    var title;
+                    if(activityId == 'activity1')
+                        title = 'כותרת פעילות 1';
+                    else if(activityId == 'activity2')
+                        title = 'כותרת פעילות 2';
+                    
+                    jQuery('#textTitle').text(title);
                     jQuery('#bubbleText').text(textForBubble);
                 });
                 </script>";
