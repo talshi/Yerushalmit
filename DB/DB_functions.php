@@ -30,6 +30,7 @@ get_category_list()
 
 }
 
+// Integration with php code instead of return value in functions
 /*<script type="text/javascript">
 	var category = <?php echo json_encode($results, JSON_PRETTY_PRINT) ?>;
 </script>*/
