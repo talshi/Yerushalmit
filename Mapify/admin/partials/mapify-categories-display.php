@@ -38,18 +38,18 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Add New Catergory</h4>
 					<form class="modal-body" role="form" ng-submit="addCategory()">
-
+	
 						<table id="IdInsertTableCategory">
 							<tr>
 								<td><label>Category Name </label></td>
-								<td><input type="text" ng-model="CategoryName"></td>
+								<td><input type="text" ng-model="CategoryName" placeholder="Category Name"></td>
 							</tr>
 							<tr>
 								<td><label>Description </label></td>
 								<br>
 								<br>
 								<td><textarea type="text" ng-model="CategoryDescription"
-										id="IDareaText"> </textarea></td>
+										id="IDareaText" placeholder = "description" > </textarea></td>
 							</tr>
 						</table>
 

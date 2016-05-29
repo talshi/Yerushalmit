@@ -58,11 +58,11 @@
 					<table id = "IdInsertTable">
 						<tr>
 							<td><label>Activity Name </label> </td>
-							<td><input type="text" ng-model="activityName"></td>
+							<td><input type="text" ng-model="activityName" placeholder = "Activity Name"> </td>
 						</tr>
 						<tr>
 							<td><label>Activity Date </label> </td>
-							<td><input type="text" ng-model="activityDate" ></td>
+							<td><input type="text" ng-model="activityDate" placeholder = "dd/mm/yyyy" ></td>
 						</tr>
 						<tr>
 							<td><label>Activity Category </label></td>

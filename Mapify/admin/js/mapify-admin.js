@@ -81,7 +81,10 @@
     		}
        		
     		$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, category: $scope.activityCategory ,description: $scope.activityDescription });
-    		
+    		$scope.activityName = ' ';
+    		$scope.activityDate = ' ';
+    		$scope.activityCategory = ' ';
+    		$scope.activityDescription = ' ';
     		$scope.$apply();
     		return true;
     	}
@@ -114,8 +117,10 @@
     		}
     		
     		$scope.categories_list.push({ id: '0', name: $scope.CategoryName,description: $scope.CategoryDescription });
-    		
+    		$scope.CategoryName = ' ';
+       		$scope.CategoryDescription = ' ';
     		$scope.$apply();
+
     		return true;    			
     	};
     });
