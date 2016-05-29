@@ -74,8 +74,13 @@
     			alert("Insert Activity Date");
     			return;    			
     		}
-    		
-    		$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, description: $scope.activityCategory});
+    		if($scope.activityCategory == undefined)
+    		{
+    			alert("Insert Activity Category");
+    			return;    			
+    		}
+       		
+    		$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, category: $scope.activityCategory ,description: $scope.activityDescription });
     		
     		alert($scope.activityName);
     		$scope.$apply();
