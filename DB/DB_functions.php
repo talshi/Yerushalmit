@@ -1,9 +1,9 @@
 <?php
 
-public static function get_category_list_by_id()
+public static function get_category_list_by_id($id)
 	{
 		//option 1
-		/*$results = $wpdb->get_results( 'SELECT * FROM wp_categories WHERE option_id = $id', OBJECT );*/
+		/*$results = $wpdb->get_results( "SELECT * FROM wp_categories WHERE option_id = '$id'", OBJECT );*/
 		
 		//option 2
 		$results = $GLOBALS['wpdb']->get_results( 'SELECT * FROM wp_categories WHERE id = 1', OBJECT );
