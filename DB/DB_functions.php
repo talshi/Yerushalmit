@@ -50,8 +50,10 @@ public static function get_category_list()
 	return json_encode($results,JSON_PRETTY_PRINT);
 }
 
-// Integration with php code instead of return value in functions
+//------------------------------------------------------------------------------------------
+//include class.
+//for example:
 /*<script type="text/javascript">
-	var category = <?php echo json_encode($results, JSON_PRETTY_PRINT) ?>;
+	var category = <?php echo Tables::get_activity_list_by_id() ?>;
 </script>*/
 
