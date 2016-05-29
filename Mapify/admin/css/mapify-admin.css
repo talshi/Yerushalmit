@@ -161,15 +161,19 @@ th {
 	margin:5px;
 	padding: 5px;
 }
-#IdInsertTable , th, td {
-	border: 1px solid black;
-	padding-bottom: 1em;
-	margin:10px;
-	padding: 10px;
-	margin-left: 15px;
-    vertical-align: bottom;
 
+#IdInsertTable {
+	width: 100%;
 }
+
+#IdInsertTable {
+	padding: 15px;
+}
+
+#IdInsertTable > td, th {
+	padding: 15px;
+}
+
 #editonButton{
 	width: 100%;
 	background-color:inactiveborder;
@@ -184,4 +188,8 @@ th {
 	rows="4"; 
 	cols="40";
 	background-color: white;
+}
+
+.activities-control {
+	margin: 10px 0px;
 }

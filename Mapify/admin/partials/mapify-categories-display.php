@@ -25,8 +25,9 @@
 		</tr>
 	</table>
 	<div>
-		<input type="button" value="Add new Category" data-toggle='modal' data-target="#myModal" /> 
-		<input type="button" value="remove selected" id="IDdeleteSelectedCategory" />
+	<!-- ERROR!! -->
+		<input type="button" value="Add New Category" data-toggle="modal" data-target="#myModal" />
+		<input type="button" value="Remove Selected" id="IDdeleteSelectedCategory" />
 		 <input	type="button" value="Delete All" id="IDdeleteAllCategory" />
 	</div>
 
@@ -42,7 +43,7 @@
 						<table id="IdInsertTableCategory">
 							<tr>
 								<td><label>Category Name </label></td>
-								<td><input type="text" ng-model="CategoryName" placeholder="Category Name"></td>
+								<td><input type="text" id ="IDDCategoryName"ng-model="CategoryName" placeholder="Category Name"></td>
 							</tr>
 							<tr>
 								<td><label>Description </label></td>

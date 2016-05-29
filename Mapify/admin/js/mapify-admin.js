@@ -61,6 +61,16 @@
                                { id: '6', name: 'F', date: '13/12/2010',category:'E', description: 'blablabla3'},                              
                                { id: '7', name: 'G', date: '12/12/1996',category:'F', description: 'blablabla3'}
                                ];
+    	$scope.categories_list = [
+                                  { name: 'Berale', description: 'category1'},
+                                  { name: 'BeraleBerale', description: 'category2'},
+                                  { name: 'CCCCCCCCCCCCCC', description: 'category3'},
+                                  { name: 'E', description: 'category4'},
+                                  { name: 'D', description: 'category5'},
+                                  { name: 'F', description: 'category6'},
+                                  { name: 'G', description: 'category7'},
+                                  { name: 'H', description: 'category8'}
+                                  ];
      	
     	$scope.addActivity = function() {
     		

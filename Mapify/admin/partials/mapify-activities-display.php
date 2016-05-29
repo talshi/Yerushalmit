@@ -11,9 +11,6 @@
 		<span id="popup"></span>
 	</div>
 
-	<label for="search">Search: </label> <input name="search" type="text"
-		ng-model="query" />
-	<!-- search bar -->
 	<div class="activities-table">
 		<table>
 			<tr>
@@ -28,7 +25,8 @@
 				<th>Edit</th>
 			</tr>
 			<tr
-				ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort " id="table">
+				ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort "
+				id="table">
 				<td><input id="" type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date }}</td>
@@ -37,8 +35,12 @@
 				<td><input type="button" id="" value="Edit"></td>
 			</tr>
 		</table>
-		<input type="button" value="Remove Selected" />
-		 <input type="button" value="Delete All" />
+		<div class="activities-control">
+			<!-- search bar -->
+			<label for="search">Search:</label> <input name="search" type="text"
+				ng-model="query" /> <input type="button" value="Remove Selected" />
+			<input type="button" value="Delete All" />
+		</div>
 	</div>
 
 
@@ -51,40 +53,48 @@
 					<h4 class="modal-title">Add Activity</h4>
 				</div>
 				<form class="modal-body" role="form" ng-submit="addActivity()">
-					
-							<label>Location: </label>
-							<span id="location"></span>
-							
-					<table id = "IdInsertTable">
+
+					<label>Location: </label> <span id="location"></span>
+
+					<table id="IdInsertTable" class="table table-hover">
 						<tr>
-							<td><label>Activity Name </label> </td>
-							<td><input type="text" ng-model="activityName" placeholder = "Activity Name"> </td>
+							<td><label>Activity Name </label></td>
+							<td><input type="text" ng-model="activityName"
+								placeholder="Activity Name"></td>
 						</tr>
 						<tr>
-							<td><label>Activity Date </label> </td>
-							<td><input type="text" ng-model="activityDate" placeholder = "dd/mm/yyyy" ></td>
+							<td><label>Activity Date </label></td>
+							<td><input type="text" ng-model="activityDate"
+								placeholder="dd/mm/yyyy"></td>
 						</tr>
 						<tr>
 							<td><label>Activity Category </label></td>
-							<td><input type="text" ng-model="activityCategory"></td>
+<!-- 							<td><input type="text" ng-model="activityCategory"></td> -->
+							<td>
+							<select>
+								<option ng-repeat="category in categories_list" value="{{category.name}}">{{category.name}}</option>
+							</select>
+							</td>
 						</tr>
 						<tr>
 							<td><label>Description </label></td>
-							<br><br>
-							<td><textarea type="text" ng-model="activityDescription"  rows="4" cols="40"> </textarea></td>
-							
+							<br>
+							<br>
+							<td><textarea type="text" ng-model="activityDescription" rows="4"
+									cols="40"> </textarea></td>
+
 						</tr>
 					</table>
-					
+
 					<div id="upload_image_admin">
-						<div id="upload_note"> Enter an URL or upload an image</div>
+						<div id="upload_note">Enter an URL or upload an image</div>
 						<div id="upload_image_container">
 
 							<label id="upload_map_label" for="upload_image">Upload Image</label>
-							<input id="upload_image" type="text" size="36"
-								name="upload_image" value="" /> <input id="upload_image_button"
-								type="button" value="Upload Image" /> <input id="save_button"
-								type="button" value="Save Image" /> <br />
+							<input id="upload_image" type="text" size="28"
+								name="upload_image" value="" />
+								<input id="upload_image_button" type="button" value="Upload Image" />
+								<input id="save_button" type="button" value="Save Image" /> <br />
 							</td>
 						</div>
 					</div>
@@ -93,7 +103,7 @@
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						<!-- add item to DB.... -->
 						<button id="save-button" class="btn btn-default" type="submit"
-							action="">Save</button>
+							action="" data-dismiss="modal">Save</button>
 					</div>
 
 				</form>
@@ -128,7 +138,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button id="save-button" type="button" class="btn btn-default">Save</button>
+				<button id="save-button" type="button" class="btn btn-default" data-dismiss="modal">Save</button>
 			</div>
 		</div>
 
@@ -180,7 +190,6 @@
 
 </script>
 
-<
 <script type="text/javascript">
 function getFinishPoint(x,y){
     var div = document.getElementById("image-activities");
