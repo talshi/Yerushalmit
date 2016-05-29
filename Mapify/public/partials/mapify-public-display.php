@@ -17,7 +17,7 @@ function display($atts)
 {
     $content = '';
     
-    
+    $content .= '<div id="mapify">';
     
     
     $content .= '<div id="map">';      //the map div - show the plugin
@@ -42,13 +42,21 @@ function display($atts)
 
     
     
-$content .= '</div>';
+    $content .= '</div>';   //div with id="map"
+    
+    $content .= '<div id="contentActivity">
+                <a name = "contentActivityRef"></a>
+                <p id="contentActivityText"></p>';
+    
+    
+    $content .= '</div>';   //div with id="contentActivity"
+
+    
+    $content .= '</div>';   //div with id="mapify"
     
     
     
-    
-    
-$content .= "\n<script>
+    $content .= "\n<script>
                 //console.log(jQuery('#bubbleImg').height());
                 //jQuery('#bubble').css({'height': jQuery('#bubbleImg').height(), 'width': jQuery('#bubbleImg').width() });
                 jQuery('#bubbleText').css({ 'width': jQuery('#bubble').width() });
@@ -79,17 +87,22 @@ $content .= "\n<script>
                     else if(activityId == 'activity2')
                         title = 'כותרת פעילות 2';
                         
-                    var link = '<br/><br/><a id=\"linkReadMore\">קרא עוד></a>';
+                    var link = '<br/><br/><a id=\"readMoreLink\" href=\"#contentActivityRef\"  onClick=onClickReadMore()>קרא עוד></a>';
                     
                     jQuery('#textTitle').text(title);
                     jQuery('#bubbleText').text(textForBubble);
                     jQuery('#bubbleText').append(link);
                 });
+                
+                function onClickReadMore()
+                {
+                console.log(\"aluma\");
+                    jQuery(\"#contentActivityText\").text(\"תוכן פעילות מתחלף תוכן פעילות מתחלף תוכן פעילות מתחלף תוכן פעילות מתחלף תוכן פעילות מתחלף תוכן פעילות מתחלף תוכן פעילות מתחלף \");
+                }
                 </script>";
     
     return $content;
 }
-http://cdn.shopify.com/s/files/1/0245/5665/products/BubbleTextCoaster_05_1024x1024.jpg?v=1439796076
 
 
 add_shortcode('custom-mapify', 'display');

@@ -39,7 +39,13 @@
     width: 307px;
 }
 
-#linkReadMore {
+#readMoreLink {
     cursor: pointer;
     border-bottom: none;
+}
+
+
+#contentActivity {
+    height: auto;
+    width: auto;
 }
