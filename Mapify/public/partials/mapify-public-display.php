@@ -19,10 +19,15 @@ function display($atts)
     
     $content .= '<div id="mapify">';
     
+    $content .= '<div id="categories">';
+    $content .= '<img id="category1" class="categories" src="http://yerushalmitmovement.com/wp-content/uploads/2016/05/cropped-0012.jpg"></img>';
+    $content .= '</div>';
+    
     
     $content .= '<div id="map">';      //the map div - show the plugin
     
   //  $content .= '<img id="image1" style="width: 100%; position: relative;" src="' . getImgURL() . '"/>';
+    
     
     
     
@@ -87,17 +92,45 @@ function display($atts)
                     else if(activityId == 'activity2')
                         title = 'כותרת פעילות 2';
                         
-                    var link = '<br/><br/><a id=\"readMoreLink\" href=\"#contentActivityRef\"  onClick=onClickReadMore()>קרא עוד></a>';
                     
+                    var link = '<br/><br/><a class=\"link\" id=aaa href=\"#contentActivityRef\"  onClick=onClickReadMore() style=\"cursor: pointer; border-bottom: none;\">קרא עוד></a>';
+                    
+                    var linkId = activityId;
+                    jQuery('.link').attr('id');
                     jQuery('#textTitle').text(title);
                     jQuery('#bubbleText').text(textForBubble);
                     jQuery('#bubbleText').append(link);
                 });
-                
+                jQuery('.categories').hover(
+                function(){
+           
+                    var categoryId = jQuery(this).attr('id');
+                    
+                    var textForBubble = '';
+                    if(categoryId == 'category1')
+                        textForBubble += ' טקסט מתחלף קטגוריה 1  טקסט מתחלף קטגוריה 1  טקסט מתחלף קטגוריה 1  טקסט מתחלף קטגוריה 1 טקסט מתחלף קטגוריה 1 ';
+                    else if(categoryId == 'category2')
+                        textForBubble += ' טקסט מתחלף קטגוריה 2 טקסט מתחלף קטגוריה 2 טקסט מתחלף קטגוריה 2 טקסט מתחלף קטגוריה 2 טקסט מתחלף קטגוריה 2 ';
+                                            
+                    var title;
+                    if(categoryId == 'category1')
+                        title = 'כותרת קטגוריה 1';
+                    else if(categoryId == 'category2')
+                        title = 'כותרת קטגוריה 2';
+                        
+                    
+                    jQuery('#textTitle').text(title);
+                    jQuery('#bubbleText').text(textForBubble);
+                });
                 function onClickReadMore()
                 {
-                console.log(\"aluma\");
-                    jQuery(\"#contentActivityText\").text(\"תוכן פעילות מתחלף תוכן פעילות מתחלף תוכן פעילות מתחלף תוכן פעילות מתחלף תוכן פעילות מתחלף תוכן פעילות מתחלף תוכן פעילות מתחלף \");
+                    var activityId = (jQuery('.link').attr('id'));
+                    console.log(activityId);
+                    //if(activityId == 'activity1')
+                        contentText = 'תוכן משתנה פעילות תוכן משתנה פעילות תוכן משתנה פעילות תוכן משתנה פעילות ';
+                    //else if(activityId == 'activity2')
+                        //contentText = 'תוכן משתנה פעילות 2 תוכן משתנה פעילות 2 תוכן משתנה פעילות 2 תוכן משתנה פעילות 2 תוכן משתנה פעילות 2 תוכן משתנה פעילות 2';
+                    jQuery('#contentActivityText').text(contentText);
                 }
                 </script>";
     

@@ -7,6 +7,21 @@
         cursor: pointer;
 }
 
+#categories {
+    width: 100px;
+    height: 856px;
+    display: inline-block;
+    padding: 0px;
+}
+
+#mapify {
+    width: 793.55px;
+    height: auto;
+    padding: 0px;
+    margin: 0px;
+    float: right;
+}
+
 #map {
     position: relative;
     width: 100%;
@@ -15,6 +30,8 @@
     background-size: 600px 856px;
     height: 856px;
     width: 600px;
+    display: inline-block;
+    padding: 0px;
 }
 
 #image1 {
@@ -48,4 +65,14 @@
 #contentActivity {
     height: auto;
     width: auto;
+}
+
+.categories {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+    float: right;
+    cursor: pointer;
 }
