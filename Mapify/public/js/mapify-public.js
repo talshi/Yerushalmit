@@ -29,7 +29,11 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+<<<<<<< HEAD
 
 
 })( jQuery );
 
+=======
+})( jQuery );
+>>>>>>> 85e19db9fde484bf5d9fcc587fa20479954a4e54

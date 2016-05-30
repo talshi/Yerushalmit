@@ -1,6 +1,7 @@
 /**
  * All of the CSS for your public-facing functionality should be
  * included in this file.
+<<<<<<< HEAD
  */
 
 .tag:hover {
@@ -76,3 +77,6 @@
     float: right;
     cursor: pointer;
 }
+=======
+ */
+>>>>>>> 85e19db9fde484bf5d9fcc587fa20479954a4e54
