@@ -1,4 +1,7 @@
-`
+
+<div ng-app="wp_mapify_app">
+	<div id="manage_caption">Manage Activities</div>
+
 <div class="space" ng-app="wp_mapify_app" ng-controller="activitiesCtrl">
 	<h1>Manage Activities</h1>
 
@@ -7,13 +10,20 @@
 	<div id="map">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"
+			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.png"></img>
+        <span id="popup"></span>
 			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.jpg"></img>
-		<span id="popup"></span>
 	</div>
 
 	<div class="activities-table">
 		<table>
 			<tr>
+				<th>Activity Name</th>
+				<th>Date</th>
+				<th>Description</th>
+				<th>Remove</th>
+			</tr>
+			<tr ng-repeat="activity in activities_list">
 				<th>#</th>
 				<th id="IDactivity-name" ng-model="name"
 					ng-click="sortBy='name'; reverseSort=!reverseSort">Activity Name</th>
@@ -32,6 +42,10 @@
 				<td>{{ activity.date }}</td>
 				<td>{{ activity.category }}</td>
 				<td>{{ activity.description }}</td>
+				<td><input type="checkbox" /></td>
+			</tr>
+		</table>
+		<input id="remove-button" type="button" value="Remove Selected" />
 				<td><input type="button" id="" value="Edit"></td>
 			</tr>
 		</table>
@@ -43,7 +57,7 @@
 		</div>
 	</div>
 
-
+<!-- Popup window for new activity -->
 	<div id="myModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -113,6 +127,14 @@
 	</div>
 </div>
 
+<!-- Popup window for edit activity -->
+    <div id="myImg" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Add Activity</h4>
 <div id="myImg" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 		<!-- Modal content-->
@@ -175,6 +197,8 @@
 
     jQuery("#save-button").click(function (e) {
         // TODO validation of forms
+        var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/marker.png' data-toggle='modal' data-target='#myImg'></img>";
+        jQuery("#image-activities").after(m);
 
 		var point = getFinishPoint(x,y); // return the fix X & Y after validation
         var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
