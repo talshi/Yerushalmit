@@ -63,6 +63,22 @@ public static function get_activity_list()
 	return json_encode($results,JSON_PRETTY_PRINT);
 }
 
+
+
+public static function get_activity_url_by_id($id)
+{
+	//select sql
+	$sqlResults = $GLOBALS['wpdb']->get_results( "SELECT logoUrl FROM wp_categories WHERE id = '$id'", OBJECT );
+	
+	//convert to json and return the array
+	$sqlResults = json_encode($sqlResults,JSON_PRETTY_PRINT);
+		
+}
+
+/*$ to test the output :
+	consolelog = "<script>console.log($sqlResults);</script>";
+	echo $consolelog;*/	
+	
 //------------------------------------------------------------------------------------------
 //include class.
 //for example:
