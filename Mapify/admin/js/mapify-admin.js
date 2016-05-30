@@ -1,7 +1,6 @@
-
-
 (function ($) {
 
+	
     var wp_mapify_app = angular.module('wp_mapify_app', ['ngRoute', 'ngAnimate']);
 
     /*
@@ -24,11 +23,6 @@
                 templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-categories-display.php',
                 controller: 'categoriesCtrl',
                 controllerAs: 'categories'
-            })
-            .when('/preview', {
-                templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-preview-display.php',
-                controller: 'previewCtrl',
-                controllerAs: 'preview'
             })
             .otherwise({
                 redirectTo: '/map'
@@ -57,11 +51,6 @@
     	$scope.sortBy = 'name';
     	
     	$scope.activities_list = [
-<<<<<<< HEAD
-                               { name: 'Berale', date: '20/12/2005', description: 'blablabla', edit : ' '},
-                               { name: 'Berale2', date: '21/12/2005', description: 'blablabla2' , edit : ' '},
-                               { name: 'Berale3', date: '22/12/2005', description: 'blablabla3' , edit : ' '}
-=======
                                { id: '1', name: 'A', date: '1/12/2008',category:'A', description: 'blablabla'},
                                { id: '2', name: 'B', date: '21/12/2009',category:'B', description: 'blablabla2'},
                                { id: '3', name: 'C', date: '12/12/2010',category:'D', description: 'blablabla3'},
@@ -69,7 +58,6 @@
                                { id: '5', name: 'E', date: '12/11/2010',category:'G', description: 'blablabla3'},
                                { id: '6', name: 'F', date: '13/12/2010',category:'E', description: 'blablabla3'},                              
                                { id: '7', name: 'G', date: '12/12/1996',category:'F', description: 'blablabla3'}
->>>>>>> 32761ea7137921484df50f24fd9014bc4f586e2f
                                ];
     	$scope.categories_list = [
                                   { name: 'Berale', description: 'category1'},
@@ -94,11 +82,11 @@
     			alert("Insert Activity Date");
     			return false;    			
     		}
-    		if($scope.activityCategory == undefined)
-    		{
-    			alert("Insert Activity Category");
-    			return false;    			
-    		}
+//    		if($scope.activityCategory == undefined)
+//    		{
+//    			alert("Insert Activity Category");
+//    			return false;    			
+//    		}
        		
     		$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, category: $scope.activityCategory ,description: $scope.activityDescription });
     		$scope.activityName = ' ';
@@ -125,24 +113,6 @@
                                   { name: 'G', description: 'category7'},
                                   { name: 'H', description: 'category8'}
                                   ];
-<<<<<<< HEAD
-    });
-
-    /*
-     * END CONTROLLERS
-     */
-    
-    /*
-     * MAPIFY-ACTIVITIES-DISPLAY SCRIPTS
-     */
-    
-    // This code will recognize a click on the image and load the exact coordinates
-
-
-    /*
-     * END MAPIFY-ACTIVITIES-DISPLAY SCRIPTS
-     */
-=======
     	
     	$scope.addCategory = function(){
     		
@@ -158,24 +128,9 @@
     		$scope.CategoryName = ' ';
        		$scope.CategoryDescription = ' ';
     		$scope.$apply();
->>>>>>> 32761ea7137921484df50f24fd9014bc4f586e2f
 
     		return true;    			
     	};
     });
     
 })(jQuery);
-
-
-function sort(kind){
-	if(kind == 0)
-	{
-		alert("activity-name - sort");
-		var list = getActivitiyList();
-	}
-	if(kind == 1)
-	{
-		alert("id - sort");
-	}
-		
-}
