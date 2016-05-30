@@ -2,7 +2,8 @@
 
 (function ($) {
 
-    var wp_mapify_app = angular.module('wp_mapify_app', ['ngRoute', 'ngAnimate']);
+	
+    var wp_mapify_app = angular.module('wp_mapify_app', ['ngRoute']);
 
     /*
     v * ROUTING CONFIGURATIONS
@@ -24,11 +25,6 @@
                 templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-categories-display.php',
                 controller: 'categoriesCtrl',
                 controllerAs: 'categories'
-            })
-            .when('/preview', {
-                templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-preview-display.php',
-                controller: 'previewCtrl',
-                controllerAs: 'preview'
             })
             .otherwise({
                 redirectTo: '/map'

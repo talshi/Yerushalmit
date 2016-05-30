@@ -1,41 +1,20 @@
 
-<div id="php"></div>
-<div id="manage_caption">Manage Map</div>
-<div class="note">Enter an URL or upload an image for the banner.</div>
+<div id="manage_map_caption">Manage Map</div>
+<div id="upload_note">Enter an URL or upload an image for the banner.</div>
 <div id="upload_image_container">
-	<label id="upload_map_label" for="upload_image">Upload Image</label> <input
-		id="upload_image" type="text" size="36" name="upload_image" value="" />
-	<input id="upload_image_button" type="button" value="Upload Image" /> <input
-		id="save_button" type="button" value="Save Image" /> <br />
+    <label id="upload_map_label" for="upload_image">Upload Image</label>
+    <input id="upload_image" type="text" size="36" name="upload_image" value="" />
+    <input id="upload_image_button" type="button" value="Upload Image" />
+    <input id="save_button" type="button" value="Save Image" />
+    <br />
 </div>
 <div>
-	<div>
-		<label id="preview_label" class="page-header"></label>
-	</div>
-	<div>
-		<img id="img_preview" class="img_preview"></img>
-	</div>
+    <div><label id="preview_label" class="page-header"></label></div>
+    <div><img id="img_preview" class="img_preview"></img></div>
 </div>
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
-    	$("#save_button").click(function() {
-    		img_url = jQuery("#upload_image").val();
-			$.ajax({
-				url: "../wp-content/plugins/Mapify/admin/core.php",
-				type: "POST",
-				data: {
-					'img_url': img_url
-				},
-				success: function(data) {
-					console.log(data);
-				},
-				error: function(error) {
-					console.log(error);
-				}
-			});
-        });
-        
         $("#upload_image_button").click(function (e) {
             e.preventDefault();
             var image = wp.media({
@@ -56,11 +35,7 @@
                 $("#img_preview").attr("src", image_link);
             });
         });
-
-        
     });
-
-        
 </script>
 
 
