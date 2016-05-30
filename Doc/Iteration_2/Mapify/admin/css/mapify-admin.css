@@ -119,92 +119,11 @@ th {
 	height: 25px;
 	position: absolute;
 	left: 0;
-	transition: 0.5s;
 }
 
 .marker:hover {
-    width:  25px;
-    height:  25px;
+    width:  35px;
+    height:  35px;
     left:  0;
     position: absolute;
-    cursor : pointer
-}
-
-<<<<<<< HEAD
-.view-animate.ng-enter, .view-animate.ng-leave {
-  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
-  width:100%;
-  position:absolute;
-  top:88px;
-  left:0;
-  right:0;
-  bottom:0;
-    
-}
-
-.view-animate.ng-enter {
-  left:100%;
-}
-.view-animate.ng-enter.ng-enter-active {
-  left:0;
-}
-.view-animate.ng-leave.ng-leave-active {
-  left:-100%;
-=======
-#map{
-    position: relative;
-}
-#IDDate {
-	
-}
-#IDDate:hover{
-  background-color: yellow; 
-   cursor: pointer;
-}
-
-#IDactivity-name:hover{
-  background-color: yellow; 
-   cursor: pointer;
-}
-#IDcategory-name:hover{
-  background-color: yellow; 
-   cursor: pointer;	
-}
-#table > td{
-	padding-bottom: 1em;
-	margin:5px;
-	padding: 5px;
-}
-
-#IdInsertTable {
-	width: 100%;
-}
-
-#IdInsertTable {
-	padding: 15px;
-}
-
-#IdInsertTable > td, th {
-	padding: 15px;
-}
-
-#editonButton{
-	width: 100%;
-	background-color:inactiveborder;
-	
-}
-#IdInsertTableCategory ,th , td{
-		margin:10px;
-	padding: 10px;
-	margin-left: 15px;
-}
-#IDareaText{
-	rows="4"; 
-	cols="40";
-	background-color: white;
-}
-
-.activities-control {
-	margin: 10px 0px;
->>>>>>> map
 }
