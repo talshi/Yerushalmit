@@ -1,4 +1,4 @@
-`
+
 <div class="space" ng-app="wp_mapify_app" ng-controller="activitiesCtrl">
 	<h1>Manage Activities</h1>
 
@@ -7,7 +7,7 @@
 	<div id="map">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"
-			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.jpg"></img>
+			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.jpg" onclick = "createCoords(event)"></img>
 		<span id="popup"></span>
 	</div>
 
@@ -85,9 +85,7 @@
 							<td><label>Description </label></td>
 							<br>
 							<br>
-							<td><textarea type="text" ng-model="activityDescription" rows="4"
-									cols="40"> </textarea></td>
-
+							<td><textarea type="text" ng-model="activityDescription" rows="4" cols="40"> </textarea></td>
 						</tr>
 					</table>
 
@@ -110,7 +108,7 @@
 						
 						<!-- add item to DB.... -->
 						
-						<button id="save-button" class="btn btn-default" type="submit" action="" data-dismiss="modal" ng-click = "addActivity()">Save</button>
+						<button id="save-button" class="btn btn-default" type="submit" action="" data-dismiss="modal" ng-click = "addActivity()"  >Save</button>
 					</div>
 
 				</form>
@@ -154,87 +152,6 @@
 
 	</div>
 </div>
-</div>
-
-<script>
-    var index = 0;
-    var x;
-    var y;
-    // Find cooridinates and normalize it according to image
-    jQuery("#image-activities").click(function (e) {
-        var pageCoords = getCoords(this);
-        var clickX = e.clientX;
-        var clickY = e.clientY;
-
-
-	    x = ((clickX - pageCoords.left) * 100) / jQuery("#image-activities").width();
-        y = ((clickY - pageCoords.top) * 100) / jQuery("#image-activities").height();
-
-        jQuery("#location").html("X: " + x + " Y: " + y);
-    });
-
-    function getCoords(elem) {
-        var r = elem.getBoundingClientRect();
-        return { top: r.top, left: r.left };
-    }
-    // Set size of image
-    var newwidth;
-    jQuery(document).ready(function () {
-        jQuery("#image-activities").width(newwidth);
-    });
-
-    jQuery("#save-button").click(function (e) {
-        // TODO validation of forms
-		
-        var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
-        jQuery("#image-activities").after(m);
-		
-		// add activity to table
-		
-		// --
-		var point = getFinishPoint(x,y); // return the fix X & Y after validation
-		alert(point.x);
-        jQuery("#img-marker" + index).css({
-            "top": point.y,
-            "left": point.x
-        });
-        index++;
-    });
-
-</script>
-
-<script type="text/javascript">
-function getFinishPoint(x,y){
-    var div = document.getElementById("image-activities");
-    var rect = div.getBoundingClientRect();
-	
-	   var x_left = rect.left;
-	   var y_top = rect.top;
-	   var w_ = rect.right - rect.left;
-	   var h_ = rect.bottom - rect.top;
-		var x_finish;
-		var y_finish;
-	if( (y/100)*h_ < 25 )  // keep the marker in map from top!!
-		y_finish = ((100)*(25))/(h_);			
-	else
-		y_finish = (y / 100) * h_ - (25);		
-	
-	if( (x/100)*w_ < 12.5 )  // keep the marker in map from left!!
-	{	
-			x_finish = ((100)*(12.5))/(w_);
-	}
-	else if ((w_ - (x*w_)/100 < 12.5)) // keep the marker in map from right!!
-	{					
-			x_finish = w_ - 25;
-	}	
-	else{
-	     	   x_finish = (x / 100) * w_  - 12.5;
-		}	
-	return {x: x_finish, y:y_finish};
-}
-	
-
-</script>
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
