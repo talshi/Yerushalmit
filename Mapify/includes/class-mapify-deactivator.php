@@ -31,6 +31,7 @@ class Mapify_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
+		require_once dirname(__DIR__) . '\admin\create_DB_tables.php';
 		Tables::delete_all();
 	}
 }

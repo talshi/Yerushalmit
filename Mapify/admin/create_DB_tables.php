@@ -15,10 +15,15 @@ class Tables
 		if ($wpdb->get_var ( 'SHOW TABLES LIKE ' . $table_name ) != $table_name)
 		{
 			
-			$sql = "CREATE TABLE $table_name ( 
+			/*$sql = "CREATE TABLE $table_name ( 
 				url varchar(55) DEFAULT '' NOT NULL
 				
-			)";
+			)";*/
+			
+			$sql = 'CREATE TABLE ' . $table_name . '(
+				map_id int,
+				map_url VARCHAR(20000),
+				PRIMARY KEY (map_id))';
 			
 			// make dbDelta() available
 			require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
@@ -26,6 +31,12 @@ class Tables
 			dbDelta ( $sql );
 			
 			update_option ( 'map_db_version', $map_db_version );
+			
+			// set default image, because the table is already build ??
+			if (null == $wpdb->get_var ( 'SELECT map_url FROM ' . $wpdb->prefix . 'map' ))
+			{
+				$wpdb->replace( 'wp_map', array('map_id'=> 555, 'map_url' => "C:/Users/User/Desktop/Gabriela/myPlaylist/img/logo.jpg"), array('%d', '%s') );
+			}
 
 		}
 	}
@@ -181,6 +192,13 @@ class Tables
 		}
 	}
 
-
+	public static function get_activity_list_by_id($id)
+	{
+		//select sql
+		$sqlResults = $GLOBALS['wpdb']->get_results( "SELECT * FROM wp_activities WHERE id = '$id'", OBJECT );
+	
+		//convert to json and return the array
+		return json_encode($sqlResults,JSON_PRETTY_PRINT);
+	}
 }
 

@@ -3,12 +3,15 @@
  * included in this file.
  */
 
-#manage_caption {
+#manage_map_caption {
+    padding: 0px 15px;
     font-size: 24px;
 }
 
 #upload_image_container {
     padding: 25px 10px;
+    margin-left: 5px;
+    
 }
 
 #upload_image_container > input {
@@ -19,16 +22,17 @@
     border-radius: 5px;
 }
 
+#upload_note {
+    padding: 0px 15px;
+    font-size: 12px;
+}
+
 .partial-view {
     background-color: #fff;
 }
 
 .img_preview {
     width: 100%;
-}
-
-.note {
-	font-size: 12px;
 }
 
 a.selected {
@@ -63,18 +67,19 @@ label {
   padding-bottom: 8px;
 }
 
-#map{
-    position: relative;
-    padding: 10px 0px;
-}
-
 #image-activities {
     width: 100%;
     margin: auto;
+    
+    vertical-align: middle;
 }
 
 #image-activities:hover {
     cursor: crosshair;
+}
+
+.note {
+    font-size: 12px;
 }
 
 #mapify-caption:before {
@@ -92,7 +97,7 @@ label {
 
 .activities-table table {
 	border: 2px solid black;
-	margin: 5px 0px;
+	
 }
 
 .activities-table tr:nth-child(even) {background: #cce6ff}
@@ -106,8 +111,8 @@ th {
 	text-align: center;
 }
 
-#remove-button {
-	float: right;
+.space div {
+	padding-bottom: 10px;
 }
 
 .space-bottom {
@@ -119,11 +124,95 @@ th {
 	height: 25px;
 	position: absolute;
 	left: 0;
+	transition: 0.5s;
 }
 
 .marker:hover {
-    width:  35px;
-    height:  35px;
+    width:  25px;
+    height:  25px;
     left:  0;
     position: absolute;
+    cursor : pointer
+}
+
+.view-animate.ng-enter, .view-animate.ng-leave {
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+  width:100%;
+  position:absolute;
+  top:88px;
+  left:0;
+  right:0;
+  bottom:0;
+    
+}
+
+.view-animate.ng-enter {
+  left:100%;
+}
+.view-animate.ng-enter.ng-enter-active {
+  left:0;
+}
+.view-animate.ng-leave.ng-leave-active {
+  left:-100%;
+}
+
+#map{
+    position: relative;
+}
+#IDDate {
+	
+}
+#IDDate:hover{
+  background-color: yellow; 
+   cursor: pointer;
+}
+
+#IDactivity-name{
+	
+}
+#IDactivity-name:hover{
+  background-color: yellow; 
+   cursor: pointer;
+}
+
+#IDcategory-name:hover{
+  background-color: yellow; 
+   cursor: pointer;	
+}
+#table > td{
+	padding-bottom: 1em;
+	margin:5px;
+	padding: 5px;
+}
+
+#IdInsertTable {
+	width: 100%;
+}
+
+#IdInsertTable {
+	padding: 15px;
+}
+
+#IdInsertTable > td, th {
+	padding: 15px;
+}
+
+#editonButton{
+	width: 100%;
+	background-color:inactiveborder;
+	
+}
+#IdInsertTableCategory ,th , td{
+		margin:10px;
+	padding: 10px;
+	margin-left: 15px;
+}
+#IDareaText{
+	rows="4"; 
+	cols="40";
+	background-color: white;
+}
+
+.activities-control {
+	margin: 10px 0px;
 }
