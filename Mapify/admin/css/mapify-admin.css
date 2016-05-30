@@ -135,9 +135,6 @@ th {
     cursor : pointer
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 .view-animate.ng-enter, .view-animate.ng-leave {
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
   width:100%;
@@ -157,8 +154,8 @@ th {
 }
 .view-animate.ng-leave.ng-leave-active {
   left:-100%;
-=======
->>>>>>> 32761ea7137921484df50f24fd9014bc4f586e2f
+}
+
 #map{
     position: relative;
 }
@@ -169,20 +166,15 @@ th {
   background-color: yellow; 
    cursor: pointer;
 }
-<<<<<<< HEAD
+
 #IDactivity-name{
 	
 }
-=======
-
->>>>>>> 32761ea7137921484df50f24fd9014bc4f586e2f
 #IDactivity-name:hover{
   background-color: yellow; 
    cursor: pointer;
 }
-<<<<<<< HEAD
 
-=======
 #IDcategory-name:hover{
   background-color: yellow; 
    cursor: pointer;	
@@ -223,6 +215,4 @@ th {
 
 .activities-control {
 	margin: 10px 0px;
->>>>>>> map
 }
->>>>>>> 32761ea7137921484df50f24fd9014bc4f586e2f

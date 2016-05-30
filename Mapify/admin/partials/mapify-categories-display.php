@@ -1,23 +1,4 @@
 
-
-<div id="manage_caption">Manage Categories</div>
-<div class="note">Organize your categories.</div><br>
-<div class="activities-table" ng-controller="activitiesCtrl">
-		<table>
-			<tr>
-				<th>#</th>
-				<th>Activity Name</th>
-				<th>Date</th>
-				<th>Description</th>
-			</tr>
-			<tr ng-repeat="category in categories_list">
-				<td><input type="checkbox" /></td>
-				<td>{{ category.name }}</td>
-				<td>{{ category.description }}</td>
-				<td>{{ category.tag }}</td>
-			</tr>
-		</table>
-		
 <h1>Manage Categories</h1>
 <div class="note">Organize your categories.</div>
 <br>
@@ -59,7 +40,7 @@
 					<h4 class="modal-title">Add New Catergory</h4>
 					<form class="modal-body" role="form" ng-submit="addCategory()">
 	
-						<table id="IdInsertTableCategory">
+						<table id="IdInsertTableCategory" class="table table-hover">
 							<tr>
 								<td><label>Category Name </label></td>
 								<td><input type="text" id ="IDDCategoryName"ng-model="CategoryName" placeholder="Category Name"></td>
@@ -91,7 +72,7 @@
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Close</button>
 							<!-- add item to DB.... -->
-							<button id="save-button" class="btn btn-default" type="submit">Save</button>
+							<button id="save-button" class="btn btn-default" type="submit" data-dismiss="modal">Save</button>
 						</div>
 
 					</form>
