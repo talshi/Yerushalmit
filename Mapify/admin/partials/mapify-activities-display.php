@@ -52,7 +52,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Add Activity</h4>
 				</div>
-				<form class="modal-body" role="form" ng-submit="addActivity()">
+				<form class="modal-body" role="form">
 
 					<label>Location: </label> <span id="location"></span>
 
@@ -69,12 +69,11 @@
 						</tr>
 						<tr>
 							<td><label>Activity Category </label></td>
-<!-- 							<td><input type="text" ng-model="activityCategory"></td> -->
-							<td>
-							<select>
-								<option ng-repeat="category in categories_list" value="{{category.name}}">{{category.name}}</option>
-							</select>
-							</td>
+							<!-- 							<td><input type="text" ng-model="activityCategory"></td> -->
+							<td><select>
+									<option ng-repeat="category in categories_list"
+										value="{{category.name}}">{{category.name}}</option>
+							</select></td>
 						</tr>
 						<tr>
 							<td><label>Description </label></td>
@@ -91,10 +90,10 @@
 						<div id="upload_image_container">
 
 							<label id="upload_map_label" for="upload_image">Upload Image</label>
-							<input id="upload_image" type="text" size="28"
-								name="upload_image" value="" />
-								<input id="upload_image_button" type="button" value="Upload Image" />
-								<input id="save_button" type="button" value="Save Image" /> <br />
+							<input id="upload_image" type="text" size="24"
+								name="upload_image" value="" /> <input id="upload_image_button"
+								type="button" value="Upload Image" /> <input id="save_button"
+								type="button" value="Save Image" /> <br />
 							</td>
 						</div>
 					</div>
@@ -103,7 +102,7 @@
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						<!-- add item to DB.... -->
 						<button id="save-button" class="btn btn-default" type="submit"
-							action="" data-dismiss="modal">Save</button>
+							action="" ng-submit = "addActivity()"  data-dismiss="modal" >Save</button>
 					</div>
 
 				</form>
@@ -138,7 +137,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button id="save-button" type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+				<button id="save-button" type="button" class="btn btn-default">Save</button>
 			</div>
 		</div>
 
@@ -159,12 +158,15 @@
 
 	    x = ((clickX - pageCoords.left) * 100) / jQuery("#image-activities").width();
         y = ((clickY - pageCoords.top) * 100) / jQuery("#image-activities").height();
+
         jQuery("#location").html("X: " + x + " Y: " + y);
     });
+
     function getCoords(elem) {
-        var r = elem.getBoundingClientRect();
+     	   var r = elem.getBoundingClientRect();
         return { top: r.top, left: r.left };
     }
+    
     // Set size of image
     var newwidth;
     jQuery(document).ready(function () {
@@ -173,14 +175,10 @@
 
     jQuery("#save-button").click(function (e) {
         // TODO validation of forms
-        var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
-        jQuery("#image-activities").after(m);
 
-		// add activity to table
-		
-		// --
 		var point = getFinishPoint(x,y); // return the fix X & Y after validation
-		
+        var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
+        jQuery("#image-activities").after(m);	
         jQuery("#img-marker" + index).css({
             "top": point.y,
             "left": point.x
@@ -206,18 +204,21 @@ function getFinishPoint(x,y){
 	else
 		y_finish = (y / 100) * h_ - (25);		
 	
-	if( (x*w_)/100 < 12.5 )  // keep the marker in map from left!!
+	if( (x/100)*w_ < 12.5 )  // keep the marker in map from left!!
+	{	
 			x_finish = ((100)*(12.5))/(w_);
+	}
 	else if ((w_ - (x*w_)/100 < 12.5)) // keep the marker in map from right!!
-			x_finish = w_- 25;	
-		else
-	        x_finish = (x / 100) * w_;			
-	return {x:x_finish , y:y_finish};
+	{					
+			x_finish = w_ - 25;
+	}	
+	else{
+	     	   x_finish = (x / 100) * w_  - 12.5;
+		}	
+	return {x: x_finish, y:y_finish};
 }
 	
-
 </script>
-
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {

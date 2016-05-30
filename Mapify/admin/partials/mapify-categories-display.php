@@ -40,7 +40,7 @@
 					<h4 class="modal-title">Add New Catergory</h4>
 					<form class="modal-body" role="form" ng-submit="addCategory()">
 	
-						<table id="IdInsertTableCategory">
+						<table id="IdInsertTableCategory" class="table table-hover">
 							<tr>
 								<td><label>Category Name </label></td>
 								<td><input type="text" id ="IDDCategoryName"ng-model="CategoryName" placeholder="Category Name"></td>
@@ -72,7 +72,7 @@
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Close</button>
 							<!-- add item to DB.... -->
-							<button id="save-button" class="btn btn-default" type="submit">Save</button>
+							<button id="save-button" class="btn btn-default" type="submit" data-dismiss="modal">Save</button>
 						</div>
 
 					</form>

@@ -84,11 +84,11 @@
     			alert("Insert Activity Date");
     			return false;    			
     		}
-    		if($scope.activityCategory == undefined)
-    		{
-    			alert("Insert Activity Category");
-    			return false;    			
-    		}
+//    		if($scope.activityCategory == undefined)
+//    		{
+//    			alert("Insert Activity Category");
+//    			return false;    			
+//    		}
        		
     		$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, category: $scope.activityCategory ,description: $scope.activityDescription });
     		$scope.activityName = ' ';
