@@ -48,12 +48,10 @@ class Mapify_Admin {
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version )
-	{
+	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	/**
@@ -61,8 +59,7 @@ class Mapify_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() 
-	{
+	public function enqueue_styles() {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -145,11 +142,5 @@ class Mapify_Admin {
     public function display_admin_page() 
     {
         include_once( 'partials/mapify-admin-display.php');
-<<<<<<< HEAD
-=======
-        include_once( 'mapTable.php' );
-	include_once( 'categoriesTable.php' );
-	include_once('activitiesTable.php');
->>>>>>> dee2f8781ed9423add52f7e8aa090307d8b55ede
     }
 }
