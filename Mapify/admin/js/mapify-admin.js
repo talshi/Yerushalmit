@@ -53,13 +53,13 @@
     	$scope.sortBy = 'name';
     	
     	$scope.activities_list = [
-                               { id: '1', name: 'A', date: '1/12/2008',category:'A', description: 'blablabla'},
-                               { id: '2', name: 'B', date: '21/12/2009',category:'B', description: 'blablabla2'},
-                               { id: '3', name: 'C', date: '12/12/2010',category:'D', description: 'blablabla3'},
-                               { id: '4', name: 'D', date: '13/12/2010',category:'C', description: 'blablabla3'},
-                               { id: '5', name: 'E', date: '12/11/2010',category:'G', description: 'blablabla3'},
-                               { id: '6', name: 'F', date: '13/12/2010',category:'E', description: 'blablabla3'},                              
-                               { id: '7', name: 'G', date: '12/12/1996',category:'F', description: 'blablabla3'}
+                               { id: '1', name: 'A', date: '1/12/2008',category:'A',neighborhood: 'p', description: 'blablabla'},
+                               { id: '2', name: 'B', date: '21/12/2009',category:'B',neighborhood: 'p', description: 'blablabla2'},
+                               { id: '3', name: 'C', date: '12/12/2010',category:'D',neighborhood: 'p', description: 'blablabla3'},
+                               { id: '4', name: 'D', date: '13/12/2010',category:'C',neighborhood: 'p', description: 'blablabla3'},
+                               { id: '5', name: 'E', date: '12/11/2010',category:'G',neighborhood: 'p', description: 'blablabla3'},
+                               { id: '6', name: 'F', date: '13/12/2010',category:'E',neighborhood: 'p', description: 'blablabla3'},                              
+                               { id: '7', name: 'G', date: '12/12/1996',category:'F',neighborhood: 'p', description: 'blablabla3'}
                                ];
     	$scope.categories_list = [
                                   { name: 'Berale', description: 'category1'},
@@ -73,33 +73,41 @@
                                   ];
      	
     	$scope.addActivity = function() {
-    		
-    		if($scope.activityName == undefined)
-    		{
-    			alert("Insert Activity Name");
-    			return false;
-    		}
-    		if($scope.activityDate == undefined)
-    		{
-    			alert("Insert Activity Date");
-    			return false;    			
-    		}
-//    		if($scope.activityCategory == undefined)
+//
+//    		if($scope.activityName == ' ')
+//    		{
+//    			alert("Insert Activity Name");
+//    			return false;
+//    		}
+//    		if($scope.activityDate == ' ')
+//    		{
+//    			alert("Insert Activity Date");
+//    			return false;    			
+//    		}
+//    		if($scope.activityCategory == ' ')
 //    		{
 //    			alert("Insert Activity Category");
 //    			return false;    			
 //    		}
-       		
-    		$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, category: $scope.activityCategory ,description: $scope.activityDescription });
+//    		if($scope.neighborhood == ' ')
+//    		{
+//    			alert("Error: Insert Neighbrhood");
+//    			return false;
+//    		}
+//       		
+ 
+    		$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, neighborhood: $scope.neighborhood, category: $scope.activityCategory ,description: $scope.activityDescription });
+    		
     		$scope.activityName = ' ';
     		$scope.activityDate = ' ';
     		$scope.activityCategory = ' ';
     		$scope.activityDescription = ' ';
-    		$scope.$apply();
+    		$scope.neighborhood = ' ';
+    		
+    		//$scope.$apply();
+    	
     		return true;
     	}
-    	
-    	
     	
     });
 
@@ -119,7 +127,6 @@
     	$scope.addCategory = function(){
     		
     		alert($scope.CategoryName);
-    		
     		if($scope.CategoryName == undefined)
     		{
     			alert("Insert Category Name");

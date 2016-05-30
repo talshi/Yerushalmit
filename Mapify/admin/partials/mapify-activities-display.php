@@ -19,6 +19,7 @@
 					ng-click="sortBy='name'; reverseSort=!reverseSort">Activity Name</th>
 				<th id="IDDate" ng-model="date"
 					ng-click="sortBy='date'; reverseSort=!reverseSort">Date</th>
+				<th>neighborhood</th>
 				<th id="IDDate" ng-model="date"
 					ng-click="sortBy='category'; reverseSort=!reverseSort">Category</th>
 				<th>Description</th>
@@ -30,6 +31,7 @@
 				<td><input id="" type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date }}</td>
+				<td>{{ activity.neighborhood}}</td>
 				<td>{{ activity.category }}</td>
 				<td>{{ activity.description }}</td>
 				<td><input type="button" id="" value="Edit"></td>
@@ -52,7 +54,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Add Activity</h4>
 				</div>
-				<form class="modal-body" role="form">
+				<form class="modal-body" role="form" >
 
 					<label>Location: </label> <span id="location"></span>
 
@@ -67,6 +69,10 @@
 							<td><input type="text" ng-model="activityDate"
 								placeholder="dd/mm/yyyy"></td>
 						</tr>
+						<tr>
+							<td><label>Neighborhood </label></td>
+							<td><input type="text" ng-model="neighborhood" placeholder="neighborhood"></td>
+						</tr>						
 						<tr>
 							<td><label>Activity Category </label></td>
 							<!-- 							<td><input type="text" ng-model="activityCategory"></td> -->
@@ -99,10 +105,12 @@
 					</div>
 
 					<div class="modal-footer">
+						
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						
 						<!-- add item to DB.... -->
-						<button id="save-button" class="btn btn-default" type="submit"
-							action="" ng-submit = "addActivity()"  data-dismiss="modal" >Save</button>
+						
+						<button id="save-button" class="btn btn-default" type="submit" action="" data-dismiss="modal" ng-click = "addActivity()">Save</button>
 					</div>
 
 				</form>
@@ -134,6 +142,9 @@
 				<div>
 					<label>Activity Category: </label>
 				</div>
+				<div>
+					<label>neighborhood:</label>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -163,10 +174,9 @@
     });
 
     function getCoords(elem) {
-     	   var r = elem.getBoundingClientRect();
+        var r = elem.getBoundingClientRect();
         return { top: r.top, left: r.left };
     }
-    
     // Set size of image
     var newwidth;
     jQuery(document).ready(function () {
@@ -175,10 +185,15 @@
 
     jQuery("#save-button").click(function (e) {
         // TODO validation of forms
-
-		var point = getFinishPoint(x,y); // return the fix X & Y after validation
+		
         var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
-        jQuery("#image-activities").after(m);	
+        jQuery("#image-activities").after(m);
+		
+		// add activity to table
+		
+		// --
+		var point = getFinishPoint(x,y); // return the fix X & Y after validation
+		alert(point.x);
         jQuery("#img-marker" + index).css({
             "top": point.y,
             "left": point.x
@@ -218,6 +233,7 @@ function getFinishPoint(x,y){
 	return {x: x_finish, y:y_finish};
 }
 	
+
 </script>
 
 <script type="text/javascript">
