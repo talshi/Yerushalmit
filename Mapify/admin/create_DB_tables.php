@@ -182,6 +182,13 @@ class Tables
 		$wpdb->query($sql);
 	}
 
-
+	public static function get_activity_list_by_id($id)
+	{
+		//select sql
+		$sqlResults = $GLOBALS['wpdb']->get_results( "SELECT * FROM wp_activities WHERE id = '$id'", OBJECT );
+	
+		//convert to json and return the array
+		return json_encode($sqlResults,JSON_PRETTY_PRINT);
+	}
 }
 
