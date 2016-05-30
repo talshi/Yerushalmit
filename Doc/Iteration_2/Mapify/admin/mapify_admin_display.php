@@ -1,4 +1,6 @@
-
+<?php
+   
+?>
 
 <div ng-app="wp_mapify_app">
     <nav class="navbar navbar-default">
@@ -25,7 +27,5 @@
         <input type="text" ng-model="map">
         {{ map }}
     </div>
-
 </div>
 
-w

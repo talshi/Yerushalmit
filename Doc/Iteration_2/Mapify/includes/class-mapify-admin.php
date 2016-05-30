@@ -1,26 +1,26 @@
 <?php
 
 /**
- * The public-facing functionality of the plugin.
+ * The admin-specific functionality of the plugin.
  *
  * @link       http://example.com
  * @since      1.0.0
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/public
+ * @subpackage Plugin_Name/admin
  */
 
 /**
- * The public-facing functionality of the plugin.
+ * The admin-specific functionality of the plugin.
  *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/public
+ * @subpackage Plugin_Name/admin
  * @author     Your Name <email@example.com>
  */
-class Mapify_Public {
+class Mapify_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -44,7 +44,7 @@ class Mapify_Public {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
+	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
@@ -55,7 +55,7 @@ class Mapify_Public {
 	}
 
 	/**
-	 * Register the stylesheets for the public-facing side of the site.
+	 * Register the stylesheets for the admin area.
 	 *
 	 * @since    1.0.0
 	 */
@@ -73,12 +73,12 @@ class Mapify_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/mapify-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/plugin-name-admin.css', array(), $this->version, 'all' );
 
 	}
 
 	/**
-	 * Register the JavaScript for the public-facing side of the site.
+	 * Register the JavaScript for the admin area.
 	 *
 	 * @since    1.0.0
 	 */
@@ -96,19 +96,32 @@ class Mapify_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mapify-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mapify-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
-    
-   /* public function display_public_page() {
-        include_once( 'partials/mapify-public-display.php');
-    }*/
-    
 
+    public function add_plugin_admin_menu() {
 
+    /*
+     * Add a settings page for this plugin to the Settings menu.
+     *
+     * NOTE:  Alternative menu locations are available via WordPress administration menu functions.
+     *
+     *        Administration Menus: http://codex.wordpress.org/Administration_Menus
+     *
+     */
+        add_options_page( 'WP Mapify', 'WP Mapify', 'manage_options', $this->mapify, array($this, 'display_mapify_page'));
+    }
+
+    public function add_action_links( $links ) {
+        /*
+        *  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
+        */
+        $settings_link = array('<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_name ) . '">' . __('Settings', $this->plugin_name) . '</a>',);
+        return array_merge(  $settings_link, $links );
+    }
+
+    public function display_plugin_setup_page() {
+        include_once( 'partials/mapify-admin-display.php' );
+    }
 }
-
-include_once( 'partials/mapify-public-display.php');
-
-
-?>
