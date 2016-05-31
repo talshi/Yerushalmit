@@ -105,7 +105,7 @@
 //				return false;    			
 //				}
 
-				$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, category: $scope.activityCategory ,description: $scope.activityDescription });
+				$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, category: $scope.selectedCategory, description: $scope.activityDescription });
 				$scope.activityName = ' ';
 				$scope.activityDate = ' ';
 				$scope.activityCategory = ' ';
@@ -130,8 +130,6 @@
 
 			$scope.addCategory = function(){
 
-				alert($scope.CategoryName);
-
 				if($scope.CategoryName == undefined)
 				{
 					alert("Insert Category Name");
@@ -145,28 +143,28 @@
 
 				return true;    			
 			};
-			
+
 			jQuery("#upload_image_button").click(function (e) {
-	            e.preventDefault();
-	            var image = wp.media({
-	                title: 'Upload Image',
-	                multiple: false
-	            }).open()
-	            .on('select', function (e) {
-	                // This will return the selected image from the Media Uploader, the result is an object
-	                var uploaded_image = image.state().get('selection').first();
-	                // We convert uploaded_image to a JSON object to make accessing it easier
-	                // Output to the console uploaded_image
-	                //console.log(uploaded_image);
-	                var image_url = uploaded_image.toJSON().url;
-	                // Let's assign the url value to the input field
-	                jQuery('#upload_image').val(image_url)
-	                var image_link = $('#upload_image').val();
-	                jQuery("#preview_label").html("Preview:");
-	                jQuery("#img_preview").attr("src", image_link);
-	            });
-	        });
-			
+				e.preventDefault();
+				var image = wp.media({
+					title: 'Upload Image',
+					multiple: false
+				}).open()
+				.on('select', function (e) {
+					// This will return the selected image from the Media Uploader, the result is an object
+					var uploaded_image = image.state().get('selection').first();
+					// We convert uploaded_image to a JSON object to make accessing it easier
+					// Output to the console uploaded_image
+					//console.log(uploaded_image);
+					var image_url = uploaded_image.toJSON().url;
+					// Let's assign the url value to the input field
+					jQuery('#upload_image').val(image_url)
+					var image_link = $('#upload_image').val();
+					jQuery("#preview_label").html("Preview:");
+					jQuery("#img_preview").attr("src", image_link);
+				});
+			});
+
 		});
 
 		wp_mapify_app.controller('previewCtrl', function ($scope) {
@@ -274,7 +272,6 @@
 			var newX = (point.x * 100) / point.w;
 			var newY = (point.y * 100) / point.h;
 
-			alert(newX);
 			if(newX > 95)
 				newX = 95;
 
@@ -344,7 +341,6 @@
 
 		$scope.addCategory = function(){
 
-			alert($scope.CategoryName);
 			if($scope.CategoryName == undefined)
 			{
 				alert("Insert Category Name");

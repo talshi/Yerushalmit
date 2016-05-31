@@ -2,107 +2,108 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
-
 #manage_map_caption {
-    padding: 0px 15px;
-    font-size: 24px;
+	padding: 0px 15px;
+	font-size: 24px;
 }
 
 #upload_image_container {
-    padding: 25px 10px;
-    margin-left: 5px;
-    
+	padding: 25px 10px;
+	margin-left: 5px;
 }
 
-#upload_image_container > input {
+#upload_image_container>input {
 	margin-top: 10px;
 }
 
 #upload_image {
-    border-radius: 5px;
+	border-radius: 5px;
 }
 
 #upload_note {
-    padding: 0px 15px;
-    font-size: 20px;
-    background-color: yellow;
+	padding: 0px 15px;
+	font-size: 20px;
+	background-color: yellow;
 }
 
 .partial-view {
-    background-color: #fff;
+	background-color: #fff;
 }
 
 .img_preview {
-    width: 100%;
+	width: 100%;
 }
 
 a.selected {
-  background-color:#1F75CC;
-  color:white;
-  z-index:100;
+	background-color: #1F75CC;
+	color: white;
+	z-index: 100;
 }
 
 .messagepop {
-  background-color:#FFFFFF;
-  border:1px solid #999999;
-  cursor:default;
-  display:none;
-  margin-top: 15px;
-  position:absolute;
-  text-align:left;
-  width:394px;
-  z-index:50;
-  padding: 25px 25px 20px;
+	background-color: #FFFFFF;
+	border: 1px solid #999999;
+	cursor: default;
+	display: none;
+	margin-top: 15px;
+	position: absolute;
+	text-align: left;
+	width: 394px;
+	z-index: 50;
+	padding: 25px 25px 20px;
 }
 
 label {
-  display: block;
-  margin-bottom: 3px;
-  padding-left: 15px;
-  text-indent: -15px;
+	display: block;
+	margin-bottom: 3px;
+	padding-left: 15px;
+	text-indent: -15px;
 }
 
 .messagepop p, .messagepop.div {
-  border-bottom: 1px solid #EFEFEF;
-  margin: 8px 0;
-  padding-bottom: 8px;
+	border-bottom: 1px solid #EFEFEF;
+	margin: 8px 0;
+	padding-bottom: 8px;
 }
 
 #image-activities {
-    width: 100%;
-    margin: auto;
-    
-    vertical-align: middle;
+	width: 100%;
+	margin: auto;
+	vertical-align: middle;
 }
 
 #image-activities:hover {
-    cursor: crosshair;
+	cursor: crosshair;
 }
 
 .note {
-    font-size: 12px;
+	font-size: 12px;
 }
 
 #mapify-caption:before {
-    content: '\f319';
-    display: inline-block;
-    -webkit-font-smoothing: antialiased;
-    font: normal 29px/1 'dashicons';
-    vertical-align: middle;
-    margin-right: 0.3em;
+	content: '\f319';
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font: normal 29px/1 'dashicons';
+	vertical-align: middle;
+	margin-right: 0.3em;
 }
 
-.activities-table > table {
+.activities-table>table {
 	width: 100%;
 }
 
 .activities-table table {
 	border: 2px solid black;
-	
 }
 
-.activities-table tr:nth-child(even) {background: #cce6ff}
-.activities-table tr:nth-child(odd) {background: #FFF}
+.activities-table tr:nth-child(even) {
+	background: #cce6ff
+}
+
+.activities-table tr:nth-child(odd) {
+	background: #FFF
+}
 
 .activities-table th, .activities-table td {
 	border: 1px solid black;
@@ -125,68 +126,64 @@ th {
 	height: 25px;
 	position: absolute;
 	left: 0;
-	  border-radius: 50%;
-  -webkit-transition: -webkit-transform .8s ease-in-out;
-  transition: transform .8s ease-in-out;
+	border-radius: 50%;
+	-webkit-transition: -webkit-transform .8s ease-in-out;
+	transition: transform .8s ease-in-out;
 }
 
 .marker:hover {
-    width:  25px;
-    height:  25px;
-    left:  0;
-    position: absolute;
-    cursor : pointer
-    -webkit-transform: rotate(360deg);
-  transform: rotate(360deg);
+	width: 25px;
+	height: 25px;
+	left: 0;
+	position: absolute;
+	cursor: pointer -webkit-transform: rotate(360deg);
+	transform: rotate(360deg);
 }
 
 .view-animate.ng-enter, .view-animate.ng-leave {
-  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
-  width:100%;
-  position:absolute;
-  top:88px;
-  left:0;
-  right:0;
-  bottom:0;
-    
+	transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+	width: 100%;
+	position: absolute;
+	top: 88px;
+	left: 0;
+	right: 0;
+	bottom: 0;
 }
 
 .view-animate.ng-enter {
-  left:100%;
+	left: 100%;
 }
+
 .view-animate.ng-enter.ng-enter-active {
-  left:0;
+	left: 0;
 }
+
 .view-animate.ng-leave.ng-leave-active {
-  left:-100%;
+	left: -100%;
 }
 
-#map{
-    position: relative;
-}
-#IDDate {
-	
-}
-#IDDate:hover{
-  background-color: yellow; 
-   cursor: pointer;
+#map {
+	position: relative;
 }
 
-#IDactivity-name{
-	
-}
-#IDactivity-name:hover{
-  background-color: yellow; 
-   cursor: pointer;
+#IDDate:hover {
+	background-color: yellow;
+	cursor: pointer;
 }
 
-#IDcategory-name:hover{
-  background-color: yellow; 
-   cursor: pointer;	
+#IDactivity-name:hover {
+	background-color: yellow;
+	cursor: pointer;
 }
-#table > td{
+
+#IDcategory-name:hover {
+	background-color: yellow;
+	cursor: pointer;
+}
+
+#table>td {
 	padding-bottom: 1em;
-	margin:5px;
+	margin: 5px;
 	padding: 5px;
 }
 
@@ -194,27 +191,12 @@ th {
 	width: 100%;
 }
 
-#IdInsertTable {
-	padding: 15px;
-}
-
-#IdInsertTable > td, th {
-	padding: 15px;
-}
-
-#editonButton{
+#editonButton {
 	width: 100%;
-	background-color:inactiveborder;
-	
+	background-color: inactiveborder;
 }
-#IdInsertTableCategory ,th , td{
-		margin:10px;
-	padding: 10px;
-	margin-left: 15px;
-}
-#IDareaText{
-	rows="4"; 
-	cols="40";
+
+#IDareaText {rows ="4";cols ="40";
 	background-color: white;
 }
 
@@ -229,19 +211,21 @@ th {
 }
 
 .view-animation.ng-enter, .view-animation.ng-leave {
-  transition:0.2s linear all;
-  position:fixed;
-  left:0;
-  top:120px;
-  width:100%;
+	transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+	position: fixed;
+	left: 182px;
+	top: 120px;
+	width: 100%;
 }
+
 .view-animation.ng-enter {
-  transform:translateX(100%);
+	transform: translateX(100%);
 }
-.view-animation.ng-leave,
-.view-animation.ng-enter.ng-enter-active {
-  transform:translateX(0%);
+
+.view-animation.ng-leave, .view-animation.ng-enter.ng-enter-active {
+	transform: translateX(0%);
 }
+
 .view-animation.ng-leave.ng-leave-active {
-  transform:translateX(-100%);
+	transform: translateX(-100%);
 }

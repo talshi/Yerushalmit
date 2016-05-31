@@ -25,7 +25,7 @@
 				<th id="IDDate" ng-model="date"
 					ng-click="sortBy='date'; reverseSort=!reverseSort">Date</th>
 				<th>neighborhood</th>
-				<th id="IDDate" ng-model="date"
+				<th id="IDCategory" ng-model="category"
 					ng-click="sortBy='category'; reverseSort=!reverseSort">Category</th>
 				<th>Description</th>
 				<th>Edit</th>
@@ -54,39 +54,32 @@
 					<h4 class="modal-title">Add Activity</h4>
 				</div>
 				<form class="modal-body" role="form">
-
-					<label>Location X: </label> <span id="locationX"
-						ng-model="locationX"></span> <br> <label>Location Y: </label> <span
-						id="locationY" ng-model="locationY"></span>
-
 					<table id="IdInsertTable" class="table table-hover">
 						<tr>
-							<td><label>Activity Name </label></td>
+							<td><label>Activity Name</label></td>
 							<td><input type="text" ng-model="activityName"
 								placeholder="Activity Name"></td>
 						</tr>
 						<tr>
-							<td><label>Activity Date </label></td>
+							<td><label>Activity Date</label></td>
 							<td><input type="text" ng-model="activityDate"
 								placeholder="dd/mm/yyyy"></td>
 						</tr>
 						<tr>
-							<td><label>Neighborhood </label></td>
+							<td><label>Neighborhood</label></td>
 							<td><input type="text" ng-model="neighborhood"
 								placeholder="Neighborhood"></td>
 						</tr>
 						<tr>
-							<td><label>Activity Category </label></td>
-							<td><select>
-									<option ng-repeat="category in categories_list"
-										value="{{category.name}}">{{category.name}}</option>
-							</select></td>
+							<td><label>Activity Category</label></td>
+							<td><select ng-model="selectedCategory"
+								ng-options="category as category.name for category in categories_list">
+								<option></option>
+								</select></td>
 
 						</tr>
 						<tr>
-							<td><label>Description </label></td>
-							<br>
-							<br>
+							<td><label>Description</label></td>
 							<td><textarea type="text" ng-model="activityDescription" rows="4"
 									cols="40"> </textarea></td>
 						</tr>
@@ -95,7 +88,6 @@
 					<div id="upload_image_admin">
 						<div id="upload_note">Enter an URL or upload an image</div>
 						<div id="upload_image_container">
-
 							<label id="upload_map_label" for="upload_image">Upload Image</label>
 							<input id="upload_image" type="text" size="24"
 								name="upload_image" value="" /> <input id="upload_image_button"
@@ -114,12 +106,9 @@
 						<button id="save-button" class="btn btn-default" type="submit"
 							action="" data-dismiss="modal" ng-click="addActivity()">Save</button>
 					</div>
-
 				</form>
 			</div>
-
 		</div>
-
 	</div>
 </div>
 
@@ -133,37 +122,34 @@
 			</div>
 			<div class="modal-body">
 				<table id="IdInsertTable" class="table table-hover">
-						<tr>
-							<td><label>Activity Name </label></td>
-							<td><input type="text" ng-model="activityName"
-								placeholder="Activity Name"></td>
-						</tr>
-						<tr>
-							<td><label>Activity Date </label></td>
-							<td><input type="text" ng-model="activityDate"
-								placeholder="dd/mm/yyyy"></td>
-						</tr>
-						<tr>
-							<td><label>Neighborhood </label></td>
-							<td><input type="text" ng-model="neighborhood"
-								placeholder="Neighborhood"></td>
-						</tr>
-						<tr>
-							<td><label>Activity Category </label></td>
-							<td><select>
-									<option ng-repeat="category in categories_list"
-										value="{{category.name}}">{{category.name}}</option>
-							</select></td>
-
-						</tr>
-						<tr>
-							<td><label>Description </label></td>
-							<br>
-							<br>
-							<td><textarea type="text" ng-model="activityDescription" rows="4"
-									cols="40"> </textarea></td>
-						</tr>
-					</table>
+					<tr>
+						<td><label>Activity Name</label></td>
+						<td><input type="text" ng-model="activityName"
+							placeholder="Activity Name"></td>
+					</tr>
+					<tr>
+						<td><label>Activity Date</label></td>
+						<td><input type="text" ng-model="activityDate"
+							placeholder="dd/mm/yyyy"></td>
+					</tr>
+					<tr>
+						<td><label>Neighborhood</label></td>
+						<td><input type="text" ng-model="neighborhood"
+							placeholder="Neighborhood"></td>
+					</tr>
+					<tr>
+						<td><label>Activity Category</label></td>
+						<td><select>
+								<option ng-repeat="category in categories_list"
+									value="{{category.name}}">{{category.name}}</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td><label>Description</label></td>
+						<td><textarea type="text" ng-model="activityDescription" rows="4"
+								cols="40"> </textarea></td>
+					</tr>
+				</table>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
