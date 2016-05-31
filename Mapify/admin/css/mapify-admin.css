@@ -127,6 +127,9 @@ th {
 	height: 25px;
 	position: absolute;
 	left: 0;
+	  border-radius: 50%;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
 }
 
 .marker:hover {
@@ -135,6 +138,8 @@ th {
     left:  0;
     position: absolute;
     cursor : pointer
+    -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 #map{

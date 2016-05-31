@@ -4,10 +4,10 @@
 
 	<div class="note">Click on the image to add an activity.</div>
 
-	<div id="map">
+	<div id="map" ng-init = "initActivities()">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"
-			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.jpg" onclick = "createCoords(event)"></img>
+			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.jpg" ng-click = "createCoords($event)" ></img>
 		<span id="popup"></span>
 	</div>
 
@@ -20,8 +20,7 @@
 				<th id="IDDate" ng-model="date"
 					ng-click="sortBy='date'; reverseSort=!reverseSort">Date</th>
 				<th>neighborhood</th>
-				<th id="IDDate" ng-model="date"
-					ng-click="sortBy='category'; reverseSort=!reverseSort">Category</th>
+				<th id="IDDate" ng-model="date"ng-click="sortBy='category'; reverseSort=!reverseSort">Category</th>
 				<th>Description</th>
 				<th>Edit</th>
 			</tr>
@@ -56,13 +55,14 @@
 				</div>
 				<form class="modal-body" role="form" >
 
-					<label>Location: </label> <span id="location"></span>
-
+					<label>Location X: </label> <span id="locationX" ng-model= "locationX"></span>
+					<br>
+					<label>Location Y: </label> <span id="locationY" ng-model= "locationY"></span>
+					
 					<table id="IdInsertTable" class="table table-hover">
 						<tr>
 							<td><label>Activity Name </label></td>
-							<td><input type="text" ng-model="activityName"
-								placeholder="Activity Name"></td>
+							<td><input type="text" ng-model="activityName" placeholder="Activity Name"></td>
 						</tr>
 						<tr>
 							<td><label>Activity Date </label></td>
