@@ -8,11 +8,12 @@
  * @link       http://example.com
  * @since      1.0.0
  *
- * @package    Mapify
- * @subpackage Mapify/public/partials
+ * @package    Plugin_Name
+ * @subpackage Plugin_Name/public/partials
  */
 
 
+<<<<<<< HEAD
 function display($atts) 
 {
     $content = '';
@@ -139,9 +140,6 @@ function display($atts)
 
 
 add_shortcode('custom-mapify', 'display');
- 
-
-
 
 /*
 function getImgURL()    //for example

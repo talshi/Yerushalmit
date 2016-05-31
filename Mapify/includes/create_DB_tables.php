@@ -1,3 +1,4 @@
+<<<<<<< HEAD:Mapify/includes/create_DB_tables.php
 <?php
 
 class Tables
@@ -201,4 +202,3 @@ class Tables
 		return json_encode($sqlResults,JSON_PRETTY_PRINT);
 	}
 }
-

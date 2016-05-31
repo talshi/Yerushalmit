@@ -4,10 +4,10 @@
 
 	<div class="note">Click on the image to add an activity.</div>
 
-	<div id="map">
+	<div id="map" ng-init = "initActivities()">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"
-			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.png"></img>
+			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.jpg" ng-click = "createCoords($event)" ></img>
 		<span id="popup"></span>
 	</div>
 
@@ -19,8 +19,8 @@
 					ng-click="sortBy='name'; reverseSort=!reverseSort">Activity Name</th>
 				<th id="IDDate" ng-model="date"
 					ng-click="sortBy='date'; reverseSort=!reverseSort">Date</th>
-				<th id="IDDate" ng-model="date"
-					ng-click="sortBy='category'; reverseSort=!reverseSort">Category</th>
+				<th>neighborhood</th>
+				<th id="IDDate" ng-model="date"ng-click="sortBy='category'; reverseSort=!reverseSort">Category</th>
 				<th>Description</th>
 				<th>Edit</th>
 			</tr>
@@ -30,6 +30,7 @@
 				<td><input id="" type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date }}</td>
+				<td>{{ activity.neighborhood}}</td>
 				<td>{{ activity.category }}</td>
 				<td>{{ activity.description }}</td>
 				<td><input type="button" id="" value="Edit"></td>
@@ -52,15 +53,16 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Add Activity</h4>
 				</div>
-				<form class="modal-body" role="form" ng-submit="addActivity()">
+				<form class="modal-body" role="form" >
 
-					<label>Location: </label> <span id="location"></span>
-
+					<label>Location X: </label> <span id="locationX" ng-model= "locationX"></span>
+					<br>
+					<label>Location Y: </label> <span id="locationY" ng-model= "locationY"></span>
+					
 					<table id="IdInsertTable" class="table table-hover">
 						<tr>
 							<td><label>Activity Name </label></td>
-							<td><input type="text" ng-model="activityName"
-								placeholder="Activity Name"></td>
+							<td><input type="text" ng-model="activityName" placeholder="Activity Name"></td>
 						</tr>
 						<tr>
 							<td><label>Activity Date </label></td>
@@ -68,21 +70,24 @@
 								placeholder="dd/mm/yyyy"></td>
 						</tr>
 						<tr>
+							<td><label>Neighborhood </label></td>
+							<td><input type="text" ng-model="neighborhood" placeholder="neighborhood"></td>
+						</tr>						
+						<tr>
 							<td><label>Activity Category </label></td>
-<!-- 							<td><input type="text" ng-model="activityCategory"></td> -->
+ 							<td><input type="text" ng-model="activityCategory"></td> -->
 							<td>
 							<select>
 								<option ng-repeat="category in categories_list" value="{{category.name}}" >{{category.name}}</option>
 							</select>
 							</td>
+
 						</tr>
 						<tr>
 							<td><label>Description </label></td>
 							<br>
 							<br>
-							<td><textarea type="text" ng-model="activityDescription" rows="4"
-									cols="40"> </textarea></td>
-
+							<td><textarea type="text" ng-model="activityDescription" rows="4" cols="40"> </textarea></td>
 						</tr>
 					</table>
 
@@ -100,10 +105,12 @@
 					</div>
 
 					<div class="modal-footer">
+						
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						
 						<!-- add item to DB.... -->
-						<button id="save-button" class="btn btn-default" type="submit"
-							action="">Save</button>
+						
+						<button id="save-button" class="btn btn-default" type="submit" action="" data-dismiss="modal" ng-click = "addActivity()"  >Save</button>
 					</div>
 
 				</form>
@@ -135,6 +142,9 @@
 				<div>
 					<label>Activity Category: </label>
 				</div>
+				<div>
+					<label>neighborhood:</label>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -144,79 +154,6 @@
 
 	</div>
 </div>
-</div>
-
-<script>
-    var index = 0;
-    var x;
-    var y;
-    // Find cooridinates and normalize it according to image
-    jQuery("#image-activities").click(function (e) {
-        var pageCoords = getCoords(this);
-        var clickX = e.clientX;
-        var clickY = e.clientY;
-
-
-	    x = ((clickX - pageCoords.left) * 100) / jQuery("#image-activities").width();
-        y = ((clickY - pageCoords.top) * 100) / jQuery("#image-activities").height();
-        jQuery("#location").html("X: " + x + " Y: " + y);
-    });
-    function getCoords(elem) {
-        var r = elem.getBoundingClientRect();
-        return { top: r.top, left: r.left };
-    }
-    // Set size of image
-    var newwidth;
-    jQuery(document).ready(function () {
-        jQuery("#image-activities").width(newwidth);
-    });
-
-    jQuery("#save-button").click(function (e) {
-        // TODO validation of forms
-        var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
-        jQuery("#image-activities").after(m);
-
-		// add activity to table
-		
-		// --
-		var point = getFinishPoint(x,y); // return the fix X & Y after validation
-		
-        jQuery("#img-marker" + index).css({
-            "top": point.y,
-            "left": point.x
-        });
-        index++;
-    });
-
-</script>
-
-<script type="text/javascript">
-function getFinishPoint(x,y){
-    var div = document.getElementById("image-activities");
-    var rect = div.getBoundingClientRect();
-	
-	   var x_left = rect.left;
-	   var y_top = rect.top;
-	   var w_ = rect.right - rect.left;
-	   var h_ = rect.bottom - rect.top;
-		var x_finish;
-		var y_finish;
-	if( (y/100)*h_ < 25 )  // keep the marker in map from top!!
-		y_finish = ((100)*(25))/(h_);			
-	else
-		y_finish = (y / 100) * h_ - (25);		
-	
-	if( (x*w_)/100 < 12.5 )  // keep the marker in map from left!!
-			x_finish = ((100)*(12.5))/(w_);
-	else if ((w_ - (x*w_)/100 < 12.5)) // keep the marker in map from right!!
-			x_finish = w_- 25;	
-		else
-	        x_finish = (x / 100) * w_;			
-	return {x:x_finish , y:y_finish};
-}
-	
-
-</script>
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {

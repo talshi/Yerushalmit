@@ -24,7 +24,8 @@
 
 #upload_note {
     padding: 0px 15px;
-    font-size: 12px;
+    font-size: 20px;
+    background-color: yellow;
 }
 
 .partial-view {
@@ -124,7 +125,9 @@ th {
 	height: 25px;
 	position: absolute;
 	left: 0;
-	transition: 0.5s;
+	  border-radius: 50%;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
 }
 
 .marker:hover {
@@ -133,6 +136,8 @@ th {
     left:  0;
     position: absolute;
     cursor : pointer
+    -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 .view-animate.ng-enter, .view-animate.ng-leave {

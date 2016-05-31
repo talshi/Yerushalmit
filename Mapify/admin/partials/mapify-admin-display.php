@@ -16,11 +16,10 @@
             <li ng-class="{ active: isActive('/map')}"><a href="#/map">Manage Map</a></li>
             <li ng-class="{ active: isActive('/activities')}"><a href="#/activities">Manage Activities</a></li>
             <li ng-class="{ active: isActive('/categories')}"><a href="#/categories">Manage Categories</a></li>
-          	<li ng-class="{ active: isActive('/preview')}"><a href="#/preview">Preview</a></li>
           </ul>
         </div>
       </div>
     </nav>
-    <ng-view class="partial-view view-animate"></ng-view>
+    <ng-view class="partial-view"></ng-view>
 </div>
 
