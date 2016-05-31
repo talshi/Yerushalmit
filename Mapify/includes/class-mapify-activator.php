@@ -36,10 +36,6 @@ class Mapify_Activator {
 		
 		require_once dirname(__DIR__) . '/includes/create_DB_tables.php';
 		
-		//register_activation_hook ( __FILE__, 'set_map');
-		//register_activation_hook ( __FILE__, 'create_activities_table' );
-		//register_activation_hook ( __FILE__, 'create_categories_table' );
-		
 		Tables::set_map();
 		Tables::create_activities_table();
 		Tables::create_categories_table();

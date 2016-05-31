@@ -3,8 +3,13 @@
 <div class="note">Organize your categories.</div>
 <br>
 
-<label for="search">Search: </label>
-<input name="search" type="text" ng-model="query" />
+<div class="categories-control">
+	<label for="search">Search: </label> <input name="search" type="text"
+		ng-model="query" /> <input type="button" value="Add New Category"
+		data-toggle="modal" data-target="#myModal" /> <input type="button"
+		value="Remove Selected" id="IDdeleteSelectedCategory" /> <input
+		type="button" value="Remove All" id="IDdeleteAllCategory" />
+</div>
 <!-- search bar -->
 
 <div class="activities-table" ng-controller="categoriesCtrl">
@@ -24,12 +29,6 @@
 			<td>{{ category.description }}</td>
 		</tr>
 	</table>
-	<div>
-	<!-- ERROR!! -->
-		<input type="button" value="Add New Category" data-toggle="modal" data-target="#myModal" />
-		<input type="button" value="Remove Selected" id="IDdeleteSelectedCategory" />
-		 <input	type="button" value="Delete All" id="IDdeleteAllCategory" />
-	</div>
 
 	<div id="myModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
@@ -39,18 +38,19 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Add New Catergory</h4>
 					<form class="modal-body" role="form" ng-submit="addCategory()">
-	
+
 						<table id="IdInsertTableCategory" class="table table-hover">
 							<tr>
 								<td><label>Category Name </label></td>
-								<td><input type="text" id ="IDDCategoryName"ng-model="CategoryName" placeholder="Category Name"></td>
+								<td><input type="text" id="IDDCategoryName"
+									ng-model="CategoryName" placeholder="Category Name"></td>
 							</tr>
 							<tr>
 								<td><label>Description </label></td>
 								<br>
 								<br>
 								<td><textarea type="text" ng-model="CategoryDescription"
-										id="IDareaText" placeholder = "description" > </textarea></td>
+										id="IDareaText" placeholder="description"> </textarea></td>
 							</tr>
 						</table>
 
@@ -72,7 +72,8 @@
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Close</button>
 							<!-- add item to DB.... -->
-							<button id="save-button" class="btn btn-default" type="submit" data-dismiss="modal">Save</button>
+							<button id="save-button" class="btn btn-default" type="submit"
+								data-dismiss="modal">Save</button>
 						</div>
 
 					</form>

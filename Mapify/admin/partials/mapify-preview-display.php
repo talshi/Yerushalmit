@@ -1,7 +1,7 @@
 
-<div>
-<img id="image-activities" data-toggle="modal" data-target="#myModal"
-			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.png"></img>
+<div ng-controller="previewCtrl">
+	<img id="image-activities" data-toggle="modal" data-target="#myModal"
+		src="http://localhost/wordpress/wp-content/uploads/2016/05/map.png"></img>
 </div>
 
 <script>

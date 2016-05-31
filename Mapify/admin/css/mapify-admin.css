@@ -219,5 +219,29 @@ th {
 }
 
 .activities-control {
+	float: right;
 	margin: 10px 0px;
+}
+
+.categories-control {
+	float: right;
+	margin: 10px 0px;
+}
+
+.view-animation.ng-enter, .view-animation.ng-leave {
+  transition:0.2s linear all;
+  position:fixed;
+  left:0;
+  top:120px;
+  width:100%;
+}
+.view-animation.ng-enter {
+  transform:translateX(100%);
+}
+.view-animation.ng-leave,
+.view-animation.ng-enter.ng-enter-active {
+  transform:translateX(0%);
+}
+.view-animation.ng-leave.ng-leave-active {
+  transform:translateX(-100%);
 }
