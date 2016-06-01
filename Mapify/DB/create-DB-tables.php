@@ -1,3 +1,4 @@
+
 <?php
 class Tables {
 	public $map_db_version = '1.0';
@@ -10,19 +11,31 @@ class Tables {
 		$table_name = $wpdb->prefix . "map";
 		
 		if ($wpdb->get_var ( 'SHOW TABLES LIKE ' . $table_name ) != $table_name) {
+			$sql = "CREATE TABLE $table_name (
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
+			url varchar(5000) DEFAULT '' NOT NULL,
+			PRIMARY KEY (id) )";
 			
-			$sql = "CREATE TABLE $table_name ( 
-				id mediumint(9) NOT NULL AUTO_INCREMENT,
-				url varchar(50000) DEFAULT '' NOT NULL,
-				
-				PRIMARY KEY (id) )";
+			// location - array with 2 coordination - place on image
 			
 			// make dbDelta() available
+			
 			require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
+			
+			/*
+			 * The dbDelta function examines the current table structure,
+			 * compares it to the desired table structure,
+			 * and either adds or modifies the table as necessary.
+			 */
 			
 			dbDelta ( $sql );
 			
-			update_option ( 'map_db_version', $map_db_version );
+			/*
+			 * option to record a version number for our database table structure,
+			 * so we can use that information later if we need to update the table
+			 */
+			
+			add_option ( 'activities_db_version', $activities_db_version );
 		}
 	}
 	
@@ -121,4 +134,3 @@ class Tables {
 		}
 	}
 }
-?>
