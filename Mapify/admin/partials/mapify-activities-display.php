@@ -20,19 +20,15 @@
 		<table>
 			<tr>
 				<th>#</th>
-				<th id="IDactivity-name" ng-model="name"
-					ng-click="sortBy='name'; reverseSort=!reverseSort">Activity Name</th>
-				<th id="IDDate" ng-model="date"
-					ng-click="sortBy='date'; reverseSort=!reverseSort">Date</th>
-				<th>neighborhood</th>
-				<th id="IDCategory" ng-model="category"
-					ng-click="sortBy='category'; reverseSort=!reverseSort">Category</th>
+				<th id="IDactivity-name" ng-model="name" ng-click="sortBy='name'; reverseSort=!reverseSort">Activity Name</th>
+				<th id="IDDate" ng-model="date"ng-click="sortBy='date'; reverseSort=!reverseSort">Date</th>
+				<th id="IDNeighb" ng-model="neighborhood"ng-click="sortBy='neighborhood'; reverseSort=!reverseSort" >neighborhood</th>
+				<th id="IDCategory" ng-model="category"ng-click="sortBy='category'; reverseSort=!reverseSort">Category</th>
 				<th>Description</th>
 				<th>Edit</th>
 			</tr>
 			<tr
-				ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort "
-				id="table">
+				ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort "id="table">
 				<td><input id="" type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date }}</td>

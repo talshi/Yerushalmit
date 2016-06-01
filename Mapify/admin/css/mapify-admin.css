@@ -175,6 +175,14 @@ th {
 	background-color: yellow;
 	cursor: pointer;
 }
+#IDNeighb:hover{
+	background-color: yellow;
+	cursor: pointer;	
+}
+#IDCategory:hover{
+	background-color: yellow;
+	cursor: pointer;	
+}
 
 #IDcategory-name:hover {
 	background-color: yellow;
