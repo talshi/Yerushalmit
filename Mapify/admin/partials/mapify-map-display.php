@@ -35,7 +35,25 @@
                 $("#img_preview").attr("src", image_link);
             });
         });
+
+        $("#save_button").click(function() {
+    		img_url = jQuery("#upload_image").val();
+    		$.ajax({
+    			url: "../wp-content/plugins/Mapify/DB/save-img.php",
+    			type: "POST",
+    			data: {
+    				'img_url': img_url
+    			},
+    			success: function(data) {
+    				console.log(data);
+    			},
+    			error: function(error) {
+    				console.log(error);
+    			}
+    		});
+    	});
     });
 </script>
+
 
 
