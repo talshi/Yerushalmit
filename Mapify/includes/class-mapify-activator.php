@@ -34,11 +34,7 @@ class Mapify_Activator {
 	 */
 	public static function activate() {	
 		
-		require_once dirname(__DIR__) . '\admin\create_DB_tables.php';
-		
-		//register_activation_hook ( __FILE__, 'set_map');
-		//register_activation_hook ( __FILE__, 'create_activities_table' );
-		//register_activation_hook ( __FILE__, 'create_categories_table' );
+		require_once dirname(__DIR__) . '/includes/create_DB_tables.php';
 		
 		Tables::set_map();
 		Tables::create_activities_table();
