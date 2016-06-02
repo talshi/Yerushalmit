@@ -58,8 +58,7 @@
 						</tr>
 						<tr>
 							<td><label>Activity Date</label></td>
-							<td><input type="text" ng-model="activityDate"
-								placeholder="dd/mm/yyyy"></td>
+							<td><input type="text" ng-model="activityDate" placeholder="dd/mm/yyyy"></td>
 						</tr>
 						<tr>
 							<td><label>Neighborhood</label></td>
@@ -72,26 +71,32 @@
 								ng-options="category as category.name for category in categories_list">
 								<option></option>
 								</select></td>
-
 						</tr>
 						<tr>
 							<td><label>Description</label></td>
-							<td><textarea type="text" ng-model="activityDescription" rows="4"
-									cols="40"> </textarea></td>
+							<td><textarea type="text" ng-model="activityDescription" rows="4" cols="40"> </textarea></td>
 						</tr>
 					</table>
 
 					<div id="upload_image_admin">
 						<div id="upload_note">Enter an URL or upload an image</div>
 						<div id="upload_image_container">
-							<label id="upload_map_label" for="upload_image">Upload Image</label>
-							<input id="upload_image" type="text" size="24"
-								name="upload_image" value="" /> <input id="upload_image_button"
-								type="button" value="Upload Image" /> <input id="save_button"
-								type="button" value="Save Image" /> <br />
+							<label id="upload_map_label_act" for="upload_image_act">Upload Image</label>
+							<input id="upload_image_act" type="text" size="24"name="upload_image_act" value="" /> 
+						    <input id="upload_image_button"	type="button" value="Upload Image" />
+						    <input id="save_button_act" type="button" value="Save Image" /> <br />
 							</td>
 						</div>
 					</div>
+
+	<script>
+	
+
+
+	</script>
+
+
+
 
 					<div class="modal-footer">
 

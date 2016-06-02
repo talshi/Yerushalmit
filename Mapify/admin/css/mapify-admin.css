@@ -237,3 +237,7 @@ th {
 .view-animation.ng-leave.ng-leave-active {
 	transform: translateX(-100%);
 }
+.header_uplaod{
+	background-color: gray;
+	font-size: 25px;
+}

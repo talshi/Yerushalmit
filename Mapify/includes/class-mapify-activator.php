@@ -34,14 +34,9 @@ class Mapify_Activator {
 	 */
 	public static function activate() {	
 		
-		require_once dirname(__DIR__) . '/includes/create_DB_tables.php';
+		require_once dirname(__DIR__) . '/DB/create-DB-tables.php';
 		
-		Tables::set_map();
-		Tables::create_activities_table();
-		Tables::create_categories_table();
-		Tables::map_install_data();
-		Tables::categories_install_data();
-		Tables::activities_install_data();
+		Tables::create_all_db_tables();
 		
 	}
 }
