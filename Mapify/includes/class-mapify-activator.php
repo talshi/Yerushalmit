@@ -36,9 +36,7 @@ class Mapify_Activator {
 		
 		require_once dirname(__DIR__) . '/DB/create-DB-tables.php';
 		
-		Tables::set_map();
-		Tables::create_activities_table();
-		Tables::create_categories_table();
+		Tables::create_all_db_tables();
 		
 	}
 }
