@@ -15,8 +15,9 @@ class Tables {
 			
 			$sql = "CREATE TABLE $table_name ( 
 				id mediumint(9) NOT NULL AUTO_INCREMENT,
-				map_id varchar(5000) DEFAULT '' NOT NULL,
-				url varchar(5000) DEFAULT '' NOT NULL,
+				map_id varchar(55) NOT NULL,
+				url varchar(5000) NOT NULL,
+				neighborhood VARCHAR(100) NOT NULL,
 				
 				PRIMARY KEY (id) )";
 			
@@ -25,8 +26,8 @@ class Tables {
 			
 			dbDelta ( $sql );
 			
-			update_option ( 'map_db_version', $map_db_version );
-			
+			add_option ( 'map_db_version', $map_db_version );
+			/*
 			$temp = map_;
 			$num = $sqlResults = $GLOBALS ['wpdb']->get_results ( "SELECT image_id FROM wp_activities_image WHERE id = 1", OBJECT );
 			
@@ -39,8 +40,9 @@ class Tables {
 			
 			$wpdb->insert ( $table_name, array (
 					'map_id' => $tmp,
-						
-			) );
+			) );*/
+			
+			
 		}
 	}
 	
