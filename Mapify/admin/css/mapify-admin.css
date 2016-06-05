@@ -110,6 +110,10 @@ th {
 	padding-bottom: 10px;
 }
 
+#neighborhood {
+	width: 203px;
+}
+
 .marker {
 	width: 25px;
 	height: 25px;

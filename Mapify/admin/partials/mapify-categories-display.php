@@ -41,27 +41,25 @@
 
 						<table id="IdInsertTableCategory" class="table table-hover">
 							<tr>
-								<td><label>Category Name </label></td>
+								<td><label for="IDDCategoryName">Category Name</label></td>
 								<td><input type="text" id="IDDCategoryName"
 									ng-model="CategoryName" placeholder="Category Name"></td>
 							</tr>
 							<tr>
-								<td><label">Description </label></td>
-								<br>
-								<br>
+								<td><label for="IDareaText">Description</label></td>
 								<td><textarea type="text" ng-model="CategoryDescription"
-										id="IDareaText" placeholder="description"> </textarea></td>
+										id="IDareaText" placeholder="Description"> </textarea></td>
 							</tr>
 						</table>
 
 						<div id="upload_image_admin">
-							<div id="upload_note">Enter an URL or upload an category image</div>
+							<div id="upload_note">Upload a category image:</div>
 							<div id="upload_image_container">
 
 								<label id="upload_map_label" for="upload_image_category">Upload Image</label>
 								<br>
-								<input id="upload_image_category" type="text" size="36"name="upload_image_category" value="" placeholder="url"/> 
-								<input id="upload_image_button_category"type="button" value="upload image" /> 
+								<input id="upload_image_category" type="text" size="36"name="upload_image_category" placeholder="URL"/> 
+								<input id="upload_image_button_category" type="button" value="Upload Image" /> 
 								</td>
 							</div>
 						</div>

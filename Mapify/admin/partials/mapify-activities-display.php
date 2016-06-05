@@ -2,7 +2,7 @@
 
 <div ng-app="wp_mapify_app">
 	<div class="manage_caption">Manage Activities</div>
-	<div class="note space">Click on the image to add an activity.</div>
+	<div class="note space">Click on the image to add an activity. Scroll down to manage your activities.</div>
 	<div id="map" ng-init="initActivities()">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"
@@ -30,7 +30,7 @@
 				ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort "id="table">
 				<td><input id="" type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
-				<td>{{ activity.date }}</td>
+				<td>{{ activity.date | date: "dd/MM/yyyy" }}</td>
 				<td>{{ activity.neighborhood}}</td>
 				<td>{{ activity.category }}</td>
 				<td>{{ activity.description }}</td>

@@ -76,13 +76,13 @@
 	wp_mapify_app.controller('activitiesCtrl', function ($scope) {
 		$scope.sortBy = 'name';
 		$scope.activities_list = [
-		                          { id: '1', name: 'A', date: '1/12/2008',category: 'B',neighborhood:'GILO',  description: 'blablabla',x:'0',y:'0'},
-		                          { id: '2', name: 'B', date: '21/12/2009',category: 'A',neighborhood:'ARMON', description: 'blablabla2',x:'20',y:'20'},
-		                          { id: '3', name: 'C', date: '12/12/2010',category: 'D',neighborhood:'KATMON', description: 'blablabla3',x:'30',y:'30'},
-		                          { id: '4', name: 'D', date: '13/12/2010',category: 'H',neighborhood:'PISGAT', description: 'blablabla3',x:'40',y:'40'},
-		                          { id: '5', name: 'E', date: '12/11/2010',category: 'C',neighborhood:'MSSOA', description: 'blablabla3',x:'50',y:'50'},
-		                          { id: '6', name: 'F', date: '13/12/2010',category: 'E',neighborhood:'KRYAT YOVAL', description: 'blablabla3',x:'60',y:'60'},                              
-		                          { id: '7', name: 'G', date: '12/12/1996',category: 'F',neighborhood:'ARNONA', description: 'blablabla3',x:'80',y:'80'}
+		                          { id: '1', name: 'A', date: new Date('1/12/2008'), category: 'B',neighborhood:'GILO',  description: 'blablabla',x:'0',y:'0'},
+		                          { id: '2', name: 'B', date: new Date('21/12/2009'), category: 'A',neighborhood:'ARMON', description: 'blablabla2',x:'20',y:'20'},
+		                          { id: '3', name: 'C', date: new Date('12/12/2010'), category: 'D',neighborhood:'KATMON', description: 'blablabla3',x:'30',y:'30'},
+		                          { id: '4', name: 'D', date: new Date('13/12/2010'), category: 'H',neighborhood:'PISGAT', description: 'blablabla3',x:'40',y:'40'},
+		                          { id: '5', name: 'E', date: new Date('12/11/2010'), category: 'C',neighborhood:'MSSOA', description: 'blablabla3',x:'50',y:'50'},
+		                          { id: '6', name: 'F', date: new Date('13/12/2010'), category: 'E',neighborhood:'KRYAT YOVAL', description: 'blablabla3',x:'60',y:'60'},                              
+		                          { id: '7', name: 'G', date: new Date('12/12/1996'), category: 'F',neighborhood:'ARNONA', description: 'blablabla3',x:'80',y:'80'}
 		                          ];
 
 		// for categories choose!!!!!!!
