@@ -1,7 +1,7 @@
 
 (function ($) {
 
-	var wp_mapify_app = angular.module('wp_mapify_app', ['ngRoute', 'ngAnimate']);
+	var wp_mapify_app = angular.module('wp_mapify_app', ['ngRoute']);
 
 	//	Global 
 	var x = 0;

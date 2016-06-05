@@ -1,9 +1,7 @@
 
-<div class="space" ng-app="wp_mapify_app" ng-controller="activitiesCtrl">
-	<h1>Manage Activities</h1>
-
-	<div class="note">Click on the image to add an activity.</div>
-
+<div ng-app="wp_mapify_app" ng-controller="activitiesCtrl">
+	<div class="manage_caption">Manage Activities</div>
+	<div class="note space">Click on the image to add an activity.</div>
 	<div id="map" ng-init="initActivities()">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"

@@ -22,6 +22,6 @@
         </div>
       </div>
     </nav>
-    <ng-view class="partial-view view-animation"></ng-view>
+    <ng-view class="partial-view"></ng-view>
 </div>
 

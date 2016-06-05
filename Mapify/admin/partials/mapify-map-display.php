@@ -1,6 +1,6 @@
 
-<div id="manage_map_caption">Manage Map</div>
-<div id="upload_note">Enter an URL or upload an image for the banner.</div>
+<div class="manage_caption">Manage Map</div>
+<div class="note">Enter an URL or upload an image for the banner.</div>
 <div id="upload_image_container">
     <label id="upload_map_label" for="upload_image">Upload Image</label>
     <input id="upload_image" type="text" size="36" name="upload_image" value="" />

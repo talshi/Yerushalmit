@@ -2,8 +2,7 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
-#manage_map_caption {
-	padding: 0px 15px;
+.manage_caption {
 	font-size: 24px;
 }
 
@@ -18,12 +17,6 @@
 
 #upload_image {
 	border-radius: 5px;
-}
-
-#upload_note {
-	padding: 0px 15px;
-	font-size: 20px;
-	background-color: yellow;
 }
 
 .partial-view {
@@ -113,11 +106,7 @@ th {
 	text-align: center;
 }
 
-.space div {
-	padding-bottom: 10px;
-}
-
-.space-bottom {
+.space {
 	padding-bottom: 10px;
 }
 
@@ -208,24 +197,4 @@ th {
 .categories-control {
 	float: right;
 	margin: 10px 0px;
-}
-
-.view-animation.ng-enter, .view-animation.ng-leave {
-	transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
-	position: fixed;
-	left: 182px;
-	top: 120px;
-	width: 100%;
-}
-
-.view-animation.ng-enter {
-	transform: translateX(100%);
-}
-
-.view-animation.ng-leave, .view-animation.ng-enter.ng-enter-active {
-	transform: translateX(0%);
-}
-
-.view-animation.ng-leave.ng-leave-active {
-	transform: translateX(-100%);
 }

@@ -1,5 +1,5 @@
 
-<h1>Manage Categories</h1>
+<div class="manage_caption">Manage Categories</div>
 <div class="note">Organize your categories.</div>
 <br>
 
