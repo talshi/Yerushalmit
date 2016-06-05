@@ -31,13 +31,8 @@
 				controller: 'categoriesCtrl',
 				controllerAs: 'categories'
 			})
-			.when('/preview', {
+			.when('/images', {
 				templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-preview-display.php',
-				controller: 'previewCtrl',
-				controllerAs: 'preview'
-			})
-     		.when('/images', {
-				templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-images-display.php',
 				controller: 'imagesCtrl',
 				controllerAs: 'images'
 			})
@@ -71,28 +66,82 @@
 		});
 
 
-		wp_mapify_app.controller('previewCtrl', function ($scope) {
-
-		});
 		
-		wp_mapify_app.controller('imagesCtrl', function ($scope) {
-
-		});
 	})(jQuery);
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// upload activities images
+	
+	wp_mapify_app.controller('imagesCtrl', function ($scope) {
+		jQuery(document).ready(function ($) {
+	         
+			$scope.activities_list = [
+			                          { id: '1', name: 'A', date: '1/12/2008',category: 'B',neighborhood:'GILO',  description: 'blablabla',x:'0',y:'0'},
+			                          { id: '2', name: 'B', date: '21/12/2009',category: 'A',neighborhood:'ARMON', description: 'blablabla2',x:'20',y:'20'},
+			                          { id: '3', name: 'C', date: '12/12/2010',category: 'D',neighborhood:'KATMON', description: 'blablabla3',x:'30',y:'30'},
+			                          { id: '4', name: 'D', date: '13/12/2010',category: 'H',neighborhood:'PISGAT', description: 'blablabla3',x:'40',y:'40'},
+			                          { id: '5', name: 'E', date: '12/11/2010',category: 'C',neighborhood:'MSSOA', description: 'blablabla3',x:'50',y:'50'},
+			                          { id: '6', name: 'F', date: '13/12/2010',category: 'E',neighborhood:'KRYAT YOVAL', description: 'blablabla3',x:'60',y:'60'},                              
+			                          { id: '7', name: 'G', date: '12/12/1996',category: 'F',neighborhood:'ARNONA', description: 'blablabla3',x:'80',y:'80'}
+			                          ];
+			$("#upload_image_button_neighborhood").click(function (e) {
+	            e.preventDefault();
+	            var image = wp.media({
+	                title: 'Upload Image',
+	                multiple: false
+	            }).open()
+	            .on('select', function (e) {
+	                // This will return the selected image from the Media Uploader, the result is an object
+	                var uploaded_image = image.state().get('selection').first();
+	                // We convert uploaded_image to a JSON object to make accessing it easier
+	                // Output to the console uploaded_image
+	                //console.log(uploaded_image);
+	                var image_url = uploaded_image.toJSON().url;
+	                // Let's assign the url value to the input field
+	                $('#upload_image_neighborhood').val(image_url)
+	                var image_link = $('#upload_image_neighborhood').val();
+	                $("#preview_label").html("Preview:");
+	                $("#img_preview").attr("src", image_link);
+	            });
+	        });
 
+	         $("#save_button_neighborhood").click(function() {
+	             alert("SSSAVVEEE");
+//	     		img_url = jQuery("#upload_image_main").val();
+//	     		$.ajax({
+//	     			url: "../wp-content/plugins/Mapify/DB/save-img.php",
+//	     			type: "POST",
+//	     			dataType: "json",
+//	     			data: {
+//	     				'img_url': img_url,
+//	     				//TODO fix neighborhood data
+//	     				'neighborhood' : "main"
+//	     			},
+//	     			success: function(data) {
+//	     				//console.log(data);
+//	     				$("#success").html("SUCCESS!!!!!!!!!!!!");
+//	     			},
+//	     			error: function(error) {
+//	     				console.log(error);
+//	     			}
+//	   		});
+	     	});
+	    });
+
+	});
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	wp_mapify_app.controller('activitiesCtrl', function ($scope) {
 		$scope.sortBy = 'name';
 
 		$scope.activities_list = [
-		                          { id: '1', name: 'A', date: '1/12/2008',category:'A',neighborhood: 'B',  description: 'blablabla',x:'0',y:'0'},
-		                          { id: '2', name: 'B', date: '21/12/2009',category:'B',neighborhood: 'A', description: 'blablabla2',x:'20',y:'20'},
-		                          { id: '3', name: 'C', date: '12/12/2010',category:'D',neighborhood: 'D', description: 'blablabla3',x:'30',y:'30'},
-		                          { id: '4', name: 'D', date: '13/12/2010',category:'C',neighborhood: 'H', description: 'blablabla3',x:'40',y:'40'},
-		                          { id: '5', name: 'E', date: '12/11/2010',category:'G',neighborhood: 'C', description: 'blablabla3',x:'50',y:'50'},
-		                          { id: '6', name: 'F', date: '13/12/2010',category:'E',neighborhood: 'E', description: 'blablabla3',x:'60',y:'60'},                              
-		                          { id: '7', name: 'G', date: '12/12/1996',category:'F',neighborhood: 'F', description: 'blablabla3',x:'80',y:'80'}
+		                          { id: '1', name: 'A', date: '1/12/2008',category: 'B',neighborhood:'GILO',  description: 'blablabla',x:'0',y:'0'},
+		                          { id: '2', name: 'B', date: '21/12/2009',category: 'A',neighborhood:'ARMON', description: 'blablabla2',x:'20',y:'20'},
+		                          { id: '3', name: 'C', date: '12/12/2010',category: 'D',neighborhood:'KATMON', description: 'blablabla3',x:'30',y:'30'},
+		                          { id: '4', name: 'D', date: '13/12/2010',category: 'H',neighborhood:'PISGAT', description: 'blablabla3',x:'40',y:'40'},
+		                          { id: '5', name: 'E', date: '12/11/2010',category: 'C',neighborhood:'MSSOA', description: 'blablabla3',x:'50',y:'50'},
+		                          { id: '6', name: 'F', date: '13/12/2010',category: 'E',neighborhood:'KRYAT YOVAL', description: 'blablabla3',x:'60',y:'60'},                              
+		                          { id: '7', name: 'G', date: '12/12/1996',category: 'F',neighborhood:'ARNONA', description: 'blablabla3',x:'80',y:'80'}
 		                          ];
 
 		// for categories choose!!!!!!!
