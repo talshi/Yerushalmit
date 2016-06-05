@@ -164,6 +164,14 @@ th {
 	background-color: yellow;
 	cursor: pointer;
 }
+#IDNeighb:hover{
+	background-color: yellow;
+	cursor: pointer;	
+}
+#IDCategory:hover{
+	background-color: yellow;
+	cursor: pointer;	
+}
 
 #IDcategory-name:hover {
 	background-color: yellow;
@@ -197,4 +205,28 @@ th {
 .categories-control {
 	float: right;
 	margin: 10px 0px;
+}
+
+.view-animation.ng-enter, .view-animation.ng-leave {
+	transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+	position: fixed;
+	left: 182px;
+	top: 120px;
+	width: 100%;
+}
+
+.view-animation.ng-enter {
+	transform: translateX(100%);
+}
+
+.view-animation.ng-leave, .view-animation.ng-enter.ng-enter-active {
+	transform: translateX(0%);
+}
+
+.view-animation.ng-leave.ng-leave-active {
+	transform: translateX(-100%);
+}
+.header_uplaod{
+	background-color: gray;
+	font-size: 25px;
 }

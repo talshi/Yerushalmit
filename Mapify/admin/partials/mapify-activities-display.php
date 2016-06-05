@@ -1,3 +1,4 @@
+<?php require_once dirname(__DIR__) . '/../DB/DB_functions.php';?>
 
 <div ng-app="wp_mapify_app" ng-controller="activitiesCtrl">
 	<div class="manage_caption">Manage Activities</div>
@@ -5,7 +6,7 @@
 	<div id="map" ng-init="initActivities()">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"
-			src="http://localhost/wordpress/wp-content/uploads/2016/05/map.png"
+			src="<?php echo DB_functions::get_main_map_url()[0]->url; ?>"
 			ng-click="createCoords($event)"></img> <span id="popup"></span>
 	</div>
 	<div class="activities-control">
@@ -18,19 +19,15 @@
 		<table>
 			<tr>
 				<th>#</th>
-				<th id="IDactivity-name" ng-model="name"
-					ng-click="sortBy='name'; reverseSort=!reverseSort">Activity Name</th>
-				<th id="IDDate" ng-model="date"
-					ng-click="sortBy='date'; reverseSort=!reverseSort">Date</th>
-				<th>neighborhood</th>
-				<th id="IDCategory" ng-model="category"
-					ng-click="sortBy='category'; reverseSort=!reverseSort">Category</th>
+				<th id="IDactivity-name" ng-model="name" ng-click="sortBy='name'; reverseSort=!reverseSort">Activity Name</th>
+				<th id="IDDate" ng-model="date"ng-click="sortBy='date'; reverseSort=!reverseSort">Date</th>
+				<th id="IDNeighb" ng-model="neighborhood"ng-click="sortBy='neighborhood'; reverseSort=!reverseSort" >neighborhood</th>
+				<th id="IDCategory" ng-model="category"ng-click="sortBy='category'; reverseSort=!reverseSort">Category</th>
 				<th>Description</th>
 				<th>Edit</th>
 			</tr>
 			<tr
-				ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort "
-				id="table">
+				ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort "id="table">
 				<td><input id="" type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date }}</td>
@@ -60,8 +57,7 @@
 						</tr>
 						<tr>
 							<td><label>Activity Date</label></td>
-							<td><input type="text" ng-model="activityDate"
-								placeholder="dd/mm/yyyy"></td>
+							<td><input type="text" ng-model="activityDate" placeholder="dd/mm/yyyy"></td>
 						</tr>
 						<tr>
 							<td><label>Neighborhood</label></td>
@@ -74,27 +70,12 @@
 								ng-options="category as category.name for category in categories_list">
 								<option></option>
 								</select></td>
-
 						</tr>
 						<tr>
 							<td><label>Description</label></td>
-							<td><textarea type="text" ng-model="activityDescription" rows="4"
-									cols="40"> </textarea></td>
+							<td><textarea type="text" ng-model="activityDescription" rows="4" cols="40"> </textarea></td>
 						</tr>
 					</table>
-
-					<div id="upload_image_admin">
-						<div id="upload_note">Enter an URL or upload an image</div>
-						<div id="upload_image_container">
-							<label id="upload_map_label" for="upload_image">Upload Image</label>
-							<input id="upload_image" type="text" size="24"
-								name="upload_image" value="" /> <input id="upload_image_button"
-								type="button" value="Upload Image" /> <input id="save_button"
-								type="button" value="Save Image" /> <br />
-							</td>
-						</div>
-					</div>
-
 					<div class="modal-footer">
 
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

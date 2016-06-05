@@ -15,9 +15,10 @@
           <ul class="nav navbar-nav">
             <li ng-class="{ active: isActive('/map')}"><a href="#/map">Manage Map</a></li>
             <li ng-class="{ active: isActive('/activities')}"><a href="#/activities">Manage Activities</a></li>
+            <li ng-class="{ active: isActive('/images')}"><a href="#/images">images</a></li>
             <li ng-class="{ active: isActive('/categories')}"><a href="#/categories">Manage Categories</a></li>
-            <li ng-class="{ active: isActive('/preview')}"><a href="#/preview">Preview</a></li>
             <li ng-class="{ active: isActive('/publish')}"><a href="#/publish">Publish</a></li>
+            
           </ul>
         </div>
       </div>
