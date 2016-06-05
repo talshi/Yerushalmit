@@ -36,6 +36,12 @@
 				controller: 'previewCtrl',
 				controllerAs: 'preview'
 			})
+     		.when('/images', {
+				templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-images-display.php',
+				controller: 'imagesCtrl',
+				controllerAs: 'images'
+			})
+
 			.when('/publish', {
 				templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-publish-display.php',
 				controller: 'publishCtrl',
@@ -68,9 +74,13 @@
 		wp_mapify_app.controller('previewCtrl', function ($scope) {
 
 		});
+		
+		wp_mapify_app.controller('imagesCtrl', function ($scope) {
+
+		});
 	})(jQuery);
 
-
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	wp_mapify_app.controller('activitiesCtrl', function ($scope) {
 		$scope.sortBy = 'name';

@@ -78,27 +78,6 @@
 							<td><textarea type="text" ng-model="activityDescription" rows="4" cols="40"> </textarea></td>
 						</tr>
 					</table>
-
-					<div id="upload_image_admin">
-						<div id="upload_note">Enter an URL or upload an image</div>
-						<div id="upload_image_container">
-							<label id="upload_map_label_act" for="upload_image_act">Upload Image</label>
-							<input id="upload_image_act" type="text" size="24"name="upload_image_act" value="" /> 
-						    <input id="upload_image_button"	type="button" value="Upload Image" />
-						    <input id="save_button_act" type="button" value="Save Image" /> <br />
-							</td>
-						</div>
-					</div>
-
-	<script>
-	
-
-
-	</script>
-
-
-
-
 					<div class="modal-footer">
 
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

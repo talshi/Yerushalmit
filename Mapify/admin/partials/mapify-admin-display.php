@@ -17,7 +17,9 @@
             <li ng-class="{ active: isActive('/activities')}"><a href="#/activities">Manage Activities</a></li>
             <li ng-class="{ active: isActive('/categories')}"><a href="#/categories">Manage Categories</a></li>
             <li ng-class="{ active: isActive('/preview')}"><a href="#/preview">Preview</a></li>
+            <li ng-class="{ active: isActive('/images')}"><a href="#/images">Images</a></li>    
             <li ng-class="{ active: isActive('/publish')}"><a href="#/publish">Publish</a></li>
+            
           </ul>
         </div>
       </div>
