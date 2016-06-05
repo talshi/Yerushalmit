@@ -18,7 +18,6 @@ if (isset ( $_REQUEST )) {
 			'%s',
 			'%s',
 			'%s'
-	) );
-	
+	));
 	die ();
 }

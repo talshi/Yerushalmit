@@ -3,7 +3,7 @@ require ('../../../../wp-load.php');
 
 if (isset ( $_REQUEST )) {
 	
-	$id = $_REQUEST ['id'];
+	//$id = $_REQUEST ['id'];
 	$name = $_REQUEST ['name'];
 	$date = $_REQUEST ['date'];
 	$description = $_REQUEST ['description'];
