@@ -1,6 +1,6 @@
 <?php require_once dirname(__DIR__) . '/../DB/DB_functions.php';?>
 
-<div ng-app="wp_mapify_app" ng-controller="activitiesCtrl">
+<div ng-app="wp_mapify_app">
 	<div class="manage_caption">Manage Activities</div>
 	<div class="note space">Click on the image to add an activity.</div>
 	<div id="map" ng-init="initActivities()">

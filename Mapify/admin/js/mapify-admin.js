@@ -26,17 +26,21 @@
 				controller: 'activitiesCtrl',
 				controllerAs: 'activities'
 			})
+			.when('/images', {
+				templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-images-display.php',
+				controller: 'imagesCtrl',
+				controllerAs: 'images'
+			})
 			.when('/categories', {
 				templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-categories-display.php',
 				controller: 'categoriesCtrl',
 				controllerAs: 'categories'
 			})
-			.when('/images', {
+			.when('/preview', {
 				templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-preview-display.php',
-				controller: 'imagesCtrl',
-				controllerAs: 'images'
+				controller: 'previewCtrl',
+				controllerAs: 'preview'
 			})
-
 			.when('/publish', {
 				templateUrl: '/wp-content/plugins/Mapify/admin/partials/mapify-publish-display.php',
 				controller: 'publishCtrl',
@@ -55,89 +59,22 @@
 		 * CONTROLLERS
 		 */
 
-		wp_mapify_app.controller('adminCtrl', function($scope, $location) {
-			$scope.isActive = function (viewLocation) { 
-				return viewLocation === $location.path();
-			};
-		});
-
-		wp_mapify_app.controller('mapCtrl', function ($scope) {
-
-		});
-
 
 
 	})(jQuery);
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	// upload activities images
-	
-		wp_mapify_app.controller('imagesCtrl', function ($scope) {
-		jQuery(document).ready(function ($) {
-			alert("!");
-			$scope.activities_list = [
-			                          { id: '1', name: 'A', date: '1/12/2008',category: 'B',neighborhood:'GILO',  description: 'blablabla',x:'0',y:'0'},
-			                          { id: '2', name: 'B', date: '21/12/2009',category: 'A',neighborhood:'ARMON', description: 'blablabla2',x:'20',y:'20'},
-			                          { id: '3', name: 'C', date: '12/12/2010',category: 'D',neighborhood:'KATMON', description: 'blablabla3',x:'30',y:'30'},
-			                          { id: '4', name: 'D', date: '13/12/2010',category: 'H',neighborhood:'PISGAT', description: 'blablabla3',x:'40',y:'40'},
-			                          { id: '5', name: 'E', date: '12/11/2010',category: 'C',neighborhood:'MSSOA', description: 'blablabla3',x:'50',y:'50'},
-			                          { id: '6', name: 'F', date: '13/12/2010',category: 'E',neighborhood:'KRYAT YOVAL', description: 'blablabla3',x:'60',y:'60'},                              
-			                          { id: '7', name: 'G', date: '12/12/1996',category: 'F',neighborhood:'ARNONA', description: 'blablabla3',x:'80',y:'80'}
-			                          ];
-
-			$("#upload_image_button_neighborhood").click(function (e) {
-
-				e.preventDefault();
-				var image = wp.media({
-					title: 'Upload Image',
-					multiple: false
-				}).open()
-				.on('select', function (e) {
-					var uploaded_image = image.state().get('selection').first();
-					var image_url = uploaded_image.toJSON().url;
-					$('#upload_image_neighborhood').val(image_url)
-					var image_link = $('#upload_image_neighborhood').val();
-					$("#preview_label").html("Preview:");
-					$("#img_preview").attr("src", image_link);
-				});
-			});
-
-			$("#save_button_upload").click(function() {
-//				if($('#upload_image_neighborhood').val(image_url) == ' ')
-//				{
-//					alert("BLAGAN");
-//					return;
-//				}
-				activity_name = "xxx"; 
-				img_url = jQuery("#upload_image_neighborhood").val();
-				alert(img_url);
-
-				$.ajax({
-					url: "../wp-content/plugins/Mapify/DB/save-activity-image.php",
-					type: "POST",
-					dataType: "json",
-					data: {
-						'activity_name' : activity_name,
-						'img_url': img_url
-						//TODO fix neighborhood data
-					},
-					success: function(data) {
-						//console.log(data);
-						$("#success").html("SUCCESS!!!!!!!!!!!!");
-					},
-					error: function(error) {
-						console.log(error);
-					}
-				});
-			});
-		});
-
+	wp_mapify_app.controller('adminCtrl', function($scope, $location) {
+		$scope.isActive = function (viewLocation) { 
+			return viewLocation === $location.path();
+		};
 	});
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	wp_mapify_app.controller('mapCtrl', function ($scope) {
+		
+	});
+	
 	wp_mapify_app.controller('activitiesCtrl', function ($scope) {
 		$scope.sortBy = 'name';
-
 		$scope.activities_list = [
 		                          { id: '1', name: 'A', date: '1/12/2008',category: 'B',neighborhood:'GILO',  description: 'blablabla',x:'0',y:'0'},
 		                          { id: '2', name: 'B', date: '21/12/2009',category: 'A',neighborhood:'ARMON', description: 'blablabla2',x:'20',y:'20'},
@@ -221,7 +158,6 @@
 			// add to DATA BASE
 
 			//var date = 
-			alert("before added activity to data base");
 
 			$.ajax({
 				url: "../wp-content/plugins/Mapify/DB/save-activity.php",
@@ -238,19 +174,19 @@
 					'category' : "blabla", /// need to FIX!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				},
 				success: function(data) {
-					alert("added");
 					console.log(data);
 				},
 				error: function(error) {
 					console.log(error);
 				}
 			});
-
-
-			// 
-
-			$scope.activities_list.push({ id: '0', name: $scope.activityName, date: $scope.activityDate, neighborhood: $scope.neighborhood, category: $scope.activityCategory ,description: $scope.activityDescription });
-
+			
+			$scope.activities_list.push({ 	id: '0',
+											name: $scope.activityName,
+											date: $scope.activityDate,
+											neighborhood: $scope.neighborhood,
+											category: $scope.selectedCategory.name,
+											description: $scope.activityDescription });
 			$scope.activityName = ' ';
 			$scope.activityDate = ' ';
 			$scope.activityCategory = ' ';
@@ -324,6 +260,63 @@
 		});
 	});
 
+	wp_mapify_app.controller('imagesCtrl', function ($scope) {
+		
+		$scope.activities_list = [
+		                          { id: '1', name: 'A', date: '1/12/2008',category: 'B',neighborhood:'GILO',  description: 'blablabla',x:'0',y:'0'},
+		                          { id: '2', name: 'B', date: '21/12/2009',category: 'A',neighborhood:'ARMON', description: 'blablabla2',x:'20',y:'20'},
+		                          { id: '3', name: 'C', date: '12/12/2010',category: 'D',neighborhood:'KATMON', description: 'blablabla3',x:'30',y:'30'},
+		                          { id: '4', name: 'D', date: '13/12/2010',category: 'H',neighborhood:'PISGAT', description: 'blablabla3',x:'40',y:'40'},
+		                          { id: '5', name: 'E', date: '12/11/2010',category: 'C',neighborhood:'MSSOA', description: 'blablabla3',x:'50',y:'50'},
+		                          { id: '6', name: 'F', date: '13/12/2010',category: 'E',neighborhood:'KRYAT YOVAL', description: 'blablabla3',x:'60',y:'60'},                              
+		                          { id: '7', name: 'G', date: '12/12/1996',category: 'F',neighborhood:'ARNONA', description: 'blablabla3',x:'80',y:'80'}
+		                          ];
+		$("#upload_image_button_neighborhood").click(function (e) {
+
+			e.preventDefault();
+			var image = wp.media({
+				title: 'Upload Image',
+				multiple: false
+			}).open()
+			.on('select', function (e) {
+				var uploaded_image = image.state().get('selection').first();
+				var image_url = uploaded_image.toJSON().url;
+				$('#upload_image_neighborhood').val(image_url)
+				var image_link = $('#upload_image_neighborhood').val();
+				$("#preview_label").html("Preview:");
+				$("#img_preview").attr("src", image_link);
+			});
+		});
+
+		$("#save_button_upload").click(function() {
+//			if($('#upload_image_neighborhood').val(image_url) == ' ')
+//			{
+//			alert("BLAGAN");
+//			return;
+//			}
+			activity_name = "xxx"; 
+			img_url = jQuery("#upload_image_neighborhood").val();
+
+			$.ajax({
+				url: "../wp-content/plugins/Mapify/DB/save-activity-image.php",
+				type: "POST",
+				dataType: "json",
+				data: {
+					'activity_name' : activity_name,
+					'img_url': img_url
+					//TODO fix neighborhood data
+				},
+				success: function(data) {
+					//console.log(data);
+					$("#success").html("SUCCESS!!!!!!!!!!!!");
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			});
+		});
+	});
+
 	wp_mapify_app.controller('categoriesCtrl', function ($scope) {
 
 		$scope.sortBy = 'name';
@@ -363,7 +356,6 @@
 
 			if($scope.CategoryName == undefined)
 			{
-				alert("Insert Category Name");
 				$scope.CategoryName = ' ';
 				$scope.CategoryDescription = ' ';
 				$("#upload_image_category").val(' ');
@@ -374,7 +366,6 @@
 
 			//$scope.$apply();
 
-			alert("ENTER TO DB ");
 			$.ajax({
 				url: "../wp-content/plugins/Mapify/DB/save-category.php",
 				type: "POST",

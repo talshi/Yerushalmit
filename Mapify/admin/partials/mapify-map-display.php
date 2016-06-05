@@ -2,20 +2,17 @@
 </div>
 
 <div class="manage_caption">Manage Map</div>
-<div class="note">Enter an URL or upload an image for the banner.</div>
+<div class="note space">Enter an URL or upload an image for the banner.</div>
 <div id="upload_main_img">
     <label id="upload_map_label" for="upload_image_main">Upload Main Image </label>
-    
-	<div id="upload_note">Enter an URL or upload an image for the banner.</div>
-	
-	
+	<div class="note">Enter an URL or upload an image for the banner.</div>
     <input id="upload_image_main" type="text" size="36" name="upload_image" value="" />
     <input id="upload_image_button_main" type="button" value="Upload Image" />
     <input id="save_button_main" type="button" value="Save Image" />
     <br />
 		
  </div>
-
+<br>
 <div id="upload_neighborhood_img">
     <label id="upload_map_label" for="upload_image_neighborhood">Upload neighborhood Image </label>
     
@@ -26,7 +23,7 @@
     <input id="upload_image_button_neighborhood" type="button" value="Upload Image" />
     <input id="save_button_neighborhood" type="button" value="Save Image" />
     <br>
-	    neighborhood: <input id="neighborhood" type ="text">
+	    <label for="neighborhood">Neighborhood:</label> <input id="neighborhood" type ="text">
     <br>
 		
  </div>
@@ -137,6 +134,7 @@
     			success: function(data) {
     				console.log(data);
     				$("#success").html("CATEGORY SUCCESS!!!!!!!!!!!!");
+    				$route.reload();
     			},
     			error: function(error) {
     				console.log(error);

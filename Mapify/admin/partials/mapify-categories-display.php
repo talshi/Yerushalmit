@@ -12,7 +12,7 @@
 </div>
 <!-- search bar -->
 
-<div class="activities-table" ng-controller="categoriesCtrl">
+<div class="activities-table">
 
 	<table>
 		<tr>
