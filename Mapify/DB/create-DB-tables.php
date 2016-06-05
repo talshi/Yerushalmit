@@ -57,7 +57,7 @@ class Tables {
 				name varchar(5000) DEFAULT '' NOT NULL,
 				date varchar(55) NOT NULL,
 				description varchar(5000) DEFAULT '' NOT NULL,
-				activityLocation varchar(55) DEFAULT '' NOT NULL,
+				neighborhood varchar(55) DEFAULT '' NOT NULL,
 				showOnMap varchar(55) DEFAULT '' NOT NULL,
 				locationX varchar(55) DEFAULT '' NOT NULL,
 				locationY varchar(55) DEFAULT '' NOT NULL,

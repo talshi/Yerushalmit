@@ -31,7 +31,7 @@ class DB_functions {
 	/*
 	 test like get_category_list_by_id.
 	 */
-	
+
 	public static function delete_category_by_id($id)
 	{
 		global $wpdb;

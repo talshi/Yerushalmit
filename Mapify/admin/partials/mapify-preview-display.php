@@ -20,11 +20,11 @@
 			<tbody>
 				<tr>
 					<td>neighborhood :</td>
-					<td><select ng-model="selectedNeighborhood"
+					<td ><select ng-model="selectedNeighborhood"
 						ng-options="activity as activity.neighborhood for activity in activities_list">
 							<option></option>
 					</select></td>
-					<td>GILO</td>
+					<td></td>
 				</tr>
 				<tr>
 					<td>URL:</td>
@@ -34,15 +34,13 @@
 						value="Upload Image" /></td>
 				</tr>
 				<tr>
-					<td><input id="save_button_neighborhood" type="button"
-						value="Save Image" /></td>
+					<td><input id="save_button_upload" type="button" value="Save Image" /></td>
 					<td></td>
 					<td></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-
 </div>
 
 <div>
@@ -53,16 +51,3 @@
 		<img id="img_preview" class="img_preview"></img>
 	</div>
 </div>
-
-
-<div>
-	<div>
-		<label id="preview_label_neighborhood" class="page-header"></label>
-	</div>
-	<div>
-		<img id="img_preview_neighborhood" class="img_preview"></img>
-	</div>
-</div>
-
-
-
