@@ -2,7 +2,8 @@
 <div class="manage_caption">Manage Categories</div>
 <div class="note">Organize your categories.</div>
 <br>
-
+<div id="success"></div>
+<hr>
 <div class="categories-control">
 	<label for="search">Search: </label> <input name="search" type="text"
 		ng-model="query" /> <input type="button" value="Add New Category"
@@ -37,7 +38,7 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Add New Catergory</h4>
-					<form class="modal-body" role="form" >
+					<form class="modal-body" role="form">
 
 						<table id="IdInsertTableCategory" class="table table-hover">
 							<tr>
@@ -56,10 +57,11 @@
 							<div id="upload_note">Upload a category image:</div>
 							<div id="upload_image_container">
 
-								<label id="upload_map_label" for="upload_image_category">Upload Image</label>
-								<br>
-								<input id="upload_image_category" type="text" size="36"name="upload_image_category" placeholder="URL"/> 
-								<input id="upload_image_button_category" type="button" value="Upload Image" /> 
+								<label id="upload_map_label" for="upload_image_category">Upload
+									Image</label> <br> <input id="upload_image_category"
+									type="text" size="36" name="upload_image_category"
+									placeholder="URL" /> <input id="upload_image_button_category"
+									type="button" value="Upload Image" />
 								</td>
 							</div>
 						</div>
@@ -69,7 +71,8 @@
 								data-dismiss="modal">Close</button>
 							<!-- add item to DB.... -->
 							<button id="save-button" class="btn btn-default" type="submit"
-								data-dismiss="modal" ng-click="addCategory()" >Save</button>
+								data-dismiss="modal" ng-click="addCategory()">Save</button>
+							
 						</div>
 
 					</form>

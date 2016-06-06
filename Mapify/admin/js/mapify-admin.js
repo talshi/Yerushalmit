@@ -270,7 +270,7 @@
 		                          { id: '6', name: 'F', date: '13/12/2010',category: 'E',neighborhood:'KRYAT YOVAL', description: 'blablabla3',x:'60',y:'60'},                              
 		                          { id: '7', name: 'G', date: '12/12/1996',category: 'F',neighborhood:'ARNONA', description: 'blablabla3',x:'80',y:'80'}
 		                          ];
-		
+	    
 		$("#upload_image_button_neighborhood").click(function (e) {
 			e.preventDefault();
 			var image = wp.media({
@@ -288,20 +288,23 @@
 		});
 		
 		$("#save_button_upload").click(function() {
-			
-			if($scope.selectedNeighborhood.neighborhood.length == 0){
-				alert("ERROR: Choose neighborhood before save");
+			if($scope.selectedNeighborhood.neighborhood == undefined || $scope.selectedNeighborhood.neighborhood.length == 0){
+				$("#success_image").html("<div class='notice notice-success is-dismissable'>ERROR: Choose Neighborhood Before Clicking Save.<br>Image Activity Did Not Saved!</div>");
+				$scope.selectedNeighborhood = ' ';	
+				$('#upload_image_neighborhood').val(' ');
 				return;
 			}
-			
 			if($('#upload_image_neighborhood').val().length == 0 )
 			{
-				alert("ERROR: Click Upload Image Before Save");
+				$scope.selectedNeighborhood = ' ';	
+				$('#upload_image_neighborhood').val(' ');
+				$("#success_image").html("<div class='notice notice-success is-dismissable'>ERROR: Fill URL Before Clicking Save.<br>Image Did Not Saved!</div>");
 				return;
 			}
 
 			img_url = jQuery("#upload_image_neighborhood").val();
 
+			var activity_name = "XXX";
 			$.ajax({
 				url: "../wp-content/plugins/Mapify/DB/save-activity-image.php",
 				type: "POST",
@@ -312,10 +315,10 @@
 				},
 				success: function(data) {
 					//console.log(data);
-					$("#success").html("SUCCESS!!!!!!!!!!!!");
+    				$("#success_image").html("<div class='notice notice-success is-dismissable'>Image To "+ $scope.selectedNeighborhood.neighborhood + " neighborhood Saved Successfully!</div>");
 				},
 				error: function(error) {
-					console.log(error);
+    				$("#success_image").html("<div class='notice notice-success is-dismissable'>ERROR: Image Image Activity Did Not Saved!</div>");
 				}
 			});
 		});
@@ -355,34 +358,50 @@
 				//  $("#img_preview").attr("src", image_link);
 			});
 		});		
-
+		
 		$scope.addCategory = function(){
 
+			var desctiption = $scope.CategoryDescription;
+			var URL = $("#upload_image_category").val();
 			if($scope.CategoryName == undefined)
 			{
+				alert("ERROR: Enter Category Name");
 				$scope.CategoryName = ' ';
 				$scope.CategoryDescription = ' ';
 				$("#upload_image_category").val(' ');
+				$("#success").html("<div class='notice notice-success is-dismissable'>ERROR: Category Did Not Saved !</div>");
 				return false;
 			}
 
-//			$scope.categories_list.push({ id: '0', name: $scope.CategoryName,description: $scope.CategoryDescription });
-
+			if(desctiption == undefined)
+				desctiption = "null";
+			
+			if(URL.length == 0)
+				URL = "null";
+			
+			$scope.categories_list.push({ id: '0', name: $scope.CategoryName,description: $scope.CategoryDescription });
+			
 			//$scope.$apply();
-
+			
 			$.ajax({
 				url: "../wp-content/plugins/Mapify/DB/save-category.php",
 				type: "POST",
 				data: {
-					logoUrl : $("#upload_image_category").val(),
+					logoUrl : URL,
 					name : $scope.CategoryName,
-					description :$scope.CategoryDescription 
+					description :desctiption 
 				},
 				success: function(data) {
-					console.log(data);
+					$scope.CategoryName = ' ';
+					$scope.CategoryDescription = ' ';
+					$("#upload_image_category").val(' ');
+					$("#success").html("<div class='notice notice-success is-dismissable'>Category Saved Successfully!</div>");
 				},
 				error: function(error) {
-					console.log(error);
+					$scope.CategoryName = ' ';
+					$scope.CategoryDescription = ' ';
+					$("#upload_image_category").val(' ');
+					$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Category Did Not Save!</div>");
 				}
 			});
 			$scope.CategoryName = ' ';

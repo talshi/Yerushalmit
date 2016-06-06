@@ -17,6 +17,7 @@
 <hr>
 
 <br>
+<div id="success-neghborhood"></div>
 <div id="upload_neighborhood_img">
 	<label id="upload_map_label" for="upload_image_neighborhood">Upload neighborhood Image </label>
 	<div class="note space">Enter an URL or upload an image for the banner.</div>
@@ -80,9 +81,10 @@
 
         $("#save_button_main").click(function() {
 
-			if($('#upload_image_main').val().length == 0 )
+			if( $('#upload_image_main').val().length == 1 || $('#upload_image_main').val().length == 0 || $('#upload_image_main').val() == undefined)
 			{
-				alert("ERROR: Click Upload Image Before Save");
+				jQuery("#upload_image_main").val(' ');
+				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Image - Main - Did Not Save!</div>");
 				return;
 			}
         	img_url = jQuery("#upload_image_main").val();
@@ -96,10 +98,12 @@
     				'neighborhood' : "main"
     			},
     			success: function(data) {
-    				$("#success").html("<div class='notice notice-success is-dismissable'>Image Saved Successfully!</div>");
+    				jQuery("#upload_image_main").val(' ');
+    				$("#success").html("<div class='notice notice-success is-dismissable'>Image - Main -Saved Successfully!</div>");
     			},
     			error: function(error) {
-    				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Image Did Not Save!</div>");
+    				jQuery("#upload_image_main").val(' ');
+    				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Image - Main - Did Not Save!</div>");
     			}
     		});
     	});
@@ -132,9 +136,11 @@
         });
 
         $("#save_button_neighborhood").click(function() {
-			if($('#neighborhood').val().length  == 0 || $('#upload_image_neighborhood').val().length == 0 )
+			if($('#neighborhood').val().length  == 1 || $('#neighborhood').val().length  == 0 || $('#upload_image_neighborhood').val().length == 0 || jQuery("#upload_image_neighborhood").val().length == 0 || jQuery("#upload_image_neighborhood").val().length == 1 )
 			{
-				alert("ERROR: Enter neighborhood name and URL image");
+				$('#neighborhood').val(' ');
+				jQuery("#upload_image_neighborhood").val(' ');
+				$("#success-neghborhood").html("<div class='notice notice-error is-dismissable'>ERROR: Neighborhood's Image Did Not Save!</div>");
 				return;
 			}
     		img_url = jQuery("#upload_image_neighborhood").val();
@@ -149,10 +155,14 @@
     			},
     			success: function(data) {
     				console.log(data);
-    				$("#success").html("<div class='notice notice-success is-dismissable'>Neighborhood's Image Saved Successfully!</div>");
+    				$('#neighborhood').val(' ');
+    				jQuery("#upload_image_neighborhood").val(' ');
+    				$("#success-neghborhood").html("<div class='notice notice-success is-dismissable'>Neighborhood's "+ img_neighborhood +" Image Saved Successfully!</div>");
     			},
     			error: function(error) {
-    				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Neighborhood's Image Did Not Save!</div>");
+    				$('#neighborhood').val(' ');
+    				jQuery("#upload_image_neighborhood").val(' ');
+    				$("#success-neghborhood").html("<div class='notice notice-error is-dismissable'>ERROR: Neighborhood's "+img_neighborhood +" Image Did Not Save!</div>");
     			}
     		});
     	});
