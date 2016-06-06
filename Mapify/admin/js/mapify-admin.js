@@ -59,8 +59,6 @@
 		 * CONTROLLERS
 		 */
 
-
-
 	})(jQuery);
 
 	wp_mapify_app.controller('adminCtrl', function($scope, $location) {
