@@ -12,9 +12,13 @@
 
 </div>
 <br>
+
+
+<hr>
+
+<br>
 <div id="upload_neighborhood_img">
-	<label id="upload_map_label" for="upload_image_neighborhood">Upload
-		neighborhood Image </label>
+	<label id="upload_map_label" for="upload_image_neighborhood">Upload neighborhood Image </label>
 	<div class="note space">Enter an URL or upload an image for the banner.</div>
 	<div class="space">
 		<label for="neighborhood">Neighborhood:</label> <input
@@ -75,7 +79,13 @@
         });
 
         $("#save_button_main").click(function() {
-    		img_url = jQuery("#upload_image_main").val();
+
+			if($('#upload_image_main').val().length == 0 )
+			{
+				alert("ERROR: Click Upload Image Before Save");
+				return;
+			}
+        	img_url = jQuery("#upload_image_main").val();
     		$.ajax({
     			url: "../wp-content/plugins/Mapify/DB/save-img.php",
     			type: "POST",
@@ -122,13 +132,11 @@
         });
 
         $("#save_button_neighborhood").click(function() {
-
 			if($('#neighborhood').val().length  == 0 || $('#upload_image_neighborhood').val().length == 0 )
 			{
-				alert("Enter neighborhood name and URL image");
+				alert("ERROR: Enter neighborhood name and URL image");
 				return;
 			}
-            
     		img_url = jQuery("#upload_image_neighborhood").val();
     		img_neighborhood = jQuery("#neighborhood").val();
     		$.ajax({

@@ -96,9 +96,9 @@
 		                          { name: 'H', description: 'category8'}
 		                          ];
 
-
+		
 		$scope.createCoords = function(event) {
-
+			
 			var r = document.getElementById("image-activities").getBoundingClientRect();
 
 			var pageCoords_left = r.left;
@@ -136,6 +136,7 @@
 //			{
 //			alert("Insert Activity Date");
 //			return false;    			
+			
 //			}
 //			if($scope.activityCategory == ' ')
 //			{
@@ -156,7 +157,6 @@
 			// add to DATA BASE
 
 			//var date = 
-
 			$.ajax({
 				url: "../wp-content/plugins/Mapify/DB/save-activity.php",
 				type: "POST",
@@ -166,10 +166,10 @@
 					'date' : $scope.activityDate,
 					'description' : $scope.activityDescription,
 					'neighborhood' : $scope.neighborhood,
-					//	'showOnMap' : "show", // need to FIX !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+					//	'showOnMap' : "show",
 					'locationX' : x,
 					'locationY' : y,
-					'category' : "blabla", /// need to FIX!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+					'category' : $scope.selectedCategory.name, 
 				},
 				success: function(data) {
 					console.log(data);
@@ -218,10 +218,10 @@
 		};
 
 		$scope.initActivities = function(){
-
+		
 			for(var i = 0 ; i < $scope.activities_list.length ; i++)
 			{
-
+				
 				var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
 				jQuery("#image-activities").after(m);
 
@@ -231,7 +231,7 @@
 					"left": $scope.activities_list[i].x + '%'
 				});
 
-			}	
+			}
 		}
 
 		jQuery(window).resize(function(){
@@ -260,6 +260,7 @@
 
 	wp_mapify_app.controller('imagesCtrl', function ($scope) {
 		
+		
 		$scope.activities_list = [
 		                          { id: '1', name: 'A', date: '1/12/2008',category: 'B',neighborhood:'GILO',  description: 'blablabla',x:'0',y:'0'},
 		                          { id: '2', name: 'B', date: '21/12/2009',category: 'A',neighborhood:'ARMON', description: 'blablabla2',x:'20',y:'20'},
@@ -269,8 +270,8 @@
 		                          { id: '6', name: 'F', date: '13/12/2010',category: 'E',neighborhood:'KRYAT YOVAL', description: 'blablabla3',x:'60',y:'60'},                              
 		                          { id: '7', name: 'G', date: '12/12/1996',category: 'F',neighborhood:'ARNONA', description: 'blablabla3',x:'80',y:'80'}
 		                          ];
+		
 		$("#upload_image_button_neighborhood").click(function (e) {
-
 			e.preventDefault();
 			var image = wp.media({
 				title: 'Upload Image',
@@ -285,14 +286,20 @@
 				$("#img_preview").attr("src", image_link);
 			});
 		});
-
+		
 		$("#save_button_upload").click(function() {
-//			if($('#upload_image_neighborhood').val(image_url) == ' ')
-//			{
-//			alert("BLAGAN");
-//			return;
-//			}
-			activity_name = "xxx"; 
+			
+			if($scope.selectedNeighborhood.neighborhood.length == 0){
+				alert("ERROR: Choose neighborhood before save");
+				return;
+			}
+			
+			if($('#upload_image_neighborhood').val().length == 0 )
+			{
+				alert("ERROR: Click Upload Image Before Save");
+				return;
+			}
+
 			img_url = jQuery("#upload_image_neighborhood").val();
 
 			$.ajax({
@@ -302,7 +309,6 @@
 				data: {
 					'activity_name' : activity_name,
 					'img_url': img_url
-					//TODO fix neighborhood data
 				},
 				success: function(data) {
 					//console.log(data);
