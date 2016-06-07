@@ -8,9 +8,9 @@
 	<table class="table table-condensed">
 		<tbody>
 			<tr>
-				<td><label for="neighborhood">Neighborhood:</label></td>
-				<td><select id="neighborhood" ng-model="selectedNeighborhood"
-					ng-options="activity as activity.neighborhood for activity in activities_list" >
+				<td><label for="Activity">Activity:</label></td>
+				<td><select id="Activity" value = "main" ng-model="selectedActivity"
+ 							ng-options="Activity as Activity.name for Activity in activity_list" >
 				</select></td>
 				<td></td>
 			</tr>

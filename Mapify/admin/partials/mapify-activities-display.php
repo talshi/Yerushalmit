@@ -10,8 +10,8 @@
 	<div class="activities-control">
 		<!-- search bar -->
 		<label for="search">Search:</label> <input name="search" type="text"
-			ng-model="query" /> <input type="button" value="Remove Selected" /> <input
-			type="button" value="Remove All" />
+			ng-model="query" /> <input type="button" value="Remove Selected" /> 
+			<input type="button" value="Remove All" id = "remove_all_button"/>
 	</div>
 	<div class="activities-table">
 		<table>
@@ -59,8 +59,13 @@
 						</tr>
 						<tr>
 							<td><label>Neighborhood</label></td>
-							<td><input type="text" ng-model="neighborhood"
-								placeholder="Neighborhood"></td>
+
+							<td><select ng-model = "selectedNeighborhood"
+								ng-options="neighborhood as neighborhood.neighborhood for neighborhood in neighborhood_list">
+								<option></option>
+								</select></td>	
+								
+								
 						</tr>
 						<tr>
 							<td><label>Activity Category</label></td>

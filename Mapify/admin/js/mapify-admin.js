@@ -199,12 +199,37 @@
 			data: $.param({ action: 'get_activity_list' }),
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		}).success(function(response) {
-//			console.log(response);
 			$scope.activities_list = response;
 			$scope.initActivities($scope.activities_list);
 		}, function(error) {
 			console.log(error);
 		});
+
+
+		$http({
+			method: "POST",
+			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+			data: $.param({ action: 'get_category_list' }), 
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		}).success(function(response) {
+			$scope.categories_list = response; 
+		}, function(error) {
+			console.log(error);
+		});
+
+
+
+		$http({
+			method: "POST",
+			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+			data: $.param({ action: 'get_neighborhoods' }), 
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		}).success(function(response) {
+			$scope.neighborhood_list = response; 
+		}, function(error) {
+			console.log(error);
+		});
+
 
 		$scope.createCoords = function(event) {
 
@@ -278,8 +303,7 @@
 					//	'showOnMap' : "show",
 					'locationX' : x,
 					'locationY' : y,
-//					'category' : $scope.selectedCategory.name,
-					'category' : ''
+					'category' : $scope.selectedCategory.name,
 				},
 				success: function(data) {
 //					console.log(data);
@@ -288,19 +312,17 @@
 					console.log(error);
 				}
 			});
-
 			$scope.activities_list.push({ 	id: '0',
 				name: $scope.activityName,
 				date: $scope.activityDate,
-				neighborhood: $scope.neighborhood,
-//				category: $scope.selectedCategory.name,
-				category: '',
+				neighborhood: $scope.selectedNeighborhood.neighborhood,
+				category: $scope.selectedCategory.name,
 				description: $scope.activityDescription });
-			$scope.activityName = ' ';
-			$scope.activityDate = ' ';
-			$scope.activityCategory = ' ';
-			$scope.activityDescription = ' ';
-			$scope.neighborhood = ' ';
+			$scope.activityName = '';
+			$scope.activityDate = '';
+			$scope.activityCategory = '';
+			$scope.activityDescription = '';
+			$scope.selectedNeighborhood.neighborhood = '';
 
 			var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
 			jQuery("#image-activities").after(m);
@@ -363,22 +385,38 @@
 				});
 
 			}	
+		});
 
+		$("#remove_all_button").click(function() {
+			if(confirm("Are You Sure?")) {
+				$http({
+					method: "POST",
+					url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+					data: $.param({ action: 'delete_all_activities' }), 
+					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				}).success(function(response) {
+					alert("all activities deleted!");
+				}, function(error) {
+					console.log(error);
+				});
+			}
 		});
 	});
 
-	wp_mapify_app.controller('imagesCtrl', function ($scope) {
+	wp_mapify_app.controller('imagesCtrl', function ($scope, $http) {
 
+		$http({
+			method: "POST",
+			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+			data: $.param({ action: 'get_activity_list' }),
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		}).success(function(response) {
+			$scope.activity_list = response;
+			console.log(response);
+		}, function(error) {
+			console.log(error);
+		});
 
-		$scope.activities_list = [
-		                          { id: '1', name: 'A', date: '1/12/2008',category: 'B',neighborhood:'GILO',  description: 'blablabla',x:'0',y:'0'},
-		                          { id: '2', name: 'B', date: '21/12/2009',category: 'A',neighborhood:'ARMON', description: 'blablabla2',x:'20',y:'20'},
-		                          { id: '3', name: 'C', date: '12/12/2010',category: 'D',neighborhood:'KATMON', description: 'blablabla3',x:'30',y:'30'},
-		                          { id: '4', name: 'D', date: '13/12/2010',category: 'H',neighborhood:'PISGAT', description: 'blablabla3',x:'40',y:'40'},
-		                          { id: '5', name: 'E', date: '12/11/2010',category: 'C',neighborhood:'MSSOA', description: 'blablabla3',x:'50',y:'50'},
-		                          { id: '6', name: 'F', date: '13/12/2010',category: 'E',neighborhood:'KRYAT YOVAL', description: 'blablabla3',x:'60',y:'60'},                              
-		                          { id: '7', name: 'G', date: '12/12/1996',category: 'F',neighborhood:'ARNONA', description: 'blablabla3',x:'80',y:'80'}
-		                          ];
 
 		$("#upload_image_button_neighborhood").click(function (e) {
 			e.preventDefault();
@@ -396,6 +434,7 @@
 			});
 		});
 
+
 		$("#save_button_upload").click(function() {
 			if($scope.selectedNeighborhood.neighborhood == undefined || $scope.selectedNeighborhood.neighborhood.length == 0){
 				$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Choose Neighborhood Before Clicking Save.<br>Image Activity Did Not Saved!</div>");
@@ -412,7 +451,7 @@
 			}
 
 			img_url = jQuery("#upload_image_neighborhood").val();
-
+			alert("SSSSSS");
 			var activity_name = "XXX";
 			$.ajax({
 				url: "../wp-content/plugins/Mapify/DB/save-activity-image.php",
@@ -458,16 +497,6 @@
 		});
 
 		$scope.sortBy = 'name';
-//		$scope.categories_list = [
-//		                          { name: 'A', description: 'category1'},
-//		                          { name: 'B', description: 'category2'},
-//		                          { name: 'C', description: 'category3'},
-//		                          { name: 'E', description: 'category4'},
-//		                          { name: 'D', description: 'category5'},
-//		                          { name: 'F', description: 'category6'},
-//		                          { name: 'G', description: 'category7'},
-//		                          { name: 'H', description: 'category8'}
-//		                          ];
 
 		$http({
 			method: "POST",
@@ -475,19 +504,29 @@
 			data: $.param({ action: 'get_category_list' }), 
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		}).success(function(response) {
-//			console.log(response);
 			$scope.categories_list = response; //??
 		}, function(error) {
 			console.log(error);
 		});
-		
+
 
 		jQuery("#IDdeleteSelectedCategory").click(function(e){
 			alert("remove selected function");
 		});		
 
 		jQuery("#IDdeleteAllCategory").click(function(e){
-			alert("remove All function");
+			if(confirm("Are You Sure?")) {
+				$http({
+					method: "POST",
+					url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+					data: $.param({ action: 'delete_all_categories' }), 
+					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				}).success(function(response) {
+					alert("all categories deleted!");
+				}, function(error) {
+					console.log(error);
+				});
+			}
 		});		
 
 
@@ -523,10 +562,10 @@
 			if($scope.CategoryName == undefined || $scope.CategoryName.length < 2)
 			{
 				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Category Did Not Save! <br>\tFill Name Category</div>");
-				$scope.CategoryName = ' ';
-				$scope.CategoryDescription = ' ';
+				$scope.CategoryName = '';
+				$scope.CategoryDescription = '';
 				$scope.CategoryURL = ' ';
-				$("#upload_image_category").val(' ');
+				$("#upload_image_category").val('');
 				return false;
 			}
 
@@ -535,13 +574,13 @@
 			}
 			if($scope.CategoryURL == undefined || $scope.CategoryURL.length < 2)  {
 				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Category Did Not Save!<br>Add Image Category</div>");
-				$scope.CategoryName = ' ';
-				$scope.CategoryDescription = ' ';
-				$scope.CategoryURL = ' ';
-				$("#upload_image_category").val(' ');
+				$scope.CategoryName = '';
+				$scope.CategoryDescription = '';
+				$scope.CategoryURL = '';
+				$("#upload_image_category").val('');
 				return;
 			}
-			
+
 			$.ajax({
 				url: "../wp-content/plugins/Mapify/DB/save-category.php",
 				type: "POST",
@@ -559,7 +598,6 @@
 			});
 
 			$scope.categories_list.push({ id: '0', name: name, description: description, url: URL });
-			
 			$scope.CategoryName = ''; 
 			$scope.CategoryDescription = '';
 			$scope.CategoryURL = '';
