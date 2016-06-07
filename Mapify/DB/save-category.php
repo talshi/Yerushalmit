@@ -19,5 +19,6 @@ if (isset ( $_REQUEST )) {
 			'%s',
 			'%s'
 	));
+	
 	die ();
 }

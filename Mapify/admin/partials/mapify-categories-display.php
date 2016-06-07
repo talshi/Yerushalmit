@@ -1,8 +1,8 @@
 
+<div id="success"></div>
 <div class="manage_caption">Manage Categories</div>
 <div class="note">Organize your categories.</div>
 <br>
-<div id="success"></div>
 <hr>
 <div class="categories-control">
 	<label for="search">Search: </label> <input name="search" type="text"
