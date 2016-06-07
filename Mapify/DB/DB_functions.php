@@ -3,7 +3,6 @@
 require_once dirname(__DIR__) . '/../../../wp-config.php';
 
 $action = $_POST['action'];
-echo DB_functions::get_main_map_url();
 switch($action) {
 	case "get_activity_list":
 		echo DB_functions::get_activity_list();
@@ -22,9 +21,6 @@ switch($action) {
 		break;
 	case "get_category_list":
 		echo DB_functions::get_category_list();
-		break;
-	case "get_activity_list":
-		echo DB_functions::get_activity_list();
 		break;
 	case "get_main_map_url":
 		echo DB_functions::get_main_map_url();
@@ -95,7 +91,7 @@ class DB_functions {
 	public static function get_activity_list()
 	{
 		$results = $GLOBALS['wpdb']->get_results( "SELECT * FROM `wp_activities ", OBJECT );
-		echo json_encode($results,JSON_PRETTY_PRINT);
+		return json_encode($results,JSON_PRETTY_PRINT);
 	}
 	
 	//------------------------------------------------------------------------------------------
@@ -107,9 +103,7 @@ class DB_functions {
 	
 	public static function get_main_map_url(){
 		global $wpdb;
-
 		$url_main = $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "map WHERE neighborhood = 'main'");
-		
 		return json_encode($url_main,JSON_PRETTY_PRINT);
 	}
 
