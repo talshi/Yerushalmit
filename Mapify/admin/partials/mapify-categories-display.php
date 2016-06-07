@@ -6,10 +6,9 @@
 <hr>
 <div class="categories-control">
 	<label for="search">Search: </label> <input name="search" type="text"
-		ng-model="query" /> <input type="button" value="Add New Category"
-		data-toggle="modal" data-target="#myModal" /> <input type="button"
-		value="Remove Selected" id="IDdeleteSelectedCategory" /> <input
-		type="button" value="Remove All" id="IDdeleteAllCategory" />
+		ng-model="query" /> <input type="button" value="Add New Category" data-toggle="modal" data-target="#myModal" />
+		 <input type="button" value="Remove Selected" id="IDdeleteSelectedCategory" />
+		  <input type="button" value="Remove All" id="IDdeleteAllCategory" />
 </div>
 <!-- search bar -->
 
@@ -37,6 +36,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					
 					<h4 class="modal-title">Add New Catergory</h4>
 					<form class="modal-body" role="form">
 
@@ -53,6 +53,7 @@
 							</tr>
 						</table>
 
+						
 						<div id="upload_image_admin">
 							<div id="upload_note">Upload a category image:</div>
 							<div id="upload_image_container">
@@ -70,7 +71,7 @@
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Close</button>
 							<!-- add item to DB.... -->
-							<button id="save-button" class="btn btn-default" type="submit"
+							<button id="save-button-category" class="btn btn-default" type="submit"
 								data-dismiss="modal" ng-click="addCategory()">Save</button>
 						</div>
 					</form>

@@ -2,6 +2,38 @@
 
 require_once dirname(__DIR__) . '/../../../wp-config.php';
 
+$action = $_POST['action'];
+echo DB_functions::get_main_map_url();
+switch($action) {
+	case "get_activity_list":
+		echo DB_functions::get_activity_list();
+		break;
+	case "get_category_list_by_id":
+		echo DB_functions::get_category_list_by_id();
+		break;
+	case "get_activity_list_by_id":
+		echo DB_functions::get_activity_list_by_id();
+		break;
+	case "delete_category_by_id":
+		echo DB_functions::delete_category_by_id();
+		break;
+	case "delete_activity_by_id":
+		echo DB_functions::delete_activity_by_id();
+		break;
+	case "get_category_list":
+		echo DB_functions::get_category_list();
+		break;
+	case "get_activity_list":
+		echo DB_functions::get_activity_list();
+		break;
+	case "get_main_map_url":
+		echo DB_functions::get_main_map_url();
+		break;
+}
+ 
+
+
+
 class DB_functions {
 	public static function get_category_list_by_id($id)
 	{
@@ -63,7 +95,7 @@ class DB_functions {
 	public static function get_activity_list()
 	{
 		$results = $GLOBALS['wpdb']->get_results( "SELECT * FROM `wp_activities ", OBJECT );
-		return json_encode($results,JSON_PRETTY_PRINT);
+		echo json_encode($results,JSON_PRETTY_PRINT);
 	}
 	
 	//------------------------------------------------------------------------------------------
@@ -75,10 +107,10 @@ class DB_functions {
 	
 	public static function get_main_map_url(){
 		global $wpdb;
-	
+
 		$url_main = $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "map WHERE neighborhood = 'main'");
 		
-		return $url_main;
+		return json_encode($url_main,JSON_PRETTY_PRINT);
 	}
 
 }

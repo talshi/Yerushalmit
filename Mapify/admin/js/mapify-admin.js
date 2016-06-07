@@ -95,7 +95,7 @@
 
 	        $("#save_button_main").click(function() {
 
-				if( $('#upload_image_main').val().length == 1 || $('#upload_image_main').val().length == 0 || $('#upload_image_main').val() == undefined)
+				if( $('#upload_image_main').val().length < 2 || $('#upload_image_main').val() == undefined)
 				{
 					jQuery("#upload_image_main").val(' ');
 					$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Image - Main - Did Not Save!</div>");
@@ -178,34 +178,34 @@
     			}
     		});
     	});
+        
 	});
 	
-	wp_mapify_app.controller('activitiesCtrl', function ($scope, $route) {
+	wp_mapify_app.controller('activitiesCtrl', function ($scope, $route, $http) {
 		
 		$scope.sortBy = 'name';
-		$scope.activities_list = [
-		                          { id: '1', name: 'A', date: new Date('1/12/2008'), category: 'B',neighborhood:'GILO',  description: 'blablabla',x:'0',y:'0'},
-		                          { id: '2', name: 'B', date: new Date('21/12/2009'), category: 'A',neighborhood:'ARMON', description: 'blablabla2',x:'20',y:'20'},
-		                          { id: '3', name: 'C', date: new Date('12/12/2010'), category: 'D',neighborhood:'KATMON', description: 'blablabla3',x:'30',y:'30'},
-		                          { id: '4', name: 'D', date: new Date('13/12/2010'), category: 'H',neighborhood:'PISGAT', description: 'blablabla3',x:'40',y:'40'},
-		                          { id: '5', name: 'E', date: new Date('12/11/2010'), category: 'C',neighborhood:'MSSOA', description: 'blablabla3',x:'50',y:'50'},
-		                          { id: '6', name: 'F', date: new Date('13/12/2010'), category: 'E',neighborhood:'KRYAT YOVAL', description: 'blablabla3',x:'60',y:'60'},                              
-		                          { id: '7', name: 'G', date: new Date('12/12/1996'), category: 'F',neighborhood:'ARNONA', description: 'blablabla3',x:'80',y:'80'}
-		                          ];
-
-		// for categories choose!!!!!!!
-
-		$scope.categories_list = [
-		                          { name: 'Berale', description: 'category1'},
-		                          { name: 'BeraleBerale', description: 'category2'},
-		                          { name: 'CCCCCCCCCCCCCC', description: 'category3'},
-		                          { name: 'E', description: 'category4'},
-		                          { name: 'D', description: 'category5'},
-		                          { name: 'F', description: 'category6'},
-		                          { name: 'G', description: 'category7'},
-		                          { name: 'H', description: 'category8'}
-		                          ];
-
+		$scope.activities_list = [];
+		
+		$http({
+			method: "POST",
+			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+			data: {action: 'get_main_map_url'}
+		}).then(function(response) {
+			$scope.img_url = response.data[0]['url'];
+		}).then(function(error) {
+			console.log(error);
+		});
+		
+		$http({
+			method: "POST",
+			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+			data: {action: 'get_activity_list'}
+		}).then(function(response) {
+			console.log(response.data);
+			$scope.activities_list = response.data;
+		}).then(function(error) {
+			console.log(error);
+		});
 		
 		$scope.createCoords = function(event) {
 			
@@ -289,17 +289,17 @@
 				}
 			});
 			
-			$scope.activities_list.push({ 	id: '0',
-											name: $scope.activityName,
-											date: $scope.activityDate,
-											neighborhood: $scope.neighborhood,
-											category: $scope.selectedCategory.name,
-											description: $scope.activityDescription });
-			$scope.activityName = ' ';
-			$scope.activityDate = ' ';
-			$scope.activityCategory = ' ';
-			$scope.activityDescription = ' ';
-			$scope.neighborhood = ' ';
+//			$scope.activities_list.push({ 	id: '0',
+//											name: $scope.activityName,
+//											date: $scope.activityDate,
+//											neighborhood: $scope.neighborhood,
+//											category: $scope.selectedCategory.name,
+//											description: $scope.activityDescription });
+//			$scope.activityName = ' ';
+//			$scope.activityDate = ' ';
+//			$scope.activityCategory = ' ';
+//			$scope.activityDescription = ' ';
+//			$scope.neighborhood = ' ';
 
 			//$scope.$apply();
 
@@ -326,7 +326,7 @@
 			});
 			index++;
 		};
-
+		
 		$scope.initActivities = function(){
 		
 			for(var i = 0 ; i < $scope.activities_list.length ; i++)
@@ -408,7 +408,7 @@
 			{
 				$scope.selectedNeighborhood = ' ';	
 				$('#upload_image_neighborhood').val(' ');
-				$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Fill URL Before Clicking Save.<br>Image Did Not Saved!</div>");
+				$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Fill URL Before Clicking Save.br Image Did Not Saved!</div>");
 				return;
 			}
 
@@ -457,6 +457,7 @@
 	            });
 	        });
 	    });
+		
 		$scope.sortBy = 'name';
 		$scope.categories_list = [
 		                          { name: 'A', description: 'category1'},
@@ -469,7 +470,18 @@
 		                          { name: 'H', description: 'category8'}
 		                          ];
 
+
+		jQuery("#IDdeleteSelectedCategory").click(function(e){
+			alert("remove selected function");
+		});		
+		
+		jQuery("#IDdeleteAllCategory").click(function(e){
+			alert("remove All function");
+		});		
+		
+		
 		jQuery("#upload_image_button_category").click(function (e) {
+			alert("SS");
 			e.preventDefault();
 			var image = wp.media({
 				title: 'Upload Image',
@@ -491,27 +503,33 @@
 		});		
 		
 		$scope.addCategory = function(){
+
 			var id = ""; // last DB id
 			var name = $scope.CategoryName;
 			var description = $scope.CategoryDescription;
 			var URL = $scope.CategoryURL;
-			if($scope.CategoryName == undefined)
+			
+			
+			if($scope.CategoryName == undefined || $scope.CategoryName.length < 2)
 			{
-				alert("ERROR: Enter Category Name");
+				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Category Did Not Save! <br>\tFill Name Category</div>");
 				$scope.CategoryName = ' ';
 				$scope.CategoryDescription = ' ';
+				$scope.CategoryURL = ' ';
 				$("#upload_image_category").val(' ');
 				return false;
 			}
 
-			if(description == undefined) {
-				alert("ERROR: Enter Category Description");
+			if(description == undefined || description.length < 2) {
 				desctiption = "null";
 			}
-			
-			if(URL == undefined) {
-				alert("ERROR: Enter Category URL");
-				URL = "null";
+			if($scope.CategoryURL == undefined || $scope.CategoryURL.length < 2)  {
+				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Category Did Not Save!<br>Add Image Category</div>");
+				$scope.CategoryName = ' ';
+				$scope.CategoryDescription = ' ';
+				$scope.CategoryURL = ' ';
+				$("#upload_image_category").val(' ');
+				return;
 			}
 			
 			$scope.categories_list.push({ id: '0', name: name, description: description, url: URL });
@@ -527,18 +545,21 @@
 				success: function(data) {
 					$scope.CategoryName = ' ';
 					$scope.CategoryDescription = ' ';
+					 $scope.CategoryURL = ' ';
 					$("#upload_image_category").val(' ');
 					$("#success").html("<div class='notice notice-success is-dismissable'>Category Saved Successfully!</div>");
 				},
-				error: function(error) {
-					$scope.CategoryName = ' ';
-					$scope.CategoryDescription = ' ';
-					$("#upload_image_category").val(' ');
-					$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Category Did Not Save!</div>");
+				error: function(error) {			
+				$scope.CategoryName = ' ';
+				$scope.CategoryDescription = ' ';
+				$scope.CategoryURL = ' ';
+				$("#upload_image_category").val(' ');
+				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Category Did Not Save!</div>");
 				}
 			});
 			$scope.CategoryName = ' ';
 			$scope.CategoryDescription = ' ';
+			 $scope.CategoryURL = ' ';
 			$("#upload_image_category").val(' ');
 		};
 	});

@@ -1,4 +1,3 @@
-<?php require_once dirname(__DIR__) . '/../DB/DB_functions.php';?>
 
 <div>
 	<div class="manage_caption">Manage Activities</div>
@@ -6,8 +5,7 @@
 	<div id="map" ng-init="initActivities()">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"
-			src="<?php echo DB_functions::get_main_map_url()[0]->url; ?>"
-			ng-click="createCoords($event)"></img> <span id="popup"></span>
+			src="{{ img_url }}" ng-click="createCoords($event)"></img> <span id="popup"></span>
 	</div>
 	<div class="activities-control">
 		<!-- search bar -->
