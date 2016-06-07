@@ -399,7 +399,7 @@
 		
 		$("#save_button_upload").click(function() {
 			if($scope.selectedNeighborhood.neighborhood == undefined || $scope.selectedNeighborhood.neighborhood.length == 0){
-				$("#success_image").html("<div class='notice notice-success is-dismissable'>ERROR: Choose Neighborhood Before Clicking Save.<br>Image Activity Did Not Saved!</div>");
+				$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Choose Neighborhood Before Clicking Save.<br>Image Activity Did Not Saved!</div>");
 				$scope.selectedNeighborhood = ' ';	
 				$('#upload_image_neighborhood').val(' ');
 				return;
@@ -408,7 +408,7 @@
 			{
 				$scope.selectedNeighborhood = ' ';	
 				$('#upload_image_neighborhood').val(' ');
-				$("#success_image").html("<div class='notice notice-success is-dismissable'>ERROR: Fill URL Before Clicking Save.<br>Image Did Not Saved!</div>");
+				$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Fill URL Before Clicking Save.<br>Image Did Not Saved!</div>");
 				return;
 			}
 
@@ -428,7 +428,7 @@
     				$("#success_image").html("<div class='notice notice-success is-dismissable'>Image To "+ $scope.selectedNeighborhood.neighborhood + " neighborhood Saved Successfully!</div>");
 				},
 				error: function(error) {
-    				$("#success_image").html("<div class='notice notice-success is-dismissable'>ERROR: Image Image Activity Did Not Saved!</div>");
+    				$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Image Image Activity Did Not Saved!</div>");
 				}
 			});
 		});
