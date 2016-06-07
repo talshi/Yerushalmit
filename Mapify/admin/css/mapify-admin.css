@@ -115,6 +115,10 @@ th {
 	width: 203px;
 }
 
+#activityDescription{
+	resize: none;
+}
+
 .marker {
 	width: 25px;
 	height: 25px;
@@ -200,6 +204,7 @@ th {
 
 #IDareaText {rows ="4";cols ="40";
 	background-color: white;
+	resize: none;
 }
 
 .activities-control {

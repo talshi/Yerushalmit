@@ -71,7 +71,7 @@
 						</tr>
 						<tr>
 							<td><label>Description</label></td>
-							<td><textarea type="text" ng-model="activityDescription" rows="4" cols="40"> </textarea></td>
+							<td><textarea id="activityDescription" type="text" ng-model="activityDescription" rows="4" cols="40"> </textarea></td>
 						</tr>
 					</table>
 					<div class="modal-footer">
