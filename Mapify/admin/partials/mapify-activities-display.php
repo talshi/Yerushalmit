@@ -1,8 +1,8 @@
 <?php require_once dirname(__DIR__) . '/../DB/DB_functions.php';?>
 
-<div ng-app="wp_mapify_app">
+<div>
 	<div class="manage_caption">Manage Activities</div>
-	<div class="note space">Click on the image to add an activity. Scroll down to manage your activities.</div>
+	<div class="note space">Click on the image to add an activity. Scroll down to manage your activities. <b>(refresh the page if the image does not appear)</b></div>
 	<div id="map" ng-init="initActivities()">
 		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"

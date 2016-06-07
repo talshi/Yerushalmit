@@ -61,17 +61,127 @@
 
 	})(jQuery);
 
-	wp_mapify_app.controller('adminCtrl', function($scope, $location) {
+	wp_mapify_app.controller('adminCtrl', function($scope, $location, $window) {
 		$scope.isActive = function (viewLocation) { 
 			return viewLocation === $location.path();
 		};
+		$scope.reloadPage = function(){
+			$window.location.reload();
+		}
 	});
 
 	wp_mapify_app.controller('mapCtrl', function ($scope) {
+	    jQuery(document).ready(function ($) {
+	        $("#upload_image_button_main").click(function (e) {
+	            e.preventDefault();
+	            var image = wp.media({
+	                title: 'Upload Image',
+	                multiple: false
+	            }).open()
+	            .on('select', function (e) {
+	                // This will return the selected image from the Media Uploader, the result is an object
+	                var uploaded_image = image.state().get('selection').first();
+	                // We convert uploaded_image to a JSON object to make accessing it easier
+	                // Output to the console uploaded_image
+	                //console.log(uploaded_image);
+	                var image_url = uploaded_image.toJSON().url;
+	                // Let's assign the url value to the input field
+	                $('#upload_image_main').val(image_url)
+	                var image_link = $('#upload_image_main').val();
+	                $("#preview_label").html("Preview:");
+	                $("#img_preview").attr("src", image_link);
+	            });
+	        });
+
+	        $("#save_button_main").click(function() {
+
+				if( $('#upload_image_main').val().length == 1 || $('#upload_image_main').val().length == 0 || $('#upload_image_main').val() == undefined)
+				{
+					jQuery("#upload_image_main").val(' ');
+					$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Image - Main - Did Not Save!</div>");
+					return;
+				}
+	        	img_url = jQuery("#upload_image_main").val();
+	    		$.ajax({
+	    			url: "../wp-content/plugins/Mapify/DB/save-img.php",
+	    			type: "POST",
+	    			dataType: "json",
+	    			data: {
+	    				'img_url': img_url,
+	    				//TODO fix neighborhood data
+	    				'neighborhood' : "main"
+	    			},
+	    			success: function(data) {
+	    				jQuery("#upload_image_main").val(' ');
+	    				$("#success").html("<div class='notice notice-success is-dismissable'>Image - Main -Saved Successfully!</div>");
+						
+	        		},
+	    			error: function(error) {
+	    				jQuery("#upload_image_main").val(' ');
+	    				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Image - Main - Did Not Save!</div>");
+	    			}
+	    		});
+	    	});
+	    });
 		
+	    $("#upload_image_button_neighborhood").click(function (e) {
+
+            // check input value			
+            e.preventDefault();
+            var image = wp.media({
+                title: 'Upload Image',
+                multiple: false
+            }).open()
+            .on('select', function (e) {
+                // This will return the selected image from the Media Uploader, the result is an object
+                var uploaded_image = image.state().get('selection').first();
+                // We convert uploaded_image to a JSON object to make accessing it easier
+                // Output to the console uploaded_image
+                //console.log(uploaded_image);
+                var image_url = uploaded_image.toJSON().url;
+                // Let's assign the url value to the input field
+                $('#upload_image_neighborhood').val(image_url)
+                var image_link = $('#upload_image_neighborhood').val();
+                $("#preview_label").html("Preview:");
+                $("#img_preview").attr("src", image_link);
+            });
+        });
+
+        $("#save_button_neighborhood").click(function() {
+			if($('#neighborhood').val().length  == 1 || $('#neighborhood').val().length  == 0 || $('#upload_image_neighborhood').val().length == 0 || jQuery("#upload_image_neighborhood").val().length == 0 || jQuery("#upload_image_neighborhood").val().length == 1 )
+			{
+				$('#neighborhood').val(' ');
+				jQuery("#upload_image_neighborhood").val(' ');
+				$("#success-neghborhood").html("<div class='notice notice-error is-dismissable'>ERROR: Neighborhood's Image Did Not Save!</div>");
+				return;
+			}
+    		img_url = jQuery("#upload_image_neighborhood").val();
+    		img_neighborhood = jQuery("#neighborhood").val();
+    		$.ajax({
+    			url: "../wp-content/plugins/Mapify/DB/save-img.php",
+    			type: "POST",
+     			dataType: "json",
+    			data: {
+    				'img_url': img_url,
+    				'neighborhood' : img_neighborhood
+    			},
+    			success: function(data) {
+    				console.log(data);
+    				$('#neighborhood').val(' ');
+    				jQuery("#upload_image_neighborhood").val(' ');
+    				$("#success-neghborhood").html("<div class='notice notice-success is-dismissable'>Neighborhood's "+ img_neighborhood +" Image Saved Successfully!</div>");
+    			},
+    			error: function(error) {
+    				$('#neighborhood').val(' ');
+    				jQuery("#upload_image_neighborhood").val(' ');
+    				$("#success-neghborhood").html("<div class='notice notice-error is-dismissable'>ERROR: Neighborhood's "+img_neighborhood +" Image Did Not Save!</div>");
+    			}
+    		});
+    	});
 	});
 	
-	wp_mapify_app.controller('activitiesCtrl', function ($scope) {
+	wp_mapify_app.controller('activitiesCtrl', function ($scope, $route) {
+		
 		$scope.sortBy = 'name';
 		$scope.activities_list = [
 		                          { id: '1', name: 'A', date: new Date('1/12/2008'), category: 'B',neighborhood:'GILO',  description: 'blablabla',x:'0',y:'0'},
@@ -325,7 +435,28 @@
 	});
 
 	wp_mapify_app.controller('categoriesCtrl', function ($scope) {
-
+		jQuery(document).ready(function ($) {
+	        $("#upload_image_button").click(function (e) {
+	            e.preventDefault();
+	            var image = wp.media({
+	                title: 'Upload Image',
+	                multiple: false
+	            }).open()
+	            .on('select', function (e) {
+	                // This will return the selected image from the Media Uploader, the result is an object
+	                var uploaded_image = image.state().get('selection').first();
+	                // We convert uploaded_image to a JSON object to make accessing it easier
+	                // Output to the console uploaded_image
+	                //console.log(uploaded_image);
+	                var image_url = uploaded_image.toJSON().url;
+	                // Let's assign the url value to the input field
+	                $('#upload_image').val(image_url)
+	                var image_link = $('#upload_image').val();
+	                $("#preview_label").html("Preview:");
+	                $("#img_preview").attr("src", image_link);
+	            });
+	        });
+	    });
 		$scope.sortBy = 'name';
 		$scope.categories_list = [
 		                          { name: 'A', description: 'category1'},
@@ -360,36 +491,38 @@
 		});		
 		
 		$scope.addCategory = function(){
-
-			var desctiption = $scope.CategoryDescription;
-			var URL = $("#upload_image_category").val();
+			var id = ""; // last DB id
+			var name = $scope.CategoryName;
+			var description = $scope.CategoryDescription;
+			var URL = $scope.CategoryURL;
 			if($scope.CategoryName == undefined)
 			{
 				alert("ERROR: Enter Category Name");
 				$scope.CategoryName = ' ';
 				$scope.CategoryDescription = ' ';
 				$("#upload_image_category").val(' ');
-				$("#success").html("<div class='notice notice-success is-dismissable'>ERROR: Category Did Not Saved !</div>");
 				return false;
 			}
 
-			if(desctiption == undefined)
+			if(description == undefined) {
+				alert("ERROR: Enter Category Description");
 				desctiption = "null";
+			}
 			
-			if(URL.length == 0)
+			if(URL == undefined) {
+				alert("ERROR: Enter Category URL");
 				URL = "null";
+			}
 			
-			$scope.categories_list.push({ id: '0', name: $scope.CategoryName,description: $scope.CategoryDescription });
-			
-			//$scope.$apply();
+			$scope.categories_list.push({ id: '0', name: name, description: description, url: URL });
 			
 			$.ajax({
 				url: "../wp-content/plugins/Mapify/DB/save-category.php",
 				type: "POST",
 				data: {
-					logoUrl : URL,
-					name : $scope.CategoryName,
-					description :desctiption 
+					logoUrl: $scope.CategoryURL,
+					name: $scope.CategoryName,
+					description: $scope.CategoryDesctiption 
 				},
 				success: function(data) {
 					$scope.CategoryName = ' ';

@@ -14,7 +14,7 @@
         <div id="navbar" class="navbar-collapse collapse" ng-controller="adminCtrl">
           <ul class="nav navbar-nav">
             <li ng-class="{ active: isActive('/map')}"><a href="#/map">Manage Map</a></li>
-            <li ng-class="{ active: isActive('/activities')}"><a href="#/activities">Manage Activities</a></li>
+            <li ng-class="{ active: isActive('/activities')}"><a href="#/activities" ng-click="reloadPage()">Manage Activities</a></li>
             <li ng-class="{ active: isActive('/images')}"><a href="#/images">Images</a></li>
             <li ng-class="{ active: isActive('/categories')}"><a href="#/categories">Manage Categories</a></li>
             <li ng-class="{ active: isActive('/preview')}"><a href="#/preview">Preview</a></li>

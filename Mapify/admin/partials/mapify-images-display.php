@@ -1,5 +1,5 @@
 
-<div class="manage_caption">Upload images to neighborhood</div>
+<div class="manage_caption">Upload Images to Neighborhood</div>
 <div class="note space">Enter an URL or upload an image for the banner.</div>
 <hr>
 <div id = "success_image"></div>
