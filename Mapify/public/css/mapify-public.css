@@ -1,7 +1,6 @@
 /**
  * All of the CSS for your public-facing functionality should be
  * included in this file.
-<<<<<<< HEAD
  */
 
 .tag:hover {
@@ -26,7 +25,6 @@
 #map {
     position: relative;
     width: 100%;
-    background-image: url('https://www.jerusalem.muni.il/Municipality/Directorquarters/PublishingImages/map.jpg');
     background-repeat: no-repeat;
     background-size: 600px 856px;
     height: 856px;

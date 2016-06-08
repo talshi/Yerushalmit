@@ -17,7 +17,7 @@ require_once dirname ( __DIR__ ) . '/../DB/DB_functions.php';
 
 function display($atts) 
 {
-    $content = '';
+    $content = '';      //the content of the plugin page.
     
     $content .= '<div id="mapify">';
     
@@ -25,14 +25,16 @@ function display($atts)
     $content .= '<img id="category1" class="categories" src="http://yerushalmitmovement.com/wp-content/uploads/2016/05/cropped-0012.jpg"></img>';
     $content .= '</div>';
     
-    
-    $content .= '<div id="map">';      //the map div - show the plugin
-    
-  //  $content .= '<img id="image1" style="width: 100%; position: relative;" src="' . getImgURL() . '"/>';
-    
-    
-    
-    
+    $arrayMainMapUrl = DB_functions::get_main_map_url();
+
+    $arrayMainMapUrl = json_decode($arrayMainMapUrl);
+    foreach ( $arrayMainMapUrl as $url ) 
+    {
+	   $mainMapUrl = $url->url;
+       break;
+    }
+        
+    $content .= '<div id="map" style="background-image: url(\'' . $mainMapUrl . '\');">';      //the map div - show the plugin
     
     $content .= '<img id="activity1" class="tag" style="position: absolute; height: 50px; width: 50px; top: 500px; left: 200px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" />';
     
