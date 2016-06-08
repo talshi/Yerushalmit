@@ -220,10 +220,11 @@
 
 				//display data in modol window
 				$scope.edit_activity = response[0];
+				console.log($scope.edit_activity);
 				$scope.activityNameEdit = $scope.edit_activity.name;
 				$scope.activityDateEdit = $scope.edit_activity.date;
 				$scope.activityDesEdit  = $scope.edit_activity.description;
-
+				$scope.selectedNeighborhood = $scope.edit_activity.neighborhood;
 //				alert($scope.edit_activity.description);
 			}, function(error) {
 				console.log(error);
@@ -248,7 +249,7 @@
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		}).success(function(response) {
 			$scope.activities_list = response;
-			$scope.initActivities($scope.activities_list);
+//			$scope.initActivities($scope.activities_list);
 		}, function(error) {
 			console.log(error);
 		});
@@ -369,27 +370,27 @@
 					date: date,
 					neighborhood: neighborhood,
 					category: categoryName,
-					description: description });	
-				
+					description: description });
+				$route.reload();
 				// add new marker on map
-				var m = "<img id=" + response[0]['id'] + " class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg' ng-click='editFunction(" + response[0]['id'] + ")'></img>";
-				jQuery("#image-activities").after(m);
+//				var m = "<img id=" + response[0]['id'] + " class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg' ng-click='editFunction(" + response[0]['id'] + ")'></img>";
+//				jQuery("#image-activities").after(m);
 				
-				var point = getFinishPoint(x,y); // return the fix X & Y after validation
-
-				var newX = (point.x * 100) / point.w;
-				var newY = (point.y * 100) / point.h;
-
-				if(newX > 95)
-					newX = 95;
-
-				if(newY > 93)
-					newY = 95;
-
-				jQuery("#" + response[0]['id']).css({
-					"top": newY + '%',
-					"left": newX + '%'
-				});
+//				var point = getFinishPoint(x,y); // return the fix X & Y after validation
+//
+//				var newX = (point.x * 100) / point.w;
+//				var newY = (point.y * 100) / point.h;
+//
+//				if(newX > 95)
+//					newX = 95;
+//
+//				if(newY > 93)
+//					newY = 95;
+//
+//				jQuery("#" + response[0]['id']).css({
+//					"top": newY + '%',
+//					"left": newX + '%'
+//				});
 			}), function(error) {
 				console.log(error);
 			};
@@ -451,26 +452,26 @@
 
 		};
 
-		$scope.initActivities = function(activities){
-
-			for(var i = 0 ; i < activities.length ; i++)
-			{
-//				var func = "editFunction(" + activities[i]['id'] + ")";
-
-				var m = "<img id=" + activities[i]['id'] + " class='marker'" +
-						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
-						" data-toggle='modal' " +
-						"data-target='#myImg' onclick='myFunction()' ></img>";
-				jQuery("#image-activities").after(m);
-
-				jQuery("#" + activities[i]['id']).css({
-					"top": activities[i].locationY + '%',
-					"left": activities[i].locationX + '%'
-				});
-
-			}
-		}
-
+//		$scope.initActivities = function(activities){
+//
+//			for(var i = 0 ; i < activities.length ; i++)
+//			{
+////				var func = "editFunction(" + activities[i]['id'] + ")";
+//
+//				var m = "<img id=" + activities[i]['id'] + " class='marker'" +
+//						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
+//						" data-toggle='modal' " +
+//						"data-target='#myImg'></img>";
+//				jQuery("#image-activities").after(m);
+//
+//				jQuery("#" + activities[i]['id']).css({
+//					"top": activities[i].locationY + '%',
+//					"left": activities[i].locationX + '%'
+//				});
+//
+//			}
+//		}
+		
 		jQuery(window).resize(function(){
 
 			for(var i = 0 ; i < $scope.activities_list.length ; i++)
@@ -481,16 +482,16 @@
 				//console.log($scope.activities_list[i].x);
 				//console.log($scope.activities_list[i].y);
 
-				var m = "<img id='img-marker" + index + "' class='marker'" +
-						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
-						" data-toggle='modal' data-target='#myImg' onclick='myFunction()'></img>";
-				jQuery("#image-activities").after(m);
-
-
-				jQuery("#img-marker" + index).css({
-					"top": $scope.activities_list[i].x,
-					"left": $scope.activities_list[i].y
-				});
+//				var m = "<img id='img-marker" + index + "' class='marker'" +
+//						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
+//						" data-toggle='modal' data-target='#myImg'></img>";
+//				jQuery("#image-activities").after(m);
+//
+//
+//				jQuery("#img-marker" + index).css({
+//					"top": $scope.activities_list[i].x,
+//					"left": $scope.activities_list[i].y
+//				});
 
 			}	
 		});
