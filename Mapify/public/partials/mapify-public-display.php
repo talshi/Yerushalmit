@@ -13,7 +13,6 @@
  */
 
 
-<<<<<<< HEAD
 function display($atts) 
 {
     $content = '';
@@ -141,40 +140,5 @@ function display($atts)
 
 add_shortcode('custom-mapify', 'display');
 
-/*
-function getImgURL()    //for example
-{
-    return "http://static.guim.co.uk/sys-images/Guardian/Pix/maps_and_graphs/2010/5/20/1274374118960/Graphic-map---museum-of-m-001.jpg";
-}
 
-function changeForMap1()
-{
-    echo "<script>
-        $('#tag1').hover(
-        $('#map').css('background-image', 'url('http://www.jiis.org.il/.upload/publications/images/2007_07_minhalim-map-small.jpg')'));
-    </script>";
-   // .map.css(background-image: url("http://www.jiis.org.il/.upload/publications/images/2007_07_minhalim-map-small.jpg"););
-}
-
-function changeForMap2()
-{
-    
-}
-
-
-
-
-document.getElementById("image-activities");
-        var rect = div.getBoundingClientRect();
-
-        x_left = rect.left;
-        y_top = rect.top;
-        w_ = rect.right - rect.left;
-        h_ = rect.bottom - rect.top;
-
-        jQuery("#img-marker" + index).css({
-            "top": (y/100)*h_-(25),
-            "left": (x/100)*w_-(12.5) 
-        });
-*/
 ?>
