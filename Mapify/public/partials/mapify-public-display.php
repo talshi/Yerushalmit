@@ -13,6 +13,8 @@
  */
 
 
+require_once dirname ( __DIR__ ) . '/../DB/DB_functions.php';
+
 function display($atts) 
 {
     $content = '';
