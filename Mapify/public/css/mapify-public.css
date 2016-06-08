@@ -7,6 +7,12 @@
         cursor: pointer;
 }
 
+.tag {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+}
+
 #categories {
     width: 100px;
     height: 856px;

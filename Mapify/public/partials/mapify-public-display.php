@@ -31,15 +31,20 @@ function display($atts)
     
     $content .= '</div>';       //close categories div 
     
+    //get main map from DB
     $arrayMainMapUrl = json_decode(DB_functions::get_main_map_url());
     $mainMapUrl = $arrayMainMapUrl[0]->url;
-    
+
     $content .= '<div id="map" style="background-image: url(\'' . $mainMapUrl . '\');">';      //the map div - show the plugin
     
-    $content .= '<img id="activity1" class="tag" style="position: absolute; height: 50px; width: 50px; top: 500px; left: 200px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" />';
-    
-    $content .= '<img id="activity2" class="tag" style="position: absolute; height: 50px; width: 50px; top: 100px; left: 400px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" />';
-    
+    //show activities on the map
+    $activitiesArray = json_decode(DB_functions::get_category_list());
+    $tagImage = "http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png";    //the image of the tags
+    foreach($activitiesArray as $activity)
+    {
+        $content .= '<img id="activity_'. $activity->id .'" class="tag" src= '. $tagImage .' />';   
+    }
+
     
     //add bubble for text
     $content .= '<div id = "bubble" style="float: left;">';
