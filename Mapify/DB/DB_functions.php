@@ -8,11 +8,11 @@ switch ($action) {
 		break;
 	case "get_category_list_by_id" :
 		$id = $_POST ['id'];
-		echo DB_functions::get_category_list_by_id ($id);
+		echo DB_functions::get_category_list_by_id ( $id );
 		break;
 	case "get_activity_list_by_id" :
 		$id = $_POST ['id'];
-		echo DB_functions::get_activity_list_by_id ($id);
+		echo DB_functions::get_activity_list_by_id ( $id );
 		break;
 	case "delete_category_by_id" :
 		echo DB_functions::delete_category_by_id ();
@@ -27,21 +27,48 @@ switch ($action) {
 		echo DB_functions::get_main_map_url ();
 		break;
 	case "get_neighborhoods" :
-		echo DB_functions::get_neighborhoods();
+		echo DB_functions::get_neighborhoods ();
 		break;
 	case "delete_all_activities" :
-		echo DB_functions::delete_all_activities();
+		echo DB_functions::delete_all_activities ();
 		break;
 	case "delete_all_categories" :
-		echo DB_functions::delete_all_categories();
+		echo DB_functions::delete_all_categories ();
 		break;
-		
+	case "update_activities_table_by_id" :
+		$id = $_POST ['id'];
+		$name = $_POST ['name'];
+		$date = $_POST ['date'];
+		$description = $_POST ['description'];
+		$neighborhood = $_POST ['neighborhood'];
+		$category = $_POST ['category'];
+		DB_functions::update_activities_table_by_id ( $id, $name, $date, $description, $neighborhood, $category );
+		break;
 }
-
-
 class DB_functions {
-
-	
+	public static function update_activities_table_by_id($id, $name, $date, $description, $neighborhood, $category) {
+		global $wpdb;
+		$table_name = $wpdb->prefix . "activities";
+		echo "i'm here";
+		$wpdb->update ( $table_name, array (
+				'name' => $name, // string
+				'date' => $date,
+				'description' => $description, // integer (number)
+				'neighborhood' => $neighborhood,
+				// 'showOnMap' => 'value4',
+				'category' => $category 
+		), array (
+				'ID' => $id 
+		), array (
+				'%s', // value1
+				'%s',
+				'%s', // value2
+				'%s',
+				'%s' 
+		), array (
+				'%d' 
+		) );
+	}
 	public static function get_neighborhoods() {
 		global $wpdb;
 		
@@ -80,12 +107,10 @@ class DB_functions {
 		
 		$wpdb->query ( ("DELETE FROM `wp_categories` WHERE `wp_categories`.`id` = '$id'") );
 	}
-	
 	public static function delete_all_activities() {
 		global $wpdb;
 		$wpdb->query ( "DELETE FROM `wp_activities" );
 	}
-	
 	public static function delete_all_categories() {
 		global $wpdb;
 		$wpdb->query ( "DELETE FROM `wp_categories" );

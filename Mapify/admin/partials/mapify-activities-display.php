@@ -32,7 +32,7 @@
 				<th>Description</th>
 				<th>Edit</th>
 			</tr>
-			<tr
+			<tr id={{activity.id}}
 				ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort "
 				id="table">
 				<td><input id="" type="checkbox" /></td>
@@ -120,13 +120,13 @@
 				<table id="IdInsertTable" class="table table-hover">
 					<tr>
 						<td><label>Activity Name</label></td>
-						<td><input type="text" ng-model="activityNameEdit" ng-bind-html = "activityNameEdit"
+						<td><input type="text" ng-model="activityNameEdit" 
 							placeholder="Activity Name"></td>
 					</tr>
 					<tr>
 						<td><label>Activity Date</label></td>
 						<td><input type="text" ng-model="activityDateEdit"
-							placeholder="dd/mm/yyyy" ng-bind-html = "activityDateEdit"  ></td>
+							placeholder="dd/mm/yyyy"  ></td>
 					</tr>
 					<tr>
 						<td><label>Neighborhood</label></td>
@@ -146,14 +146,14 @@
 					<tr>
 						<td><label>Description</label></td>
 						<td><textarea type="text" ng-model="activityDesEdit" rows="4"
-								cols="40" ng-bind-html = "activityDesEdit" > </textarea></td>
+								cols="40" > </textarea></td>
 								
 					</tr>
 				</table>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button id="save-button" type="button" class="btn btn-default">Save</button>
+				<button id="save-button" type="button" class="btn btn-default" ng-click = "saveEditFunction()" data-dismiss="modal" >Save</button>
 			</div>
 		</div>
 

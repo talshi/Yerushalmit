@@ -179,16 +179,36 @@
 	});
 
 	wp_mapify_app.controller('activitiesCtrl', function ($scope, $route, $http) {
-		
-		
+
+		var idGlobal = 0;
 		$scope.sortBy = 'name';
 		$scope.activities_list = [];
-		$scope.edit_activity = new Object();
-		
+
+		$scope.saveEditFunction = function() {
+			$http({
+				method: "POST",
+				url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+				data: $.param({
+					action: 'update_activities_table_by_id',
+					id: idGlobal,
+					name : $scope.activityNameEdit,
+					date: $scope.activityDateEdit,
+					description: $scope.activityDesEdit,
+					neighborhood: $scope.selectedNeighborhood.neighborhood,
+					category : $scope.selectedCategory.name
+				}),
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).success(function(response) {
+			}, function(error) {
+				console.log(error);
+			});
+		}
+
 		$scope.editFunction = function(id) {	
-			
+
 			alert("Edit function id: " +id);
-			
+			idGlobal = id;
+
 			$http({
 				method: "POST",
 				url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
@@ -198,24 +218,19 @@
 				}),
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			}).success(function(response) {
-				
-			    //display data in modol window
+
+				//display data in modol window
 				$scope.edit_activity = response[0];
 				$scope.activityNameEdit = $scope.edit_activity.name;
 				$scope.activityDateEdit = $scope.edit_activity.date;
 				$scope.activityDesEdit  = $scope.edit_activity.description;
 
-				alert($scope.edit_activity.description);
+//				alert($scope.edit_activity.description);
 			}, function(error) {
 				console.log(error);
 			});
-			console.log($scope.edit_activity);
-			//alert($scope.edit_activity);
-			
-			
 		}
-		
-		
+
 		$http({
 			method: "POST",
 			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
@@ -329,7 +344,7 @@
 			var neighborhood =  $scope.selectedNeighborhood.neighborhood;
 			var description = $scope.activityDescription;
 			var categoryName = $scope.selectedCategory.name;
-			
+
 			$.ajax({
 				url: "../wp-content/plugins/Mapify/DB/save-activity.php",
 				type: "POST",
@@ -357,7 +372,7 @@
 				neighborhood: $scope.selectedNeighborhood.neighborhood,
 				category: $scope.selectedCategory.name,
 				description: $scope.activityDescription });
-			
+
 			$scope.activityName = '';
 			$scope.activityDate = '';
 			$scope.activityCategory = '';
@@ -386,8 +401,8 @@
 				"left": newX + '%'
 			});
 			index++;
-			
-			
+
+
 		};
 
 		$scope.initActivities = function(activities){
@@ -595,7 +610,7 @@
 		});		
 
 		$scope.addCategory = function(){
-			
+
 			alert("New Category function");
 			var id = ""; // last DB id
 			var name = $scope.CategoryName;
@@ -615,9 +630,9 @@
 			if(description == undefined || description.length < 2) {
 				desctiption = "null";
 			}
-			
+
 			alert(URL);
-			
+
 			if(URL == undefined || URL.length < 2)  {
 				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Category Did Not Save!<br>Add Image Category</div>");
 				$scope.CategoryName = '';
