@@ -107,15 +107,29 @@ function display($atts)
     
     
     $content .= "\n<script>
-                //console.log(jQuery('#bubbleImg').height());
-                //jQuery('#bubble').css({'height': jQuery('#bubbleImg').height(), 'width': jQuery('#bubbleImg').width() });
                 jQuery('#bubbleText').css({ 'width': jQuery('#bubble').width() });
-                function getImageByActivity(activity)
+                function getImageByActivity(activityId)
                 {
-                    if(activity == 'activity1')
-                        return 'http://www.jiis.org.il/.upload/publications/images/2007_07_minhalim-map-small.jpg';
-                    else if(activity == 'activity2')
-                        return 'http://jiis.org/.upload/heb/data_statistics/maps/flat_size/2010_02_flatsize-map.jpg';
+                    var id = activityId.split(\"_\")[1];
+                    var activitiesArrayJS = " . json_encode($activitiesArray) . ";
+                    var neighborhood;
+                    for(var i=0; i<activitiesArrayJS.length; i++)
+                    {
+                        if(activitiesArrayJS[i].id == id)
+                        {
+                            neighborhood = activitiesArrayJS[i].neighborhood;
+                            break;
+                        }    
+                    }
+                    var mapsArray = " . DB_functions::get_maps() . ";
+                    for(var i=0; i<mapsArray.length; i++)
+                    {
+                        if(mapsArray[i].neighborhood.localeCompare(neighborhood) == 0)
+                        {
+                            console.log(mapsArray[i].url);
+                            return mapsArray[i].url;
+                        }
+                    }
 
                 }
                 jQuery('.tag').hover(
@@ -185,5 +199,15 @@ function display($atts)
 
 add_shortcode('wp-mapify', 'display');
 
+function js_str($s)
+{
+    return '"' . addcslashes($s, "\0..\37\"\\") . '"';
+}
+
+function js_array($array)
+{
+    $temp = array_map('js_str', $array);
+    return '[' . implode(',', $temp) . ']';
+}
 
 ?>
