@@ -132,6 +132,30 @@ function display($atts)
                     }
 
                 }
+                function getActivityName(activityId)
+                {
+                    var id = activityId.split(\"_\")[1];
+                    var activitiesArrayJS = " . json_encode($activitiesArray) . ";
+                    for(var i=0; i<activitiesArrayJS.length; i++)
+                    {
+                        if(activitiesArrayJS[i].id == id)
+                        {
+                            return activitiesArrayJS[i].name;
+                        }    
+                    }
+                }
+                function getActivityDescription(activityId)
+                {
+                    var id = activityId.split(\"_\")[1];
+                    var activitiesArrayJS = " . json_encode($activitiesArray) . ";
+                    for(var i=0; i<activitiesArrayJS.length; i++)
+                    {
+                        if(activitiesArrayJS[i].id == id)
+                        {
+                            return activitiesArrayJS[i].description;
+                        }    
+                    }
+                }
                 jQuery('.tag').hover(
                 function(){
            
@@ -140,16 +164,8 @@ function display($atts)
                     jQuery('#map').css('background-image','url(' + urlByActivityId + ')');
                     
                     var textForBubble = '';
-                    if(activityId == 'activity1')
-                        textForBubble += ' טקסט מתחלף פעילות 1  טקסט מתחלף פעילות 1  טקסט מתחלף פעילות 1  טקסט מתחלף פעילות 1 טקסט מתחלף פעילות 1 ';
-                    else if(activityId == 'activity2')
-                        textForBubble += ' טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 ';
-                                            
-                    var title;
-                    if(activityId == 'activity1')
-                        title = 'כותרת פעילות 1';
-                    else if(activityId == 'activity2')
-                        title = 'כותרת פעילות 2';
+                    textForBubble += getActivityDescription(activityId);                    
+                    var title = getActivityName(activityId);
                         
                     
                     var link = '<br/><br/><a class=\"link\" id=aaa href=\"#contentActivityRef\"  onClick=onClickReadMore() style=\"cursor: pointer; border-bottom: none;\">קרא עוד></a>';
