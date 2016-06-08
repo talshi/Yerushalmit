@@ -12,7 +12,6 @@
  * @subpackage Plugin_Name/public/partials
  */
 
-
 require_once dirname ( __DIR__ ) . '/../DB/DB_functions.php';
 
 function display($atts) 
@@ -38,11 +37,44 @@ function display($atts)
     $content .= '<div id="map" style="background-image: url(\'' . $mainMapUrl . '\');">';      //the map div - show the plugin
     
     //show activities on the map
-    $activitiesArray = json_decode(DB_functions::get_category_list());
+    $activitiesArray = json_decode(DB_functions::get_activity_list());
     $tagImage = "http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png";    //the image of the tags
+    
     foreach($activitiesArray as $activity)
     {
-        $content .= '<img id="activity_'. $activity->id .'" class="tag" src= '. $tagImage .' />';   
+        $content .= '<img id="activity_'. $activity->id .'" class="tag" src= '. $tagImage .' />'; 
+        $content .= '<script>
+                        var divMap = document.getElementById("map");
+                        var rect = divMap.getBoundingClientRect();
+
+                        var x_left = rect.left;
+                        var y_top = rect.top;
+                        var w_ = rect.right - rect.left;
+                        var h_ = rect.bottom - rect.top;
+                        
+                        var x = '. intval($activity->locationX) .';
+                        var y = '. intval($activity->locationY) .';
+
+                        var x_finish;
+                        var y_finish;
+                        if( (y/100)*h_ < jQuery(".tag").css("height") )  // keep the marker in map from top
+                            y_finish = ((100)*(25))/(h_);			
+                        else
+                            y_finish = (y / 100) * h_ - (25);		
+
+                        if( (x/100)*w_ < jQuery(".tag").css("width") )  // keep the marker in map from left
+                        {	
+                            x_finish = ((100)*(12.5))/(w_);
+                        }
+                        else if ((w_ - (x*w_)/100 < 12.5)) // keep the marker in map from right!!
+                        {					
+                            x_finish = w_ - 25;
+                        }	
+                        else{
+                            x_finish = (x / 100) * w_  - 12.5;
+                        }
+                        jQuery("#activity_'. $activity->id .'").css({top: y_finish, left: x_finish});
+                    </script>';
     }
 
     
