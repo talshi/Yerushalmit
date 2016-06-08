@@ -481,7 +481,11 @@
 				//console.log($scope.activities_list[i].x);
 				//console.log($scope.activities_list[i].y);
 
+<<<<<<< HEAD
 				var m = "<img id='" + $scope.activities_list[i] + "' class='marker'" +
+=======
+				var m = "<img id='img-marker" + index + "' class='marker'" +
+>>>>>>> e04af3a175ca700e34dc500753aa4942297530ff
 						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
 						" data-toggle='modal' data-target='#myImg' onclick='myFunction()'></img>";
 				jQuery("#image-activities").after(m);
