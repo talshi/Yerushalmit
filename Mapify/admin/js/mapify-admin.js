@@ -164,13 +164,13 @@
 				},
 				success: function(data) {
 					console.log(data);
-					$('#neighborhood').val(' ');
-					jQuery("#upload_image_neighborhood").val(' ');
+					$('#neighborhood').val('');
+					jQuery("#upload_image_neighborhood").val('');
 					$("#success-neghborhood").html("<div class='notice notice-success is-dismissable'>Neighborhood's "+ img_neighborhood +" Image Saved Successfully!</div>");
 				},
 				error: function(error) {
-					$('#neighborhood').val(' ');
-					jQuery("#upload_image_neighborhood").val(' ');
+					$('#neighborhood').val('');
+					jQuery("#upload_image_neighborhood").val('');
 					$("#success-neghborhood").html("<div class='notice notice-error is-dismissable'>ERROR: Neighborhood's "+img_neighborhood +" Image Did Not Save!</div>");
 				}
 			});
@@ -179,9 +179,43 @@
 	});
 
 	wp_mapify_app.controller('activitiesCtrl', function ($scope, $route, $http) {
+		
+		
 		$scope.sortBy = 'name';
 		$scope.activities_list = [];
+		$scope.edit_activity = new Object();
+		
+		$scope.editFunction = function(id) {	
+			
+			alert("Edit function id: " +id);
+			
+			$http({
+				method: "POST",
+				url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+				data: $.param({
+					action: 'get_activity_list_by_id',
+					id: id
+				}),
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).success(function(response) {
+				
+			    //display data in modol window
+				$scope.edit_activity = response[0];
+				$scope.activityNameEdit = $scope.edit_activity.name;
+				$scope.activityDateEdit = $scope.edit_activity.date;
+				$scope.activityDesEdit  = $scope.edit_activity.description;
 
+				alert($scope.edit_activity.description);
+			}, function(error) {
+				console.log(error);
+			});
+			console.log($scope.edit_activity);
+			//alert($scope.edit_activity);
+			
+			
+		}
+		
+		
 		$http({
 			method: "POST",
 			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
@@ -290,23 +324,28 @@
 
 			// add to DATA BASE
 
-			//var date = 
+			var name = $scope.activityName;
+			var date = $scope.activityDate;
+			var neighborhood =  $scope.selectedNeighborhood.neighborhood;
+			var description = $scope.activityDescription;
+			var categoryName = $scope.selectedCategory.name;
+			
 			$.ajax({
 				url: "../wp-content/plugins/Mapify/DB/save-activity.php",
 				type: "POST",
 				data: {
 					//'id' : "0",
-					'name' : $scope.activityName,
-					'date' : $scope.activityDate,
-					'description' : $scope.activityDescription,
-					'neighborhood' : $scope.neighborhood,
+					'name' : name,
+					'date' : date,
+					'description' : description,
+					'neighborhood' : neighborhood,
 					//	'showOnMap' : "show",
 					'locationX' : x,
 					'locationY' : y,
-					'category' : $scope.selectedCategory.name,
+					'category' : categoryName,
 				},
 				success: function(data) {
-//					console.log(data);
+					console.log(data);
 				},
 				error: function(error) {
 					console.log(error);
@@ -318,6 +357,7 @@
 				neighborhood: $scope.selectedNeighborhood.neighborhood,
 				category: $scope.selectedCategory.name,
 				description: $scope.activityDescription });
+			
 			$scope.activityName = '';
 			$scope.activityDate = '';
 			$scope.activityCategory = '';
@@ -346,6 +386,8 @@
 				"left": newX + '%'
 			});
 			index++;
+			
+			
 		};
 
 		$scope.initActivities = function(activities){
@@ -553,7 +595,8 @@
 		});		
 
 		$scope.addCategory = function(){
-
+			
+			alert("New Category function");
 			var id = ""; // last DB id
 			var name = $scope.CategoryName;
 			var description = $scope.CategoryDescription;
@@ -564,7 +607,7 @@
 				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Category Did Not Save! <br>\tFill Name Category</div>");
 				$scope.CategoryName = '';
 				$scope.CategoryDescription = '';
-				$scope.CategoryURL = ' ';
+				$scope.CategoryURL = '';
 				$("#upload_image_category").val('');
 				return false;
 			}
@@ -572,7 +615,10 @@
 			if(description == undefined || description.length < 2) {
 				desctiption = "null";
 			}
-			if($scope.CategoryURL == undefined || $scope.CategoryURL.length < 2)  {
+			
+			alert(URL);
+			
+			if(URL == undefined || URL.length < 2)  {
 				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Category Did Not Save!<br>Add Image Category</div>");
 				$scope.CategoryName = '';
 				$scope.CategoryDescription = '';
@@ -600,7 +646,6 @@
 			$scope.categories_list.push({ id: '0', name: name, description: description, url: URL });
 			$scope.CategoryName = ''; 
 			$scope.CategoryDescription = '';
-			$scope.CategoryURL = '';
 			$("#upload_image_category").val('');
 		};
 	});

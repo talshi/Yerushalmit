@@ -11,9 +11,11 @@ if (isset ( $_REQUEST )) {
 	$locationX = $_REQUEST ['locationX'];
 	$locationY = $_REQUEST ['locationY'];
 	$category = $_REQUEST ['category'];
-	
+
 	global $wpdb;
 	$table_name = $wpdb->prefix . "activities";
+	
+	echo($neighborhood);
 	
 	$wpdb->insert ( $table_name, array (
 			'name' => $name,

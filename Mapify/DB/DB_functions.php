@@ -7,10 +7,12 @@ switch ($action) {
 		echo DB_functions::get_activity_list ();
 		break;
 	case "get_category_list_by_id" :
-		echo DB_functions::get_category_list_by_id ();
+		$id = $_POST ['id'];
+		echo DB_functions::get_category_list_by_id ($id);
 		break;
 	case "get_activity_list_by_id" :
-		echo DB_functions::get_activity_list_by_id ();
+		$id = $_POST ['id'];
+		echo DB_functions::get_activity_list_by_id ($id);
 		break;
 	case "delete_category_by_id" :
 		echo DB_functions::delete_category_by_id ();
