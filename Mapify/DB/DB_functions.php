@@ -147,6 +147,14 @@ class DB_functions {
 		$results = $GLOBALS ['wpdb']->get_results ( "SELECT * FROM `wp_activities ", OBJECT );
 		return json_encode ( $results, JSON_PRETTY_PRINT );
 	}
+    
+    public static function get_maps() {
+		global $wpdb;
+		
+		$maps = $GLOBALS ['wpdb']->get_results ( "SELECT * FROM `wp_map ", OBJECT );
+		
+		return json_encode ( $maps, JSON_PRETTY_PRINT );
+	}
 	
 	// ------------------------------------------------------------------------------------------
 	// include class.
