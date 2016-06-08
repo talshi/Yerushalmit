@@ -3,7 +3,6 @@ require ('../../../../wp-load.php');
 
 if (isset ( $_REQUEST )) {
 	
-	//$id = $_REQUEST ['id'];
 	$name = $_REQUEST ['name'];
 	$date = $_REQUEST ['date'];
 	$description = $_REQUEST ['description'];
@@ -14,8 +13,6 @@ if (isset ( $_REQUEST )) {
 
 	global $wpdb;
 	$table_name = $wpdb->prefix . "activities";
-	
-	echo($neighborhood);
 	
 	$wpdb->insert ( $table_name, array (
 			'name' => $name,
@@ -34,6 +31,8 @@ if (isset ( $_REQUEST )) {
 			'%lu',
 			'%s'
 	) );
+	
+	echo json_encode($wpdb->get_results("SELECT id FROM wp_activities WHERE name = '$name'", OBJECT), JSON_PRETTY_PRINT);
 	
 	die ();
 }

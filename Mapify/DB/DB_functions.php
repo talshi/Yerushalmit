@@ -44,6 +44,16 @@ switch ($action) {
 		$category = $_POST ['category'];
 		DB_functions::update_activities_table_by_id ( $id, $name, $date, $description, $neighborhood, $category );
 		break;
+	case "save_activity" :
+		$name = $_POST ['name'];
+		$date = $_POST ['date'];
+		$description = $_POST ['description'];
+		$neighborhood = $_POST ['neighborhood'];
+		$locationX = $_POST ['locationX'];
+		$locationY = $_POST ['locationY'];
+		$category = $_POST ['category'];
+		echo DB_functions::save_activity($name, $date, $description, $neighborhood, $locationX, $locationY, $category);
+		break;
 }
 class DB_functions {
 	public static function update_activities_table_by_id($id, $name, $date, $description, $neighborhood, $category) {
@@ -150,5 +160,30 @@ class DB_functions {
 		global $wpdb;
 		$url_main = $wpdb->get_results ( "SELECT * FROM " . $wpdb->prefix . "map WHERE neighborhood = 'main'" );
 		return json_encode ( $url_main, JSON_PRETTY_PRINT );
+	}
+	public static function save_activity($name, $date, $description, $neighborhood, $locationX, $locationY, $category) {
+		global $wpdb;
+		$table_name = $wpdb->prefix . "activities";
+		
+		$wpdb->insert ( $table_name, array (
+				'name' => $name,
+				'date' => $date,
+				'description' => $description,
+				'neighborhood' => $neighborhood,
+				'locationX' => $locationX,
+				'locationY' => $locationY,
+				'category' => $category 
+		), array (
+				'%s',
+				'%s',
+				'%s',
+				'%s',
+				'%lu',
+				'%lu',
+				'%s' 
+		) );
+		
+		return json_encode ( $wpdb->get_results ( "SELECT id FROM wp_activities WHERE name = '$name'", OBJECT ), JSON_PRETTY_PRINT );
+		// ***
 	}
 }

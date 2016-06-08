@@ -6,7 +6,6 @@
 	//	Global 
 	var x = 0;
 	var y = 0;
-	var index = 0;
 
 	(function ($) {
 
@@ -206,7 +205,7 @@
 
 		$scope.editFunction = function(id) {	
 
-			alert("Edit function id: " +id);
+			alert("Edit function id: " + id);
 			idGlobal = id;
 
 			$http({
@@ -345,33 +344,94 @@
 			var description = $scope.activityDescription;
 			var categoryName = $scope.selectedCategory.name;
 
-			$.ajax({
-				url: "../wp-content/plugins/Mapify/DB/save-activity.php",
-				type: "POST",
-				data: {
-					//'id' : "0",
-					'name' : name,
-					'date' : date,
-					'description' : description,
-					'neighborhood' : neighborhood,
+			$http({
+				method: "POST",
+				url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+				data: $.param({	
+					action: 'save_activity',
+					name : name,
+					date : date,
+					description : description,
+					neighborhood : neighborhood,
 					//	'showOnMap' : "show",
-					'locationX' : x,
-					'locationY' : y,
-					'category' : categoryName,
-				},
-				success: function(data) {
-					console.log(data);
-				},
-				error: function(error) {
-					console.log(error);
-				}
-			});
-			$scope.activities_list.push({ 	id: '0',
-				name: $scope.activityName,
-				date: $scope.activityDate,
-				neighborhood: $scope.selectedNeighborhood.neighborhood,
-				category: $scope.selectedCategory.name,
-				description: $scope.activityDescription });
+					locationX : x,
+					locationY : y,
+					category : categoryName,
+						}),
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).success(function(response) {
+				//console.log(response);
+				//$scope.img_url = response[0]['url'];
+				
+				$scope.activities_list.push({ 	
+					id: response[0]['id'], 
+					name: name,
+					date: date,
+					neighborhood: neighborhood,
+					category: categoryName,
+					description: description });	
+				
+				// add new marker on map
+				var m = "<img id=" + response[0]['id'] + " class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg' ng-click='editFunction(" + response[0]['id'] + ")'></img>";
+				jQuery("#image-activities").after(m);
+				
+				var point = getFinishPoint(x,y); // return the fix X & Y after validation
+
+				var newX = (point.x * 100) / point.w;
+				var newY = (point.y * 100) / point.h;
+
+				if(newX > 95)
+					newX = 95;
+
+				if(newY > 93)
+					newY = 95;
+
+				jQuery("#" + response[0]['id']).css({
+					"top": newY + '%',
+					"left": newX + '%'
+				});
+			}), function(error) {
+				console.log(error);
+			};
+			
+//			$.ajax({
+//				url: "../wp-content/plugins/Mapify/DB/save-activity.php",
+//				type: "POST",
+//				data: {
+//					'name' : name,
+//					'date' : date,
+//					'description' : description,
+//					'neighborhood' : neighborhood,
+//					//	'showOnMap' : "show",
+//					'locationX' : x,
+//					'locationY' : y,
+//					'category' : categoryName,
+//				},
+//				success: function(data) {
+//					console.log(data[0]['id']); 
+//					// after saving activity, add activity to html
+//					/*
+//					$scope.activities_list.push({ 	
+//						id: data[0].id, //***
+//						name: $scope.activityName,
+//						date: $scope.activityDate,
+//						neighborhood: $scope.selectedNeighborhood.neighborhood,
+//						category: $scope.selectedCategory.name,
+//						description: $scope.activityDescription });
+//*/
+//					
+//				},
+//				error: function(error) {
+//					console.log(error);
+//				}
+//			});
+//			$scope.activities_list.push({ 	
+//			id: idGlobal, //***
+//			name: $scope.activityName,
+//			date: $scope.activityDate,
+//			neighborhood: $scope.selectedNeighborhood.neighborhood,
+//			category: $scope.selectedCategory.name,
+//			description: $scope.activityDescription });
 
 			$scope.activityName = '';
 			$scope.activityDate = '';
@@ -379,28 +439,14 @@
 			$scope.activityDescription = '';
 			$scope.selectedNeighborhood.neighborhood = '';
 
-			var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
-			jQuery("#image-activities").after(m);
+//			// add marker on map
+//			var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
+//			jQuery("#image-activities").after(m);
 
 			// add activity to table
 
 			// --
-			var point = getFinishPoint(x,y); // return the fix X & Y after validation
-
-			var newX = (point.x * 100) / point.w;
-			var newY = (point.y * 100) / point.h;
-
-			if(newX > 95)
-				newX = 95;
-
-			if(newY > 93)
-				newY = 95;
-
-			jQuery("#img-marker" + index).css({
-				"top": newY + '%',
-				"left": newX + '%'
-			});
-			index++;
+			
 
 
 		};
@@ -408,13 +454,16 @@
 		$scope.initActivities = function(activities){
 
 			for(var i = 0 ; i < activities.length ; i++)
-
 			{
+//				var func = "editFunction(" + activities[i]['id'] + ")";
 
-				var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
+				var m = "<img id=" + activities[i]['id'] + " class='marker'" +
+						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
+						" data-toggle='modal' " +
+						"data-target='#myImg' onclick='myFunction()' ></img>";
 				jQuery("#image-activities").after(m);
 
-				jQuery("#img-marker" + index).css({
+				jQuery("#" + activities[i]['id']).css({
 					"top": activities[i].locationY + '%',
 					"left": activities[i].locationX + '%'
 				});
@@ -432,7 +481,9 @@
 				//console.log($scope.activities_list[i].x);
 				//console.log($scope.activities_list[i].y);
 
-				var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
+				var m = "<img id='img-marker" + index + "' class='marker'" +
+						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
+						" data-toggle='modal' data-target='#myImg' onclick='myFunction()'></img>";
 				jQuery("#image-activities").after(m);
 
 
@@ -707,6 +758,7 @@ function getFinishPoint(x,y){
 
 	return {x: x_finish, y:y_finish , w:w_ , h:h_};
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
