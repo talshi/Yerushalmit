@@ -156,6 +156,30 @@ function display($atts)
                         }    
                     }
                 }
+                function getCategoryDescription(categoryId)
+                {
+                    var id = categoryId.split(\"_\")[1];
+                    var categoriesArrayJS = " . json_encode($categoriesArray) . ";
+                    for(var i=0; i<categoriesArrayJS.length; i++)
+                    {
+                        if(categoriesArrayJS[i].id == id)
+                        {
+                            return categoriesArrayJS[i].description;
+                        }    
+                    }
+                }
+                function getCategoryName(categoryId)
+                {
+                    var id = categoryId.split(\"_\")[1];
+                    var categoriesArrayJS = " . json_encode($categoriesArray) . ";
+                    for(var i=0; i<categoriesArrayJS.length; i++)
+                    {
+                        if(categoriesArrayJS[i].id == id)
+                        {
+                            return categoriesArrayJS[i].name;
+                        }    
+                    }
+                }
                 jQuery('.tag').hover(
                 function(){
            
@@ -163,8 +187,8 @@ function display($atts)
                     var urlByActivityId = getImageByActivity(activityId);
                     jQuery('#map').css('background-image','url(' + urlByActivityId + ')');
                     
-                    var textForBubble = '';
-                    textForBubble += getActivityDescription(activityId);                    
+
+                    var textForBubble = getActivityDescription(activityId);                    
                     var title = getActivityName(activityId);
                         
                     
@@ -181,19 +205,10 @@ function display($atts)
            
                     var categoryId = jQuery(this).attr('id');
                     
-                    var textForBubble = '';
-                    if(categoryId == 'category1')
-                        textForBubble += ' טקסט מתחלף קטגוריה 1  טקסט מתחלף קטגוריה 1  טקסט מתחלף קטגוריה 1  טקסט מתחלף קטגוריה 1 טקסט מתחלף קטגוריה 1 ';
-                    else if(categoryId == 'category2')
-                        textForBubble += ' טקסט מתחלף קטגוריה 2 טקסט מתחלף קטגוריה 2 טקסט מתחלף קטגוריה 2 טקסט מתחלף קטגוריה 2 טקסט מתחלף קטגוריה 2 ';
-                                            
-                    var title;
-                    if(categoryId == 'category1')
-                        title = 'כותרת קטגוריה 1';
-                    else if(categoryId == 'category2')
-                        title = 'כותרת קטגוריה 2';
+                    var textForBubble = getCategoryDescription(categoryId);
+                           
+                    var title = getCategoryName(categoryId);
                         
-                    
                     jQuery('#textTitle').text(title);
                     jQuery('#bubbleText').text(textForBubble);
                 });
