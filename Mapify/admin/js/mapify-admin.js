@@ -196,8 +196,11 @@
 					neighborhood: $scope.selectedNeighborhood.neighborhood,
 					category : $scope.selectedCategory.name
 				}),
+				
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			
 			}).success(function(response) {
+				$route.reload();
 			}, function(error) {
 				console.log(error);
 			});
@@ -219,12 +222,34 @@
 			}).success(function(response) {
 
 				//display data in modol window
+				
 				$scope.edit_activity = response[0];
 				$scope.activityNameEdit = $scope.edit_activity.name;
 				$scope.activityDateEdit = $scope.edit_activity.date;
 				$scope.activityDesEdit  = $scope.edit_activity.description;
+				//$scope.selectedNeighborhood = $scope.edit_activity.neighborhood[0];
+				
+				for(var i = 0; i < $scope.neighborhood_list.length ; i++){
+					console.log($scope.edit_activity.neighborhood +"--"+$scope.neighborhood_list[i].neighborhood);
+					if($scope.edit_activity.neighborhood.localeCompare($scope.neighborhood_list[i].neighborhood) == 0){
+						console.log("FINISH1");
+						break;
+					}
+				}
+				
+				$scope.selectedNeighborhood = $scope.neighborhood_list[i];
 
-//				alert($scope.edit_activity.description);
+				console.log("NEW");
+				for(var i = 0; i < $scope.categories_list.length ; i++){
+					console.log($scope.edit_activity.category +"--"+$scope.categories_list[i].name);
+					if($scope.edit_activity.category.localeCompare($scope.categories_list[i].name) == 0)
+					{
+						console.log("FINISH2");
+						break;
+					}
+				}
+				$scope.selectedCategory = $scope.categories_list[i];
+				
 			}, function(error) {
 				console.log(error);
 			});
@@ -248,7 +273,7 @@
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		}).success(function(response) {
 			$scope.activities_list = response;
-			$scope.initActivities($scope.activities_list);
+//			$scope.initActivities($scope.activities_list);
 		}, function(error) {
 			console.log(error);
 		});
@@ -307,7 +332,6 @@
 		}
 
 		$scope.addActivity = function(event) {							
-
 			// TODO validation of forms
 //			if($scope.activityName == undefined)
 //			{
@@ -369,27 +393,27 @@
 					date: date,
 					neighborhood: neighborhood,
 					category: categoryName,
-					description: description });	
-				
+					description: description });
+				$route.reload();
 				// add new marker on map
-				var m = "<img id=" + response[0]['id'] + " class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg' ng-click='editFunction(" + response[0]['id'] + ")'></img>";
-				jQuery("#image-activities").after(m);
+//				var m = "<img id=" + response[0]['id'] + " class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg' ng-click='editFunction(" + response[0]['id'] + ")'></img>";
+//				jQuery("#image-activities").after(m);
 				
-				var point = getFinishPoint(x,y); // return the fix X & Y after validation
-
-				var newX = (point.x * 100) / point.w;
-				var newY = (point.y * 100) / point.h;
-
-				if(newX > 95)
-					newX = 95;
-
-				if(newY > 93)
-					newY = 95;
-
-				jQuery("#" + response[0]['id']).css({
-					"top": newY + '%',
-					"left": newX + '%'
-				});
+//				var point = getFinishPoint(x,y); // return the fix X & Y after validation
+//
+//				var newX = (point.x * 100) / point.w;
+//				var newY = (point.y * 100) / point.h;
+//
+//				if(newX > 95)
+//					newX = 95;
+//
+//				if(newY > 93)
+//					newY = 95;
+//
+//				jQuery("#" + response[0]['id']).css({
+//					"top": newY + '%',
+//					"left": newX + '%'
+//				});
 			}), function(error) {
 				console.log(error);
 			};
@@ -451,26 +475,26 @@
 
 		};
 
-		$scope.initActivities = function(activities){
-
-			for(var i = 0 ; i < activities.length ; i++)
-			{
-//				var func = "editFunction(" + activities[i]['id'] + ")";
-
-				var m = "<img id=" + activities[i]['id'] + " class='marker'" +
-						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
-						" data-toggle='modal' " +
-						"data-target='#myImg' onclick='myFunction()' ></img>";
-				jQuery("#image-activities").after(m);
-
-				jQuery("#" + activities[i]['id']).css({
-					"top": activities[i].locationY + '%',
-					"left": activities[i].locationX + '%'
-				});
-
-			}
-		}
-
+//		$scope.initActivities = function(activities){
+//
+//			for(var i = 0 ; i < activities.length ; i++)
+//			{
+////				var func = "editFunction(" + activities[i]['id'] + ")";
+//
+//				var m = "<img id=" + activities[i]['id'] + " class='marker'" +
+//						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
+//						" data-toggle='modal' " +
+//						"data-target='#myImg'></img>";
+//				jQuery("#image-activities").after(m);
+//
+//				jQuery("#" + activities[i]['id']).css({
+//					"top": activities[i].locationY + '%',
+//					"left": activities[i].locationX + '%'
+//				});
+//
+//			}
+//		}
+		
 		jQuery(window).resize(function(){
 
 			for(var i = 0 ; i < $scope.activities_list.length ; i++)
@@ -481,6 +505,7 @@
 				//console.log($scope.activities_list[i].x);
 				//console.log($scope.activities_list[i].y);
 
+<<<<<<< HEAD
 				var m = "<img id='" + $scope.activities_list[i] + "' class='marker'" +
 						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
 						" data-toggle='modal' data-target='#myImg' onclick='myFunction()'></img>";
@@ -490,6 +515,19 @@
 					"top": $scope.activities_list[i].x,
 					"left": $scope.activities_list[i].y
 				});
+=======
+//				var m = "<img id='img-marker" + index + "' class='marker'" +
+//						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
+//						" data-toggle='modal' data-target='#myImg'></img>";
+//				jQuery("#image-activities").after(m);
+//
+//
+//				jQuery("#img-marker" + index).css({
+//					"top": $scope.activities_list[i].x,
+//					"left": $scope.activities_list[i].y
+//				});
+
+>>>>>>> 558d8e2935545586ca76c4785a00c696d3daaffb
 			}	
 		});
 
@@ -542,6 +580,7 @@
 
 
 		$("#save_button_upload").click(function() {
+			
 			if($scope.selectedNeighborhood.neighborhood == undefined || $scope.selectedNeighborhood.neighborhood.length == 0){
 				$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Choose Neighborhood Before Clicking Save.<br>Image Activity Did Not Saved!</div>");
 				$scope.selectedNeighborhood = ' ';	

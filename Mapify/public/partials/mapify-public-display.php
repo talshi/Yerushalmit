@@ -22,18 +22,18 @@ function display($atts)
     $content .= '<div id="mapify">';
     
     $content .= '<div id="categories">';
-    $content .= '<img id="category1" class="categories" src="http://yerushalmitmovement.com/wp-content/uploads/2016/05/cropped-0012.jpg"></img>';
-    $content .= '</div>';
     
-    $arrayMainMapUrl = DB_functions::get_main_map_url();
-
-    $arrayMainMapUrl = json_decode($arrayMainMapUrl);
-    foreach ( $arrayMainMapUrl as $url ) 
+    $categoriesArray = json_decode(DB_functions::get_category_list());
+    foreach($categoriesArray as $category)
     {
-	   $mainMapUrl = $url->url;
-       break;
+        $content .= '<img id="category_'. $category->id .'" class="categories" src="'. $category->logoUrl .'"></img>';
     }
-        
+    
+    $content .= '</div>';       //close categories div 
+    
+    $arrayMainMapUrl = json_decode(DB_functions::get_main_map_url());
+    $mainMapUrl = $arrayMainMapUrl[0]->url;
+    
     $content .= '<div id="map" style="background-image: url(\'' . $mainMapUrl . '\');">';      //the map div - show the plugin
     
     $content .= '<img id="activity1" class="tag" style="position: absolute; height: 50px; width: 50px; top: 500px; left: 200px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" />';
