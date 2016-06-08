@@ -13,6 +13,10 @@
     width: 50px;
 }
 
+#bubble {
+    float: left;
+}
+
 #categories {
     width: 100px;
     height: 856px;

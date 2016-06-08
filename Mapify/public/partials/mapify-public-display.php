@@ -42,8 +42,11 @@ function display($atts)
     
     foreach($activitiesArray as $activity)
     {
+        if(strcmp($activity->showOnMap, 'false') == 0)
+            continue;
         $content .= '<img id="activity_'. $activity->id .'" class="tag" src= '. $tagImage .' />'; 
         $content .= '<script>
+                        jQuery("#activity_'. $activity->id .'").hide();
                         var divMap = document.getElementById("map");
                         var rect = divMap.getBoundingClientRect();
 
@@ -74,13 +77,13 @@ function display($atts)
                             x_finish = (x / 100) * w_  - 12.5;
                         }
                         jQuery("#activity_'. $activity->id .'").css({top: y_finish, left: x_finish});
+                        jQuery("#activity_'. $activity->id .'").show();
                     </script>';
     }
 
     
     //add bubble for text
-    $content .= '<div id = "bubble" style="float: left;">';
-    //$content .= '<img id="bubbleImg" class="bubble" src="http://i.stack.imgur.com/nH24x.png" />';
+    $content .= '<div id = "bubble">';
     $content .= '<h6 id="textTitle"></h6>';
     $content .= '<p id="bubbleText"></p>';
     $content .= '</div>';
@@ -88,17 +91,18 @@ function display($atts)
 
     
     
-    $content .= '</div>';   //div with id="map"
+    $content .= '</div>';   //close div with id="map"
     
     $content .= '<div id="contentActivity">
                 <a name = "contentActivityRef"></a>
-                <p id="contentActivityText"></p>';
+                <p id="contentActivityText"></p>
+                <div id="activityImages"></div>';
     
     
-    $content .= '</div>';   //div with id="contentActivity"
+    $content .= '</div>';   //close div with id="contentActivity"
 
     
-    $content .= '</div>';   //div with id="mapify"
+    $content .= '</div>';   //close div with id="mapify"
     
     
     
