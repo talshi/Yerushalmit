@@ -74,7 +74,7 @@
 						<tr>
 							<td><label>Neighborhood</label></td>
 
-							<td><select ng-model="selectedNeighborhood"
+							<td><select ng-model="selectedNeighborhood" 
 								ng-options="neighborhood as neighborhood.neighborhood for neighborhood in neighborhood_list">
 									<option></option>
 							</select></td>
@@ -133,16 +133,16 @@
 					<tr>
 						<td><label>Neighborhood</label></td>
 
-						<td><select ng-model="selectedNeighborhood"
+						<td><select ng-model="selectedNeighborhood" 
 							ng-options="neighborhood as neighborhood.neighborhood for neighborhood in neighborhood_list">
-								<option></option>
+								<option value="" selected hidden />								
 						</select></td>
 					</tr>
 					<tr>
 						<td><label>Activity Category</label></td>
 						<td><select ng-model="selectedCategory"
 							ng-options="category as category.name for category in categories_list">
-								<option></option>
+								<option value="" selected hidden />					
 						</select></td>
 					</tr>
 					<tr>

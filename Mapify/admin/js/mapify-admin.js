@@ -196,8 +196,11 @@
 					neighborhood: $scope.selectedNeighborhood.neighborhood,
 					category : $scope.selectedCategory.name
 				}),
+				
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			
 			}).success(function(response) {
+				$route.reload();
 			}, function(error) {
 				console.log(error);
 			});
@@ -219,13 +222,34 @@
 			}).success(function(response) {
 
 				//display data in modol window
+				
 				$scope.edit_activity = response[0];
-				console.log($scope.edit_activity);
 				$scope.activityNameEdit = $scope.edit_activity.name;
 				$scope.activityDateEdit = $scope.edit_activity.date;
 				$scope.activityDesEdit  = $scope.edit_activity.description;
-				$scope.selectedNeighborhood = $scope.edit_activity.neighborhood;
-//				alert($scope.edit_activity.description);
+				//$scope.selectedNeighborhood = $scope.edit_activity.neighborhood[0];
+				
+				for(var i = 0; i < $scope.neighborhood_list.length ; i++){
+					console.log($scope.edit_activity.neighborhood +"--"+$scope.neighborhood_list[i].neighborhood);
+					if($scope.edit_activity.neighborhood.localeCompare($scope.neighborhood_list[i].neighborhood) == 0){
+						console.log("FINISH1");
+						break;
+					}
+				}
+				
+				$scope.selectedNeighborhood = $scope.neighborhood_list[i];
+
+				console.log("NEW");
+				for(var i = 0; i < $scope.categories_list.length ; i++){
+					console.log($scope.edit_activity.category +"--"+$scope.categories_list[i].name);
+					if($scope.edit_activity.category.localeCompare($scope.categories_list[i].name) == 0)
+					{
+						console.log("FINISH2");
+						break;
+					}
+				}
+				$scope.selectedCategory = $scope.categories_list[i];
+				
 			}, function(error) {
 				console.log(error);
 			});
@@ -308,7 +332,6 @@
 		}
 
 		$scope.addActivity = function(event) {							
-
 			// TODO validation of forms
 //			if($scope.activityName == undefined)
 //			{
@@ -545,6 +568,7 @@
 
 
 		$("#save_button_upload").click(function() {
+			
 			if($scope.selectedNeighborhood.neighborhood == undefined || $scope.selectedNeighborhood.neighborhood.length == 0){
 				$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Choose Neighborhood Before Clicking Save.<br>Image Activity Did Not Saved!</div>");
 				$scope.selectedNeighborhood = ' ';	
