@@ -20,13 +20,15 @@
 			<th id="IDcategory-name" ng-model="name"
 				ng-click="sortBy='name'; reverseSort=!reverseSort">Category Name</th>
 			<th>Description</th>
+			<th>Image</th>
 		</tr>
 		<tr
 			ng-repeat="category in categories_list | filter: query | orderBy:sortBy:reverseSort"
 			id="table">
-			<td><input id="categorychecked{{category.id}}" type="checkbox" /></td>
-			<td>{{ category.name }}</td>
+			<td width="10%"><input id="categorychecked{{category.id}}" type="checkbox" /></td>
+			<td width="30%">{{ category.name }}</td>
 			<td>{{ category.description }}</td>
+			<td  width="7%"><img src = "{{ category.logoUrl }} " alt="Smiley face" height="" width="100%"></td>
 		</tr>
 	</table>
 

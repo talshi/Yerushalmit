@@ -96,7 +96,8 @@ class Tables {
 		if ($wpdb->get_var ( 'SHOW TABLES LIKE ' . $table_name ) != $table_name) {
 			$sql = "CREATE TABLE $table_name (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
-			activity_id mediumint(9) NOT NULL, 
+			activity_id mediumint(9) NOT NULL,  
+			activity_name VARCHAR(55)NOT NULL,  
 			image_id mediumint(9) NOT NULL,
 			url varchar(5000) DEFAULT '' NOT NULL,
 			PRIMARY KEY (id) )";

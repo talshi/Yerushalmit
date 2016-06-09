@@ -599,7 +599,6 @@
 
 		$("#save_button_upload").click(function() {
 			
-			
 			if($scope.selectedActivity == undefined){
 				$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Choose Neighborhood Before Clicking Save.<br>Image Activity Did Not Saved!</div>");
 				$('#upload_image_neighborhood').val('');
@@ -613,8 +612,8 @@
 			}
 			
 			var img_url = jQuery("#upload_image_neighborhood").val();
-			var activity_name = $scope.selectedActivity;
-			
+			var activity_name = $scope.selectedActivity.name;
+
 			$.ajax({
 				url: "../wp-content/plugins/Mapify/DB/save-activity-image.php",
 				type: "POST",
@@ -625,36 +624,17 @@
 				},
 				success: function(data) {
 					$("#success_image").html("<div class='notice notice-success is-dismissable'>Image for "+ activity_name.name + " activity Saved Successfully! </div>");
-					
+					$scope.$apply();
 				},
 				error: function(error) {
 					$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Image Activity Did Not Saved!</div>");
 				}
 			});
+			$scope.$apply();
 		});
 	});
 
 	wp_mapify_app.controller('categoriesCtrl', function ($scope, $http, $route) {
-//		jQuery(document).ready(function ($) {
-//		$("#upload_image_button_category").click(function (e) {
-//		e.preventDefault();
-//		var image = wp.media({
-//		title: 'Upload Image',
-//		multiple: false
-//		}).open()
-//		.on('select', function (e) {
-//		// This will return the selected image from the Media Uploader, the result is an object
-//		var uploaded_image = image.state().get('selection').first();
-//		// We convert uploaded_image to a JSON object to make accessing it easier
-//		// Output to the console uploaded_image
-//		//console.log(uploaded_image);
-//		var image_url = uploaded_image.toJSON().url;
-//		// Let's assign the url value to the input field
-//		$('#upload_image_category').val(image_url)
-//		var image_link = $('#upload_image_category').val();
-//		});
-//		});
-//		});
 
 		$scope.sortBy = 'name';
 
