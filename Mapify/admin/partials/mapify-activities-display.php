@@ -68,8 +68,8 @@
 						</tr>
 						<tr>
 							<td><label>Activity Date</label></td>
-							<td><input type="text" ng-model="activityDate"
-								placeholder="dd/mm/yyyy" required></td>
+							<td><input type="date" ng-model="activityDate"
+								placeholder="dd/mm/yyyy"></td>
 						</tr>
 						<tr>
 							<td><label>Neighborhood</label></td>
@@ -128,7 +128,7 @@
 					</tr>
 					<tr>
 						<td><label>Activity Date</label></td>
-						<td><input type="text" ng-model="activityDateEdit"
+						<td><input type="date" ng-model="activityDateEdit"
 							placeholder="dd/mm/yyyy"  ></td>
 					</tr>
 					<tr>
