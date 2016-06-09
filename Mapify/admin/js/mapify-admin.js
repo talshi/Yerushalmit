@@ -357,12 +357,27 @@
 //			}
 
 			// add to DATA BASE
-
-			var name = $scope.activityName;
-			var date = $scope.activityDate;
-			var neighborhood =  $scope.selectedNeighborhood.neighborhood;
-			var description = $scope.activityDescription;
-			var categoryName = $scope.selectedCategory.name;
+			var name = '';
+			var date = '';
+			var neighborhood = '';
+			var description = '';
+			var categoryName = '';
+			
+			if($scope.activityName)
+				name = $scope.activityName;
+			else {
+				alert("Insert Activity Name.");
+				return false;
+			}
+			if($scope.activityDate)
+				date = $scope.activityDate;
+			if($scope.selectedNeighborhood && $scope.selectedNeighborhood.neighborhood)
+				neighborhood =  $scope.selectedNeighborhood.neighborhood;
+			if($scope.activityDescription)
+				description = $scope.activityDescription;
+			if($scope.selectedCategory && $scope.selectedCategory.name)
+				categoryName = $scope.selectedCategory.name;
+			
 			$http({
 				method: "POST",
 				url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
@@ -456,7 +471,8 @@
 			$scope.activityDate = '';
 			$scope.activityCategory = '';
 			$scope.activityDescription = '';
-			$scope.selectedNeighborhood.neighborhood = '';
+			if($scope.selectedNeighborhood)
+				$scope.selectedNeighborhood.neighborhood = '';
 
 //			// add marker on map
 //			var m = "<img id='img-marker" + index + "' class='marker' src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png' data-toggle='modal' data-target='#myImg'></img>";
@@ -525,10 +541,7 @@
 				var activities = response;
 				for(var i = 0; i < activities.length; i++) {
 					var id = activities[i].id;
-					console.log(id);
-//					console.log($("#checked" + activities[0].id));
 					if($("#checked" + activities[i].id).is(':checked')) {
-
 						$http({
 							method: "POST",
 							url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
@@ -538,17 +551,15 @@
 							headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 						}).success(function(response) {
 							console.log("removed!" + id);
-//							console.log("activity" + activities[i].id + "removed");
 						}, function(error) {
 							console.log(error);
 						});
 					}
 				}
+				$route.reload();
 			}, function(error) {
 				console.log(error);
 			});
-
-
 		});
 
 		$("#remove_all_button").click(function() {
@@ -559,7 +570,7 @@
 					data: $.param({ action: 'delete_all_activities' }), 
 					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				}).success(function(response) {
-					alert("all activities deleted!");
+					$route.reload();
 				}, function(error) {
 					console.log(error);
 				});
@@ -568,7 +579,6 @@
 	});
 
 	wp_mapify_app.controller('imagesCtrl', function ($scope, $http) {
-
 		$http({
 			method: "POST",
 			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
@@ -580,7 +590,6 @@
 		}, function(error) {
 			console.log(error);
 		});
-
 
 		$("#upload_image_button_neighborhood").click(function (e) {
 			e.preventDefault();
@@ -637,7 +646,7 @@
 		});
 	});
 
-	wp_mapify_app.controller('categoriesCtrl', function ($scope, $http) {
+	wp_mapify_app.controller('categoriesCtrl', function ($scope, $http, $route) {
 //		jQuery(document).ready(function ($) {
 //		$("#upload_image_button_category").click(function (e) {
 //		e.preventDefault();
@@ -672,11 +681,6 @@
 			console.log(error);
 		});
 
-
-		jQuery("#IDdeleteSelectedCategory").click(function(e){
-			alert("remove selected function");
-		});		
-
 		jQuery("#IDdeleteAllCategory").click(function(e){
 			if(confirm("Are You Sure?")) {
 				$http({
@@ -685,7 +689,7 @@
 					data: $.param({ action: 'delete_all_categories' }), 
 					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				}).success(function(response) {
-					alert("All Categories Deleted!");
+					$route.reload();
 				}, function(error) {
 					console.log(error);
 				});
@@ -719,8 +723,8 @@
 			var id = ""; // last DB id
 			var name = $scope.CategoryName;
 			var description = $scope.CategoryDescription;
-//			var URL = $scope.CategoryURL;
-			var URL = $("#upload_image_category").val(); // TODO bug ng-model does not work
+//			var URL = $scope.CategoryURL; // TODO bug ng-model does not work
+			var URL = $("#upload_image_category").val(); 
 			console.log(URL);
 			if($scope.CategoryName == undefined || $scope.CategoryName.length < 2)
 			{
@@ -766,8 +770,40 @@
 			$scope.CategoryDescription = '';
 			$("#upload_image_category").val('');
 		};
+		
+		$("#IDdeleteSelectedCategory").click(function() {
+			$http({
+				method: "POST",
+				url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+				data: $.param({ action: 'get_category_list' }),
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).success(function(response) {
+				$scope.categories_list = response;
+				var categories = response;
+				for(var i = 0; i < categories.length; i++) {
+					var id = categories[i].id;
+					if($("#categorychecked" + categories[i].id).is(':checked')) {
+						$http({
+							method: "POST",
+							url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+							data: $.param({ action: 'delete_category_by_id', id: id }), 
+							headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+						}).success(function(response) {
+							console.log("removed!" + id);
+						}, function(error) {
+							console.log(error);
+						});
+					}
+				}
+				$route.reload();
+			}, function(error) {
+				console.log(error);
+			});
+			
+		});
+		
 	});
-
+	
 	wp_mapify_app.controller('previewCtrl', function ($scope) {
 
 	});

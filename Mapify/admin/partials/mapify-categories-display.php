@@ -24,7 +24,7 @@
 		<tr
 			ng-repeat="category in categories_list | filter: query | orderBy:sortBy:reverseSort"
 			id="table">
-			<td><input type="checkbox" /></td>
+			<td><input id="categorychecked{{category.id}}" type="checkbox" /></td>
 			<td>{{ category.name }}</td>
 			<td>{{ category.description }}</td>
 		</tr>

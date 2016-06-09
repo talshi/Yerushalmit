@@ -15,7 +15,8 @@ switch ($action) {
 		echo DB_functions::get_activity_list_by_id ( $id );
 		break;
 	case "delete_category_by_id" :
-		echo DB_functions::delete_category_by_id ();
+		$id = $_POST ['id'];
+		echo DB_functions::delete_category_by_id ( $id );
 		break;
 	case "delete_activity_by_id" :
 		$id = $_POST ['id'];
@@ -115,7 +116,6 @@ class DB_functions {
 	 */
 	public static function delete_category_by_id($id) {
 		global $wpdb;
-		
 		$wpdb->query ( ("DELETE FROM `wp_categories` WHERE `wp_categories`.`id` = '$id'") );
 	}
 	public static function delete_all_activities() {
