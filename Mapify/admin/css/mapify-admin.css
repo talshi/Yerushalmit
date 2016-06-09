@@ -103,6 +103,23 @@ label {
 	border: 1px solid black;
 }
 
+.images-table table {
+	width: 100%;
+	border: 2px solid black;
+}
+
+.images-table tr:nth-child(even) {
+	background: #cce6ff
+}
+
+.images-table tr:nth-child(odd) {
+	background: #FFF
+}
+
+.images-table th, .images-table td {
+	border: 1px solid black;
+}
+
 th {
 	text-align: center;
 }

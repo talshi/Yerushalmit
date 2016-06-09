@@ -68,8 +68,8 @@
 						</tr>
 						<tr>
 							<td><label>Activity Date</label></td>
-							<td><input type="date" ng-model="activityDate"
-								placeholder="dd/mm/yyyy"></td>
+							<td><input id="activityDate" type="date" ng-model="activityDate"
+								placeholder="dd/MM/yyyy"></td>
 						</tr>
 						<tr>
 							<td><label>Neighborhood</label></td>
@@ -101,7 +101,7 @@
 						<!-- add item to DB.... -->
 
 						<button id="save-button" class="btn btn-default" type="submit"
-							action="" data-dismiss="modal" ng-click="addActivity()" >Save</button>
+							data-dismiss="modal" ng-click="addActivity()" >Save</button>
 							<!--  ng-disabled="myForm.$invalid" -->
 					</div>
 				</form>

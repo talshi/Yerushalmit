@@ -56,6 +56,18 @@ switch ($action) {
 		$category = $_POST ['category'];
 		echo DB_functions::save_activity($name, $date, $description, $neighborhood, $locationX, $locationY, $category);
 		break;
+	case "get_activities_images" :
+		echo DB_functions::get_activities_images ();
+		break;
+	case "delete_all_images" :
+		echo DB_functions::delete_all_images ();
+		break;
+	case "delete_image_by_id" :
+		$id = $_POST ['id'];
+		echo DB_functions::delete_image_by_id ($id);
+		break;
+		
+		
 }
 class DB_functions {
 	public static function update_activities_table_by_id($id, $name, $date, $description, $neighborhood, $category) {
@@ -204,4 +216,15 @@ class DB_functions {
 		
 		return json_encode ( $images, JSON_PRETTY_PRINT );
 	}
+	
+	public static function delete_all_images() {
+		global $wpdb;
+		$wpdb->query ( "DELETE FROM `wp_activities_image" );
+	}
+	
+	public static function delete_image_by_id($id) {
+		global $wpdb;
+		$wpdb->query ( ("DELETE FROM `wp_activities_image` WHERE `wp_activities_image`.`id` = '$id'") );
+	}
+
 }
