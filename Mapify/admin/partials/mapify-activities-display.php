@@ -16,8 +16,8 @@
 	<div class="activities-control">
 		<!-- search bar -->
 		<label for="search">Search:</label> <input name="search" type="text"
-			ng-model="query" /> <input type="button" value="Remove Selected" /> <input
-			type="button" value="Remove All" id="remove_all_button" />
+			ng-model="query" /> <input id="remove_selected_button" type="button" value="Remove Selected" /> <input id="remove_all_button" 
+			type="button" value="Remove All" />
 	</div>
 	<div class="activities-table">
 		<table>
@@ -37,7 +37,7 @@
 			<tr id={{activity.id}}
 				ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort "
 				id="table">
-				<td><input id="" type="checkbox" /></td>
+				<td><input id="checked{{ activity.id }}" type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date | date: "dd/MM/yyyy" }}</td>
 				<td>{{ activity.neighborhood}}</td>
@@ -90,7 +90,7 @@
 						</tr>
 						<tr>
 							<td><label>Description</label></td>
-							<td><textarea type="text" ng-model="activityDescription" rows="4"
+							<td><textarea id="activity_description" type="text" ng-model="activityDescription" rows="4"
 									cols="40"> </textarea></td>
 						</tr>
 					</table>
