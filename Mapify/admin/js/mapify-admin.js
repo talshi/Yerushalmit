@@ -302,28 +302,23 @@
 
 		$scope.createCoords = function(event) {
 
-			
+			// clean fields
 			$scope.activityName = '';
 			$scope.activityDate = '';
 			$scope.activityCategory = '';
 			$scope.activityDescription = '';
-
 			$scope.selectedNeighborhood = '';
 			$scope.selectedCategory = '';
 			
 			
 			var r = document.getElementById("image-activities").getBoundingClientRect();
-
 			var pageCoords_left = r.left;
 			var pageCoords_top = r.top;
-
 			var clickX = event.offsetX;
 			var clickY = event.offsetY;
 
-
 			console.log("Click x : " + clickX +" clickY :"+ clickY );
 			console.log(jQuery("#image-activities").width() + " " + jQuery("#image-activities").height());
-
 
 			x = (clickX * 100) / jQuery("#image-activities").width();
 			y = (clickY * 100) / jQuery("#image-activities").height();
@@ -340,42 +335,6 @@
 		$scope.addActivity = function(event) {							
 			// TODO validation of forms
 			
-
-			$scope.activityName = '';
-			$scope.activityDate = '';
-			$scope.activityCategory = '';
-			$scope.activityDescription = '';
-			$scope.selectedNeighborhood.neighborhood = '';
-			$scope.selectedCategory.name = '';
-				
-		
-//			if($scope.activityName == undefined)
-//			{
-//			alert("Insert Activity Name");
-//			return false;
-//			}
-//			if($scope.activityDate == undefined)
-//			{
-//			alert("Insert Activity Date");
-//			return false;    			
-
-//			}
-//			if($scope.activityCategory == ' ')
-//			{
-//			alert("Insert Activity Category");
-//			return false;    			
-//			}
-//			if($scope.neighborhood == undefined)
-//			{
-//			alert("Error: Insert Neighbrhood");
-//			return false;
-//			}
-//			if($scope.activityDescription == undefined)
-//			{
-//			alert("Error: Insert Neighbrhood");
-//			return false;
-//			}
-
 			// add to DATA BASE
 			var name = '';
 			var date = '';
@@ -639,24 +598,23 @@
 
 
 		$("#save_button_upload").click(function() {
-
-			if($scope.selectedNeighborhood.neighborhood == undefined || $scope.selectedNeighborhood.neighborhood.length == 0){
+			
+			
+			if($scope.selectedActivity == undefined){
 				$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Choose Neighborhood Before Clicking Save.<br>Image Activity Did Not Saved!</div>");
-				$scope.selectedNeighborhood = ' ';	
-				$('#upload_image_neighborhood').val(' ');
+				$('#upload_image_neighborhood').val('');
 				return;
 			}
+			
 			if($('#upload_image_neighborhood').val().length == 0 )
 			{
-				$scope.selectedNeighborhood = ' ';	
-				$('#upload_image_neighborhood').val(' ');
 				$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Fill URL Before Clicking Save.br Image Did Not Saved!</div>");
 				return;
 			}
-
-			img_url = jQuery("#upload_image_neighborhood").val();
-			alert("SSSSSS");
-			var activity_name = "XXX";
+			
+			var img_url = jQuery("#upload_image_neighborhood").val();
+			var activity_name = $scope.selectedActivity;
+			
 			$.ajax({
 				url: "../wp-content/plugins/Mapify/DB/save-activity-image.php",
 				type: "POST",
@@ -666,11 +624,11 @@
 					'img_url': img_url
 				},
 				success: function(data) {
-					//console.log(data);
-					$("#success_image").html("<div class='notice notice-success is-dismissable'>Image To "+ $scope.selectedNeighborhood.neighborhood + " neighborhood Saved Successfully!</div>");
+					$("#success_image").html("<div class='notice notice-success is-dismissable'>Image for "+ activity_name.name + " activity Saved Successfully! </div>");
+					
 				},
 				error: function(error) {
-					$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Image Image Activity Did Not Saved!</div>");
+					$("#success_image").html("<div class='notice notice-error is-dismissable'>ERROR: Image Activity Did Not Saved!</div>");
 				}
 			});
 		});

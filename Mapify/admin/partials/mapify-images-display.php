@@ -11,12 +11,13 @@
 				<td><label for="Activity">Activity:</label></td>
 				<td><select id="Activity" value = "main" ng-model="selectedActivity"
  							ng-options="Activity as Activity.name for Activity in activity_list" >
+							<option value="" selected hidden />
 				</select></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td><label for="upload_image_neighborhood">URL:</label></td>
-				<td><input placeholder="URL..." id="upload_image_neighborhood" type="text" size="75"
+				<td><input placeholder="HTTP://..." id="upload_image_neighborhood" type="text" size="75"
 					name="upload_image_neighborhood" value="" /></td>
 				<td></td>
 			</tr>
