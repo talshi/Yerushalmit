@@ -6,10 +6,12 @@
 		activities. <b>(refresh the page if the image does not appear)</b>
 	</div>
 	<div id="map" ng-init="">
-		<!-- TODO need to find dynamicly the correct src of the image -->
 		<img id="image-activities" data-toggle="modal" data-target="#myModal"
 			src="{{ img_url }}" ng-click="createCoords($event)"></img> <span
 			id="popup"></span>
+		<div ng-repeat="activity in activities_list">
+			<img id="{{activity.id}}" class="marker" style="top: {{activity.locationY}}%; left: {{activity.locationX}}%; display: relative;	" ng-src="/wp-content/plugins/Mapify/admin/images/map-marker-icon.png" ng-click="editFunction(activity.id)" data-toggle='modal' data-target='#myImg'></img>
+		</div>
 	</div>
 	<div class="activities-control">
 		<!-- search bar -->
@@ -42,7 +44,7 @@
 				<td>{{ activity.category }}</td>
 				<td>{{ activity.description }}</td>
 				<td><input type="button" id={{activity.id}} value="Edit"
-					ng-click="editFunction(activity.id) " data-toggle="modal"
+					ng-click="editFunction(activity.id)" data-toggle="modal"
 					data-target="#myImg"></td>
 			</tr>
 		</table>
@@ -72,7 +74,7 @@
 						<tr>
 							<td><label>Neighborhood</label></td>
 
-							<td><select ng-model="selectedNeighborhood"
+							<td><select ng-model="selectedNeighborhood" 
 								ng-options="neighborhood as neighborhood.neighborhood for neighborhood in neighborhood_list">
 									<option></option>
 							</select></td>
@@ -131,16 +133,16 @@
 					<tr>
 						<td><label>Neighborhood</label></td>
 
-						<td><select ng-model="selectedNeighborhood"
+						<td><select ng-model="selectedNeighborhood" 
 							ng-options="neighborhood as neighborhood.neighborhood for neighborhood in neighborhood_list">
-								<option></option>
+								<option value="" selected hidden />								
 						</select></td>
 					</tr>
 					<tr>
 						<td><label>Activity Category</label></td>
 						<td><select ng-model="selectedCategory"
 							ng-options="category as category.name for category in categories_list">
-								<option></option>
+								<option value="" selected hidden />					
 						</select></td>
 					</tr>
 					<tr>

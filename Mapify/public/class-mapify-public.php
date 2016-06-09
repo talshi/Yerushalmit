@@ -100,21 +100,13 @@ class Mapify_Public {
         wp_enqueue_script( 'bootstrap.min', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, false );
 
 
-	}
-    
-   /* public function display_public_page() {
-        include_once( 'partials/mapify-public-display.php');
-    }*/
+    }
     
 
 
 }
 
-function display($atts) 
-{
-   include_once( 'partials/mapify-public-display.php');
-}
+include_once( 'partials/mapify-public-display.php');
 
-add_shortcode('custom-mapify', 'display');
 
 ?>
