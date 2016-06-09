@@ -53,11 +53,9 @@
 							</tr>
 						</table>
 
-						
 						<div id="upload_image_admin">
 							<div id="upload_note">Upload a category image:</div>
 							<div id="upload_image_container">
-
 								<label id="upload_map_label" for="upload_image_category">Upload
 									Image</label> <br> <input id="upload_image_category"
 									type="text" size="36" name="upload_image_category"

@@ -18,7 +18,8 @@ switch ($action) {
 		echo DB_functions::delete_category_by_id ();
 		break;
 	case "delete_activity_by_id" :
-		echo DB_functions::delete_activity_by_id ();
+		$id = $_POST ['id'];
+		echo DB_functions::delete_activity_by_id ( $id );
 		break;
 	case "get_category_list" :
 		echo DB_functions::get_category_list ();
@@ -82,7 +83,7 @@ class DB_functions {
 	public static function get_neighborhoods() {
 		global $wpdb;
 		
-		$neighborhoods = $GLOBALS ['wpdb']->get_results ( "SELECT neighborhood FROM `wp_map ", OBJECT );
+		$neighborhoods = $GLOBALS ['wpdb']->get_results ( "SELECT neighborhood FROM wp_map WHERE neighborhood != 'main'", OBJECT );
 		
 		return json_encode ( $neighborhoods, JSON_PRETTY_PRINT );
 	}
@@ -137,7 +138,7 @@ class DB_functions {
 		global $wpdb;
 		$table = $wpdb->prefix . "activities";
 		
-		$wpdb->query ( ("DELETE FROM `wp_categories` WHERE `wp_categories`.`id` = '$id'") );
+		$wpdb->query ( ("DELETE FROM `wp_activities` WHERE id = '$id'") );
 	}
 	public static function get_category_list() {
 		$results = $GLOBALS ['wpdb']->get_results ( "SELECT * FROM `wp_categories ", OBJECT );
