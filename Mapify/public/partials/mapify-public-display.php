@@ -238,6 +238,33 @@ function display($atts)
                     }
                     
                 }
+                jQuery('.categories').click(
+                    function()
+                    {
+                        var activitiesArrayJS = " . json_encode($activitiesArray) . ";
+                        
+                        var categoryId = jQuery(this).attr('id');
+                        var id = categoryId.split(\"_\")[1];
+                        var categoriesArrayJS = " . json_encode($categoriesArray) . ";
+                        var categoryName;
+                        for(var i=0; i<categoriesArrayJS.length; i++)
+                        {
+                            if(categoriesArrayJS[i].id == id)
+                            {
+                                categoryName = categoriesArrayJS[i].name;
+                            }    
+                        }
+                        
+                        for(var i=0; i<activitiesArrayJS.length; i++)
+                        {
+                            var activityId = 'activity_' + activitiesArrayJS[i].id;
+                            
+                            if(activitiesArrayJS[i].category.localeCompare(categoryName) == 0)
+                                jQuery(\"#\" + activityId).show();   
+                            else
+                                jQuery(\"#\" + activityId).hide();
+                        }
+                    });
                 </script>";
     
     return $content;
