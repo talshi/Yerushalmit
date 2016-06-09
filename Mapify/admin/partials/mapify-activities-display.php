@@ -59,24 +59,24 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Add Activity</h4>
 				</div>
-				<form class="modal-body" role="form">
+				<form name = "myForm" class="modal-body" role="form">
 					<table id="IdInsertTable" class="table table-hover">
 						<tr>
 							<td><label>Activity Name</label></td>
 							<td><input type="text" ng-model="activityName"
-								placeholder="Activity Name"></td>
+								placeholder="Activity Name" required></td>
 						</tr>
 						<tr>
 							<td><label>Activity Date</label></td>
 							<td><input type="text" ng-model="activityDate"
-								placeholder="dd/mm/yyyy"></td>
+								placeholder="dd/mm/yyyy" required></td>
 						</tr>
 						<tr>
 							<td><label>Neighborhood</label></td>
 
 							<td><select ng-model="selectedNeighborhood" 
-								ng-options="neighborhood as neighborhood.neighborhood for neighborhood in neighborhood_list">
-									<option></option>
+								ng-options="neighborhood as neighborhood.neighborhood for neighborhood in neighborhood_list" required>
+									<option value="" selected hidden />
 							</select></td>
 
 
@@ -84,8 +84,8 @@
 						<tr>
 							<td><label>Activity Category</label></td>
 							<td><select ng-model="selectedCategory"
-								ng-options="category as category.name for category in categories_list">
-									<option></option>
+								ng-options="category as category.name for category in categories_list" required>
+								<option value="" selected hidden />
 							</select></td>
 						</tr>
 						<tr>
@@ -101,7 +101,8 @@
 						<!-- add item to DB.... -->
 
 						<button id="save-button" class="btn btn-default" type="submit"
-							action="" data-dismiss="modal" ng-click="addActivity()">Save</button>
+							action="" data-dismiss="modal" ng-click="addActivity()" >Save</button>
+							<!--  ng-disabled="myForm.$invalid" -->
 					</div>
 				</form>
 			</div>

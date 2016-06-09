@@ -302,6 +302,16 @@
 
 		$scope.createCoords = function(event) {
 
+			
+			$scope.activityName = '';
+			$scope.activityDate = '';
+			$scope.activityCategory = '';
+			$scope.activityDescription = '';
+
+			$scope.selectedNeighborhood = '';
+			$scope.selectedCategory = '';
+			
+			
 			var r = document.getElementById("image-activities").getBoundingClientRect();
 
 			var pageCoords_left = r.left;
@@ -329,6 +339,16 @@
 
 		$scope.addActivity = function(event) {							
 			// TODO validation of forms
+			
+
+			$scope.activityName = '';
+			$scope.activityDate = '';
+			$scope.activityCategory = '';
+			$scope.activityDescription = '';
+			$scope.selectedNeighborhood.neighborhood = '';
+			$scope.selectedCategory.name = '';
+				
+		
 //			if($scope.activityName == undefined)
 //			{
 //			alert("Insert Activity Name");
@@ -516,7 +536,6 @@
 				//console.log($scope.activities_list[i].x);
 				//console.log($scope.activities_list[i].y);
 
-<<<<<<< HEAD
 				var m = "<img id='" + $scope.activities_list[i] + "' class='marker'" +
 						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
 						" data-toggle='modal' data-target='#myImg' onclick='myFunction()'></img>";
@@ -526,7 +545,6 @@
 					"top": $scope.activities_list[i].x,
 					"left": $scope.activities_list[i].y
 				});
-=======
 //				var m = "<img id='img-marker" + index + "' class='marker'" +
 //				" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
 //				" data-toggle='modal' data-target='#myImg'></img>";
@@ -538,7 +556,6 @@
 //				"left": $scope.activities_list[i].y
 //				});
 
->>>>>>> 558d8e2935545586ca76c4785a00c696d3daaffb
 			}	
 		});
 
@@ -591,6 +608,7 @@
 	});
 
 	wp_mapify_app.controller('imagesCtrl', function ($scope, $http) {
+
 		$http({
 			method: "POST",
 			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
