@@ -194,4 +194,13 @@ class DB_functions {
 		return json_encode ( $wpdb->get_results ( "SELECT id FROM wp_activities WHERE name = '$name'", OBJECT ), JSON_PRETTY_PRINT );
 		// ***
 	}
+
+
+    public static function get_activities_images() {
+		global $wpdb;
+		
+		$images = $GLOBALS ['wpdb']->get_results ( "SELECT * FROM `wp_activities_image ", OBJECT );
+		
+		return json_encode ( $images, JSON_PRETTY_PRINT );
+	}
 }

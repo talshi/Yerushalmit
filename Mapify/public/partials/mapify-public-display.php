@@ -191,10 +191,11 @@ function display($atts)
                     var textForBubble = getActivityDescription(activityId);                    
                     var title = getActivityName(activityId);
                         
+                    var linkId = 'link_' + activityId.split(\"_\")[1];
                     
-                    var link = '<br/><br/><a class=\"link\" id=aaa href=\"#contentActivityRef\"  onClick=onClickReadMore() style=\"cursor: pointer; border-bottom: none;\">קרא עוד></a>';
+                    var link = '<br/><br/><a class=\"link\" id=' + linkId + ' href=\"#contentActivityRef\"  onClick=onClickReadMore() style=\"cursor: pointer; border-bottom: none;\">קרא עוד></a>';
                     
-                    var linkId = activityId;
+                    
                     jQuery('.link').attr('id');
                     jQuery('#textTitle').text(title);
                     jQuery('#bubbleText').text(textForBubble);
@@ -214,13 +215,28 @@ function display($atts)
                 });
                 function onClickReadMore()
                 {
-                    var activityId = (jQuery('.link').attr('id'));
-                    console.log(activityId);
-                    //if(activityId == 'activity1')
-                        contentText = 'תוכן משתנה פעילות תוכן משתנה פעילות תוכן משתנה פעילות תוכן משתנה פעילות ';
-                    //else if(activityId == 'activity2')
-                        //contentText = 'תוכן משתנה פעילות 2 תוכן משתנה פעילות 2 תוכן משתנה פעילות 2 תוכן משתנה פעילות 2 תוכן משתנה פעילות 2 תוכן משתנה פעילות 2';
+                    jQuery('#activityImages').empty();
+                    var linkId = (jQuery('.link').attr('id'));
+                    var id = linkId.split(\"_\")[1];
+                    var activityId = \"activity_\" + id;                
+                    
+                    contentText = getActivityDescription(activityId);
                     jQuery('#contentActivityText').text(contentText);
+                    console.log(contentText);
+                    var activitiesImagesArray = " . DB_functions::get_activities_images() . ";
+                    
+                    var imageIndex = 1;
+                    for(var i=0; i<activitiesImagesArray.length; i++)
+                    {
+                        if(activitiesImagesArray[i].activity_id == id)
+                        {
+                            image = '<img id=\"img_' + id + '\" src = \"' + activitiesImagesArray[i].url +'\"></img>';
+                            console.log(image);
+                            jQuery('#activityImages').append(image);
+                            imageIndex++;
+                        }
+                    }
+                    
                 }
                 </script>";
     
@@ -230,15 +246,6 @@ function display($atts)
 
 add_shortcode('wp-mapify', 'display');
 
-function js_str($s)
-{
-    return '"' . addcslashes($s, "\0..\37\"\\") . '"';
-}
 
-function js_array($array)
-{
-    $temp = array_map('js_str', $array);
-    return '[' . implode(',', $temp) . ']';
-}
 
 ?>
