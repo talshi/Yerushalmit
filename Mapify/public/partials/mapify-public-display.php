@@ -81,6 +81,7 @@ function display($atts)
                     </script>';
     }
 
+    $content .= '<div id="categoryLogo"></div>';
     
     //add bubble for text
     $content .= '<div id = "bubble">';
@@ -126,7 +127,6 @@ function display($atts)
                     {
                         if(mapsArray[i].neighborhood.localeCompare(neighborhood) == 0)
                         {
-                            console.log(mapsArray[i].url);
                             return mapsArray[i].url;
                         }
                     }
@@ -180,6 +180,29 @@ function display($atts)
                         }    
                     }
                 }
+                function getCategoryNameByActivity(activityId)
+                {
+                    var id = activityId.split(\"_\")[1];
+                    var activitiesArrayJS = " . json_encode($activitiesArray) . ";
+                    for(var i=0; i<activitiesArrayJS.length; i++)
+                    {
+                        if(activitiesArrayJS[i].id == id)
+                        {
+                            return activitiesArrayJS[i].category;
+                        }    
+                    }
+                }
+                function getLogoUrl(categoryName)
+                {
+                    var categoriesArrayJS = " . json_encode($categoriesArray) . ";
+                    for(var i=0; i<categoriesArrayJS.length; i++)
+                    {
+                        if(categoriesArrayJS[i].name.localeCompare(categoryName) == 0)
+                        {
+                            return categoriesArrayJS[i].logoUrl;
+                        }    
+                    }
+                }
                 jQuery('.tag').hover(
                 function(){
            
@@ -195,6 +218,14 @@ function display($atts)
                     
                     var link = '<br/><br/><a class=\"link\" id=' + linkId + ' href=\"#contentActivityRef\"  onClick=onClickReadMore() style=\"cursor: pointer; border-bottom: none;\">קרא עוד></a>';
                     
+                    jQuery('#categoryLogo').empty();
+                    
+                    var categoryName = getCategoryNameByActivity(activityId);
+                    var categoryLogoUrl = getLogoUrl(categoryName);
+                    
+                    var logoImg = '<img src=\"' + categoryLogoUrl + '\"></img>';
+
+                    jQuery('#categoryLogo').append(logoImg);
                     
                     jQuery('.link').attr('id');
                     jQuery('#textTitle').text(title);
@@ -210,6 +241,9 @@ function display($atts)
                            
                     var title = getCategoryName(categoryId);
                         
+                    jQuery('#categoryLogo').empty();
+                    
+                    
                     jQuery('#textTitle').text(title);
                     jQuery('#bubbleText').text(textForBubble);
                 });
@@ -222,7 +256,6 @@ function display($atts)
                     
                     contentText = getActivityDescription(activityId);
                     jQuery('#contentActivityText').text(contentText);
-                    console.log(contentText);
                     var activitiesImagesArray = " . DB_functions::get_activities_images() . ";
                     
                     var imageIndex = 1;
@@ -231,7 +264,6 @@ function display($atts)
                         if(activitiesImagesArray[i].activity_id == id)
                         {
                             image = '<img id=\"img_' + id + '\" src = \"' + activitiesImagesArray[i].url +'\"></img>';
-                            console.log(image);
                             jQuery('#activityImages').append(image);
                             imageIndex++;
                         }

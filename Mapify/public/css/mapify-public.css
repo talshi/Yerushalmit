@@ -86,3 +86,11 @@
     cursor: pointer;
 }
 
+#categoryLogo {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 300px;
+    top: 5px;
+}
+
