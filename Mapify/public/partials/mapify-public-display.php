@@ -12,34 +12,78 @@
  * @subpackage Plugin_Name/public/partials
  */
 
+require_once dirname ( __DIR__ ) . '/../DB/DB_functions.php';
 
 function display($atts) 
 {
-    $content = '';
+    $content = '';      //the content of the plugin page.
     
     $content .= '<div id="mapify">';
     
     $content .= '<div id="categories">';
-    $content .= '<img id="category1" class="categories" src="http://yerushalmitmovement.com/wp-content/uploads/2016/05/cropped-0012.jpg"></img>';
-    $content .= '</div>';
     
+    $categoriesArray = json_decode(DB_functions::get_category_list());
+    foreach($categoriesArray as $category)
+    {
+        $content .= '<img id="category_'. $category->id .'" class="categories" src="'. $category->logoUrl .'"></img>';
+    }
     
-    $content .= '<div id="map">';      //the map div - show the plugin
+    $content .= '</div>';       //close categories div 
     
-  //  $content .= '<img id="image1" style="width: 100%; position: relative;" src="' . getImgURL() . '"/>';
+    //get main map from DB
+    $arrayMainMapUrl = json_decode(DB_functions::get_main_map_url());
+    $mainMapUrl = $arrayMainMapUrl[0]->url;
+
+    $content .= '<div id="map" style="background-image: url(\'' . $mainMapUrl . '\');">';      //the map div - show the plugin
     
+    //show activities on the map
+    $activitiesArray = json_decode(DB_functions::get_activity_list());
+    $tagImage = "http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png";    //the image of the tags
     
-    
-    
-    
-    $content .= '<img id="activity1" class="tag" style="position: absolute; height: 50px; width: 50px; top: 500px; left: 200px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" />';
-    
-    $content .= '<img id="activity2" class="tag" style="position: absolute; height: 50px; width: 50px; top: 100px; left: 400px;" src="http://www.snafu.org/GeoTag/GeoTagHelp/images/icon128.png" />';
-    
+    foreach($activitiesArray as $activity)
+    {
+        if(strcmp($activity->showOnMap, 'false') == 0)
+            continue;
+        $content .= '<img id="activity_'. $activity->id .'" class="tag" src= '. $tagImage .' />'; 
+        $content .= '<script>
+                        jQuery("#activity_'. $activity->id .'").hide();
+                        var divMap = document.getElementById("map");
+                        var rect = divMap.getBoundingClientRect();
+
+                        var x_left = rect.left;
+                        var y_top = rect.top;
+                        var w_ = rect.right - rect.left;
+                        var h_ = rect.bottom - rect.top;
+                        
+                        var x = '. intval($activity->locationX) .';
+                        var y = '. intval($activity->locationY) .';
+
+                        var x_finish;
+                        var y_finish;
+                        if( (y/100)*h_ < jQuery(".tag").css("height") )  // keep the marker in map from top
+                            y_finish = ((100)*(25))/(h_);			
+                        else
+                            y_finish = (y / 100) * h_ - (25);		
+
+                        if( (x/100)*w_ < jQuery(".tag").css("width") )  // keep the marker in map from left
+                        {	
+                            x_finish = ((100)*(12.5))/(w_);
+                        }
+                        else if ((w_ - (x*w_)/100 < 12.5)) // keep the marker in map from right!!
+                        {					
+                            x_finish = w_ - 25;
+                        }	
+                        else{
+                            x_finish = (x / 100) * w_  - 12.5;
+                        }
+                        jQuery("#activity_'. $activity->id .'").css({top: y_finish, left: x_finish});
+                        jQuery("#activity_'. $activity->id .'").show();
+                    </script>';
+    }
+
     
     //add bubble for text
-    $content .= '<div id = "bubble" style="float: left;">';
-    //$content .= '<img id="bubbleImg" class="bubble" src="http://i.stack.imgur.com/nH24x.png" />';
+    $content .= '<div id = "bubble">';
     $content .= '<h6 id="textTitle"></h6>';
     $content .= '<p id="bubbleText"></p>';
     $content .= '</div>';
@@ -47,31 +91,94 @@ function display($atts)
 
     
     
-    $content .= '</div>';   //div with id="map"
+    $content .= '</div>';   //close div with id="map"
     
     $content .= '<div id="contentActivity">
                 <a name = "contentActivityRef"></a>
-                <p id="contentActivityText"></p>';
+                <p id="contentActivityText"></p>
+                <div id="activityImages"></div>';
     
     
-    $content .= '</div>';   //div with id="contentActivity"
+    $content .= '</div>';   //close div with id="contentActivity"
 
     
-    $content .= '</div>';   //div with id="mapify"
+    $content .= '</div>';   //close div with id="mapify"
     
     
     
     $content .= "\n<script>
-                //console.log(jQuery('#bubbleImg').height());
-                //jQuery('#bubble').css({'height': jQuery('#bubbleImg').height(), 'width': jQuery('#bubbleImg').width() });
                 jQuery('#bubbleText').css({ 'width': jQuery('#bubble').width() });
-                function getImageByActivity(activity)
+                function getImageByActivity(activityId)
                 {
-                    if(activity == 'activity1')
-                        return 'http://www.jiis.org.il/.upload/publications/images/2007_07_minhalim-map-small.jpg';
-                    else if(activity == 'activity2')
-                        return 'http://jiis.org/.upload/heb/data_statistics/maps/flat_size/2010_02_flatsize-map.jpg';
+                    var id = activityId.split(\"_\")[1];
+                    var activitiesArrayJS = " . json_encode($activitiesArray) . ";
+                    var neighborhood;
+                    for(var i=0; i<activitiesArrayJS.length; i++)
+                    {
+                        if(activitiesArrayJS[i].id == id)
+                        {
+                            neighborhood = activitiesArrayJS[i].neighborhood;
+                            break;
+                        }    
+                    }
+                    var mapsArray = " . DB_functions::get_maps() . ";
+                    for(var i=0; i<mapsArray.length; i++)
+                    {
+                        if(mapsArray[i].neighborhood.localeCompare(neighborhood) == 0)
+                        {
+                            console.log(mapsArray[i].url);
+                            return mapsArray[i].url;
+                        }
+                    }
 
+                }
+                function getActivityName(activityId)
+                {
+                    var id = activityId.split(\"_\")[1];
+                    var activitiesArrayJS = " . json_encode($activitiesArray) . ";
+                    for(var i=0; i<activitiesArrayJS.length; i++)
+                    {
+                        if(activitiesArrayJS[i].id == id)
+                        {
+                            return activitiesArrayJS[i].name;
+                        }    
+                    }
+                }
+                function getActivityDescription(activityId)
+                {
+                    var id = activityId.split(\"_\")[1];
+                    var activitiesArrayJS = " . json_encode($activitiesArray) . ";
+                    for(var i=0; i<activitiesArrayJS.length; i++)
+                    {
+                        if(activitiesArrayJS[i].id == id)
+                        {
+                            return activitiesArrayJS[i].description;
+                        }    
+                    }
+                }
+                function getCategoryDescription(categoryId)
+                {
+                    var id = categoryId.split(\"_\")[1];
+                    var categoriesArrayJS = " . json_encode($categoriesArray) . ";
+                    for(var i=0; i<categoriesArrayJS.length; i++)
+                    {
+                        if(categoriesArrayJS[i].id == id)
+                        {
+                            return categoriesArrayJS[i].description;
+                        }    
+                    }
+                }
+                function getCategoryName(categoryId)
+                {
+                    var id = categoryId.split(\"_\")[1];
+                    var categoriesArrayJS = " . json_encode($categoriesArray) . ";
+                    for(var i=0; i<categoriesArrayJS.length; i++)
+                    {
+                        if(categoriesArrayJS[i].id == id)
+                        {
+                            return categoriesArrayJS[i].name;
+                        }    
+                    }
                 }
                 jQuery('.tag').hover(
                 function(){
@@ -80,22 +187,15 @@ function display($atts)
                     var urlByActivityId = getImageByActivity(activityId);
                     jQuery('#map').css('background-image','url(' + urlByActivityId + ')');
                     
-                    var textForBubble = '';
-                    if(activityId == 'activity1')
-                        textForBubble += ' טקסט מתחלף פעילות 1  טקסט מתחלף פעילות 1  טקסט מתחלף פעילות 1  טקסט מתחלף פעילות 1 טקסט מתחלף פעילות 1 ';
-                    else if(activityId == 'activity2')
-                        textForBubble += ' טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 טקסט מתחלף פעילות 2 ';
-                                            
-                    var title;
-                    if(activityId == 'activity1')
-                        title = 'כותרת פעילות 1';
-                    else if(activityId == 'activity2')
-                        title = 'כותרת פעילות 2';
+
+                    var textForBubble = getActivityDescription(activityId);                    
+                    var title = getActivityName(activityId);
                         
+                    var linkId = 'link_' + activityId.split(\"_\")[1];
                     
-                    var link = '<br/><br/><a class=\"link\" id=aaa href=\"#contentActivityRef\"  onClick=onClickReadMore() style=\"cursor: pointer; border-bottom: none;\">קרא עוד></a>';
+                    var link = '<br/><br/><a class=\"link\" id=' + linkId + ' href=\"#contentActivityRef\"  onClick=onClickReadMore() style=\"cursor: pointer; border-bottom: none;\">קרא עוד></a>';
                     
-                    var linkId = activityId;
+                    
                     jQuery('.link').attr('id');
                     jQuery('#textTitle').text(title);
                     jQuery('#bubbleText').text(textForBubble);
@@ -106,39 +206,73 @@ function display($atts)
            
                     var categoryId = jQuery(this).attr('id');
                     
-                    var textForBubble = '';
-                    if(categoryId == 'category1')
-                        textForBubble += ' טקסט מתחלף קטגוריה 1  טקסט מתחלף קטגוריה 1  טקסט מתחלף קטגוריה 1  טקסט מתחלף קטגוריה 1 טקסט מתחלף קטגוריה 1 ';
-                    else if(categoryId == 'category2')
-                        textForBubble += ' טקסט מתחלף קטגוריה 2 טקסט מתחלף קטגוריה 2 טקסט מתחלף קטגוריה 2 טקסט מתחלף קטגוריה 2 טקסט מתחלף קטגוריה 2 ';
-                                            
-                    var title;
-                    if(categoryId == 'category1')
-                        title = 'כותרת קטגוריה 1';
-                    else if(categoryId == 'category2')
-                        title = 'כותרת קטגוריה 2';
+                    var textForBubble = getCategoryDescription(categoryId);
+                           
+                    var title = getCategoryName(categoryId);
                         
-                    
                     jQuery('#textTitle').text(title);
                     jQuery('#bubbleText').text(textForBubble);
                 });
                 function onClickReadMore()
                 {
-                    var activityId = (jQuery('.link').attr('id'));
-                    console.log(activityId);
-                    //if(activityId == 'activity1')
-                        contentText = 'תוכן משתנה פעילות תוכן משתנה פעילות תוכן משתנה פעילות תוכן משתנה פעילות ';
-                    //else if(activityId == 'activity2')
-                        //contentText = 'תוכן משתנה פעילות 2 תוכן משתנה פעילות 2 תוכן משתנה פעילות 2 תוכן משתנה פעילות 2 תוכן משתנה פעילות 2 תוכן משתנה פעילות 2';
+                    jQuery('#activityImages').empty();
+                    var linkId = (jQuery('.link').attr('id'));
+                    var id = linkId.split(\"_\")[1];
+                    var activityId = \"activity_\" + id;                
+                    
+                    contentText = getActivityDescription(activityId);
                     jQuery('#contentActivityText').text(contentText);
+                    console.log(contentText);
+                    var activitiesImagesArray = " . DB_functions::get_activities_images() . ";
+                    
+                    var imageIndex = 1;
+                    for(var i=0; i<activitiesImagesArray.length; i++)
+                    {
+                        if(activitiesImagesArray[i].activity_id == id)
+                        {
+                            image = '<img id=\"img_' + id + '\" src = \"' + activitiesImagesArray[i].url +'\"></img>';
+                            console.log(image);
+                            jQuery('#activityImages').append(image);
+                            imageIndex++;
+                        }
+                    }
+                    
                 }
+                jQuery('.categories').click(
+                    function()
+                    {
+                        var activitiesArrayJS = " . json_encode($activitiesArray) . ";
+                        
+                        var categoryId = jQuery(this).attr('id');
+                        var id = categoryId.split(\"_\")[1];
+                        var categoriesArrayJS = " . json_encode($categoriesArray) . ";
+                        var categoryName;
+                        for(var i=0; i<categoriesArrayJS.length; i++)
+                        {
+                            if(categoriesArrayJS[i].id == id)
+                            {
+                                categoryName = categoriesArrayJS[i].name;
+                            }    
+                        }
+                        
+                        for(var i=0; i<activitiesArrayJS.length; i++)
+                        {
+                            var activityId = 'activity_' + activitiesArrayJS[i].id;
+                            
+                            if(activitiesArrayJS[i].category.localeCompare(categoryName) == 0)
+                                jQuery(\"#\" + activityId).show();   
+                            else
+                                jQuery(\"#\" + activityId).hide();
+                        }
+                    });
                 </script>";
     
     return $content;
 }
 
 
-add_shortcode('custom-mapify', 'display');
+add_shortcode('wp-mapify', 'display');
+
 
 
 ?>

@@ -516,6 +516,17 @@
 				//console.log($scope.activities_list[i].x);
 				//console.log($scope.activities_list[i].y);
 
+<<<<<<< HEAD
+				var m = "<img id='" + $scope.activities_list[i] + "' class='marker'" +
+						" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
+						" data-toggle='modal' data-target='#myImg' onclick='myFunction()'></img>";
+				jQuery("#image-activities").after(m);
+
+				jQuery("#" + $scope.activities_list[i]).css({
+					"top": $scope.activities_list[i].x,
+					"left": $scope.activities_list[i].y
+				});
+=======
 //				var m = "<img id='img-marker" + index + "' class='marker'" +
 //				" src='/wp-content/plugins/Mapify/admin/images/map-marker-icon.png'" +
 //				" data-toggle='modal' data-target='#myImg'></img>";
@@ -527,6 +538,7 @@
 //				"left": $scope.activities_list[i].y
 //				});
 
+>>>>>>> 558d8e2935545586ca76c4785a00c696d3daaffb
 			}	
 		});
 

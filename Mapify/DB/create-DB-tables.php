@@ -37,10 +37,11 @@ class Tables {
 			
 			 $consolelog = "<script>console.log($num);</script>";
 			 echo $consolelog;
-			
+			*/
 			$wpdb->insert ( $table_name, array (
-					'map_id' => $tmp,
-			) );*/
+					'neighborhood' => "main",
+					'url' => "/wp-content/plugins/Mapify/admin/images/default_main_img.png"
+			) );
 			
 			
 		}
