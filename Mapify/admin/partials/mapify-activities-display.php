@@ -16,36 +16,34 @@
 	<div class="activities-control">
 		<!-- search bar -->
 		<label for="search">Search:</label> <input name="search" type="text"
-			ng-model="query" /> <input id="remove_selected_button" type="button" value="Remove Selected" /> <input id="remove_all_button" 
-			type="button" value="Remove All" />
+			ng-model="query" /> <input class = "buttonDesign" id="remove_selected_button" type="button" value="Remove Selected" /> <input id="remove_all_button" 
+			type="button" value="Remove All" class = "buttonDesign"/>
 	</div>
 	<div class="activities-table">
 		<table>
-			<tr>
+			<tr class = "firstLineTable">
 				<th>#</th>
 				<th id="IDactivity-name" ng-model="name"
-					ng-click="sortBy='name'; reverseSort=!reverseSort">Activity Name</th>
+					ng-click="sortBy='name'; reverseSort=!reverseSort" style ="width:10%;">Activity Name</th>
 				<th id="IDDate" ng-model="date"
-					ng-click="sortBy='date'; reverseSort=!reverseSort">Date</th>
+					ng-click="sortBy='date'; reverseSort=!reverseSort" style ="width:10%;">Date</th>
 				<th id="IDNeighb" ng-model="neighborhood"
-					ng-click="sortBy='neighborhood'; reverseSort=!reverseSort">neighborhood</th>
+					ng-click="sortBy='neighborhood'; reverseSort=!reverseSort" style ="width:10%;">neighborhood</th>
 				<th id="IDCategory" ng-model="category"
-					ng-click="sortBy='category'; reverseSort=!reverseSort">Category</th>
-				<th>Description</th>
-				<th>Edit</th>
+					ng-click="sortBy='category'; reverseSort=!reverseSort" style="white-space:pre-wrap ; word-wrap:break-word;">Category</th>
+				<th style ="width:10%;">Description</th>
+				<th style ="width:10%;">Edit</th>
 			</tr>
-			<tr id={{activity.id}}
-				ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort "
-				id="table">
+			<tr id={{activity.id}} ng-repeat="activity in activities_list | filter: query | orderBy:sortBy:reverseSort " id="table" class="data_table">
 				<td><input id="checked{{ activity.id }}" type="checkbox" /></td>
 				<td>{{ activity.name }}</td>
 				<td>{{ activity.date | date: "dd/MM/yyyy" }}</td>
 				<td>{{ activity.neighborhood}}</td>
 				<td>{{ activity.category }}</td>
-				<td>{{ activity.description }}</td>
+				<td id="data_table_des" style="white-space:pre-wrap ; word-wrap:break-word;">{{ activity.description }}</td>
 				<td><input type="button" id={{activity.id}} value="Edit"
 					ng-click="editFunction(activity.id)" data-toggle="modal"
-					data-target="#myImg"></td>
+					data-target="#myImg" class = "buttonDesign"  style =" width : 100%;"></td>
 			</tr>
 		</table>
 	</div>

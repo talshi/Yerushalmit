@@ -6,28 +6,27 @@
 <hr>
 <div class="categories-control">
 	<label for="search">Search: </label> <input name="search" type="text"
-		ng-model="query" /> <input type="button" value="Add New Category" data-toggle="modal" data-target="#myModal" />
-		 <input type="button" value="Remove Selected" id="IDdeleteSelectedCategory" />
-		  <input type="button" value="Remove All" id="IDdeleteAllCategory" />
+		ng-model="query" /> <input type="button" class="buttonDesign" value="Add New Category" data-toggle="modal" data-target="#myModal" />
+		 <input type="button" class="buttonDesign" value="Remove Selected" id="IDdeleteSelectedCategory" />
+		  <input type="button" class="buttonDesign" value="Remove All" id="IDdeleteAllCategory" />
 </div>
 <!-- search bar -->
 
 <div class="activities-table">
 
 	<table>
-		<tr>
+		<tr class = " firstLineTable ">
 			<th>#</th>
 			<th id="IDcategory-name" ng-model="name"
 				ng-click="sortBy='name'; reverseSort=!reverseSort">Category Name</th>
 			<th>Description</th>
 			<th>Image</th>
 		</tr>
-		<tr
-			ng-repeat="category in categories_list | filter: query | orderBy:sortBy:reverseSort"
-			id="table">
+		<tr ng-repeat="category in categories_list | filter: query | orderBy:sortBy:reverseSort"
+			id="table" class="data_table">
 			<td width="10%"><input id="categorychecked{{category.id}}" type="checkbox" /></td>
 			<td width="30%">{{ category.name }}</td>
-			<td>{{ category.description }}</td>
+			<td id ="data_table_des">{{ category.description }}</td>
 			<td  width="7%"><img src = "{{ category.logoUrl }} " alt="Smiley face" height="" width="100%"></td>
 		</tr>
 	</table>
