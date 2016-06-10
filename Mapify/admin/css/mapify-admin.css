@@ -345,3 +345,17 @@ th {
 	max-width: 400px;
 	word-wrap: break-word;
 }
+#DivImg_preview{
+	width: 30%;
+	height: 30%;
+}
+.manageMapTable{
+    border-collapse: collapse;
+}
+.manageMapTable td{
+	text-align: left;
+	vertical-align: left;
+	overflow: hidden;
+	margin: 20px;
+	padding :20px;
+}

@@ -67,6 +67,8 @@
 	});
 
 	wp_mapify_app.controller('mapCtrl', function ($scope) {
+		
+		
 		jQuery(document).ready(function ($) {
 			$("#upload_image_button_main").click(function (e) {
 				e.preventDefault();
@@ -84,7 +86,7 @@
 					// Let's assign the url value to the input field
 					$('#upload_image_main').val(image_url)
 					var image_link = $('#upload_image_main').val();
-					$("#preview_label").html("Preview:");
+					$("#preview_label").html("");
 					$("#img_preview").attr("src", image_link);
 				});
 			});
@@ -128,18 +130,18 @@
 				title: 'Upload Image',
 				multiple: false
 			}).open()
-			.on('select', function (e) {
-				// This will return the selected image from the Media Uploader, the result is an object
-				var uploaded_image = image.state().get('selection').first();
-				// We convert uploaded_image to a JSON object to make accessing it easier
-				// Output to the console uploaded_image
-				//console.log(uploaded_image);
-				var image_url = uploaded_image.toJSON().url;
-				// Let's assign the url value to the input field
-				$('#upload_image_neighborhood').val(image_url)
-				var image_link = $('#upload_image_neighborhood').val();
-				$("#preview_label").html("Preview:");
-				$("#img_preview").attr("src", image_link);
+				.on('select', function (e) {
+					// This will return the selected image from the Media Uploader, the result is an object
+					var uploaded_image = image.state().get('selection').first();
+					// We convert uploaded_image to a JSON object to make accessing it easier
+					// Output to the console uploaded_image
+					//console.log(uploaded_image);
+					var image_url = uploaded_image.toJSON().url;
+					// Let's assign the url value to the input field
+					$('#upload_image_neighborhood').val(image_url)
+					var image_link = $('#upload_image_neighborhood').val();
+					$("#preview_label").html("");
+					$("#img_preview").attr("src", image_link);
 			});
 		});
 
@@ -165,12 +167,12 @@
 					console.log(data);
 					$('#neighborhood').val('');
 					jQuery("#upload_image_neighborhood").val('');
-					$("#success-neghborhood").html("<div class='notice notice-success is-dismissable'>Neighborhood's "+ img_neighborhood +" Image Saved Successfully!</div>");
+					$("#success").html("<div class='notice notice-success is-dismissable'>Neighborhood's "+ img_neighborhood +" Image Saved Successfully!</div>");
 				},
 				error: function(error) {
 					$('#neighborhood').val('');
 					jQuery("#upload_image_neighborhood").val('');
-					$("#success-neghborhood").html("<div class='notice notice-error is-dismissable'>ERROR: Neighborhood's "+img_neighborhood +" Image Did Not Save!</div>");
+					$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Neighborhood's "+img_neighborhood +" Image Did Not Save!</div>");
 				}
 			});
 		});
@@ -614,7 +616,7 @@
 				var image_url = uploaded_image.toJSON().url;
 				$('#upload_image_neighborhood').val(image_url)
 				var image_link = $('#upload_image_neighborhood').val();
-				$("#preview_label").html("Preview:");
+				$("#preview_label").html("");
 				$("#img_preview").attr("src", image_link);
 			});
 		});
