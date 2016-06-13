@@ -89,19 +89,16 @@ function display($atts)
     $content .= '<p id="bubbleText"></p>';
     $content .= '</div>';
     
-
-    
-    
     $content .= '</div>';   //close div with id="map"
+    
+    
     
     $content .= '<div id="contentActivity">
                 <a name = "contentActivityRef"></a>
                 <p id="contentActivityText"></p>
                 <div id="activityImages"></div>
-                <div id="activityContent"></div>';
-    
-    
-    $content .= '</div>';   //close div with id="contentActivity"
+                <div id="activityContent"></div>
+                </div>';   //close div with id="contentActivity"
 
     
     $content .= '</div>';   //close div with id="mapify"
@@ -252,6 +249,7 @@ function display($atts)
                 function onClickReadMore()
                 {
                     jQuery('#activityImages').empty();
+                    
                     var linkId = (jQuery('.link').attr('id'));
                     var id = linkId.split(\"_\")[1];
                     var activityId = \"activity_\" + id;                
@@ -265,7 +263,7 @@ function display($atts)
                     {
                         if(activitiesImagesArray[i].activity_id == id)
                         {
-                            image = '<img id=\"img_' + id + '\" src = \"' + activitiesImagesArray[i].url +'\"></img>';
+                            image = '<img class = \"activityImage\" id=\"img_' + id + '\" src = \"' + activitiesImagesArray[i].url +'\"></img>';
                             jQuery('#activityImages').append(image);
                             imageIndex++;
                         }
