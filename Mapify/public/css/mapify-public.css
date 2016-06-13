@@ -2,6 +2,9 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+body {
+    direction: rtl;
+}
 
 .tag:hover {
         cursor: pointer;
@@ -86,3 +89,24 @@
     cursor: pointer;
 }
 
+#categoryLogo {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 300px;
+    top: 5px;
+}
+
+#activityImages {
+    display: inline-block;
+    width: 50%;
+}
+
+#activityContent {
+    display: inline-block;
+    width: 50%;
+}
+
+.activityImage {
+    margin: 3px;
+}
