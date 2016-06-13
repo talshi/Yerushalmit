@@ -97,7 +97,8 @@ function display($atts)
     $content .= '<div id="contentActivity">
                 <a name = "contentActivityRef"></a>
                 <p id="contentActivityText"></p>
-                <div id="activityImages"></div>';
+                <div id="activityImages"></div>
+                <div id="activityContent"></div>';
     
     
     $content .= '</div>';   //close div with id="contentActivity"
@@ -108,6 +109,7 @@ function display($atts)
     
     
     $content .= "\n<script>
+                jQuery('#bubble').hide();
                 jQuery('#bubbleText').css({ 'width': jQuery('#bubble').width() });
                 function getImageByActivity(activityId)
                 {
@@ -205,7 +207,7 @@ function display($atts)
                 }
                 jQuery('.tag').hover(
                 function(){
-           
+                    jQuery('#bubble').show();
                     var activityId = jQuery(this).attr('id');
                     var urlByActivityId = getImageByActivity(activityId);
                     jQuery('#map').css('background-image','url(' + urlByActivityId + ')');
@@ -234,7 +236,7 @@ function display($atts)
                 });
                 jQuery('.categories').hover(
                 function(){
-           
+                    jQuery('#bubble').show();
                     var categoryId = jQuery(this).attr('id');
                     
                     var textForBubble = getCategoryDescription(categoryId);
@@ -273,7 +275,9 @@ function display($atts)
                 jQuery('.categories').click(
                     function()
                     {
+                        jQuery('#bubble').show();
                         var activitiesArrayJS = " . json_encode($activitiesArray) . ";
+                        
                         
                         var categoryId = jQuery(this).attr('id');
                         var id = categoryId.split(\"_\")[1];

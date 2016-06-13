@@ -94,3 +94,10 @@
     top: 5px;
 }
 
+#activityImages {
+    display: inline-block;
+}
+
+#activityContent {
+    display: inline-block;
+}
