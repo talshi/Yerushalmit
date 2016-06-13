@@ -66,8 +66,68 @@
 		};
 	});
 
-	wp_mapify_app.controller('mapCtrl', function ($scope) {
+	wp_mapify_app.controller('mapCtrl', function ($scope, $http, $route) {
 		
+		$http({
+			method: "POST",
+			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+			data: $.param({ action: 'get_neighborhood_list' }), 
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		}).success(function(response) {
+			$scope.neighbothood_list = response;
+		}, function(error) {
+			console.log(error);
+		});
+		
+		$("#remove_all_images_button").click(function() {
+		if(confirm("Are You Sure?")) {
+			$http({
+				method: "POST",
+				url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+				data: $.param({ action: 'delete_all_neigborhood' }), 
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).success(function(response) {
+				console.log(response);
+				$route.reload();
+			}, function(error) {
+				console.log(error);
+			});
+		}
+	});
+//	
+//	$("#remove_selected_images_button").click(function() {
+//		$http({
+//			method: "POST",
+//			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+//			data: $.param({ action: 'get_activities_images' }),
+//			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+//		}).success(function(response) {
+//			$scope.activities_image_list = response;
+//			var images = response;
+//			for(var i = 0; i < images.length; i++) {
+//				var id = images[i].id;
+//				if($("#checked" + images[i].id).is(':checked')) {
+//					$http({
+//						method: "POST",
+//						url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+//						data: $.param({ action: 'delete_image_by_id', 
+//							id: id 
+//						}), 
+//						headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+//					}).success(function(response) {
+//						console.log("removed!" + id);
+//						$route.reload();
+//					}, function(error) {
+//						console.log(error);
+//					});
+//				}
+//			}
+//			$route.reload();
+//		}, function(error) {
+//			console.log(error);
+//		});
+//	});
+
 		
 		jQuery(document).ready(function ($) {
 			$("#upload_image_button_main").click(function (e) {
@@ -111,11 +171,13 @@
 					},
 					success: function(data) {
 						jQuery("#upload_image_main").val(' ');
+						$("#img_preview").attr("src","")
 						$("#success").html("<div class='notice notice-success is-dismissable'>Image - Main -Saved Successfully!</div>");
-
+						$route.reload();
 					},
 					error: function(error) {
 						jQuery("#upload_image_main").val(' ');
+						$("#img_preview").attr("src","")
 						$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Image - Main - Did Not Save!</div>");
 					}
 				});
@@ -148,9 +210,10 @@
 		$("#save_button_neighborhood").click(function() {
 			if($('#neighborhood').val().length  == 1 || $('#neighborhood').val().length  == 0 || $('#upload_image_neighborhood').val().length == 0 || jQuery("#upload_image_neighborhood").val().length == 0 || jQuery("#upload_image_neighborhood").val().length == 1 )
 			{
-				$('#neighborhood').val(' ');
-				jQuery("#upload_image_neighborhood").val(' ');
-				$("#success-neghborhood").html("<div class='notice notice-error is-dismissable'>ERROR: Neighborhood's Image Did Not Save!</div>");
+				$('#neighborhood').val('');
+				jQuery("#upload_image_neighborhood").val('');
+				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Neighborhood's Image Did Not Save!</div>");
+				$("#img_preview").attr("src", '');
 				return;
 			}
 			img_url = jQuery("#upload_image_neighborhood").val();
@@ -167,11 +230,14 @@
 					console.log(data);
 					$('#neighborhood').val('');
 					jQuery("#upload_image_neighborhood").val('');
+					$("#img_preview").attr("src", '')
 					$("#success").html("<div class='notice notice-success is-dismissable'>Neighborhood's "+ img_neighborhood +" Image Saved Successfully!</div>");
+					$route.reload();
 				},
 				error: function(error) {
 					$('#neighborhood').val('');
 					jQuery("#upload_image_neighborhood").val('');
+					$("#img_preview").attr("src","");
 					$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Neighborhood's "+img_neighborhood +" Image Did Not Save!</div>");
 				}
 			});

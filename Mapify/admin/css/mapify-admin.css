@@ -346,16 +346,18 @@ th {
 	word-wrap: break-word;
 }
 #DivImg_preview{
-	width: 30%;
-	height: 30%;
+	width: 15%;
+	height: 15%;
 }
 .manageMapTable{
     border-collapse: collapse;
+	padding :1px;
 }
 .manageMapTable td{
 	text-align: left;
 	vertical-align: left;
 	overflow: hidden;
-	margin: 20px;
-	padding :20px;
+	margin: 10px;
+	padding-left :20px;
+	width : 50%;'
 }

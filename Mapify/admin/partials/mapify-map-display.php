@@ -11,8 +11,8 @@
 				<label id="upload_map_label" for="upload_image_main">Upload Main
 					Image</label><br> <input id="upload_image_main" type="text"
 					size="36" name="upload_image" placeholder="Upload an Image" /> <input
-					id="upload_image_button_main" type="button" value="Upload Image" />
-				<input id="save_button_main" type="button" value="Save Image" />
+					id="upload_image_button_main" type="button" value="Upload Image" class= "buttonDesign"/>
+				<input id="save_button_main" type="button" value="Save Image" class= "buttonDesign"/>
 			</div>
 		</td>
 
@@ -22,7 +22,7 @@
 					<label id="preview_label" class="page-header"></label>
 				</div>
 				<div id="DivImg_preview">
-					<img id="img_preview" class="img_preview"></img>
+					<img id="img_preview" class="img_preview" alt ="IMAGE"></img>
 				</div>
 			</div>
 		</td>
@@ -41,14 +41,32 @@
 				<input id="upload_image_neighborhood" type="text" size="36"
 					name="upload_image_neighborhood" placeholder="Upload an Image" /> <input
 					id="upload_image_button_neighborhood" type="button"
-					value="Upload Image" /> <input id="save_button_neighborhood"
-					type="button" value="Save Image" />
+					value="Upload Image" class= "buttonDesign"/> <input id="save_button_neighborhood"
+					type="button" value="Save Image" class= "buttonDesign" />
 
 			</div></td>
 		<td>
 		</td>
 	</tr>
 </table>
+<div class="activities-control">
+	<input class = "buttonDesign" id="remove_selected_images_button" type="button" value="Remove Selected" />
+	<input class = "buttonDesign" id="remove_all_images_button" type="button" value="Remove All" />
+</div>
+<div class="images-table">
+		<table>
+			<tr class="firstLineTable">
+				<th>#</th>
+				<th id="IDImage-name" ng-model="name" ng-click="sortBy='neighbothood'; reverseSort=!reverseSort" >Neighbothood</th>
+				<th id="ID-URL" ng-model="ImageURL">Image</th>
+			</tr>
+			<tr id={{image.id}} ng-repeat = "image in neighbothood_list | filter: query | orderBy:sortBy:reverseSort " class="data_table">
+				<td width = "10%"><input id="checked{{ image.id }}" type="checkbox" /></td>
+				<td width = "75%"  class = "fontImages">{{ image.neighborhood }}</td>
+				<td width = "15%"><img src="{{ image.url }}" width="100%" height="20%"></td>
+			</tr>
+		</table>
+	</div>
 
 
 
