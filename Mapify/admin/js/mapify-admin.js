@@ -94,39 +94,41 @@
 			});
 		}
 	});
-//	
-//	$("#remove_selected_images_button").click(function() {
-//		$http({
-//			method: "POST",
-//			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
-//			data: $.param({ action: 'get_activities_images' }),
-//			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-//		}).success(function(response) {
-//			$scope.activities_image_list = response;
-//			var images = response;
-//			for(var i = 0; i < images.length; i++) {
-//				var id = images[i].id;
-//				if($("#checked" + images[i].id).is(':checked')) {
-//					$http({
-//						method: "POST",
-//						url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
-//						data: $.param({ action: 'delete_image_by_id', 
-//							id: id 
-//						}), 
-//						headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-//					}).success(function(response) {
-//						console.log("removed!" + id);
-//						$route.reload();
-//					}, function(error) {
-//						console.log(error);
-//					});
-//				}
-//			}
-//			$route.reload();
-//		}, function(error) {
-//			console.log(error);
-//		});
-//	});
+	
+	$("#remove_selected_images_button").click(function() {
+		$http({
+			method: "POST",
+			url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+			data: $.param({ action: 'get_neighborhood_list' }),
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		}).success(function(response) {
+			$scope.activities_image_list = response;
+			var images = response;
+			console.log(response);
+			for(var i = 0; i < images.length; i++) {
+				var id = images[i].id;
+				if($("#checked" + images[i].id).is(':checked')) {
+					$http({
+						method: "POST",
+						url: "../wp-content/plugins/Mapify/DB/DB_functions.php",
+						data: $.param({ action: 'delete_neiborhood_by_id', 
+							id: id 
+						}), 
+						headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+					}).success(function(response) {
+//						console.log(response);
+						console.log("removed!" + id);
+						$route.reload();
+					}, function(error) {
+						console.log(error);
+					});
+				}
+			}
+			$route.reload();
+		}, function(error) {
+			console.log(error);
+		});
+	});
 
 		
 		jQuery(document).ready(function ($) {
@@ -214,6 +216,7 @@
 				jQuery("#upload_image_neighborhood").val('');
 				$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Neighborhood's Image Did Not Save!</div>");
 				$("#img_preview").attr("src", '');
+				alert("Please ensure you enter name and URL.");
 				return;
 			}
 			img_url = jQuery("#upload_image_neighborhood").val();
@@ -235,6 +238,7 @@
 					$route.reload();
 				},
 				error: function(error) {
+					console.log(error);
 					$('#neighborhood').val('');
 					jQuery("#upload_image_neighborhood").val('');
 					$("#img_preview").attr("src","");

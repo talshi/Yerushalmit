@@ -21,14 +21,14 @@
 	</div>
 	<div class="activities-table">
 		<table>
-			<tr class = "firstLineTable">
-				<th>#</th>
+			<tr>
+				<th id="activity-number">#</th>
 				<th id="IDactivity-name" ng-model="name"
 					ng-click="sortBy='name'; reverseSort=!reverseSort" style ="width:10%;">Activity Name</th>
 				<th id="IDDate" ng-model="date"
 					ng-click="sortBy='date'; reverseSort=!reverseSort" style ="width:10%;">Date</th>
 				<th id="IDNeighb" ng-model="neighborhood"
-					ng-click="sortBy='neighborhood'; reverseSort=!reverseSort" style ="width:10%;">neighborhood</th>
+					ng-click="sortBy='neighborhood'; reverseSort=!reverseSort" style ="width:10%;">Neighborhood</th>
 				<th id="IDCategory" ng-model="category"
 					ng-click="sortBy='category'; reverseSort=!reverseSort" style="white-space:pre-wrap ; word-wrap:break-word;">Category</th>
 				<th style ="width:10%;">Description</th>

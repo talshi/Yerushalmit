@@ -38,8 +38,8 @@
 
 <div class="images-table">
 		<table>
-			<tr class="firstLineTable">
-				<th>#</th>
+			<tr>
+				<th id="image_number">#</th>
 				<th id="IDImage-name" ng-model="name" ng-click="sortBy='activity_name'; reverseSort=!reverseSort" >Activity Name</th>
 				<th id="ID-URL" ng-model="ImageURL">Image</th>
 			</tr>

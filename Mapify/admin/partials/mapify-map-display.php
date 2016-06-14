@@ -53,17 +53,17 @@
 	<input class = "buttonDesign" id="remove_selected_images_button" type="button" value="Remove Selected" />
 	<input class = "buttonDesign" id="remove_all_images_button" type="button" value="Remove All" />
 </div>
-<div class="images-table">
+<div class="maps-table">
 		<table>
-			<tr class="firstLineTable">
-				<th>#</th>
-				<th id="IDImage-name" ng-model="name" ng-click="sortBy='neighbothood'; reverseSort=!reverseSort" >Neighbothood</th>
+			<tr>
+				<th id="map-number">#</th>
+				<th id="IDImage-name" ng-model="name" ng-click="sortBy='neighbothood'; reverseSort=!reverseSort" >Neighborhood</th>
 				<th id="ID-URL" ng-model="ImageURL">Image</th>
 			</tr>
 			<tr id={{image.id}} ng-repeat = "image in neighbothood_list | filter: query | orderBy:sortBy:reverseSort " class="data_table">
-				<td width = "10%"><input id="checked{{ image.id }}" type="checkbox" /></td>
-				<td width = "75%"  class = "fontImages">{{ image.neighborhood }}</td>
-				<td width = "15%"><img src="{{ image.url }}" width="100%" height="20%"></td>
+				<td><input id="checked{{ image.id }}" type="checkbox" /></td>
+				<td class = "fontImages">{{ image.neighborhood }}</td>
+				<td id="maps-image-td"><img src="{{ image.url }}"></td>
 			</tr>
 		</table>
 	</div>

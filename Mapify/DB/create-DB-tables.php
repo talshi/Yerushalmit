@@ -15,10 +15,8 @@ class Tables {
 			
 			$sql = "CREATE TABLE $table_name ( 
 				id mediumint(9) NOT NULL AUTO_INCREMENT,
-				map_id varchar(55) NOT NULL,
 				url varchar(5000) NOT NULL,
 				neighborhood VARCHAR(100) NOT NULL,
-				
 				PRIMARY KEY (id) )";
 			
 			// make dbDelta() available

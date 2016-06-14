@@ -70,8 +70,13 @@ switch ($action) {
 		echo DB_functions::get_neighborhood_list ();
 		break;
 	case "delete_all_neigborhood" :
-		echo DB_function::delete_all_neigborhood ();
+		echo DB_functions::delete_all_neigborhood ();
 		break;
+	case "delete_neiborhood_by_id":
+		$id = $_POST ['id'];
+		echo DB_functions::delete_neiborhood_by_id ($id);
+		break;
+		
 }
 class DB_functions {
 	public static function update_activities_table_by_id($id, $name, $date, $description, $neighborhood, $category) {
@@ -220,9 +225,7 @@ class DB_functions {
 	}
 	public static function get_activities_images() {
 		global $wpdb;
-		
 		$images = $GLOBALS ['wpdb']->get_results ( "SELECT * FROM `wp_activities_image ", OBJECT );
-		
 		return json_encode ( $images, JSON_PRETTY_PRINT );
 	}
 	public static function delete_all_images() {
@@ -231,11 +234,16 @@ class DB_functions {
 	}
 	public static function delete_image_by_id($id) {
 		global $wpdb;
-		$wpdb->query ( ("DELETE FROM `wp_activities_image` WHERE `wp_activities_image`.`id` = '$id'") );
+		$wpdb->query ( ("DELETE FROM `wp_activities_image` WHERE `wp_activities_image` `id` = '$id'") );
 	}
+	
+	public static function delete_neiborhood_by_id($id) {
+		global $wpdb;
+		$wpdb->query ( ("DELETE FROM wp_map WHERE wp_map.id = '$id'") );
+	}
+	
 	public static function delete_all_neigborhood() {
 		global $wpdb;
 		$wpdb->query ( "DELETE FROM wp_map" );
-		return "hello";
 	}
 }

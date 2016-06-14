@@ -82,41 +82,42 @@ label {
 	margin-right: 0.3em;
 }
 
-.activities-table>table {
+.activities-table table, .maps-table table, .images-table table {
+	border: 2px solid black;
 	width: 100%;
 }
 
-.activities-table table {
-	border: 2px solid black;
+.activities-table tr:nth-child(even), .maps-table tr:nth-child(even), .images-table tr:nth-child(even) {
+	background: #ffe6b3
 }
 
-.activities-table tr:nth-child(even) {
-	background: #cce6ff
-}
-
-.activities-table tr:nth-child(odd) {
+.activities-table tr:nth-child(odd), .maps-table tr:nth-child(odd), .images-table tr:nth-child(odd) {
 	background: #FFF
 }
 
-.activities-table th, .activities-table td {
+.activities-table th, .activities-table td, .maps-table th, .maps-table td, .images-table th, .images-table td {
 	border: 1px solid black;
 }
 
-.images-table table {
-	width: 100%;
-	border: 2px solid black;
+.activities-table th, .maps-table th, .images-table th {
+	font-size: 15px;
+	text-align: center;
+	color: white;
+	background-color: #ff9400;
+	vertical-align: middle;
 }
 
-.images-table tr:nth-child(even) {
-	background: #cce6ff
+.maps-table #maps-image-td {
+	width: 200px;
 }
 
-.images-table tr:nth-child(odd) {
-	background: #FFF
+.activities-table img, .maps-table img, .images-table img {
+	width: 200px;
+	height: 200px;
 }
 
-.images-table th, .images-table td {
-	border: 1px solid black;
+.activities-table #activity-number, .maps-table #map-number, .images-table #image_number {
+	width: 30px;
 }
 
 th {
@@ -148,28 +149,6 @@ th {
 	position: absolute;
 	cursor: pointer -webkit-transform: rotate(360deg);
 	transform: rotate(360deg);
-}
-
-.view-animate.ng-enter, .view-animate.ng-leave {
-	transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
-	width: 100%;
-	position: absolute;
-	top: 88px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-}
-
-.view-animate.ng-enter {
-	left: 100%;
-}
-
-.view-animate.ng-enter.ng-enter-active {
-	left: 0;
-}
-
-.view-animate.ng-leave.ng-leave-active {
-	left: -100%;
 }
 
 #map {
@@ -233,26 +212,6 @@ th {
 .categories-control {
 	float: right;
 	margin: 10px 0px;
-}
-
-.view-animation.ng-enter, .view-animation.ng-leave {
-	transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
-	position: fixed;
-	left: 182px;
-	top: 120px;
-	width: 100%;
-}
-
-.view-animation.ng-enter {
-	transform: translateX(100%);
-}
-
-.view-animation.ng-leave, .view-animation.ng-enter.ng-enter-active {
-	transform: translateX(0%);
-}
-
-.view-animation.ng-leave.ng-leave-active {
-	transform: translateX(-100%);
 }
 
 .header_uplaod {
@@ -324,18 +283,6 @@ th {
 	text-align: center;
 	vertical-align: middle;
 	font-weight: bold;
-}
-
-.firstLineTable {
-	height: 35px;
-	font-size: 25px;
-}
-
-.firstLineTable th {
-	text-align: center;
-	color: white;
-	background-color: #ff9400;
-	vertical-align: middle;
 }
 
 #data_table_des {

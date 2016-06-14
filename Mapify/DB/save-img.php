@@ -20,7 +20,6 @@ if (isset ( $_REQUEST )) {
 				'url' => $img_url,
 				//TODO fix neighborhood data
 				'neighborhood' => "main",
-				'map_id' => '0'
 		), array (
 				'%d',
 				'%s',
@@ -31,8 +30,7 @@ if (isset ( $_REQUEST )) {
 		$wpdb->insert ( $table_name, array (
 				'url' => $img_url,
 				//TODO fix neighborhood data
-				'neighborhood' => $neighborhood,
-				'map_id' => '0'
+				'neighborhood' => $neighborhood
 		), array (
 				'%s',
 				'%s',
