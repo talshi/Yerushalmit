@@ -1,5 +1,7 @@
 <?php
+
 class Tables {
+	
 	public $map_db_version = '1.0';
 	public $activities_db_version = '1.0';
 	public $categories_db_version = '1.0';
@@ -17,7 +19,9 @@ class Tables {
 				id mediumint(9) NOT NULL AUTO_INCREMENT,
 				url varchar(5000) NOT NULL,
 				neighborhood VARCHAR(100) NOT NULL,
-				PRIMARY KEY (id) )";
+				PRIMARY KEY (id) )
+				DEFAULT CHARACTER SET utf8;   
+	 			COLLATE utf8_general_ci;";
 			
 			// make dbDelta() available
 			require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
@@ -61,7 +65,9 @@ class Tables {
 				locationX varchar(55) DEFAULT '' NOT NULL,
 				locationY varchar(55) DEFAULT '' NOT NULL,
 				category varchar(55) DEFAULT '' NOT NULL,
-				PRIMARY KEY (id) )";
+				PRIMARY KEY (id) )
+				DEFAULT CHARACTER SET utf8;   
+ 				COLLATE utf8_general_ci;";
 			
 			// location - array with 2 coordination - place on image
 			
@@ -93,12 +99,16 @@ class Tables {
 		
 		if ($wpdb->get_var ( 'SHOW TABLES LIKE ' . $table_name ) != $table_name) {
 			$sql = "CREATE TABLE $table_name (
+			DEFAULT CHARACTER SET utf8   
+ 			COLLATE utf8_general_ci;
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			activity_id mediumint(9) NOT NULL,  
 			activity_name VARCHAR(55)NOT NULL,  
 			image_id mediumint(9) NOT NULL,
 			url varchar(5000) DEFAULT '' NOT NULL,
-			PRIMARY KEY (id) )";
+			PRIMARY KEY (id) )
+			DEFAULT CHARACTER SET utf8;   
+ 			COLLATE utf8_general_ci;";
 
 			
 			require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
@@ -127,11 +137,15 @@ class Tables {
 		
 		if ($wpdb->get_var ( 'SHOW TABLES LIKE ' . $table_name ) != $table_name) {
 			$sql = "CREATE TABLE $table_name (
+			DEFAULT CHARACTER SET utf8   
+ 			COLLATE utf8_general_ci;
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			logoUrl varchar(5000) DEFAULT '' NOT NULL,
 			name varchar(500) DEFAULT '' NOT NULL,
 			description varchar(5000) DEFAULT '' NOT NULL,
-			PRIMARY KEY (id) )";
+			PRIMARY KEY (id) )
+			DEFAULT CHARACTER SET utf8;   
+ 			COLLATE utf8_general_ci;";
 			
 			// make dbDelta() available
 			
@@ -161,11 +175,15 @@ class Tables {
 	
 		if ($wpdb->get_var ( 'SHOW TABLES LIKE ' . $table_name ) != $table_name) {
 			$sql = "CREATE TABLE $table_name (
+			DEFAULT CHARACTER SET utf8   
+ 			COLLATE utf8_general_ci;
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			category_id mediumint(9) NOT NULL ,
 			activity_id mediumint(9) NOT NULL ,
 			image_id mediumint(9) NOT NULL ,
-			PRIMARY KEY (id) )";
+			PRIMARY KEY (id) )
+			DEFAULT CHARACTER SET utf8;   
+ 			COLLATE utf8_general_ci;";
 				
 			// make dbDelta() available
 				
