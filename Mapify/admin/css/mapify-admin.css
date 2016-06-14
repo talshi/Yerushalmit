@@ -23,7 +23,6 @@
 	background-color: #fff;
 }
 
-
 .img_preview {
 	width: 100%;
 }
@@ -177,6 +176,11 @@ th {
 	position: relative;
 }
 
+#IDImage-name:hover {
+	background-color: yellow;
+	cursor: pointer;
+}
+
 #IDDate:hover {
 	background-color: yellow;
 	cursor: pointer;
@@ -186,13 +190,15 @@ th {
 	background-color: yellow;
 	cursor: pointer;
 }
-#IDNeighb:hover{
+
+#IDNeighb:hover {
 	background-color: yellow;
-	cursor: pointer;	
+	cursor: pointer;
 }
-#IDCategory:hover{
+
+#IDCategory:hover {
 	background-color: yellow;
-	cursor: pointer;	
+	cursor: pointer;
 }
 
 #IDcategory-name:hover {
@@ -248,7 +254,110 @@ th {
 .view-animation.ng-leave.ng-leave-active {
 	transform: translateX(-100%);
 }
-.header_uplaod{
+
+.header_uplaod {
 	background-color: gray;
 	font-size: 25px;
+}
+
+#remove_selected_images_button {
+	left: 50%;
+}
+
+.buttonDesign {
+	-moz-box-shadow: 0px 0px 2px -21px #9fb4f2;
+	-webkit-box-shadow: 0px 0px 2px -21px #9fb4f2;
+	box-shadow: 0px 0px 2px -21px #9fb4f2;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2
+		), color-stop(1, #476e9e));
+	background: -moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background: -webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background: -o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background: -ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2',
+		endColorstr='#476e9e', GradientType=0);
+	background-color: #7892c2;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	border: 1px solid #4e6096;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 5px 7px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #283966;
+}
+
+.buttonDesign :hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e
+		), color-stop(1, #7892c2));
+	background: -moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background: -webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background: -o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background: -ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background: linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e',
+		endColorstr='#7892c2', GradientType=0);
+	background-color: #476e9e;
+}
+
+.buttonDesign :active {
+	position: relative;
+	top: 1px;
+}
+
+.fontImages {
+	size: 35px;
+}
+
+.data_table {
+	font-size: 15px;
+	align: right;
+}
+
+.data_table td {
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.firstLineTable {
+	height: 35px;
+	font-size: 25px;
+}
+
+.firstLineTable th {
+	text-align: center;
+	color: white;
+	background-color: #ff9400;
+	vertical-align: middle;
+}
+
+#data_table_des {
+	text-align: left;
+	vertical-align: left;
+	overflow: hidden;
+	max-width: 400px;
+	word-wrap: break-word;
+}
+#DivImg_preview{
+	width: 15%;
+	height: 15%;
+}
+.manageMapTable{
+    border-collapse: collapse;
+	padding :1px;
+}
+.manageMapTable td{
+	text-align: left;
+	vertical-align: left;
+	overflow: hidden;
+	margin: 10px;
+	padding-left :20px;
+	width : 50%;'
 }
