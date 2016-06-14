@@ -1,0 +1,112 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+body {
+    direction: rtl;
+}
+
+.tag:hover {
+        cursor: pointer;
+}
+
+.tag {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+}
+
+#bubble {
+    float: left;
+}
+
+#categories {
+    width: 100px;
+    height: 856px;
+    display: inline-block;
+    padding: 0px;
+}
+
+#mapify {
+    width: 793.55px;
+    height: auto;
+    padding: 0px;
+    margin: 0px;
+    float: right;
+}
+
+#map {
+    position: relative;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 600px 856px;
+    height: 856px;
+    width: 600px;
+    display: inline-block;
+    padding: 0px;
+}
+
+#image1 {
+    position: relative;
+    width: 100%;
+}
+
+#bubbleText, #textTitle {
+    padding: 5px;
+    margin: 5px;
+}
+
+#bubbleText {
+    font-size: 16px;
+}
+
+#bubble {
+    margin: 5px;
+    background-image: url('http://i.stack.imgur.com/nH24x.png');
+    background-repeat: no-repeat;
+    height: 205px;
+    width: 307px;
+}
+
+#readMoreLink {
+    cursor: pointer;
+    border-bottom: none;
+}
+
+
+#contentActivity {
+    height: auto;
+    width: auto;
+}
+
+.categories {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+    float: right;
+    cursor: pointer;
+}
+
+#categoryLogo {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 300px;
+    top: 5px;
+}
+
+#activityImages {
+    display: inline-block;
+    width: 50%;
+}
+
+#activityContent {
+    display: inline-block;
+    width: 50%;
+}
+
+.activityImage {
+    margin: 3px;
+}
