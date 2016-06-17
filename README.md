@@ -6,14 +6,14 @@
 
 ######This project is done as a final project for [software engineering course at JCE](https://github.com/jce-il/se-class) (Jerusalem Collage of Engineering).
 
-##[Yerushalmit](http://yerushalmit.azurewebsites.net)
+##[Yerushalmit](http://yerushalmitmovement.com)
 
 
 ## Join the chat at: [![Gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg?style=flat-square)](https://gitter.im/talshi/jerorg)
 
-## [Issue Board](https://github.com/talshi/jerorg/issues)
+## Issue Board: [![HuBoard](https://img.shields.io/badge/link-HuBoard-8674D1.svg?style=flat)](https://huboard.com/talshi/Yerushalmit)
 
-[![HuBoard](https://img.shields.io/badge/link-HuBoard-8674D1.svg?style=flat)](https://huboard.com/talshi/Yerushalmit)
+
 
 ## Disclaimer
 This project is developed as part of the requirements for a [software engineering course](https://github.com/jce-il/se-class/wiki) at the software engineering department - [Azrieli College of Engineering](http://www.jce.ac.il/), Jerusalem, Israel.
