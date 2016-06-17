@@ -9,8 +9,7 @@
 ##[Yerushalmit](http://yerushalmit.azurewebsites.net)
 
 
-## Join the chat at: [![Join the chat athttps://gitter.im/talshi/jerorg]  (https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/talshi/jerorg)
-
+## Join the chat at: [![Gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg?style=flat-square)](https://gitter.im/talshi/jerorg)
 
 ## [Issue Board](https://github.com/talshi/jerorg/issues)
 
