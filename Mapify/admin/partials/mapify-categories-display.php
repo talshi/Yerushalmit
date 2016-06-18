@@ -27,7 +27,7 @@
 			<td width="10%"><input id="categorychecked{{category.id}}" type="checkbox" /></td>
 			<td width="30%">{{ category.name }}</td>
 			<td id ="data_table_des">{{ category.description }}</td>
-			<td  width="7%"><img src = "{{ category.logoUrl }} " alt="Smiley face" height="" width="100%"></td>
+			<td width="7%"><img src="{{category.logoUrl}}"></td>
 		</tr>
 	</table>
 

@@ -137,8 +137,6 @@ class Tables {
 		
 		if ($wpdb->get_var ( 'SHOW TABLES LIKE ' . $table_name ) != $table_name) {
 			$sql = "CREATE TABLE $table_name (
-			DEFAULT CHARACTER SET utf8   
- 			COLLATE utf8_general_ci;
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			logoUrl varchar(5000) DEFAULT '' NOT NULL,
 			name varchar(500) DEFAULT '' NOT NULL,

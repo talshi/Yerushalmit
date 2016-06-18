@@ -786,7 +786,7 @@
 			data: $.param({ action: 'get_category_list' }), 
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		}).success(function(response) {
-			$scope.categories_list = response; //??
+			$scope.categories_list = response;
 		}, function(error) {
 			console.log(error);
 		});
