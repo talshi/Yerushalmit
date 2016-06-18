@@ -38,6 +38,7 @@ This project is developed as part of the requirements for a [software engineerin
 - [Software Requirements Specification](https://github.com/talshi/Yerushalmit/wiki/Software-Requirements-Specification-(SRS))
 - [Software Design Specification](https://github.com/talshi/Yerushalmit/wiki/Software-Design-Specification-(SDS))
 - [WP-Mapify-Plugin Repository](https://github.com/talshi/WP-Mapify-Plugin)
+- [Project Summary](https://github.com/talshi/Yerushalmit/blob/master/Doc/Project%20Summary.pptx?raw=true)
 
 ## Iteration Pages
 - [Iteration 0 - Zero-Feature-Release-(ZFR)](https://github.com/talshi/Yerushalmit/wiki/Itr0_Zero-Feature-Release-(ZFR))
