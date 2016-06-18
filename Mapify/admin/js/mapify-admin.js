@@ -869,6 +869,7 @@
 				},
 				success: function(data) {
 					$("#success").html("<div class='notice notice-success is-dismissable'>Category Saved Successfully!</div>");
+					$route.reload();
 				},
 				error: function(error) {			
 					$("#success").html("<div class='notice notice-error is-dismissable'>ERROR: Category Did Not Save!</div>");
